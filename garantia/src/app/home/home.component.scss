@@ -1,0 +1,17 @@
+a {
+  position: relative;
+  color: black;
+}
+
+.imagenResultado {
+  position: absolute;
+  width:350px;
+  height:250px;
+  display: none;
+
+}
+
+a:hover .imagenResultado {
+  //display: block;
+  display: flex;
+}

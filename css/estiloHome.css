@@ -1,0 +1,245 @@
+body {
+    font-family: Gotham, "Helvetica Neue", Helvetica, Arial, "sans-serif";
+	background-image: url();
+    background-size: cover;
+    align-items: center;
+    background-attachment: fixed;
+   
+}
+#txtAcciones{
+	height: 50px;
+}
+.claseIndex{
+   width: 100%;
+    height: 100%;	
+}
+
+
+.imgEfc{
+	 width: 100px;
+    height: 100px;
+}
+
+.imgVista{
+    width: 100px;
+   height: 100px;
+}
+/*
+.imgEfc:hover {
+
+	
+    width: 300px;
+    height: 300px;
+	
+
+}
+
+
+#EstiloPanelLateral {
+border: 1px solid black;
+padding: 10px;
+margin: 10px;
+height:auto;
+width:200px;
+float: left;
+background:#ECECEC;
+
+	
+}
+strong{
+	color: red;
+}
+
+#EstiloPanelCentral {
+border: 1px solid black;
+  padding: 10px;
+ margin: 220px;
+background:#ECECEC;
+	
+width:auto; 
+height:auto; 
+float:none; 
+
+}
+
+.red-input:focus {
+  background: yellow;
+  color: red;
+}
+
+.blue-input:focus {
+  background: yellow;
+  color: blue;
+}
+
+.CentroHome {
+    color: white;
+    background-color: black;
+    align-content: center;
+    align-items: center;
+    text-align: center;
+ /*Puede ser 0.9
+    opacity: 90%;
+    border-radius: 1% 1%;
+}*/
+
+
+
+
+.menu {
+    list-style: none;/*Propiedades elemento lista */
+    padding: 0;
+    background: #000000;/*establece el espacio de relleno */
+    width: 80%; /*ancho */
+    margin: auto; /*Margen */
+    align-content: initial; /*ajusta las líneas dentro de un contenedor flex cuando hay espacio extra en el eje transversal. Valores globales */
+    /*font-family: Facon;
+    font-size: 1.4em;*/
+}
+
+.menu li a {
+    text-decoration: none;
+    color: white;
+    padding: 20px;
+    /*separa ligeramente del borde*/
+    display: block;
+}
+
+.menu li a:hover {
+    background-color: aliceblue;
+    color: #000000;
+}
+
+.menu li {
+    display: inline-block;
+    /*situar uno al lado de otro */
+    text-align: center;
+}
+
+.menu1 {
+    width: 150px;
+    border: none;
+    display: inline-block;
+    vertical-align: top;
+    z-index: 1;
+}
+
+.dropdown-item{
+	color: white;
+}
+
+.color_texto_menu{
+    color: white;
+}
+
+.estilo_navbar{
+    padding: 0mm;
+    margin: 0mm;
+}
+
+
+.EncaDescrip{
+	color: white;
+}
+
+.ColorAvPrueba{
+	color: white;
+}
+.DescParrafo{
+	color: white;
+}
+
+/*Codigo para reloj*/
+
+
+.clockdate-wrapper {
+    background-color: #333;
+    padding:25px;
+    max-width:350px;
+    width:100%;
+    text-align:center;
+    border-radius:5px;
+    margin:0 auto;
+    margin-top:5%;
+}
+#clock{
+    background-color:#333;
+    font-family: sans-serif;
+    font-size:60px;
+    text-shadow:0px 0px 1px #fff;
+    color:#fff;
+}
+#clock span {
+    color:#888;
+    text-shadow:0px 0px 1px #333;
+    font-size:30px;
+    position:relative;
+    top:-27px;
+    left:-10px;
+}
+#date {
+    letter-spacing:10px;
+    font-size:14px;
+    font-family:arial,sans-serif;
+    color:#fff;
+}
+.IdBarraLateral{
+	background-color:rgb(223, 223, 223);
+	border: 50;
+  
+    position:relative;
+    top: 10px;
+    left:3%;
+    text-align:start;
+align-content: initial;
+}
+.IdBarraCentral{
+	background-color:rgb(223, 223, 223);
+	border: 50;
+  
+    position:relative;
+    top: 10px;
+    left:4%;
+    text-align:start;
+
+align-content: initial;
+} 
+#IdImagenEntrada{
+	height: 100%;
+	width: 100%;
+}
+
+.imgPanel{
+	height: 100%;
+	width: 100%;
+}
+
+.CssImage {
+    position: relative;
+	
+    width: 100px;
+    height: 100px;
+	
+   border-radius: 50% 50%;
+}
+
+.CssImagePers {
+    position: relative;
+	
+    width: 80px;
+    height: 80px;
+	
+   border-radius: 50% 50%;
+}
+
+var data = google.visualization.arrayToDataTable([
+         ['Element', 'Density', { role: 'style' }],
+         ['Copper', 8.94, '#b87333'],            // RGB value
+         ['Silver', 10.49, 'silver'],            // English color name
+         ['Gold', 19.30, 'gold'],
+
+       ['Platinum', 21.45, 'color: #e5e4e2' ], // CSS-style declaration
+      ]);
+
+
+
