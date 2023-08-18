@@ -35,7 +35,7 @@ function volver()
 function AlertarBorra()
 {
 	
-	alert('Esta seguro de borrar un estudio?');
+	alert('Esta seguro de borrar Costo?');
 }
 	
 </script>	
@@ -68,56 +68,50 @@ include ("MarcoIzquierdo.php");
 ?>	
 		<?php	
 include("Conexion/conexion.php");		
-	$Id_FallaRecl=$_GET['Id_FallaRecl'];
-//echo $Id_FallaRecl; 
-$queryReclamoItem = $mysqli -> query ("SELECT * FROM `ComVistaItemFalla` WHERE `Id_FallaRecl` = ".$Id_FallaRecl.";");
+	$Fk_Num_Recl_Cost=$_GET['NumReclamo'];
+//echo $Id_CostoRecl; 
+$queryNuevoCosto = $mysqli -> query ("SELECT * FROM `CostoReclamo` WHERE `Fk_Num_Recl_Cost` = ".$Fk_Num_Recl_Cost.";");
 
-$rowReclamoItem = mysqli_fetch_assoc($queryReclamoItem);
+$rowNuevoCosto = mysqli_fetch_assoc($queryNuevoCosto);
 
 	?>			
 
 	
-<form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post" name="formFallaReclamo" enctype="multipart/form-data">
+<form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post" name="formNuevoCosto" enctype="multipart/form-data">
 
 <div class="form-group" align="">
   <table class="table" width="423"  border="0">
     <tr>
-      <td colspan="3" align="center"><label for="txtFalla">Falla</label></td>
+      <td colspan="8" align="center"><label for="txtCosto">Costo de reclamo</label></td>
     </tr>
     <tr>
 	<td width="156">Num</td>	
-	
-    <td width="156">Falla</td>
+	<td width="156"></td>
+    <td width="156">Cantidad</td>
     <td width="353">Detalle</td>
-    </tr>
+	</tr>
+
     <tr>
-		<td><input name="txtFk_NumRecl" type="text" id="txtFk_NumRecl" title="Fk_NumRecl" size="10" value="<?php print $Id_FallaRecl;?>" /></td>
-		
-      <td><select name="listFalla" size="1" id="listFalla">
-        <option value="0">Seleccione:</option>
-        <?php
-include("Conexion/conexion.php");
-  
-$query1 = $mysqli -> query ("SELECT * FROM `ComItemFalla` WHERE `Susp` LIKE 'No' ORDER BY `ItemFalla` ASC");
-
-
- while ($valores = mysqli_fetch_array($query1))
-
-		  
-		  {
-
- echo '<option value="'.$valores[Id_ItemFalla].'">'.$valores[ItemFalla].'</option>';
-}
-	?>
-      </select></td>
-
-      <td><input name="txtDetalle" type="text" id="txtDetalle" title="Detalle" size="50" />
-
-		</td>
+		<td><input name="txtFk_Num_Recl_Cost" type="text" id="txtFk_Num_Recl_Cost" title="Fk_Num_Recl_Cost" size="10" value="<?php print $Fk_Num_Recl_Cost;?>"  /></td>
+		<td></td>
+		<td><input name="txtCantidad" type="number" id="txtCantidad" title="Cantidad" size="10"  /></td>
+      <td><input name="txtDetalle" type="text" id="txtDetalle" title="Detalle" size="50"  /></td>
+	  </tr>
+	  <tr>
+	<td width="156">Pesos</td>
+    <td width="156">Dolar</td>
+	<td width="156">Chasis</td>
+    <td width="353">Observacion</td>
+    </tr>
+	<tr>
+	  <td><input name="txtPesos" type="number" id="txtPesos" title="Pesos" size="10"  /></td>
+	  <td><input name="txtDolar" type="number" id="txtDolar" title="Dolar" size="10"  /></td>
+	  <td><input name="txtFk_Chasis" type="number" id="txtFk_Chasis" title="Fk_Chasis" size="10"  /></td>
+	  <td><input name="txtObservacion" type="text" id="txtObservacion" title="Observacion" size="50"  /></td>
     </tr>
 	 <tr> 
 	  
-  <td>		
+  <td>	
         <input type="submit" class="btn btn-success" name="btnNuevo" id="btnNuevo" value="Nuevo"  />
 	  
 
@@ -137,25 +131,31 @@ $query1 = $mysqli -> query ("SELECT * FROM `ComItemFalla` WHERE `Susp` LIKE 'No'
 
 <?php
 	
-//$Id_FallaRecl=$_POST['txtId_FallaRecl'];	
-$Fk_NumRecl=$_POST['txtFk_NumRecl'];		
-$Falla=$_POST['listFalla'];	
+$IdCosto =$_POST['txtIdCosto'];	
+$Fk_Num_Recl_Cost=$_POST['txtFk_Num_Recl_Cost'];		
+$Cantidad=$_POST['txtCantidad'];	
+$Pesos=$_POST['txtPesos'];	
+$Dolar=$_POST['txtDolar'];	
+$Fk_Chasis=$_POST['txtFk_Chasis'];	
+$Observacion=$_POST['Observacion'];
+
 $Detalle=$_POST['txtDetalle'];	
 
-if(!$Falla==null){
+if(!$Fk_Num_Recl_Cost==null){
 	
-	echo "<h1>"."<a href=\"/sistema/FormReclamoEditar.php?NumReclamo=".$Fk_NumRecl."\">Volver</a>"."</h1>";
+	echo "<h1>"."<a href=\"/sistema/FormReclamoEditar.php?NumReclamo=".$Fk_Num_Recl_Cost."\">Volver</a>"."</h1>";
 	echo "
 	
 	";
 	
 include("Conexion/conexion.php");	
 
-$NuevoRegistro = "INSERT INTO `ComFallaRecl` (`Id_FallaRecl`, `Fk_NumRecl`, `Falla`, `Detalle`, `Fecha`) VALUES (NULL, '$Fk_NumRecl', '$Falla', '$Detalle', CURRENT_TIMESTAMP);";
+$InsertarRegistro = "INSERT INTO `CostoReclamo` (`IdCosto`, `Fk_Num_Recl_Cost`, `Cantidad`, `Detalle`, `Pesos`, `Dolar`, `Fk_Chasis`, `Observacion`) VALUES (NULL, '$Fk_Num_Recl_Cost', '$Cantidad', '$Detalle', '$Pesos', '$Dolar', '$Fk_Chasis', '$Observacion');";
 
-	
-	
-$ejecutar_NuevoRegistro=mysqli_query($mysqli,$NuevoRegistro);
+
+
+
+$ejecutar_InsertarRegistro=mysqli_query($mysqli,$InsertarRegistro);
 
 	
 }	

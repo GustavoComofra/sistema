@@ -24,6 +24,8 @@
 	<div class="row fondo">
 		<div class="col-sm-12 col-md-12 col-lg-12">
 			<h3 class="text-center "> <strong> Personal</strong>
+			<a href="/sistema/FormPersonal.php"><img src="../sistema/img/NuevoIcono.png" alt="Nuevo Personal" width="40" height="40"></a>
+
 			<a href="/sistema/GraficoPersonal.php" target="_blank">
       <img src="../sistema/img/iconoGrafico.png" alt="iconoGrafico"  width="40" height="40"></a>
 

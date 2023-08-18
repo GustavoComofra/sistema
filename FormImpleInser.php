@@ -147,7 +147,7 @@ $querySubFamilia = $mysqli -> query ("SELECT * FROM `ComSubFamiImple` ORDER BY `
 	  
     <tr>
       <th width="">Descripcion:</th>
-      <td width=""><input name="txtDescripcion" type="text" id="txtDescripcion" size="50"/>
+      <td width=""><input name="txtDescripcionImp" type="text" id="txtDescripcionImp" size="50"/>
 		</td>
     </tr>	  
 	  
@@ -172,14 +172,14 @@ $Implemento=$_POST['txtImplemento'];
 $NumImpl=$_POST['NumNumImpl'];
 $Familia=$_POST['listFamilia'];	
 $SubFamilia=$_POST['listSubFamilia'];	
-$Descripcion=$_POST['txtDescripcion'];	
+$DescripcionImp=$_POST['txtDescripcionImp'];	
 
 		
 if(!$Implemento==null){
 	
 echo "<p>"."cargado"."</p>";
 include("Conexion/conexion.php");
-$insertarImplemento = "INSERT INTO `ComImplemento` (`Id_Implemento`, `NumImpl`, `Implemento`, `Fk_Familia`, `Fk_SubFamilia`, `Descripcion`) VALUES (NULL, '$NumImpl', '$Implemento', '$Familia', '$SubFamilia', '$Descripcion');";
+$insertarImplemento = "INSERT INTO `ComImplemento` (`Id_Implemento`, `NumImpl`, `Implemento`, `Fk_Familia`, `Fk_SubFamilia`, `DescripcionImp`) VALUES (NULL, '$NumImpl', '$Implemento', '$Familia', '$SubFamilia', '$DescripcionImp');";
 
 $ejecutar_insertar=mysqli_query($mysqli,$insertarImplemento);
 }		
@@ -260,7 +260,7 @@ $SubFamilia=$_POST['TextSubFamiliaB'];
 
 	
 include("Conexion/conexion.php");//SELECT * FROM `ComVistImplemento` WHERE `NumImpl` LIKE '%$NumImpl%' AND `Implemento` LIKE '%$Implemento%' AND `Familia` LIKE '%$Familia%' AND `SubFamilia` LIKE '%$SubFamilia%' ORDER BY `Implemento` ASC	
-$queryImplementoB = $mysqli -> query ("SELECT * FROM `ComVistImplemento` WHERE `NumImpl` LIKE '%$NumImpl%' AND `Implemento` LIKE '%$Implemento%' AND `Familia` LIKE '%$Familia%' AND `SubFamilia` LIKE '%$SubFamilia%'  ORDER BY `Implemento` ASC");
+$queryImplementoB = $mysqli -> query ("SELECT * FROM `VistaImplemento` WHERE `NumImpl` LIKE '%$NumImpl%' AND `Implemento` LIKE '%$Implemento%' AND `Familia` LIKE '%$Familia%' AND `SubFamilia` LIKE '%$SubFamilia%'  ORDER BY `Implemento` ASC");
   
  while ($filaImplementoB = mysqli_fetch_array($queryImplementoB))
 
@@ -271,7 +271,7 @@ echo "<td>".$filaImplementoB['NumImpl']."</td>\n";
 echo "<td>".$filaImplementoB['Implemento']."</td>\n";
 echo "<td>".$filaImplementoB['Familia']."</td>\n";
 echo "<td>".$filaImplementoB['SubFamilia']."</td>\n";	 
-echo "<td>".$filaImplementoB['Descripcion']."</td>\n";		 
+echo "<td>".$filaImplementoB['DescripcionImp']."</td>\n";		 
 
 
 echo "<td>"."<a href=\"/sistema/FormImpleEditar.php?Id_Implemento=".$filaImplementoB['Id_Implemento']."\"><img src=\"../sistema/img/EditIcono.png\" alt=\"BtnIconoEditar\" width=\"20\" height=\"20\"></a></td>\n";

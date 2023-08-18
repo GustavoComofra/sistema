@@ -17,7 +17,7 @@
 	
 	<!-- Logo Icono -->
 <link href="img/Icono.png" rel="icon" type="image/png">
- <title>Editar Items falla</title>
+ <title>Editar Items Costo</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 	<?php	
@@ -68,57 +68,46 @@ include ("MarcoIzquierdo.php");
 ?>	
 		<?php	
 include("Conexion/conexion.php");		
-	$Id_FallaRecl=$_GET['Id_FallaRecl'];
-//echo $Id_FallaRecl; 
-$queryReclamoItem = $mysqli -> query ("SELECT * FROM `ComVistaItemFalla` WHERE `Id_FallaRecl` = ".$Id_FallaRecl.";");
+	$IdCosto=$_GET['IdCosto'];
+//echo $Id_CostoRecl; 
+$queryEditarCosto = $mysqli -> query ("SELECT * FROM `CostoReclamo` WHERE `IdCosto` = ".$IdCosto.";");
 
-$rowReclamoItem = mysqli_fetch_assoc($queryReclamoItem);
+$rowEditarCosto = mysqli_fetch_assoc($queryEditarCosto);
 
 	?>			
 
 	
-<form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post" name="formFallaReclamo" enctype="multipart/form-data">
+<form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post" name="formCostoReclamo" enctype="multipart/form-data">
 
 <div class="form-group" align="">
   <table class="table" width="423"  border="0">
     <tr>
-      <td colspan="3" align="center"><label for="txtFalla">Falla</label></td>
+      <td colspan="8" align="center"><label for="txtCosto">Costo de reclamo</label></td>
     </tr>
     <tr>
 	<td width="156">Num</td>	
 	<td width="156">Id</td>
-    <td width="156">Falla</td>
+    <td width="156">Cantidad</td>
     <td width="353">Detalle</td>
-    </tr>
+	</tr>
+
     <tr>
-		<td><input name="txtFk_NumRecl" type="text" id="txtFk_NumRecl" title="Fk_NumRecl" size="10" value="<?php print $rowReclamoItem['Fk_NumRecl'];?>" /></td>
-		<td><input name="txtId_FallaRecl" type="text" id="txtId_FallaRecl" title="Id_FallaRecl" size="10" value="<?php print $rowReclamoItem['Id_FallaRecl'];?>" /></td>
-      <td><select name="listFalla" size="1" id="listFalla">
-     <option value="<?php print $rowReclamoItem['Id_FallaRecl'];?>"><?php print $rowReclamoItem['ItemFalla'];?></option>
-        <?php
-include("Conexion/conexion.php");
-  
-$query1 = $mysqli -> query ("SELECT * FROM `ComItemFalla` ORDER BY `ComItemFalla`.`ItemFalla` ASC");
-
-
- while ($valores = mysqli_fetch_array($query1))
-
-		  
-		  {
-
- echo '<option value="'.$valores[Id_ItemFalla].'">'.$valores[ItemFalla].'</option>';
-
-}
-		  mysqli_close($mysqli);
-
-	?>
-		  
-	  
-      </select></td>
-
-      <td><input name="txtDetalle" type="text" id="txtDetalle" title="Detalle" size="50" value="<?php print $rowReclamoItem['Detalle'];?>" />
-
-		</td>
+		<td><input name="txtFk_Num_Recl_Cost" type="text" id="txtFk_Num_Recl_Cost" title="Fk_Num_Recl_Cost" size="10" value="<?php print $rowEditarCosto['Fk_Num_Recl_Cost'];?>" /></td>
+		<td><input name="txtIdCosto" type="text" id="txtIdCosto" title="IdCosto" size="10" value="<?php print $rowEditarCosto['IdCosto'];?>" /></td>
+		<td><input name="txtCantidad" type="number" id="txtCantidad" title="Cantidad" size="10" value="<?php print $rowEditarCosto['Cantidad'];?>" /></td>
+      <td><input name="txtDetalle" type="text" id="txtDetalle" title="Detalle" size="50" value="<?php print $rowEditarCosto['Detalle'];?>" /></td>
+	  </tr>
+	  <tr>
+	<td width="156">Pesos</td>
+    <td width="156">Dolar</td>
+	<td width="156">Chasis</td>
+    <td width="353">Observacion</td>
+    </tr>
+	<tr>
+	  <td><input name="txtPesos" type="number" id="txtPesos" title="Pesos" size="10" value="<?php print $rowEditarCosto['Pesos'];?>" /></td>
+	  <td><input name="txtDolar" type="number" id="txtDolar" title="Dolar" size="10" value="<?php print $rowEditarCosto['Dolar'];?>" /></td>
+	  <td><input name="txtFk_Chasis" type="number" id="txtFk_Chasis" title="Fk_Chasis" size="10" value="<?php print $rowEditarCosto['Fk_Chasis'];?>" /></td>
+	  <td><input name="txtObservacion" type="text" id="txtObservacion" title="Observacion" size="50" value="<?php print $rowEditarCosto['Observacion'];?>" /></td>
     </tr>
 	 <tr> 
 	  
@@ -142,21 +131,27 @@ $query1 = $mysqli -> query ("SELECT * FROM `ComItemFalla` ORDER BY `ComItemFalla
 
 <?php
 	
-$Id_FallaRecl=$_POST['txtId_FallaRecl'];	
-$Fk_NumRecl=$_POST['txtFk_NumRecl'];		
-$Falla=$_POST['listFalla'];	
+$IdCosto =$_POST['txtIdCosto'];	
+$Fk_Num_Recl_Cost=$_POST['txtFk_Num_Recl_Cost'];		
+$Cantidad=$_POST['txtCantidad'];	
+$Pesos=$_POST['txtPesos'];	
+$Dolar=$_POST['txtDolar'];	
+$Fk_Chasis=$_POST['txtFk_Chasis'];	
+$Observacion=$_POST['Observacion'];
+
 $Detalle=$_POST['txtDetalle'];	
 
-if(!$Falla==null){
+if(!$Fk_Num_Recl_Cost==null){
 	
-	echo "<h1>"."<a href=\"/RRHH/FormReclamoEditar.php?NumReclamo=".$Fk_NumRecl."\">Volver</a>"."</h1>";
+	echo "<h1>"."<a href=\"/sistema/FormReclamoEditar.php?NumReclamo=".$Fk_Num_Recl_Cost."\">Volver</a>"."</h1>";
 	echo "
 	
 	";
 	
 include("Conexion/conexion.php");	
 
-$EditarRegistro = "UPDATE `ComFallaRecl` SET `Falla` = '$Falla', `Detalle` = '$Detalle' WHERE `ComFallaRecl`.`Id_FallaRecl` = 25";
+$EditarRegistro = "UPDATE `CostoReclamo` SET `Cantidad` = '$Cantidad', `Detalle` = '$Detalle', `Pesos` = '$Pesos', `Dolar` = '$Dolar', `Fk_Chasis` = '$Fk_Chasis', `Observacion` = '$Observacion' WHERE `CostoReclamo`.`IdCosto` = '$IdCosto'";
+
 
 $ejecutar_EditarRegistro=mysqli_query($mysqli,$EditarRegistro);
 

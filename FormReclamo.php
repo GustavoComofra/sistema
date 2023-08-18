@@ -57,7 +57,7 @@ include ("MarcoIzquierdo.php");
   <table class="table" width=""  border="0">
     <tr>
       <td colspan="2" align="left">
-		 <label for="txtReclamo">Formulario Reclamo</label>
+		 <label for="txtReclamo"><h1 style="text-align: center;">  Formulario Reclamo</h1></label>
 		</td>
     </tr>
 	  
@@ -253,7 +253,7 @@ include ("FormFallaRecla.php");
 
 ?>		
 	<?php	
-include ("FormCostoRecla.php");		
+//include ("FormCostoRecla.php");		
 
 ?>	
 		</td>

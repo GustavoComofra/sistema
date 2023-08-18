@@ -188,7 +188,7 @@ $para="gustavog@live.com.ar,sgc@comofrasrl.com.ar,calidad2@comofrasrl.com.ar,pro
 //$para="gustavog@live.com.ar";
 
 $cabeceras = 'From: industrial@comofrasrl.com.ar>';
-//$enviado = mail($para, $titulo, $mensaje,$cabeceras);
+$enviado = mail($para, $titulo, $mensaje,$cabeceras);
 
 if ($enviado)
   echo 'Email enviado correctamente: '.$para;
@@ -502,13 +502,12 @@ $ejecutar_insertar2=mysqli_query($mysqli,$insertarComFallaRecl2Hid);
 // else{echo "Agregar items";}
 
 
-mysqli_close($mysqli);
+//mysqli_close($mysqli);
 
-?>	
-<?php
 
-//$varNumReclCosto = $valoresNumRecl['NumReclamo']+1;
-$varNumReclCosto = 143;
+
+// $varNumReclCosto = $valoresNumRecl['NumReclamo']+1;
+//$varNumReclCosto = 143;
 $Cantidad=$_POST['txtCantidad'];
 $Detalle=$_POST['txtDetalle'];
 $Pesos=$_POST['txtPesos'];
@@ -533,11 +532,11 @@ $Pesos3=$_POST['txtPesos3'];
 $Dolar3=$_POST['txtDolar3'];
 $Observacion3=$_POST['txtObservacion3'];
 
-$Cantidad4=$_POST['txtCantidad'];
-$Detalle4=$_POST['txtDetalle'];
-$Pesos4=$_POST['txtPesos'];
-$Dolar4=$_POST['txtDolar'];
-$Observacion4=$_POST['txtObservacion'];
+$Cantidad4=$_POST['txtCantidad4'];
+$Detalle4=$_POST['txtDetalle4'];
+$Pesos4=$_POST['txtPesos4'];
+$Dolar4=$_POST['txtDolar4'];
+$Observacion4=$_POST['txtObservacion4'];
 
 $Cantidad5=$_POST['txtCantidad5'];
 $Detalle5=$_POST['txtDetalle5'];
@@ -549,7 +548,7 @@ if(!$Detalle==null){
 			  
   include("Conexion/conexion.php");	
 
-$insertarCorteRecl = "INSERT INTO `CostoReclamo` (`IdCosto`, `Fk_Num_Recl_Cost`, `Pesos`, `Dolar`, `Cantidad`, `Detalle`, `Observacion`) VALUES (NULL, '$varNumReclCosto', '$Pesos', '$Dolar', '$Cantidad', '$Detalle', '$Observacion');";
+$insertarCorteRecl = "INSERT INTO `CostoReclamo` (`IdCosto`, `Fk_Num_Recl_Cost`, `Pesos`, `Dolar`, `Cantidad`, `Detalle`, `Fk_Chasis`, `Observacion`) VALUES (NULL, '$varNumRecl', '$Pesos', '$Dolar', '$Cantidad', '$Detalle', '$Chasis', '$Observacion');";
 
 $ejecutar_insertar=mysqli_query($mysqli,$insertarCorteRecl);		
 //echo "estudio agregado";
@@ -558,7 +557,7 @@ $ejecutar_insertar=mysqli_query($mysqli,$insertarCorteRecl);
 			  
   include("Conexion/conexion.php");	
 
-$insertarCorteRecl1 = "INSERT INTO `CostoReclamo` (`IdCosto`, `Fk_Num_Recl_Cost`, `Pesos`, `Dolar`, `Cantidad`, `Detalle`, `Observacion`) VALUES (NULL, '$varNumReclCosto', '$Pesos1', '$Dolar1', '$Cantidad1', '$Detalle1', '$Observacion1');";
+$insertarCorteRecl1 = "INSERT INTO `CostoReclamo` (`IdCosto`, `Fk_Num_Recl_Cost`, `Pesos`, `Dolar`, `Cantidad`, `Detalle`, `Fk_Chasis`, `Observacion`) VALUES (NULL, '$varNumRecl', '$Pesos1', '$Dolar1', '$Cantidad1', '$Detalle1', '$Chasis', '$Observacion1');";
 
 $ejecutar_insertar=mysqli_query($mysqli,$insertarCorteRecl1);		
 //echo "estudio agregado";
@@ -567,7 +566,7 @@ $ejecutar_insertar=mysqli_query($mysqli,$insertarCorteRecl1);
 			  
   include("Conexion/conexion.php");	
 
-$insertarCorteRecl2 = "INSERT INTO `CostoReclamo` (`IdCosto`, `Fk_Num_Recl_Cost`, `Pesos`, `Dolar`, `Cantidad`, `Detalle`, `Observacion`) VALUES (NULL, '$varNumReclCosto', '$Pesos2', '$Dolar2', '$Cantidad2', '$Detalle2', '$Observacion2');";
+$insertarCorteRecl2 = "INSERT INTO `CostoReclamo` (`IdCosto`, `Fk_Num_Recl_Cost`, `Pesos`, `Dolar`, `Cantidad`, `Detalle`, `Fk_Chasis`, `Observacion`) VALUES (NULL, '$varNumRecl', '$Pesos2', '$Dolar2', '$Cantidad2', '$Detalle2', '$Chasis', '$Observacion2');";
 
 $ejecutar_insertar=mysqli_query($mysqli,$insertarCorteRecl2);		
 //echo "estudio agregado";
@@ -576,7 +575,7 @@ $ejecutar_insertar=mysqli_query($mysqli,$insertarCorteRecl2);
 			  
   include("Conexion/conexion.php");	
 
-$insertarCorteRecl3 = "INSERT INTO `CostoReclamo` (`IdCosto`, `Fk_Num_Recl_Cost`, `Pesos`, `Dolar`, `Cantidad`, `Detalle`, `Observacion`) VALUES (NULL, '$varNumReclCosto', '$Pesos3', '$Dolar3', '$Cantidad3', '$Detalle3', '$Observacion3');";
+$insertarCorteRecl3 = "INSERT INTO `CostoReclamo` (`IdCosto`, `Fk_Num_Recl_Cost`, `Pesos`, `Dolar`, `Cantidad`, `Detalle`, `Fk_Chasis`, `Observacion`) VALUES (NULL, '$varNumRecl', '$Pesos3', '$Dolar3', '$Cantidad3', '$Detalle3', '$Chasis', '$Observacion3');";
 
 $ejecutar_insertar=mysqli_query($mysqli,$insertarCorteRecl3);		
 //echo "estudio agregado";
@@ -585,7 +584,7 @@ $ejecutar_insertar=mysqli_query($mysqli,$insertarCorteRecl3);
 			  
   include("Conexion/conexion.php");	
 
-$insertarCorteRecl4 = "INSERT INTO `CostoReclamo` (`IdCosto`, `Fk_Num_Recl_Cost`, `Pesos`, `Dolar`, `Cantidad`, `Detalle`, `Observacion`) VALUES (NULL, '$varNumReclCosto', '$Pesos4', '$Dolar4', '$Cantidad4', '$Detalle4', '$Observacion4');";
+$insertarCorteRecl4 = "INSERT INTO `CostoReclamo` (`IdCosto`, `Fk_Num_Recl_Cost`, `Pesos`, `Dolar`, `Cantidad`, `Detalle`, `Fk_Chasis`, `Observacion`) VALUES (NULL, '$varNumRecl', '$Pesos4', '$Dolar4', '$Cantidad4', '$Detalle4', '$Chasis', '$Observacion4');";
 
 $ejecutar_insertar=mysqli_query($mysqli,$insertarCorteRecl4);		
 //echo "estudio agregado";
@@ -594,7 +593,7 @@ $ejecutar_insertar=mysqli_query($mysqli,$insertarCorteRecl4);
 			  
   include("Conexion/conexion.php");	
 
-$insertarCorteRecl5 = "INSERT INTO `CostoReclamo` (`IdCosto`, `Fk_Num_Recl_Cost`, `Pesos`, `Dolar`, `Cantidad`, `Detalle`, `Observacion`) VALUES (NULL, '$varNumReclCosto', '$Pesos5', '$Dolar5', '$Cantidad5', '$Detalle5', '$Observacion5');";
+$insertarCorteRecl5 = "INSERT INTO `CostoReclamo` (`IdCosto`, `Fk_Num_Recl_Cost`, `Pesos`, `Dolar`, `Cantidad`, `Detalle`, `Fk_Chasis`, `Observacion`) VALUES (NULL, '$varNumRecl', '$Pesos5', '$Dolar5', '$Cantidad5', '$Detalle5', '$Chasis', '$Observacion5');";
 
 $ejecutar_insertar=mysqli_query($mysqli,$insertarCorteRecl5);		
 //echo "estudio agregado";

@@ -27,8 +27,20 @@ if ($varCerrarSession == null || $varCerrarSession = '') {
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <meta charset="utf-8">
   <link href="img/Icono.png" rel="icon" type="image/png">
-  <title>Formulario personal editar</title>
+  <title>Editar Personal</title>
   <link href="/sistema/css/estiloHome.css" rel="stylesheet" type="text/css">
+
+  <style>
+.imgEfc{
+  position: relative;
+  width: 50px;
+  height: 50px;
+
+}
+
+
+</style>
+
 </head>
 <?php
 include("header.php");
@@ -97,8 +109,17 @@ $u = $_POST['txtUsuario'];
                   </label>
                   <input name="txtCUIT_Empl" type="text" id="txtCUIT_Empl" size="10" value="<?php print $rowPersonal['CUIT_Empl']; ?>" />
                 </td>
-              </tr>
+                <td >
+<figure class="figure imgEfc">
+  <?php  echo '<img class="imgEfc" src="'.$rowPersonal['Foto'].'" alt=\"imgprod\" width=\"50\" height=\"50\"/>';?>
+  <figcaption class="figure-caption">Foto</figcaption>
+  <?php
+echo "<td>"."<a href=\"/sistema/FormEditFoto.php?IdPersonal=".$rowPersonal['IdPersonal']."\" >
+<img src=\"../sistema/img/EditIcono.png\" alt=\"BtnEditar\" width=\"20\" height=\"20\"></a></td>\n";
+  ?>
+</td>
 
+              </tr>
               <tr>
                 <td>
                   <label for="txtNombres">

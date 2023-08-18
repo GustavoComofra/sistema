@@ -23,13 +23,10 @@
 <body>
 	<div class="row fondo">
 		<div class="col-sm-12 col-md-12 col-lg-12">
-			<h3 class="text-center "> <strong> Reclamos</strong>
-			<a href="/sistema/FormReclamo.php">
-      <img src="../sistema/img/NuevoIcono.png" alt="Nuevo" width="40" height="40"></a>
-      <a href="/sistema/GraficoReclamo.php">
+			<h3 class="text-center "> <strong> Costo de reclamos</strong>
+      <a href="/sistema/GraficoCostoReclamo.php">
       <img src="../sistema/img/iconoGrafico.png" alt="iconoGrafico" width="40" height="40"></a>
-      <a href="/sistema/ListCostoReclamo.php">
-      <img src="../sistema/img/IconoPesos.png" alt="IconoPesos" width="40" height="40"></a>
+
 
 		</h3>
 		</div>
@@ -42,19 +39,22 @@
 				<h3 class="text-center"> <small class="mensaje"></small></h3>
 			</div>
 			<div class="table-responsive col-sm-12">		
-				<table id="dt_reclamo" class="table table-striped" width="100%">
+				<table id="dt_Costoreclamo" class="table table-striped" width="100%">
 					<thead>
 						<tr>								
-							<th>Num</th>
-							<th>Reclamo</th>
-							<th>Tipo</th>		
-                            <th>Implemento</th>
+							<th>IdCosto</th>
 							<th>Fecha</th>
-							<th>Final</th>
-							<th>Cierre</th>		
-                            <th>Chasis</th>
-							<th>Cliente</th>		
-                            <th>Consec</th>
+							<th>Cantidad</th>		
+                            <th>Detalle</th>
+							<th>Pesos</th>
+							<th>Dolar</th>
+							<th>Chasis</th>		
+                            <th>Observacion</th>
+                            <th>NumRecl</th>
+							<th>Reclamo</th>
+							<th>TipoReclamo</th>
+							<th>NumImpl</th>
+							<th>Implemento</th>
 							<th>Opcion</th>
 						</tr>
 					</thead>					
@@ -118,27 +118,34 @@ src="https://cdn.datatables.net/buttons/1.3.1/js/buttons.html5.min.js"></script>
 			listar();
 		});
 var listar = function(){
-    var table = $("#dt_reclamo").DataTable({
+    var table = $("#dt_Costoreclamo").DataTable({
 "ajax": {
     "method": "POST",
-    "url": "ListarReclamoBackend.php",
+    "url": "ListarCostoReclamoBackend.php",
 },
 "columns":[
     //para accedera los valores
-    {"data": "NumReclamo"},
+    {"data": "IdCosto"},
+	{"data": "FechaCosto"},
+    {"data": "Cantidad"},
+    {"data": "Detalle"},
+	{"data": "Pesos"},
+    {"data": "Dolar"},
+    {"data": "Fk_Chasis"},
+    {"data": "Observacion"},
+	{"data": "NumReclamo"},
     {"data": "Reclamo"},
-    {"data": "TipoReclamo"},
-    {"data": "Implemento"},
-	{"data": "Fecha"},
-    {"data": "FechaFinal"},
-    {"data": "FechaCierre"},
-    {"data": "Chasis"},
-	{"data": "Cliente"},
-    {"data": "Concesionario"},
+	{"data": "TipoReclamo"},
+    {"data": "NumImpl"},
+	{"data": "Implemento"},
+
 	{
 	"render": function (data, type, JsonResultRow, meta) {
-		 return "<a href='http://interno.comofrasrl.com.ar/sistema/VistaReclamo.php?NumReclamo="+JsonResultRow.NumReclamo+"' target='_blank'><img src='http://interno.comofrasrl.com.ar/sistema/img/VerIcono.png' alt='BtnIconoVer' width='20' height='20'></a>"
-		 +" &emsp;"+"<a href='http://interno.comofrasrl.com.ar/sistema/FormReclamoEditar.php?NumReclamo="+JsonResultRow.NumReclamo+"' target='_blank'><img src='http://interno.comofrasrl.com.ar/sistema/img/EditIcono.png' alt='EditIcono.png' width='20' height='20' ></a>"; 
+		 return "<a href='http://interno.comofrasrl.com.ar/sistema/FormEditarItemCosto.php?IdCosto="+JsonResultRow.IdCosto+"' target='_blank'><img src='http://interno.comofrasrl.com.ar/sistema/img/EditIcono.png' alt='EditIcono' width='20' height='20'></a>"
+
+		 +" &emsp;"+"<a href='http://interno.comofrasrl.com.ar/sistema/FormBorrarItemCosto.php?IdCosto="+JsonResultRow.IdCosto+"' target='_blank'><img src='http://interno.comofrasrl.com.ar/sistema/img/BorrIcono.png' alt='BorrIcono' width='20' height='20' ></a>" 
+
+		 +" &emsp;"+"<a href='http://interno.comofrasrl.com.ar/sistema/FormNuevoItemCosto1.php?NumReclamo="+JsonResultRow.NumReclamo+"' target='_blank'><img src='http://interno.comofrasrl.com.ar/sistema/img/NuevoIcono.png' alt='NuevoIcono' width='20' height='20' ></a>"; 
 	}},
 ],
 dom: 'Bfrtip',
@@ -156,7 +163,7 @@ dom: 'Bfrtip',
                 ],
 
     });
-obtener_data("#dt_reclamo", table);
+obtener_data("#dt_Costoreclamo", table);
 }
 var obtener_data= function(tbody, table){
 $(tbody).on("click", "button.ver", function(){
