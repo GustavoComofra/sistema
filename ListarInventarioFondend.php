@@ -5,7 +5,7 @@
 	<meta charset="UTF-8">
 	<title></title>
 		<!-- ESTILOS -->
-		<link href="css/estiloHome.css" rel="stylesheet">
+		<!-- <link href="css/estilo.css" rel="stylesheet"> -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 		<link rel="stylesheet" href="https://cdn.datatables.net/1.13.5/css/jquery.dataTables.min.css">
 
@@ -21,16 +21,6 @@
 }
 </style>
 <body>
-	<div class="row fondo">
-		<div class="col-sm-12 col-md-12 col-lg-12">
-			<h3 class="text-center "> <strong> Procesos</strong>
-			<a href="/sistema/FormProcesoNuevo.php"><img src="../sistema/img/NuevoIcono.png" alt="Nuevo Proceso" width="40" height="40"></a>
-<a href="/sistema/GraficoProcesos.php" target="_blank">
-      <img src="../sistema/img/iconoGrafico.png" alt="iconoGrafico"  width="40" height="40"></a>
-	  </h3>
-		</div>
-	</div>
-	
 
 	<div class="row">
 		<div id="cuadro1" class="col-sm-12 col-md-12 col-lg-12">
@@ -38,16 +28,16 @@
 				<h3 class="text-center"> <small class="mensaje"></small></h3>
 			</div>
 			<div class="table-responsive col-sm-12">		
-				<table id="dt_proceso" class="table table-striped" width="100%">
+				<table id="dt_Costoreclamo" class="table table-striped" width="100%">
 					<thead>
 						<tr>								
-							<th>Num</th>
-							<th>Proceso</th>
-							<th>CodProd</th>
-							<th>Implemento</th>
-							<th>Fecha</th>		
-							<th>Valida</th>
-                     		<th>Img</th>
+							<th>Id</th>
+							<th>CodCmg</th>
+							<th>Prodcuto</th>
+							<th>Cantidad</th>		
+							<th>Fecha</th>
+							<th>Usuario</th>
+							<th>Opcion</th>
 						</tr>
 					</thead>					
 				</table>
@@ -105,31 +95,30 @@ src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.27/build/vfs_fonts.js"></script
 src="https://cdn.datatables.net/buttons/1.3.1/js/buttons.html5.min.js"></script>
 
 
-<script>		
+	<script>		
 		$(document).on("ready", function(){
 			listar();
 		});
 var listar = function(){
-    var table = $("#dt_proceso").DataTable({
+    var table = $("#dt_Costoreclamo").DataTable({
+		"order": [[ 0, 'desc' ], ],
 "ajax": {
     "method": "POST",
-    "url": "ListarProcesosBackCom.php",
+    "url": "ListarInventarioBackend.php",
 },
 "columns":[
     //para accedera los valores
-    {"data": "id_proceso"},
-    {"data": "Proceso"},
-    {"data": "ProductoProceso"},
-	{"data": "Implemento"},
-	{"data": "FechaInicio"},
-    {"data": "FechaValidacion"},
+    {"data": "idInventario"},
+	{"data": "CodCmg"},
+    {"data": "Producto"},
+    {"data": "Cantidad"},
+	{"data": "FechaInventario"},
+
 	{
 	"render": function (data, type, JsonResultRow, meta) {
-		 return "<img class='imgEfcPanel' width='50' height='50' src='"+JsonResultRow.imgprod+"'>"+"&emsp;"
-		 +"<a href='../sistema/VistaProceso.php?id_proceso="+JsonResultRow.id_proceso+"' target='_blank'><img src='../sistema/img/VerIcono.png' alt='BtnIconoVer' width='20' height='20'></a>"
-		 +" &emsp;"+"<a href='../sistema/VistaProcesoCadena.php?id_proceso="+JsonResultRow.id_proceso+"' target='_blank'><img src='../sistema/img/iconoCadena.png' alt='iconoCadena' width='20' height='20' ></a>"
-		 +" &emsp;"+"<a href='../sistema/FormProcesoEditar.php?id_proceso="+JsonResultRow.id_proceso+"' target='_blank'><img src='../sistema/img/EditIcono.png' alt='EditIcono.png' width='20' height='20' ></a>"
-		 +" &emsp;"+"<a href='../sistema/ValidaProceso.php?id_proceso="+JsonResultRow.id_proceso+"' target='_blank'><img src='../sistema/img/iconoValidar.png' alt='EditIcono.png' width='20' height='20' ></a>"; 
+		 return "<a  class='list-alumnos' href='http://interno.comofrasrl.com.ar/sistema/FormEditarItemCosto.php?idInventario="+JsonResultRow.idInventario+"' target='_blank'><img src='http://interno.comofrasrl.com.ar/sistema/img/EditIcono.png' alt='EditIcono' width='20' height='20'></a>"
+
+		 +" &emsp;"+"<a href='#"+JsonResultRow.idInventario+"' ><img src='http://interno.comofrasrl.com.ar/sistema/img/BorrIcono.png' alt='BorrIcono' width='20' height='20' ></a>" ; 
 	}},
 ],
 dom: 'Bfrtip',
@@ -147,21 +136,15 @@ dom: 'Bfrtip',
                 ],
 
     });
-obtener_data("#dt_proceso", table);
+//obtener_data("#dt_Costoreclamo", table);
 }
-//https://www.youtube.com/watch?v=mV6L4_Mwh3U
 var obtener_data= function(tbody, table){
 $(tbody).on("click", "button.ver", function(){
 var data=table.row($(this).parents("tr")).data();
 console.log(data.imgprod);
-//var imagen = (data.imgprod);
 
 });
 }
-
-
-
-
 	</script>
 </body>
 </html>

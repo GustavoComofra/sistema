@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="es">
 	<head>
-		<title>Buscador en Tiempo Real con AJAX</title>
+		<title>inventario 2023</title>
 		<meta charset="utf-8">
 
 
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+        <link href="Icono.png" rel="icon" type="image/png">
 		<!-- ESTILOS -->
 		<!-- <link href="css/estilo.css" rel="stylesheet"> -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
@@ -24,10 +25,10 @@
         } */
 
         #videoview {
-            position: relative;
-            width: 100%;
-            height: 100vh;
+        position: relative;
+        display: none
         }
+
 
         #videoContainer {
             position: relative;
@@ -46,19 +47,26 @@
             object-fit: contain
         }
 
+        #barcodeScanner {
+            text-align: center;
+            font-size: medium;
+            height: 40vh;
+            width: 40vw;
+        }
+
     </style>	
 	
 <!-- Script de buscar Productos -->    
 <script >
 $(obtener_registros());
 
-function obtener_registros(Productos)
+function obtener_registros(productoscmg)
 {
    $.ajax({
        url : 'consultaProductos.php',
        type : 'POST',
        dataType : 'html',
-       data : { Productos: Productos },
+       data : { productoscmg: productoscmg },
 	   "language": {
 "url": "/Scripts/datatables/spanish.json"
 
@@ -88,25 +96,7 @@ $(document).on('keyup', '#busqueda', function()
 
 <!-- Script de buscar Body -->    
 <script >
-$(obtener_registrosBody());
 
-function obtener_registrosBody(Productos)
-{
-   $.ajax({
-       url : 'consultaProductosBody.php',
-       type : 'POST',
-       dataType : 'html',
-       data : { Productos: Productos },
-	   "language": {
-"url": "/Scripts/datatables/spanish.json"
-
-},      })
-	       
-
-   .done(function(resultadoBody){
-       $("#tabla_resultadoBody").html(resultadoBody);
-   })
-}
 
 $(document).on('keyup', '#ModalBuscarBody', function()
 {
@@ -126,15 +116,11 @@ $(document).on('keyup', '#ModalBuscarBody', function()
 
 	</head>
 	<body>
-		<!-- <header>
-			<div class="alert alert-info">
-			<h2>Buscador Productos</h2>
-			</div>
-		</header> -->
+
 		
 <dialog id="favDialog">
 <section>
-<input type="text" name="busqueda" id="busqueda" placeholder="Buscar..." formaction=""/>
+<input type="text" class="ClassBusqueda" name="namebusqueda" id="busqueda" placeholder="Buscar..."/>
 <button id="cancel" type="reset">Cancel</button>
 <button type="button" id="cerrar" >cerrar</button>
 </section>
@@ -168,25 +154,55 @@ Resultado del código de barras: <h1 id='result'>N/A</h1>
         <div class="dce-video-container" id="videoContainer"></div>
         <canvas id="overlay"></canvas>
     </div>
-
-   
-
-
-
 </dialog>
 
-<div class=".container-fluid">
+<div class="container-fluid">
+<form id="app-form" name="formInventario" >
+<input type="hidden" id="idInventario">
+    <button type="button" class="btn btn-info"  name="updateDetails" id="updateDetails" ><span class="glyphicon glyphicon glyphicon-search"></span> - Buscar</button>
+    <button type="button" class="btn btn-info" name="MostrarCamara" id="MostrarCamara" ><span class="glyphicon glyphicon glyphicon-barcode"></span> - Scanner</button>
+    <input type="number" id="ModalBuscarBody" name="ModalBuscarBody" placeholder="Valor Seleccionado" require>
+    <input type="number" id="txtCantidad" min="1" name="txtCantidad" placeholder="Cantidad" require>
+    <input type="text" id="txtObsInv" min="1" name="txtObsInv" size="50" placeholder="Observacion">
+   <p>
+      <button type="submits" class="btn btn-success" name="btnEnviar" id="btnEnviar" ><span class="glyphicon glyphicon glyphicon-floppy-open"></span> - Guardar</button>
+      </p>
 
-        <input type="button" class="btn btn-info" name="updateDetails" id="updateDetails" value="Buscar" ></button>
-        <input type="button" class="btn btn-info" name="MostrarCamara" id="MostrarCamara" value="MostrarCamara" ></button> 
-      <input type="text" id="ModalBuscarBody" name="ModalBuscarBody" placeholder="Valor Seleccionado">
 
-      <section id="tabla_resultadoBody">
-		<!-- Tabla de Body -->
-		</section>
+      </form>
+     
+      <div class="">
+
+      <table class="table table-bordered table-sm">
+            <thead>
+                <tr>
+                    <td>id</td>
+                    <td>CodCmg</td>
+                    <td>Cantidad</td>
+                    <td>ObsInv</td>
+                     <td>Fecha</td>
+                     <td></td>
+                     
+                </tr>
+            </thead>
+            <tbody id="tb_inventario">
+
+            </tbody>
+        </table>
+    </div>
+
+      <?php
+//include ("ListarInventarioFondend.php");
+
+?>
+      </div>
+    <!--  <section id="tabla_resultadoBody">
+		 Tabla de Body 
+		</section>-->
 
     </div>
-<!-- Inicio Modal -->    
+<!-- Inicio Modal -->   
+
 <script>
 $(function(){
     $('body').on('click','#TbProductos input[type=checkbox]', function(event){
@@ -209,35 +225,29 @@ $(function(){
 
   varMostrarCamara.addEventListener('click', function() {
     DialogCamara.showModal();
-    
-  });
+    var btnPresionado = true;
+  
+ 
 
+  });
   // El botón de cancelar formulario cierra el cuadro de diálogo
   cancelButton.addEventListener('click', function() {
-
    //document.Reset();
     document.getElementById("busqueda").value="";
-    //favDialog.close();
+     //favDialog.close();
   });
-
           // El botón de cancelar formulario cierra el cuadro de diálogo
           cerrarButton.addEventListener('click', function() {
 			favDialog.close();
     
   });
-
  
  // El botón de cancelar formulario cierra el cuadro de diálogo
   cerrarBtnCamara.addEventListener('click', function() {
 DialogCamara.close();
-//alert("presionado");
+
    
   });
-
-
-
-
-  
   
 });
 </script>
@@ -252,24 +262,6 @@ DialogCamara.close();
         Dynamsoft.DBR.BarcodeReader.license = "DLS2eyJoYW5kc2hha2VDb2RlIjoiMTAyMTMyNDA1LVRYbFhaV0pRY205cVgyUmljZyIsIm1haW5TZXJ2ZXJVUkwiOiJodHRwczovL21kbHMuZHluYW1zb2Z0b25saW5lLmNvbSIsIm9yZ2FuaXphdGlvbklEIjoiMTAyMTMyNDA1Iiwic3RhbmRieVNlcnZlclVSTCI6Imh0dHBzOi8vc2Rscy5keW5hbXNvZnRvbmxpbmUuY29tIiwiY2hlY2tDb2RlIjotMTMxNjMxMzI3fQ==";
 
 
-        var videoSelect = document.querySelector('select#videoSource');
-        var cameraInfo = {};
-        var scanner = null;
-        initOverlay(document.getElementById('overlay'));
-
-        async function openCamera() {
-            clearOverlay();
-            let deviceId = videoSelect.value;
-            if (scanner) {
-                await scanner.setCurrentCamera(cameraInfo[deviceId]);
-            }
-        }
-
-        videoSelect.onchange = openCamera;
-
-        
-  
-
         window.onload = async function () {
             try {
                 await Dynamsoft.DBR.BarcodeScanner.loadWasm();
@@ -279,85 +271,51 @@ DialogCamara.close();
                 throw ex;
             }
         };
-
-        function updateResolution() {
-            if (scanner) {
-                let resolution = scanner.getResolution();
-                updateOverlay(resolution[0], resolution[1]);
-            }
-        }
-
-        function listCameras(deviceInfos) {
-            for (var i = deviceInfos.length - 1; i >= 0; --i) {
-                var deviceInfo = deviceInfos[i];
-                var option = document.createElement('option');
-                option.value = deviceInfo.deviceId;
-                option.text = deviceInfo.label;
-                cameraInfo[deviceInfo.deviceId] = deviceInfo;
-                videoSelect.appendChild(option);
-            }
-        }
-
-        function showResults(results) {
-            clearOverlay();
-
-            let txts = [];
-            try {
-                let localization;
-                if (results.length > 0) {
-                    for (var i = 0; i < results.length; ++i) {
-                        txts.push(results[i].barcodeText);
-                        localization = results[i].localizationResult;
-                        drawOverlay(localization, results[i].barcodeText);
-                    }
-                    
-document.getElementById('result').innerHTML = txts.join(', ');
-
-//var valorBody =  document.getElementById('result');
-                  
-var valorBody = document.getElementById('result').innerHTML = txts.join(', ');
-document.getElementById('ModalBuscarBody').value=valorBody;    
-if(valorBody=true){
-
-DialogCamara.close();
-
-}    
-             
-                }
-                else {
-                    document.getElementById('result').innerHTML = "No se encontró ningún código de barras";
-                }
-
-            } catch (e) {
-                alert(e);
-            }
-        }
-
+        let scanner = null;
         async function initBarcodeScanner() {
             scanner = await Dynamsoft.DBR.BarcodeScanner.createInstance();
-            await scanner.setUIElement(document.getElementById('videoContainer'));
-            let settings = await scanner.getRuntimeSettings();
-            settings.barcodeFormatIds = Dynamsoft.DBR.EnumBarcodeFormat.BF_QR_CODE;
-            settings.deblurLevel = 0;
-            settings.expectedBarcodesCount = 1;
-            await scanner.updateRuntimeSettings(settings);
-
-            let cameras = await scanner.getAllCameras();
-            listCameras(cameras);
-            await openCamera();
             scanner.onFrameRead = results => {
-                showResults(results);
+                //console.log(results);
+                for (let result of results) {
+                    document.getElementById('result').innerHTML = result.barcodeFormatString + ", " + result.barcodeText;
+
+
+var valorBody = document.getElementById('result').innerHTML = result.barcodeText;
+document.getElementById('ModalBuscarBody').value=valorBody;    
+if(valorBody=true){
+sonido.play();
+DialogCamara.close();
+//videoContainer.close();
+
+} 
+
+                    
+                }
             };
             scanner.onUnduplicatedRead = (txt, result) => { };
+if (DialogCamara) {
+    document.getElementById('barcodeScanner').appendChild(scanner.getUIElement()).hidden= false; 
+}else {document.getElementById('barcodeScanner').appendChild(scanner.getUIElement()).hidden= true;}
+            
             document.getElementById('loading-status').hidden = true;
-            scanner.onPlayed = function () {
-                updateResolution();
-            }
+            document.getElementsByClassName('dce-sel-camera')[0].hidden = true;
+            document.getElementsByClassName('dce-sel-resolution')[0].hidden = true;
+            document.getElementsByClassName('dce-btn-close')[0].hidden = true;
             await scanner.show();
         }
+
+
+
+var sonido = new Audio();
+sonido.src="sound_short.mp3";
+
         
     </script>
+ <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
 
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+
+    <script src="app.js">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
 

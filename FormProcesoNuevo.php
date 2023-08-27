@@ -65,6 +65,7 @@
         <form action="/sistema/FormProcesoNuevoItems.php" method="post" name="formNuevoProceso" enctype="multipart/form-data">
           <div class="form-group">
             <table class="table">
+              
               <tr>
                 <td colspan="2" align="left">
                   <label>Formulario Nuevo Proceso</label>

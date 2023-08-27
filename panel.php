@@ -14,7 +14,7 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" >
 	
 	<!-- Logo Icono -->
-<link href="http://interno.comofrasrl.com.ar/sistema/img/Icono.png" rel="icon" type="image/png">
+	<link href="../sistema/img/Icono.png" rel="icon" type="image/png">
  <title>Panel</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
@@ -358,18 +358,16 @@ echo "</table>";
 
 <?php
 
-include ("Conexion/conexion.php");
+//include ("Conexion/conexion.php");
 
-
+include ("ListarProcesosAjax.php");
+/*
 if (!$resultado) {
 echo "Libre";
 }else{
-	include ("ListarProcesosAjax.php");
+	
 }
-
-
-
-
+*/
 
 ?>
 <!-- Final Inicio Procesos -->

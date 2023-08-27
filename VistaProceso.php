@@ -24,14 +24,7 @@ include ("header.php");
 session_start();
 	$u = $_POST['txtUsuario'];
 ?>
-<script type="text/javascript">
 
-function volver()
-{
-	window.location.href = "/sistema/index.php";
-}
-
-</script>	
 
 <style>
 .imgEfc{
@@ -46,8 +39,31 @@ function volver()
   height: 300px;
 
 }
-.imgEfcProceso{
+.imgEfcProcesoChico{
   border-radius: 10% 10%;
+  border-radius: 10% 10%;
+  height: 50px;
+  width: 100px;
+  object-fit: cover;
+  
+}
+
+.imgEfcProcesoMediano{
+  border-radius: 10% 10%;
+  border-radius: 10% 10%;
+  height: 100px;
+  width: 200px;
+  object-fit: cover;
+  
+}
+
+.imgEfcProcesoGrande{
+  border-radius: 10% 10%;
+  height: 100px;
+  width: 300px;
+  object-fit: cover;
+
+
 }
 .Advertencia{
   color: red;
@@ -60,6 +76,7 @@ function volver()
 }
 
 </style>
+
 </head>
 <body>
 	
@@ -76,8 +93,16 @@ echo "<button type=\"button\" class=\"btn btn-primary\"  onClick=\"volver()\">vo
 die();
 	
 	}
+ 
 ?>	
+<script type="text/javascript">
 
+function volver()
+{
+	window.location.href = "/sistema/index.php";
+}
+
+</script>	
 
     <div class="col">
 	<?php	
@@ -119,7 +144,7 @@ $rowprocesoprocesoUser = mysqli_fetch_assoc($queryvarid_procesUser);
       </tr>
 <tr>
   <td>
-  <h5>   <strong>Cod: </strong><?php echo $rowprocesoproceso['ProductoProceso']; ?></h5>
+  <h5><strong>Cod: </strong><?php echo $rowprocesoproceso['ProductoProceso']; ?></h5>
   </td>
   <td>
   <h5> <strong>Producto: </strong><?php echo $rowprocesoproceso['Producto']; ?></h5>
@@ -138,7 +163,7 @@ $rowprocesoprocesoUser = mysqli_fetch_assoc($queryvarid_procesUser);
   </td>
 
 </tr>
-
+<figure></figure>
 <!-- <tr colspan="4"> -->
 <td colspan="3" class="algCentral">
 <?php
@@ -155,16 +180,17 @@ echo '<img class="imgPrincipal"  src="'.$rowprocesoproceso['imgprod'].'"/>';
       <th scope="col">Op</th>
       <th scope="col">ItemProceso</th>
       <th scope="col"><p>Cant</p>
-      <p>operarios</p></th>
+      <p>op</p></th>
       <th scope="col">img</th>
       <th scope="col"><p>Tiempo</p><p>Estandar</p></th>
-      <th scope="col">Total  </th>
+      <th scope="col">Total</th>
       <th scope="col">Prod</th>
       <th scope="col">Herr</th>
       <th scope="col">Adver</th>
     </tr>
   </thead>
   <tbody>
+
 <?php 
   $queryItemproceso = $mysqli -> query ("SELECT * FROM `VistItemProceso2` WHERE `Fk_Proceso` =".$id_proceso." ORDER BY `VistItemProceso2`.`Op` ASC;");
     while ($filaItemproceso = mysqli_fetch_array($queryItemproceso))
@@ -174,11 +200,11 @@ echo '<img class="imgPrincipal"  src="'.$rowprocesoproceso['imgprod'].'"/>';
  echo "<td>".$filaItemproceso['ItemProceso']."</td>\n";
  echo "<td>".$filaItemproceso['CantOper']."</td>\n";
  if($filaItemproceso['tamanio']=="Grande"){
-  echo "<td >".'<img class=\"imgEfcProceso\" src="'.$filaItemproceso['img_itemproce'].'" style="border-radius: 10% 10%;" width="300" heigth="300"/>'."</td>\n";
+  echo "<td class=\"imgEfcProcesoGrande\">".'<img class="img-responsive img-thumbnail img-fluid"  src="'.$filaItemproceso['img_itemproce'].'" style="border-radius: 10% 10%;" width="400" heigth="300"/>'."</td>\n";
  }else if($filaItemproceso['tamanio']=="Mediano"){
-  echo "<td >".'<img class=\"imgEfcProceso\" src="'.$filaItemproceso['img_itemproce'].'" style="border-radius: 10% 10%;" width="200" heigth="200"/>'."</td>\n";
+  echo "<td class=\"imgEfcProcesoMediano\">".'<img class="img-responsive img-thumbnail" src="'.$filaItemproceso['img_itemproce'].'" style="border-radius: 10% 10%;" width="200" heigth="100"/>'."</td>\n";
  }else{
-  echo "<td >".'<img class=\"imgEfcProceso\" src="'.$filaItemproceso['img_itemproce'].'" style="border-radius: 10% 10%;" width="100" heigth="100"/>'."</td>\n";
+  echo "<td class=\"imgEfcProcesoChico\">".'<img class="img-responsive img-thumbnail" src="'.$filaItemproceso['img_itemproce'].'" style="border-radius: 10% 10%;" width="100" heigth="50"/>'."</td>\n";
  }
 
 
@@ -215,8 +241,7 @@ echo '<img class="imgPrincipal"  src="'.$rowprocesoproceso['imgprod'].'"/>';
    </tbody>
 </table> 
 </tr> </table>
-  
-
+s
 </div>
 
 </div>	

@@ -122,10 +122,10 @@ var listar = function(){
 	{
 	"render": function (data, type, JsonResultRow, meta) {
 		 return "<img class='imgEfcPanel' width='50' height='50' src='"+JsonResultRow.imgprod+"'>"+"&emsp;"
-		 +"<a href='http://interno.comofrasrl.com.ar/sistema/VistaProceso.php?id_proceso="+JsonResultRow.id_proceso+"' target='_blank'><img src='http://interno.comofrasrl.com.ar/sistema/img/VerIcono.png' alt='BtnIconoVer' width='20' height='20'></a>"
-		 +" &emsp;"+"<a href='http://interno.comofrasrl.com.ar/sistema/VistaProcesoCadena.php?id_proceso="+JsonResultRow.id_proceso+"' target='_blank'><img src='http://interno.comofrasrl.com.ar/sistema/img/iconoCadena.png' alt='iconoCadena' width='20' height='20' ></a>"
-		 +" &emsp;"+"<a href='http://interno.comofrasrl.com.ar/sistema/FormProcesoEditar.php?id_proceso="+JsonResultRow.id_proceso+"' target='_blank'><img src='http://interno.comofrasrl.com.ar/sistema/img/EditIcono.png' alt='EditIcono.png' width='20' height='20' ></a>"
-		 +" &emsp;"+"<a href='http://interno.comofrasrl.com.ar/sistema/ValidaProceso.php?id_proceso="+JsonResultRow.id_proceso+"' target='_blank'><img src='http://interno.comofrasrl.com.ar/sistema/img/iconoValidar.png' alt='EditIcono.png' width='20' height='20' ></a>"; 
+		 +"<a href='../sistema/VistaProceso.php?id_proceso="+JsonResultRow.id_proceso+"' target='_blank'><img src='../sistema/img/VerIcono.png' alt='BtnIconoVer' width='20' height='20'></a>"
+		 +" &emsp;"+"<a href='../sistema/VistaProcesoCadena.php?id_proceso="+JsonResultRow.id_proceso+"' target='_blank'><img src='../sistema/img/iconoCadena.png' alt='iconoCadena' width='20' height='20' ></a>"
+		 +" &emsp;"+"<a href='../sistema/FormProcesoEditar.php?id_proceso="+JsonResultRow.id_proceso+"' target='_blank'><img src='../sistema/img/EditIcono.png' alt='EditIcono.png' width='20' height='20' ></a>"
+		 +" &emsp;"+"<a href='../sistema/ValidaProceso.php?id_proceso="+JsonResultRow.id_proceso+"' target='_blank'><img src='../sistema/img/iconoValidar.png' alt='EditIcono.png' width='20' height='20' ></a>"; 
 	}},
 ],
 dom: 'Bfrtip',
