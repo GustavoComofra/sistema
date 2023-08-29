@@ -12,7 +12,7 @@ $varCerrarSession = $_SESSION['usuario'];
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<link href="img/LogoPaginaIdearSF.png" rel="icon" type="image/png">
+<link href="../sistema/img/Icono.png" rel="icon" type="image/png">
  <title>Listado horarios</title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 </head>

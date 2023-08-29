@@ -122,6 +122,7 @@ src="https://cdn.datatables.net/buttons/1.3.1/js/buttons.html5.min.js"></script>
 		});
 var listar = function(){
     var table = $("#dt_personal").DataTable({
+		"order": [[ 3, 'asc' ], ],
 "ajax": {
     "method": "POST",
     "url": "ListarPersonalBackend.php",
@@ -139,8 +140,8 @@ var listar = function(){
 	{
 	"render": function (data, type, JsonResultRow, meta) {
 		 return "<img class='imgEfcPanel' width='50' height='50' src='"+JsonResultRow.Foto+"'>"+"&emsp;"
-		 +"<a href='http://interno.comofrasrl.com.ar/sistema/VistaPersonal.php?IdPersonal="+JsonResultRow.IdPersonal+"' target='_blank'><img src='http://interno.comofrasrl.com.ar/sistema/img/VerIcono.png' alt='BtnIconoVer' width='20' height='20'></a>"
-		 +" &emsp;"+"<a href='http://interno.comofrasrl.com.ar/sistema/FormPersonalEditar.php?IdPersonal="+JsonResultRow.IdPersonal+"' target='_blank'><img src='http://interno.comofrasrl.com.ar/sistema/img/EditIcono.png' alt='EditIcono.png' width='20' height='20' ></a>"; 
+		 +"<a href='/sistema/VistaPersonal.php?IdPersonal="+JsonResultRow.IdPersonal+"' target='_blank'><img src='/sistema/img/VerIcono.png' alt='BtnIconoVer' width='20' height='20'></a>"
+		 +" &emsp;"+"<a href='/sistema/FormPersonalEditar.php?IdPersonal="+JsonResultRow.IdPersonal+"' target='_blank'><img src='/sistema/img/EditIcono.png' alt='EditIcono.png' width='20' height='20' ></a>"; 
 	}},
 ],
 dom: 'Bfrtip',

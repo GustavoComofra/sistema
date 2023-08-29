@@ -26,7 +26,7 @@ $varCerrarSession = $_SESSION['usuario'];
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" >
 	
-<link href="http://interno.comofrasrl.com.ar/sistema/img/Icono.png" rel="icon" type="image/png">
+<link href="../sistema/img/Icono.png" rel="icon" type="image/png">
  <title>Listado de personal</title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 </head>

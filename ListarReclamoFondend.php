@@ -119,6 +119,7 @@ src="https://cdn.datatables.net/buttons/1.3.1/js/buttons.html5.min.js"></script>
 		});
 var listar = function(){
     var table = $("#dt_reclamo").DataTable({
+		"order": [[ 0, 'desc' ], ],
 "ajax": {
     "method": "POST",
     "url": "ListarReclamoBackend.php",
@@ -137,8 +138,8 @@ var listar = function(){
     {"data": "Concesionario"},
 	{
 	"render": function (data, type, JsonResultRow, meta) {
-		 return "<a href='http://interno.comofrasrl.com.ar/sistema/VistaReclamo.php?NumReclamo="+JsonResultRow.NumReclamo+"' target='_blank'><img src='http://interno.comofrasrl.com.ar/sistema/img/VerIcono.png' alt='BtnIconoVer' width='20' height='20'></a>"
-		 +" &emsp;"+"<a href='http://interno.comofrasrl.com.ar/sistema/FormReclamoEditar.php?NumReclamo="+JsonResultRow.NumReclamo+"' target='_blank'><img src='http://interno.comofrasrl.com.ar/sistema/img/EditIcono.png' alt='EditIcono.png' width='20' height='20' ></a>"; 
+		 return "<a href='/sistema/VistaReclamo.php?NumReclamo="+JsonResultRow.NumReclamo+"' target='_blank'><img src='/sistema/img/VerIcono.png' alt='BtnIconoVer' width='20' height='20'></a>"
+		 +" &emsp;"+"<a href='/sistema/FormReclamoEditar.php?NumReclamo="+JsonResultRow.NumReclamo+"' target='_blank'><img src='/sistema/img/EditIcono.png' alt='EditIcono.png' width='20' height='20' ></a>"; 
 	}},
 ],
 dom: 'Bfrtip',

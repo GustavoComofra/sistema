@@ -14,7 +14,7 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" >
 	
 	<!-- Logo Icono -->
-<link href="http://interno.comofrasrl.com.ar/sistema/img/Icono.png" rel="icon" type="image/png">
+<link href="../sistema/img/Icono.png" rel="icon" type="image/png">
  <title>Nuevo Items falla</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
@@ -142,7 +142,7 @@ $Detalle=$_POST['txtDetalle'];
 
 if(!$Fk_Num_Recl_Cost==null){
 	
-	echo "<h1>"."<a href=\"/sistema/FormReclamoEditar.php?NumReclamo=".$Fk_Num_Recl_Cost."\">Volver</a>"."</h1>";
+	echo "<h1>"."<a href=\"../sistema/FormReclamoEditar.php?NumReclamo=".$Fk_Num_Recl_Cost."\">Volver</a>"."</h1>";
 	echo "
 	
 	";

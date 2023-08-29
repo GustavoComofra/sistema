@@ -16,7 +16,7 @@ $u = $_POST['txtUsuario'];
 <html lang="en">
 <head>
 <!-- Script JS -->
-	<script src="../dir/js/bootstrap.min.js" ></script>
+	<!-- <script src="../dir/js/bootstrap.min.js" ></script> -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" ></script>
 	<script type="text/javascript" src="js/Archivo.js"></script>	
@@ -30,7 +30,7 @@ $u = $_POST['txtUsuario'];
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" >-->
 	<link rel="stylesheet" href="css/estiloHome.css">
 	<!-- Logo Icono -->
-<link href="http://interno.comofrasrl.com.ar/sistema/img/Icono.png" rel="icon" type="image/png">
+<link href="../sistema/img/Icono.png" rel="icon" type="image/png">
  <title>Inicio</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">

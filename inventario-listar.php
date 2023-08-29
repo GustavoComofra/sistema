@@ -1,6 +1,9 @@
 <?php
 include('Conexion/conexion.php');
-$query = "SELECT * FROM `vistaInventarioProduct` ORDER BY `vistaInventarioProduct`.`idInventario` DESC";
+session_start();
+$varCerrarSession = $_SESSION['usuario'];
+
+$query = "SELECT * FROM `vistaInventarioProduct` WHERE `UsuarioInventario` LIKE '$varCerrarSession' ORDER BY `vistaInventarioProduct`.`idInventario` DESC";
 $result = mysqli_query($mysqli, $query);
 
     if(!$result){

@@ -145,7 +145,7 @@ dom: 'Bfrtip',
     });
 obtener_data("#dt_proceso", table);
 }
-//https://www.youtube.com/watch?v=mV6L4_Mwh3U
+
 var obtener_data= function(tbody, table){
 $(tbody).on("click", "button.ver", function(){
 var data=table.row($(this).parents("tr")).data();

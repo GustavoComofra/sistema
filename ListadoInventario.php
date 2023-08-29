@@ -17,23 +17,27 @@
 	
 	<!-- Logo Icono -->
 <link href="../sistema/img/Icono.png" rel="icon" type="image/png">
- <title>FallaMecanica</title>
+ <title>Listado de inventario </title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 	<?php	
-	/*
 include ("header.php");
-	
 session_start();
 	$u = $_POST['txtUsuario'];
-	*/
 ?>
+<script type="text/javascript">
 
-</head>
+function volver()
+{
+	window.location.href = "/sistema/index.php";
+}
+
+</script>	
+	</head>
 <body>
 	
 <?php	
-/*
+
 session_start();
 	
 $varCerrarSession = $_SESSION['usuario'];
@@ -44,7 +48,7 @@ echo "<button type=\"button\" class=\"btn btn-primary\"  onClick=\"volver()\">vo
 		
 die();
 	
-	}*/
+	}
 ?>	
 
 
@@ -58,63 +62,12 @@ die();
 ?>	
     </div>
     <div class="col-md-auto">
-<table border=1 align="" class="table table-striped">
-  <thead>
-<tr>
-	 </thead>
-<td colspan="" align="Left" bgcolor=#5D81F5>
-		
- 
-		
-<?php
-	
-/*echo $NumReclamo;*/
-$NumReclamo=$_GET['NumReclamo'];
-$varNumReclamo = $NumReclamo=$_GET['NumReclamo'];
-$queryvarNumReclamo = $mysqli -> query ("SELECT * FROM `ComVerReclamo` WHERE = ".$varNumReclamo.";");
+	<?php	
+include ("ListarInventarioFondend.php");
 
-$row = mysqli_fetch_assoc($queryvarNumReclamo);
-echo "
-
-<th colspan=\"4\" align=\"center\" bgcolor=\"#5D81F5\"><span class=\"\">Falla Mecanicas</th>
-</tr>
-<TR>
-<TD><B>Id</B></TD>
-<TD><B>Num</B></TD>
-<TD><B>Falla</B></TD>
-<TD><B>Detalle</B></TD>
-</TR>
-";
-	
-	
-include("Conexion/conexion.php");	
-$queryComVistFallaRecl = $mysqli -> query ("SELECT * FROM `ComVistFallaRecl` WHERE = ".$NumReclamo." AND `FkTipoFalla` = 2 ORDER BY `ItemFalla` ASC");
-  
- while ($filaComVistFallaRecl = mysqli_fetch_array($queryComVistFallaRecl))
-
-{
-echo "<TR>\n";
-	 
-echo "<td>".$filaComVistFallaRecl['Id_FallaRecl']."</td>\n";
-$varCuit=$filaComVistFallaRecl['Id_FallaRecl'];
-
-echo "<td>".$filaComVistFallaRecl['Reclamo']."</td>\n";
-echo "<td>".$filaComVistFallaRecl['ItemFalla']."</td>\n";	 
-echo "<td>".$filaComVistFallaRecl['Detalle']."</td>\n";	
-
-echo "</TR>\n";
-}
-	 
-	 
-mysqli_close($mysqli);
-
-?>		
-	 	
-</td>
-</tr>
-	</table>	
+?>	
     </div>
-	</div>
+  </div>
 </div>	
 
 	

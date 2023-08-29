@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
 <!-- Script JS -->
-	<script src="../dir/js/bootstrap.min.js" ></script>
+	<!-- <script src="../dir/js/bootstrap.min.js" ></script> -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" ></script>
 	<script type="text/javascript" src="/sistema/js/Archivo.js"></script>	
@@ -10,7 +10,7 @@
 	<script type="text/javascript" src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 	
 	<!-- CSS -->
-	<link rel="stylesheet" href="../dir/css/bootstrap.min.css">
+	<!-- <link rel="stylesheet" href="../dir/css/bootstrap.min.css"> -->
 	<link rel="stylesheet" href="css/estiloHome.css">
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" >
@@ -110,28 +110,28 @@ $tipo_iamgen=$_FILES['imagen']['type'];
 $tamagno_imegen=$_FILES['imagen']['size'];
 $carpetas_destino='ftp.comofrasrl.com.ar/img/' . $nombre_imagen;
 move_uploaded_file($_FILES['imagen']['tmp_name'],$nombre_imagen);
-$Imagen = 'http://interno.comofrasrl.com.ar/sistema/'.$nombre_imagen;
+$Imagen = 'https://interno.comofrasrl.com.ar/sistema/'.$nombre_imagen;
 
 $nombre_imagen1=$_FILES['imagen1']['name'];
 $tipo_iamgen1=$_FILES['imagen1']['type'];
 $tamagno_imegen1=$_FILES['imagen1']['size'];
 $carpetas_destino1='ftp.comofrasrl.com.ar/img/' . $nombre_imagen1;
 move_uploaded_file($_FILES['imagen1']['tmp_name'],$nombre_imagen1);
-$Imagen1 = 'http://interno.comofrasrl.com.ar/sistema/'.$nombre_imagen1;
+$Imagen1 = 'https://interno.comofrasrl.com.ar/sistema/'.$nombre_imagen1;
 
 $nombre_imagen2=$_FILES['imagen2']['name'];
 $tipo_iamgen2=$_FILES['imagen2']['type'];
 $tamagno_imegen2=$_FILES['imagen2']['size'];
 $carpetas_destino2='ftp.comofrasrl.com.ar/img/' . $nombre_imagen2;
 move_uploaded_file($_FILES['imagen2']['tmp_name'],$nombre_imagen2);
-$Imagen2 = 'http://interno.comofrasrl.com.ar/sistema/'.$nombre_imagen2;
+$Imagen2 = 'https://interno.comofrasrl.com.ar/sistema/'.$nombre_imagen2;
 
 $nombre_imagen3=$_FILES['imagen3']['name'];
 $tipo_iamgen3=$_FILES['imagen3']['type'];
 $tamagno_imegen3=$_FILES['imagen3']['size'];
 $carpetas_destino3='ftp.comofrasrl.com.ar/img/' . $nombre_imagen3;
 move_uploaded_file($_FILES['imagen3']['tmp_name'],$nombre_imagen3);
-$Imagen3 = 'http://interno.comofrasrl.com.ar/sistema/'.$nombre_imagen3;
+$Imagen3 = 'https://interno.comofrasrl.com.ar/sistema/'.$nombre_imagen3;
 
 
 
@@ -146,28 +146,28 @@ $tipo_iamgenSolu=$_FILES['imagenSolu']['type'];
 $tamagno_imegenSolu=$_FILES['imagenSolu']['size'];
 $carpetas_destinoSolu='ftp.comofrasrl.com.ar/img/' . $nombre_imagenSolu;
 move_uploaded_file($_FILES['imagenSolu']['tmp_name'],$nombre_imagenSolu);
-$ImagenSolu = 'http://interno.comofrasrl.com.ar/sistema/'.$nombre_imagenSolu;
+$ImagenSolu = 'https://interno.comofrasrl.com.ar/sistema/'.$nombre_imagenSolu;
 
 $nombre_imagenSolu1=$_FILES['imagenSolu1']['name'];
 $tipo_iamgenSolu1=$_FILES['imagenSolu1']['type'];
 $tamagno_imegenSolu1=$_FILES['imagenSolu1']['size'];
 $carpetas_destinoSolu1='ftp.comofrasrl.com.ar/img/' . $nombre_imagenSolu1;
 move_uploaded_file($_FILES['imagenSolu1']['tmp_name'],$nombre_imagenSolu1);
-$ImagenSolu1 = 'http://interno.comofrasrl.com.ar/sistema/'.$nombre_imagenSolu1;
+$ImagenSolu1 = 'https://interno.comofrasrl.com.ar/sistema/'.$nombre_imagenSolu1;
 
 $nombre_imagenSolu2=$_FILES['imagenSolu2']['name'];
 $tipo_iamgenSolu2=$_FILES['imagenSolu2']['type'];
 $tamagno_imegenSolu2=$_FILES['imagenSolu2']['size'];
 $carpetas_destinoSolu2='ftp.comofrasrl.com.ar/img/' . $nombre_imagenSolu2;
 move_uploaded_file($_FILES['imagenSolu2']['tmp_name'],$nombre_imagenSolu2);
-$ImagenSolu2 = 'http://interno.comofrasrl.com.ar/sistema/'.$nombre_imagenSolu2;
+$ImagenSolu2 = 'https://interno.comofrasrl.com.ar/sistema/'.$nombre_imagenSolu2;
 
 $nombre_imagenSolu3=$_FILES['imagenSolu3']['name'];
 $tipo_iamgenSolu3=$_FILES['imagenSolu3']['type'];
 $tamagno_imegenSolu3=$_FILES['imagenSolu3']['size'];
 $carpetas_destinoSolu3='ftp.comofrasrl.com.ar/img/' . $nombre_imagenSolu3;
 move_uploaded_file($_FILES['imagenSolu3']['tmp_name'],$nombre_imagenSolu3);
-$ImagenSolu3 = 'http://interno.comofrasrl.com.ar/sistema/'.$nombre_imagenSolu3;
+$ImagenSolu3 = 'https://interno.comofrasrl.com.ar/sistema/'.$nombre_imagenSolu3;
 
 
 
@@ -374,7 +374,7 @@ $Detalle2mec=$_POST['txtDetalle2mec'];
 			  
 			  include("Conexion/conexion.php");	
 			  
-echo "<td>"."<a href=\"http://interno.comofrasrl.com.ar/sistema/panel.php\"><img src=\"../sistema/img/BtnVolver.png\" alt=\"BtnVolver\" width=\"60\" height=\"40\"></a></td>\n";			  
+echo "<td>"."<a href=\"../sistema/panel.php\"><img src=\"../sistema/img/BtnVolver.png\" alt=\"BtnVolver\" width=\"60\" height=\"40\"></a></td>\n";			  
 	
 $insertarComFallaRecl = "INSERT INTO `ComFallaRecl` (`Id_FallaRecl`, `Fk_NumRecl`, `Falla`, `Detalle`) VALUES (NULL, '$varNumRecl', '$Fallamec', '$Detallemec');";
 

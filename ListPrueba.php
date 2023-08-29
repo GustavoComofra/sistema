@@ -2,8 +2,8 @@
 <html>
 <head>
 <title>ListGrafico</title>
-<script type="text/javascript" src="/RRHH/js/Archivo.js"></script>
-	<link rel="stylesheet" href="/RRHH/css/estiloHome.css">
+<script type="text/javascript" src="/sistema/js/Archivo.js"></script>
+	<link rel="stylesheet" href="/sistema/css/estiloHome.css">
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
   </head>
   <body>
@@ -15,7 +15,7 @@
 <tr>
 <td colspan="6" align="center" bgcolor="#9DD3AF">
 
-  <form name="form1" method="post" action="http://planidear.com.ar/FormArticulos/ListadoArticulos.php">
+  <form name="form1" method="post" action="/sistema//FormArticulos/ListadoArticulos.php">
     <input class="red-input"  name="codigo" type="text" autofocus="autofocus" id="codigo" title="Codigo"  onkeyup="validaCuit()">
 <h1 id="AvPrueba"></h1>
  <?php

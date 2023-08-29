@@ -3,10 +3,8 @@
 	<head>
 		<title>inventario 2023</title>
 		<meta charset="utf-8">
-
-
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-        <link href="Icono.png" rel="icon" type="image/png">
+        <link href="inventario/Icono.png" rel="icon" type="image/png">
 		<!-- ESTILOS -->
 		<!-- <link href="css/estilo.css" rel="stylesheet"> -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
@@ -115,12 +113,33 @@ $(document).on('keyup', '#ModalBuscarBody', function()
 <!-- Fin Script de buscar Body --> 
 
 	</head>
+
+
 	<body>
 
+    <?php	
+
+session_start();
+	
+$varCerrarSession = $_SESSION['usuario'];
+
+	if($varCerrarSession == null || $varCerrarSession = ''){
+	echo "<H1>"."Usted no tiene autorizacion"."<H1>";
+echo "<button type=\"button\" class=\"btn btn-primary\"  onClick=\"volver()\">volver</button>";		
 		
+die();
+	
+	}
+?>
+
+	 <?php	
+//include ("header.php");
+session_start();
+	$u = $_POST['txtUsuario'];
+?>	
 <dialog id="favDialog">
 <section>
-<input type="text" name="busqueda" id="busqueda" placeholder="Buscar..." formaction=""/>
+<input type="text" class="ClassBusqueda" name="namebusqueda"  id="busqueda" placeholder="Buscar..." formaction=""/>
 <button id="cancel" type="reset">Cancel</button>
 <button type="button" id="cerrar" >cerrar</button>
 </section>
@@ -136,6 +155,7 @@ $(document).on('keyup', '#ModalBuscarBody', function()
 
 <script src="https://cdn.jsdelivr.net/npm/dynamsoft-javascript-barcode@9.6.20/dist/dbr.js"></script>
     <script src="overlay.js"></script>
+
 
 <div>
 <button type="button" class="btn btn-danger" id="cerrarCamara" >cerrar</button>
@@ -161,11 +181,12 @@ Resultado del código de barras: <h1 id='result'>N/A</h1>
 <input type="hidden" id="idInventario">
     <button type="button" class="btn btn-info"  name="updateDetails" id="updateDetails" ><span class="glyphicon glyphicon glyphicon-search"></span> - Buscar</button>
     <button type="button" class="btn btn-info" name="MostrarCamara" id="MostrarCamara" ><span class="glyphicon glyphicon glyphicon-barcode"></span> - Scanner</button>
-    <input type="number" id="ModalBuscarBody" name="ModalBuscarBody" placeholder="Valor Seleccionado" require>
+    <input type="number" id="ModalBuscarBody" placeholder="Valor Seleccionado" require>
     <input type="number" id="txtCantidad" min="1" name="txtCantidad" placeholder="Cantidad" require>
     <input type="text" id="txtObsInv" min="1" name="txtObsInv" size="50" placeholder="Observacion">
+    <input type="hidden" id="txtUser" min="1" name="txtUser" size="50" value="<?php echo $_SESSION['usuario'];  ?>">
    <p>
-      <button type="submits" class="btn btn-success" name="btnEnviar" id="btnEnviar" ><span class="glyphicon glyphicon glyphicon-floppy-open"></span> - Guardar</button>
+      <button type="submit" class="btn btn-success" name="btnEnviar" id="btnEnviar" ><span class="glyphicon glyphicon glyphicon-floppy-open"></span> - Guardar</button>
       </p>
 
 
@@ -176,13 +197,12 @@ Resultado del código de barras: <h1 id='result'>N/A</h1>
       <table class="table table-bordered table-sm">
             <thead>
                 <tr>
-                    <td>id</td>
+                <td>id</td>
                     <td>CodCmg</td>
+                    <td>Prod</td>
                     <td>Cantidad</td>
                     <td>ObsInv</td>
-                     <td>Fecha</td>
-                     <td></td>
-                     
+                    <td></td>
                 </tr>
             </thead>
             <tbody id="tb_inventario">
@@ -191,14 +211,9 @@ Resultado del código de barras: <h1 id='result'>N/A</h1>
         </table>
     </div>
 
-      <?php
-//include ("ListarInventarioFondend.php");
 
-?>
       </div>
-    <!--  <section id="tabla_resultadoBody">
-		 Tabla de Body 
-		</section>-->
+
 
     </div>
 <!-- Inicio Modal -->   
@@ -315,7 +330,7 @@ sonido.src="sound_short.mp3";
 
     <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
 
-    <script src="app.js">
+    <script src="app.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
 

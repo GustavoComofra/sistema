@@ -14,7 +14,7 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" >
 	
 	<!-- Logo Icono -->
-<link href="img/Icono.png" rel="icon" type="image/png">
+<link href="../sistema/img/Icono.png" rel="icon" type="image/png">
  <title>Editar herramientas</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">

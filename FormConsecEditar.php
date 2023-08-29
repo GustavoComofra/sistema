@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
 <!-- Script JS -->
-	<script src="../dir/js/bootstrap.min.js" ></script>
+	<!-- <script src="../dir/js/bootstrap.min.js" ></script> -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" ></script>
 	<script type="text/javascript" src="js/Archivo.js"></script>	
@@ -10,13 +10,13 @@
 	<script type="text/javascript" src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 	
 	<!-- CSS -->
-	<link rel="stylesheet" href="../dir/css/bootstrap.min.css">
+	<!-- <link rel="stylesheet" href="../dir/css/bootstrap.min.css"> -->
 	<link rel="stylesheet" href="css/estiloHome.css">
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" >
 	
 	<!-- Logo Icono -->
-<link href="img/LogoPaginaIdearSF.png" rel="icon" type="image/png">
+<link href="../sistema/img/Icono.png" rel="icon" type="image/png">
  <title>Concesionario Editar</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
@@ -29,7 +29,7 @@ session_start();
 
 function volver()
 {
-	window.location.href = "/RRHH/index.php";
+	window.location.href = "/sistema/index.php";
 }
 
 function AlertarBorra()
@@ -117,20 +117,7 @@ $rowConcesio = mysqli_fetch_assoc($queryConcesio);
     </tr>	  
 	  
 	<tr>
-		<!--
-    </tr>	
-	
- <td>	
-	<label for="txtSuspendido"><p>Suspendido:</p></label>	
-	<select name="listSuspendido" size="1" id="listSuspendido">
-	 <option>Si</option>
-	 <option selected="selected">No</option>
-	 </select>
-	</td>
-    </tr>	
 
--->
-	<tr>
 	<td>
 		<label>
         <input type="submit" class="btn btn-success" name="btnEditar" id="btnEditar" value="Editar" />
@@ -158,7 +145,7 @@ if(!$Concesionario==null){
 	
 echo "<p>"."cargado"."</p>";
 include("Conexion/conexion.php");	
-//$insertarConcesionario = "INSERT INTO `ComConcesionario` (`id_Conce`, `Concesionario`, `Direccion`, `Telefono`, `Email`) VALUES (NULL, '$Concesionario	', '$Direccion', '$Telefono', '$Email');";	
+
 $insertarConcesionario = "UPDATE `ComConcesionario` SET `Concesionario` = '$Concesionario', `Direccion` = '$Direccion', `Telefono` = '$Telefono', `Email` = '$Email', `Suspendido` = 'No' WHERE `ComConcesionario`.`id_Conce` = ".$id_Conce.";";
 
 $ejecutar_insertar=mysqli_query($mysqli,$insertarConcesionario);
@@ -213,10 +200,10 @@ echo "<td>".$filaConcesionarioB['Telefono']."</td>\n";
 echo "<td>".$filaConcesionarioB['Email']."</td>\n";	 
 
 
-echo "<td>"."<a href=\"/RRHH/FormClienEditar.php?id_Conce=".$filaConcesionarioB['id_Conce']."\"><img src=\"../RRHH/img/EditIcono.png\" alt=\"BtnIconoEditar\" width=\"20\" height=\"20\"></a></td>\n";
+echo "<td>"."<a href=\"/sistema/FormClienEditar.php?id_Conce=".$filaConcesionarioB['id_Conce']."\"><img src=\"../sistema/img/EditIcono.png\" alt=\"BtnIconoEditar\" width=\"20\" height=\"20\"></a></td>\n";
 	 
 
-echo "<td>"."<a onClick=\"AlertarBorra()\" href=\"/RRHH/FormConsecBorrar.php?id_Conce=".$filaConcesionarioB['id_Conce']."\"><img src=\"../RRHH/img/BorrIcono.png\" alt=\"BtnIconoEditar\" width=\"20\" height=\"20\"></a></td>\n";
+echo "<td>"."<a onClick=\"AlertarBorra()\" href=\"/sistema/FormConsecBorrar.php?id_Conce=".$filaConcesionarioB['id_Conce']."\"><img src=\"../sistema/img/BorrIcono.png\" alt=\"BtnIconoEditar\" width=\"20\" height=\"20\"></a></td>\n";
 	 
 	 
 echo "</TR>\n";

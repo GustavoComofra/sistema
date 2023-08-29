@@ -13,7 +13,9 @@ $(document).ready(function(e){
         Cantidad: $('#txtCantidad').val(),
         ObsInv: $('#txtObsInv').val(),
         idInventario: $('#idInventario').val(),
+        UsuarioInventario: $('#txtUser').val(),
         }
+        
 let url = edit === false  ? 'inventario-agregar.php' : 'inventario-Editar.php';
         // console.log(url);
         $.post(url, postData, function(response){
@@ -56,6 +58,7 @@ if (confirm('Estas seguro de eliminar el registro?')) {
             $('#ModalBuscarBody').val(invetEditar.CodCmg);
             $('#txtCantidad').val(invetEditar.Cantidad);
             $('#txtObsInv').val(invetEditar.ObsInv);
+            $('#txtUser').val(invetEditar.UsuarioInventario	);
             edit = true;
             });
              //para evitar que se refresque la pagina
@@ -79,7 +82,6 @@ if (confirm('Estas seguro de eliminar el registro?')) {
                     <td>${inventario.Producto}</td>
                     <td>${inventario.Cantidad}</td>
                     <td>${inventario.ObsInv}</td>
-        
                     <td><button class="list-inve btn btn-danger">Borrar</button></td>
                     <td>
                     <button class="inve-item btn btn-warning">Editar</button>

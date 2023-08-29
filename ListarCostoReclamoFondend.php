@@ -141,11 +141,11 @@ var listar = function(){
 
 	{
 	"render": function (data, type, JsonResultRow, meta) {
-		 return "<a href='http://interno.comofrasrl.com.ar/sistema/FormEditarItemCosto.php?IdCosto="+JsonResultRow.IdCosto+"' target='_blank'><img src='http://interno.comofrasrl.com.ar/sistema/img/EditIcono.png' alt='EditIcono' width='20' height='20'></a>"
+		 return "<a href='/sistema/FormEditarItemCosto.php?IdCosto="+JsonResultRow.IdCosto+"' target='_blank'><img src='/sistema/img/EditIcono.png' alt='EditIcono' width='20' height='20'></a>"
 
-		 +" &emsp;"+"<a href='http://interno.comofrasrl.com.ar/sistema/FormBorrarItemCosto.php?IdCosto="+JsonResultRow.IdCosto+"' target='_blank'><img src='http://interno.comofrasrl.com.ar/sistema/img/BorrIcono.png' alt='BorrIcono' width='20' height='20' ></a>" 
+		 +" &emsp;"+"<a href='/sistema/FormBorrarItemCosto.php?IdCosto="+JsonResultRow.IdCosto+"' target='_blank'><img src='/sistema/img/BorrIcono.png' alt='BorrIcono' width='20' height='20' ></a>" 
 
-		 +" &emsp;"+"<a href='http://interno.comofrasrl.com.ar/sistema/FormNuevoItemCosto1.php?NumReclamo="+JsonResultRow.NumReclamo+"' target='_blank'><img src='http://interno.comofrasrl.com.ar/sistema/img/NuevoIcono.png' alt='NuevoIcono' width='20' height='20' ></a>"; 
+		 +" &emsp;"+"<a href='/sistema/FormNuevoItemCosto1.php?NumReclamo="+JsonResultRow.NumReclamo+"' target='_blank'><img src='/sistema/img/NuevoIcono.png' alt='NuevoIcono' width='20' height='20' ></a>"; 
 	}},
 ],
 dom: 'Bfrtip',

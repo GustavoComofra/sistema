@@ -1,4 +1,3 @@
-<!-- https://youtu.be/RInf8KPptO0 -->
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -28,17 +27,18 @@
 				<h3 class="text-center"> <small class="mensaje"></small></h3>
 			</div>
 			<div class="table-responsive col-sm-12">		
-				<table id="dt_Costoreclamo" class="table table-striped" width="100%">
+				<table id="dt_Inventario" class="table table-striped" width="100%">
 					<thead>
 						<tr>								
-							<th>Id</th>
+						<th>Id</th>
 							<th>CodCmg</th>
 							<th>Prodcuto</th>
-							<th>Cantidad</th>		
+							<th>Cantidad</th>
+							<th>Usuario</th>		
 							<th>Fecha</th>
-							<th>Usuario</th>
+							<th>ActCMG</th>
 							<th>Opcion</th>
-						</tr>
+					</tr>
 					</thead>					
 				</table>
 			</div>			
@@ -100,7 +100,7 @@ src="https://cdn.datatables.net/buttons/1.3.1/js/buttons.html5.min.js"></script>
 			listar();
 		});
 var listar = function(){
-    var table = $("#dt_Costoreclamo").DataTable({
+    var table = $("#dt_Inventario").DataTable({
 		"order": [[ 0, 'desc' ], ],
 "ajax": {
     "method": "POST",
@@ -110,16 +110,19 @@ var listar = function(){
     //para accedera los valores
     {"data": "idInventario"},
 	{"data": "CodCmg"},
-    {"data": "Producto"},
+	{"data": "Producto"},
     {"data": "Cantidad"},
+	{"data": "UsuarioInventario"},
 	{"data": "FechaInventario"},
+	{"data": "ActCMG"},
 
-	{
-	"render": function (data, type, JsonResultRow, meta) {
-		 return "<a  class='list-alumnos' href='http://interno.comofrasrl.com.ar/sistema/FormEditarItemCosto.php?idInventario="+JsonResultRow.idInventario+"' target='_blank'><img src='http://interno.comofrasrl.com.ar/sistema/img/EditIcono.png' alt='EditIcono' width='20' height='20'></a>"
 
-		 +" &emsp;"+"<a href='#"+JsonResultRow.idInventario+"' ><img src='http://interno.comofrasrl.com.ar/sistema/img/BorrIcono.png' alt='BorrIcono' width='20' height='20' ></a>" ; 
-	}},
+	// {
+	// "render": function (data, type, JsonResultRow, meta) {
+	// 	 return "<a  class='list-alumnos' href='http://interno.comofrasrl.com.ar/sistema/FormEditarItemCosto.php?idInventario="+JsonResultRow.idInventario+"' target='_blank'><img src='http://interno.comofrasrl.com.ar/sistema/img/EditIcono.png' alt='EditIcono' width='20' height='20'></a>"
+
+	// 	 +" &emsp;"+"<a href='#"+JsonResultRow.idInventario+"' ><img src='http://interno.comofrasrl.com.ar/sistema/img/BorrIcono.png' alt='BorrIcono' width='20' height='20' ></a>" ; 
+	// }},
 ],
 dom: 'Bfrtip',
                 buttons: [
@@ -136,7 +139,7 @@ dom: 'Bfrtip',
                 ],
 
     });
-//obtener_data("#dt_Costoreclamo", table);
+//obtener_data("#dt_Inventario", table);
 }
 var obtener_data= function(tbody, table){
 $(tbody).on("click", "button.ver", function(){

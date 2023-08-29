@@ -117,7 +117,7 @@ echo "<TR>\n";
 	 
 echo "<td>".$filaComImagenSoluRecl3['NumReclamo']."</td>\n";
 echo "<td>".'<img  src="'.$filaComImagenSoluRecl3['ImagenSolu3'].'" style="border-radius: " width="100" heigth="100"/>'."</td>\n";
-echo "<td>"."<a href=\"http://planidear.com.ar/sistema/FormEditarSoluImagen3.php?NumReclamo=".$filaComImagenSoluRecl3['NumReclamo']."\"><img src=\"../sistema/img/EditIcono.png\" alt=\"BtnIconoEditar\" width=\"20\" height=\"20\"></a></td>\n"; 
+echo "<td>"."<a href=\"https://interno.comofrasrl.com.ar/sistema/FormEditarSoluImagen3.php?NumReclamo=".$filaComImagenSoluRecl3['NumReclamo']."\"><img src=\"../sistema/img/EditIcono.png\" alt=\"BtnIconoEditar\" width=\"20\" height=\"20\"></a></td>\n"; 
 	 
 echo "<td>"."<a onClick=\"AlertarBorra()\" href=\"/sistema/#?NumReclamo=".$filaComImagenSoluRecl3['NumReclamo']."\"><img src=\"../sistema/img/BorrIcono.png\" alt=\"BtnIconoEditar\" width=\"20\" height=\"20\"></a></td>\n"; 	 
 	 

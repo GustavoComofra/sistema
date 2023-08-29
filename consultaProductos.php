@@ -52,7 +52,6 @@ if ($buscarProductos->num_rows > 0)
 
 	}
 	
-
 	$tabla.='</table>';
 
 } else

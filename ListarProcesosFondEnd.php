@@ -111,6 +111,7 @@ src="https://cdn.datatables.net/buttons/1.3.1/js/buttons.html5.min.js"></script>
 		});
 var listar = function(){
     var table = $("#dt_proceso").DataTable({
+		"order": [[ 0, 'desc' ], ],
 "ajax": {
     "method": "POST",
     "url": "ListarProcesosBackCom.php",
@@ -149,7 +150,7 @@ dom: 'Bfrtip',
     });
 obtener_data("#dt_proceso", table);
 }
-//https://www.youtube.com/watch?v=mV6L4_Mwh3U
+
 var obtener_data= function(tbody, table){
 $(tbody).on("click", "button.ver", function(){
 var data=table.row($(this).parents("tr")).data();

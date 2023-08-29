@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
 <!-- Script JS -->
-	<script src="../dir/js/bootstrap.min.js" ></script>
+	<!-- <script src="../dir/js/bootstrap.min.js" ></script> -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" ></script>
 	<script type="text/javascript" src="/sistema/js/Archivo.js"></script>	
@@ -10,13 +10,13 @@
 	<script type="text/javascript" src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 	
 	<!-- CSS -->
-	<link rel="stylesheet" href="../dir/css/bootstrap.min.css">
+	<!-- <link rel="stylesheet" href="../dir/css/bootstrap.min.css"> -->
 	<link rel="stylesheet" href="css/estiloHome.css">
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" >
 	
 	<!-- Logo Icono -->
-<link href="http://interno.comofrasrl.com.ar/sistema/img/Icono.png" rel="icon" type="image/png">
+<link href="../sistema/img/Icono.png" rel="icon" type="image/png">
  <title>Listado Personal</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
@@ -103,7 +103,7 @@ $row = mysqli_fetch_assoc($queryvarIdPersoanl);
 <thead>
 <tr align="center">
      
-		<td colspan="2" rowspan="2"> <img src="http://interno.comofrasrl.com.ar/sistema/img/Icono.png" alt="Logo" width="80" height="80"></td>
+		<td colspan="2" rowspan="2"> <img src="../sistema/img/Icono.png" alt="Logo" width="80" height="80"></td>
 <td colspan="2" rowspan="2">   <div align="center"><h1>Informe Personal</h1>
 
 

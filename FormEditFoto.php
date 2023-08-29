@@ -131,7 +131,7 @@ $tipo_iamgen=$_FILES['imagen']['type'];
 $tamagno_imegen=$_FILES['imagen']['size'];
 $carpetas_destino='ftp.planidear.com.ar/img/' . $nombre_imagen;
 move_uploaded_file($_FILES['imagen']['tmp_name'],$nombre_imagen);
-$Imagen = 'http://interno.comofrasrl.com.ar/sistema/'.$nombre_imagen;		
+$Imagen = 'https://interno.comofrasrl.com.ar/sistema/'.$nombre_imagen;		
 
 if($IdPersonal<>null){
 	

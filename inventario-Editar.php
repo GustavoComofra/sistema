@@ -1,5 +1,5 @@
 <?php
-include('Conexion/conexion.php');
+include('ConexionComofra/conexion.php');
 //$search = $_POST['app-form'];
 //echo $search=$_POST['nombre'];
 $idInventario  = $_POST['idInventario'];

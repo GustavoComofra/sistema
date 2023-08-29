@@ -20,13 +20,13 @@ $query = $mysqli -> query ("SELECT * FROM `PrUsuario` WHERE `Clave` LIKE '$Clave
             if($filas == 0){
 echo "<script>alert('Error: usuario y/o clave incorrectos!!');</script>";
 echo "<script type=\"text/javascript\">
-window.location.href = \"/RRHH/index.php\";
+window.location.href = \"/sistema/index.php\";
 </script>";	
 				
             }else{
 
 echo "<script type=\"text/javascript\">
-window.location.href = \"../RRHH/header.php\";
+window.location.href = \"../sistema/header.php\";
 </script>";
 
             }

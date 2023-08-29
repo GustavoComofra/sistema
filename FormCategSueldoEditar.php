@@ -13,7 +13,7 @@ $varCerrarSession = $_SESSION['usuario'];
 <html>
 <head>
 <!-- Script JS -->
-	<script src="../dir/js/bootstrap.min.js" ></script>
+	<!-- <script src="../dir/js/bootstrap.min.js" ></script> -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" ></script>
 	<script type="text/javascript" src="js/Archivo.js"></script>	
@@ -26,9 +26,9 @@ $varCerrarSession = $_SESSION['usuario'];
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" >
 <meta charset="utf-8">
-<link href="img/LogoPaginaIdearSF.png" rel="icon" type="image/png">
+<link href="../sistema/img/Icono.png" rel="icon" type="image/png">
  <title>Editar Concepto x categoria</title>
-<link href="/RRHH/css/estiloHome.css" rel="stylesheet" type="text/css">
+<link href="../sistema/css/estiloHome.css" rel="stylesheet" type="text/css">
 </head>
 <?php	
 include ("header.php");
@@ -204,9 +204,9 @@ echo "<td>".$filaConcepto['Valor']."</td>\n";
 echo "<td>".$filaConcepto['Porc']."</td>\n";	
 
 	 
-echo "<td>"."<a href=\"/RRHH/FormCategSueldoEditar.php?Id_LiqSueldo=".$filaConcepto['Id_LiqSueldo']."\"><img src=\"../RRHH/img/EditIcono.png\" alt=\"BtnIconoEditar\" width=\"20\" height=\"20\"></a></td>\n";	 
+echo "<td>"."<a href=\"/sistema/FormCategSueldoEditar.php?Id_LiqSueldo=".$filaConcepto['Id_LiqSueldo']."\"><img src=\"../sistema/img/EditIcono.png\" alt=\"BtnIconoEditar\" width=\"20\" height=\"20\"></a></td>\n";	 
 	 
-echo "<td>"."<a onClick=\"AlertarBorra()\" href=\"/RRHH/FormCategSueldoAnular.php?Id_LiqSueldo=".$filaConcepto['Id_LiqSueldo']."\"><img src=\"../RRHH/img/BorrIcono.png\" alt=\"BtnIconoAnular\" width=\"20\" height=\"20\"></a></td>\n";
+echo "<td>"."<a onClick=\"AlertarBorra()\" href=\"/sistema/FormCategSueldoAnular.php?Id_LiqSueldo=".$filaConcepto['Id_LiqSueldo']."\"><img src=\"../sistema/img/BorrIcono.png\" alt=\"BtnIconoAnular\" width=\"20\" height=\"20\"></a></td>\n";
 	 
 echo "</TR>\n";
 }

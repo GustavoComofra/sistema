@@ -23,7 +23,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" >
 	
 	
-<link href="../sistema/img/logo1.jpg" rel="icon" type="image/png">
+<link href="../sistema/img/Icono.png" rel="icon" type="image/png">
  <title>Industria Comofra SRL</title>
 
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
@@ -61,7 +61,7 @@ $varCerrarSession = $_SESSION['usuario'];
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 		 <a href="index.php">
         <!--  <img class="CssImage" href="index.html" src="img/LogoIdearSin_Fondo.png" width="50" height="50" alt="Imagen logo"/>-->
-			 <img class="" href="index.html" src="http://interno.comofrasrl.com.ar/sistema/img/logo1.jpg" width="50" height="50" style="border-radius: 50% 50%;"  alt="Imagen logo"/>        </a>
+			 <img class="" href="index.html" src="../sistema/img/logo1.jpg" width="50" height="50" style="border-radius: 50% 50%;"  alt="Imagen logo"/>        </a>
   <a class="navbar-brand" href="panel.php">Inicio</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -286,9 +286,11 @@ echo "<a class=\"dropdown-item \" style=\"color: white; background: grey;\" href
  	
 			
 			
-?>				
-		  <a class="dropdown-item" style="color: white; background: grey;" href="http://interno.comofrasrl.com.ar/sistema/VistaOrganigrama.php">Organigrama</a>
-      <a class="dropdown-item" style="color: white; background: grey;" href="http://interno.comofrasrl.com.ar/sistema/GraficoPersonal.php">GraficoPersonal</a>  
+?>			
+<a class="dropdown-item" style="color: white; background: grey;" href="../sistema/inventarioCom.php">Carga_Inventario</a>
+<a class="dropdown-item" style="color: white; background: grey;" href="../sistema/ListadoInventario.php">Listado_Inventario</a>
+		  <a class="dropdown-item" style="color: white; background: grey;" href="../sistema/VistaOrganigrama.php">Organigrama</a>
+      <a class="dropdown-item" style="color: white; background: grey;" href="../sistema/GraficoPersonal.php">GraficoPersonal</a>  
 			<a class="dropdown-item" style="color: white; background: grey;" href="javascript:window.print()">Imprimir</a>
 </li>	
 		  

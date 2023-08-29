@@ -79,7 +79,7 @@ $tipo_iamgen=$_FILES['img_itemproce']['type'];
 $tamagno_imegen=$_FILES['img_itemproce']['size'];
 $carpetas_destino='ftp.comofrasrl.com.ar/img/' . $nombre_imagen;
 move_uploaded_file($_FILES['img_itemproce']['tmp_name'],$nombre_imagen);
-$img_itemproce = 'http://interno.comofrasrl.com.ar/sistema/'.$nombre_imagen;
+$img_itemproce = 'https://interno.comofrasrl.com.ar/sistema/'.$nombre_imagen;
 
 $Op1=$_POST['txtOp1'];
 $ItemProceso1=$_POST['txtItemProceso1'];
@@ -97,7 +97,7 @@ $tipo_iamgen=$_FILES['img_itemproce1']['type'];
 $tamagno_imegen=$_FILES['img_itemproce1']['size'];
 $carpetas_destino='ftp.comofrasrl.com.ar/img/' . $nombre_imagen1;
 move_uploaded_file($_FILES['img_itemproce1']['tmp_name'],$nombre_imagen1);
-$img_itemproce1 = 'http://interno.comofrasrl.com.ar/sistema/'.$nombre_imagen1;
+$img_itemproce1 = 'https://interno.comofrasrl.com.ar/sistema/'.$nombre_imagen1;
 
 $Op2=$_POST['txtOp2'];
 $ItemProceso2=$_POST['txtItemProceso2'];
@@ -115,7 +115,7 @@ $tipo_iamgen=$_FILES['img_itemproce2']['type'];
 $tamagno_imegen=$_FILES['img_itemproce2']['size'];
 $carpetas_destino='ftp.comofrasrl.com.ar/img/' . $nombre_imagen2;
 move_uploaded_file($_FILES['img_itemproce2']['tmp_name'],$nombre_imagen2);
-$img_itemproce2 = 'http://interno.comofrasrl.com.ar/sistema/'.$nombre_imagen2;
+$img_itemproce2 = 'https://interno.comofrasrl.com.ar/sistema/'.$nombre_imagen2;
 
 $Op3=$_POST['txtOp3'];
 $ItemProceso3=$_POST['txtItemProceso3'];
@@ -139,7 +139,7 @@ $tipo_iamgen=$_FILES['img_itemproce3']['type'];
 $tamagno_imegen=$_FILES['img_itemproce3']['size'];
 $carpetas_destino='ftp.comofrasrl.com.ar/img/' . $nombre_imagen3;
 move_uploaded_file($_FILES['img_itemproce3']['tmp_name'],$nombre_imagen3);
-$img_itemproce3 = 'http://interno.comofrasrl.com.ar/sistema/'.$nombre_imagen3;
+$img_itemproce3 = 'https://interno.comofrasrl.com.ar/sistema/'.$nombre_imagen3;
 
 
 if (!$ItemProceso == null) {

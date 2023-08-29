@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
 <!-- Script JS -->
-	<script src="../dir/js/bootstrap.min.js" ></script>
+	<!-- <script src="../dir/js/bootstrap.min.js" ></script> -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" ></script>
 	<script type="text/javascript" src="js/Archivo.js"></script>	
@@ -10,13 +10,13 @@
 	<script type="text/javascript" src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 	
 	<!-- CSS -->
-	<link rel="stylesheet" href="../dir/css/bootstrap.min.css">
+	<!-- <link rel="stylesheet" href="../dir/css/bootstrap.min.css"> -->
 	<link rel="stylesheet" href="css/estiloHome.css">
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" >
 	
 	<!-- Logo Icono -->
-<link href="img/LogoPaginaIdearSF.png" rel="icon" type="image/png">
+<link href="../sistema/img/Icono.png" rel="icon" type="image/png">
  <title>Editar imagen1</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
@@ -142,11 +142,11 @@ $tipo_iamgen=$_FILES['imagen']['type'];
 $tamagno_imegen=$_FILES['imagen']['size'];
 $carpetas_destino='ftp.planidear.com.ar/img/' . $nombre_imagen;
 move_uploaded_file($_FILES['imagen']['tmp_name'],$nombre_imagen);
-$Imagen1 = 'http://planidear.com.ar/RRHH/'.$nombre_imagen;		
+$Imagen1 = 'https://interno.comofrasrl.com.ar/sistema/'.$nombre_imagen;		
 
 if(!$Fk_NumRecl==null){
 	
-	echo "<h1>"."<a href=\"/RRHH/FormReclamoEditar.php?NumReclamo=".$Fk_NumRecl."\">Volver</a>"."</h1>";
+	echo "<h1>"."<a href=\"/sistema/FormReclamoEditar.php?NumReclamo=".$Fk_NumRecl."\">Volver</a>"."</h1>";
 	echo "
 	
 	";

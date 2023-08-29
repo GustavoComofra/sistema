@@ -350,6 +350,8 @@ echo "</TR>\n";
 echo "</table>";	 
 
  }	
+
+ mysqli_close($mysqli);
 ?>	
 <!--Inicio Reclamo -->
 
@@ -360,7 +362,7 @@ echo "</table>";
 
 //include ("Conexion/conexion.php");
 
-include ("ListarProcesosAjax.php");
+//include ("ListarProcesosAjax.php");
 /*
 if (!$resultado) {
 echo "Libre";

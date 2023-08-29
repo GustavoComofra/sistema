@@ -178,7 +178,7 @@ $Obs4=$_POST['txtObs4'];
 			  include("Conexion/conexion.php");	
 	
 $insertarComEstudPersonal = "INSERT INTO `ComEstudPersonal` (`IdEstudPersonal`, `Cuit_EstuPers`, `EstudioPersonal`, `Estado`, `Anios`, `Obs`) 
-VALUES (NULL, '22222', '$EstudioPersonal', '$Estado', '$Anios', '$Obs');";
+VALUES (NULL, '$CUIT_Empl', '$EstudioPersonal', '$Estado', '$Anios', '$Obs');";
 
 $ejecutar_insertar=mysqli_query($mysqli,$insertarComEstudPersonal);		
 

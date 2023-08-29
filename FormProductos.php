@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <!-- Script JS -->
-	<script src="../dir/js/bootstrap.min.js" ></script>
+	<!-- <script src="../dir/js/bootstrap.min.js" ></script> -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" ></script>
 	<script type="text/javascript" src="js/Archivo.js"></script>	
@@ -10,7 +10,7 @@
 	<script type="text/javascript" src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 	
 	<!-- CSS -->
-	<link rel="stylesheet" href="../dir/css/bootstrap.min.css">
+	<!-- <link rel="stylesheet" href="../dir/css/bootstrap.min.css"> -->
 	<link rel="stylesheet" href="css/estiloHome.css">
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" >
@@ -127,7 +127,7 @@ $tipo_imagen=$_FILES['imagen']['type'];
 $tamagno_imagen=$_FILES['imagen']['size'];
 $carpetas_destino='ftp.comofrasrl.com.ar/img/' . $nombre_imagen;
 move_uploaded_file($_FILES['imagen']['tmp_name'],$nombre_imagen);
-$imagen = 'http://interno.comofrasrl.com.ar/sistema/'.$nombre_imagen;
+$imagen = 'https://interno.comofrasrl.com.ar/sistema/'.$nombre_imagen;
 
 if(!$Producto==null){
 	

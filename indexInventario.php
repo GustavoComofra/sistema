@@ -120,7 +120,7 @@ $(document).on('keyup', '#ModalBuscarBody', function()
 		
 <dialog id="favDialog">
 <section>
-<input type="text" name="busqueda" id="busqueda" placeholder="Buscar..." formaction=""/>
+<input type="text" class="ClassBusqueda" name="namebusqueda" id="busqueda" placeholder="Buscar..."/>
 <button id="cancel" type="reset">Cancel</button>
 <button type="button" id="cerrar" >cerrar</button>
 </section>
@@ -161,7 +161,7 @@ Resultado del código de barras: <h1 id='result'>N/A</h1>
 <input type="hidden" id="idInventario">
     <button type="button" class="btn btn-info"  name="updateDetails" id="updateDetails" ><span class="glyphicon glyphicon glyphicon-search"></span> - Buscar</button>
     <button type="button" class="btn btn-info" name="MostrarCamara" id="MostrarCamara" ><span class="glyphicon glyphicon glyphicon-barcode"></span> - Scanner</button>
-    <input type="number" id="ModalBuscarBody" name="ModalBuscarBody" placeholder="Valor Seleccionado" require>
+    <input type="number" id="ModalBuscarBody"  placeholder="Valor Seleccionado" require>
     <input type="number" id="txtCantidad" min="1" name="txtCantidad" placeholder="Cantidad" require>
     <input type="text" id="txtObsInv" min="1" name="txtObsInv" size="50" placeholder="Observacion">
    <p>
@@ -178,9 +178,10 @@ Resultado del código de barras: <h1 id='result'>N/A</h1>
                 <tr>
                     <td>id</td>
                     <td>CodCmg</td>
+                    <td>Prod</td>
                     <td>Cantidad</td>
                     <td>ObsInv</td>
-                     <td>Fecha</td>
+        
                      <td></td>
                      
                 </tr>

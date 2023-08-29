@@ -15,7 +15,7 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
   <!-- Logo Icono -->
-  <link href="http://interno.comofrasrl.com.ar/sistema/img/Icono.png" rel="icon" type="image/png">
+  <link href="../sistema/img/Icono.png" rel="icon" type="image/png">
   <title>Proceso Nuevo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
@@ -66,7 +66,7 @@ $tipo_iamgen=$_FILES['imagen']['type'];
 $tamagno_imegen=$_FILES['imagen']['size'];
 $carpetas_destino='ftp.comofrasrl.com.ar/img/' . $nombre_imagenProce;
 move_uploaded_file($_FILES['imagen']['tmp_name'],$nombre_imagenProce);
-$imgProce = 'http://interno.comofrasrl.com.ar/sistema/'.$nombre_imagenProce;
+$imgProce = 'https://interno.comofrasrl.com.ar/sistema/'.$nombre_imagenProce;
 
 $Plano= $_POST['txtPlano'];
 $Observacion= $_POST['txtObservacion'];

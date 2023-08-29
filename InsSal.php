@@ -9,10 +9,10 @@
 	<!-- Etiquetas para los bucadores -->
 <head>
 	<!-- Script JS -->
-	<script type="text/javascript" src="/RRHH/js/Archivo.js"></script>	
+	<script type="text/javascript" src="/sistema/js/Archivo.js"></script>	
 	<!-- Estilo Alertas -->
 	<!-- CSS -->
-	<link rel="stylesheet" href="/RRHH/css/estiloHome.css">
+	<link rel="stylesheet" href="/sistema/css/estiloHome.css">
 	<!-- Logo Icono -->
     <link href="" rel="icon" type="">
  <title>Insertar personal Salida</title>
@@ -56,5 +56,5 @@ echo $var;
 
 </html>
 <script type="text/javascript">
-window.location.href = "http://planidear.com.ar/RRHH/Salir.php";
+window.location.href = "https://interno.comofrasrl.com.ar/sistema/Salir.php";
 </script>

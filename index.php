@@ -1,324 +1,159 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="es">
-	<head>
-		<title>inventario 2023</title>
-		<meta charset="utf-8">
-
-
-		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-        <link href="Icono.png" rel="icon" type="image/png">
-		<!-- ESTILOS -->
-		<!-- <link href="css/estilo.css" rel="stylesheet"> -->
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-		<link rel="stylesheet" href="https://cdn.datatables.net/1.13.5/css/jquery.dataTables.min.css">
-		<link rel="stylesheet" href="//cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css">
-		<!-- SCRIPTS JS-->
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-		<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-		<script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
-		
-	    <style>
-       /* #DialogCamara {
-             display: flex;  
-            flex-direction: column;
-            align-items: center;
-        } */
-
-        #videoview {
-        position: relative;
-        display: none
-        }
-
-
-        #videoContainer {
-            position: relative;
-            width: 100%;
-            height: 100%;
-           /* z-index: 1*/
-        }
-
-        #overlay {
-            /* position: absolute; */
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 2;
-            object-fit: contain
-        }
-
-        #barcodeScanner {
-            text-align: center;
-            font-size: medium;
-            height: 40vh;
-            width: 40vw;
-        }
-
-    </style>	
+<head>
+<!-- Script JS -->
+	<!-- <script src="../dir/js/bootstrap.min.js" ></script> -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" ></script>
+	<script type="text/javascript" src="js/Archivo.js"></script>	
+	<!-- Estilo Alertas -->
+	<script type="text/javascript" src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 	
-<!-- Script de buscar Productos -->    
-<script >
-$(obtener_registros());
+	<!-- CSS -->
+	<!-- <link rel="stylesheet" href="../dir/css/bootstrap.min.css"> -->
+	<link rel="stylesheet" href="/sistema/css/estiloHome.css">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" >
+	
+	<!-- Logo Icono -->
+<link href="img/Icono.png" rel="icon" type="image/png">
+ <title>Inicio</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 
-function obtener_registros(productoscmg)
-{
-   $.ajax({
-       url : 'consultaProductos.php',
-       type : 'POST',
-       dataType : 'html',
-       data : { productoscmg: productoscmg },
-	   "language": {
-"url": "/Scripts/datatables/spanish.json"
+</head>
 
-},      })
-	       
+<body>
 
-   .done(function(resultado){
-       $("#tabla_resultado").html(resultado);
-   })
-}
-
-$(document).on('keyup', '#busqueda', function()
-{
-   var valorBusqueda=$(this).val();
-   if (valorBusqueda!="")
-   {
-       obtener_registros(valorBusqueda);
-   }
-   else
-       {
-           obtener_registros();
-       }
-});
-
-		</script>
-<!-- Fin Script de buscar Productos -->  
-
-<!-- Script de buscar Body -->    
-<script >
-
-
-$(document).on('keyup', '#ModalBuscarBody', function()
-{
-   var valorBusquedaBody=$(this).val();
-   if (valorBusquedaBody!="")
-   {
-       obtener_registrosBody(valorBusquedaBody);
-   }
-   else
-       {
-           obtener_registrosBody();
-       }
-});
-
-		</script>
-<!-- Fin Script de buscar Body --> 
-
-	</head>
-	<body>
-
-		
-<dialog id="favDialog">
-<section>
-<input type="text" class="ClassBusqueda" name="namebusqueda" id="busqueda" placeholder="Buscar..."/>
-<button id="cancel" type="reset">Cancel</button>
-<button type="button" id="cerrar" >cerrar</button>
-</section>
-<div id="favDialog">
-<section id="tabla_resultado">
-<!-- AQUI SE DESPLEGARA NUESTRA TABLA DE CONSULTA -->
-</section>
-</div>
-</div>
-</dialog>
-
-<dialog id="DialogCamara" >
-
-<script src="https://cdn.jsdelivr.net/npm/dynamsoft-javascript-barcode@9.6.20/dist/dbr.js"></script>
-    <script src="overlay.js"></script>
-
-<div>
-<button type="button" class="btn btn-danger" id="cerrarCamara" >cerrar</button>
-Resultado del código de barras: <h1 id='result'>N/A</h1>
-    </div>
-    <div id="barcodeScanner">
-        <span id='loading-status' style='font-size:x-large'>Loading Library...</span>
-    </div>
-
-    <div class="select">
-        <label for="videoSource">Fuente de vídeo: </label>
-        <select id="videoSource"></select>
-    </div>
-
-    <div id="videoview">
-        <div class="dce-video-container" id="videoContainer"></div>
-        <canvas id="overlay"></canvas>
-    </div>
-</dialog>
-
-<div class="container-fluid">
-<form id="app-form" name="formInventario" >
-<input type="hidden" id="idInventario">
-    <button type="button" class="btn btn-info"  name="updateDetails" id="updateDetails" ><span class="glyphicon glyphicon glyphicon-search"></span> - Buscar</button>
-    <button type="button" class="btn btn-info" name="MostrarCamara" id="MostrarCamara" ><span class="glyphicon glyphicon glyphicon-barcode"></span> - Scanner</button>
-    <input type="number" id="ModalBuscarBody"  placeholder="Valor Seleccionado" require>
-    <input type="number" id="txtCantidad" min="1" name="txtCantidad" placeholder="Cantidad" require>
-    <input type="text" id="txtObsInv" min="1" name="txtObsInv" size="50" placeholder="Observacion">
-   <p>
-      <button type="submits" class="btn btn-success" name="btnEnviar" id="btnEnviar" ><span class="glyphicon glyphicon glyphicon-floppy-open"></span> - Guardar</button>
-      </p>
-
-
-      </form>
-     
-      <div class="">
-
-      <table class="table table-bordered table-sm">
-            <thead>
-                <tr>
-                    <td>id</td>
-                    <td>CodCmg</td>
-                    <td>Prod</td>
-                    <td>Cantidad</td>
-                    <td>ObsInv</td>
-        
-                     <td></td>
-                     
-                </tr>
-            </thead>
-            <tbody id="tb_inventario">
-
-            </tbody>
-        </table>
-    </div>
-
-      <?php
-//include ("ListarInventarioFondend.php");
-
+<?php	
+//include ("header.php");
+/*session_start();
+	$u = $_POST['txtUsuario'];*/
 ?>
+
+<!--<div class="row g-1">
+<div id="Lateral" class="col-2 col-md-2 IdBarraLateral">
+
+
+</div>-->
+
+
+<!-- Section: Design Block -->
+<section class="vh-100" style="background-image: url(../sistema/img/FonfoComofra.PNG);
+background-repeat: no-repeat;
+background-position: center;
+background-size: cover;
+">
+  <div class="container py-5 h-100">
+ 
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+	 
+        <div class="card shadow-2-strong" style="border-radius: 1rem;">
+		
+          <div class="card-body p-5 text-center">
+		  <form method="post" action="../sistema/validar.php" name="form1">
+			<style>
+				.CssImage{
+    position: relative;
+	
+    width: 50px;
+    height: 50px;
+	
+   border-radius: 50% 50%;
+}
+			</style>
+		  <img class="CssImage" href="index.html" src="../sistema/img/IconoMovimiento.gif" width="100%" height="100%" alt="Imagen logo"/>
+            <h3 class="mb-5">Iniciar sesion</h3>
+
+            <div class="form-outline mb-4">
+              <input type="text" name="txtUsuario" id="txtUsuario" placeholder="Usuario" class="form-control form-control-lg" />
+              <label class="form-label" for="typeEmailX-2">User</label>
+            </div>
+
+            <div class="form-outline mb-4">
+              <input type="password" name="txtClave"  id="txtClave" placeholder="password" class="form-control form-control-lg" />
+              <label class="form-label" for="typePasswordX-2">Password</label>
+            </div>
+
+           
+
+            <button class="btn btn-primary btn-lg btn-block" type="submit">Login</button>
+
+            <hr class="my-4">
+			</form>
+          
+
+          </div>
+        </div>
       </div>
-    <!--  <section id="tabla_resultadoBody">
-		 Tabla de Body 
-		</section>-->
-
     </div>
-<!-- Inicio Modal -->   
 
-<script>
-$(function(){
-    $('body').on('click','#TbProductos input[type=checkbox]', function(event){
-       var idRegistro = $(this).attr('data-idRegristro');
-       //alert(idRegistro);
-       document.getElementById("ModalBuscarBody").value=idRegistro;
-    });
-  var updateButton = document.getElementById('updateDetails');
-  var varMostrarCamara = document.getElementById('MostrarCamara');
-  var cancelButton = document.getElementById('cancel');
-  var cerrarButton = document.getElementById('cerrar');
-  var cerrarBtnCamara = document.getElementById('cerrarCamara');
-  var favDialog = document.getElementById('favDialog');
-
-  // El botón Actualizar abre un cuadro de diálogo modal
-  updateButton.addEventListener('click', function() {
-    favDialog.showModal();
-    
-  });
-
-  varMostrarCamara.addEventListener('click', function() {
-    DialogCamara.showModal();
-    var btnPresionado = true;
-  
+  </div>
+</section>
+<!-- Section: Design Block -->
+	<div class="container">
+	
+<!--   <div class="claseIndex" style=" align-items: center; ">
+	  <form method="post" action="../validar.php" name="form1">
+       
+              <div class="row">
+                <div class="col-sm-6">
+			         <input class="" type="text" name="txtUsuario" id="txtUsuario" placeholder="Usuario" >
+                  <input class="" type="password" name="txtClave"  id="txtClave" placeholder="password" >
+					<button class="btn btn-primary" type="submit" name="">Ingresar</button>
+                </div>
+              </div>
+              
+              
  
+				
+    </form>
+	<img class="align-content-center" src="https://planidear.com.ar/RRHH/img/FondoPanel1.jpeg" width="100%" height="100%" alt="" id="IdImagenEntrada" />    
+   </div>
+</div>
+	
+	</div>-->
 
-  });
-  // El botón de cancelar formulario cierra el cuadro de diálogo
-  cancelButton.addEventListener('click', function() {
-   //document.Reset();
-    document.getElementById("busqueda").value="";
-     //favDialog.close();
-  });
-          // El botón de cancelar formulario cierra el cuadro de diálogo
-          cerrarButton.addEventListener('click', function() {
-			favDialog.close();
-    
-  });
- 
- // El botón de cancelar formulario cierra el cuadro de diálogo
-  cerrarBtnCamara.addEventListener('click', function() {
-DialogCamara.close();
-
-   
-  });
-  
-});
+<!-- Code injected by live-server -->
+<script type="text/javascript">
+	// <![CDATA[  <-- For SVG support
+	if ('WebSocket' in window) {
+		(function () {
+			function refreshCSS() {
+				var sheets = [].slice.call(document.getElementsByTagName("link"));
+				var head = document.getElementsByTagName("head")[0];
+				for (var i = 0; i < sheets.length; ++i) {
+					var elem = sheets[i];
+					var parent = elem.parentElement || head;
+					parent.removeChild(elem);
+					var rel = elem.rel;
+					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+					}
+					parent.appendChild(elem);
+				}
+			}
+			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+			var address = protocol + window.location.host + window.location.pathname + '/ws';
+			var socket = new WebSocket(address);
+			socket.onmessage = function (msg) {
+				if (msg.data == 'reload') window.location.reload();
+				else if (msg.data == 'refreshcss') refreshCSS();
+			};
+			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+				console.log('Live reload enabled.');
+				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+			}
+		})();
+	}
+	else {
+		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+	}
+	// ]]>
 </script>
-
-<!-- Fin Modal --> 
-
-<script>
-        // Make sure to set the key before you call any other APIs under Dynamsoft.DBR
-        //You can register for a free 30-day trial here: https://www.dynamsoft.com/customer/license/trialLicense?product=dbr&deploymenttype=browser.
-        // Dynamsoft.DBR.BarcodeReader.license = "DLS2eyJoYW5kc2hha2VDb2RlIjoiMjAwMDAxLTE2NDk4Mjk3OTI2MzUiLCJvcmdhbml6YXRpb25JRCI6IjIwMDAwMSIsInNlc3Npb25QYXNzd29yZCI6IndTcGR6Vm05WDJrcEQ5YUoifQ==";
-
-        Dynamsoft.DBR.BarcodeReader.license = "DLS2eyJoYW5kc2hha2VDb2RlIjoiMTAyMTMyNDA1LVRYbFhaV0pRY205cVgyUmljZyIsIm1haW5TZXJ2ZXJVUkwiOiJodHRwczovL21kbHMuZHluYW1zb2Z0b25saW5lLmNvbSIsIm9yZ2FuaXphdGlvbklEIjoiMTAyMTMyNDA1Iiwic3RhbmRieVNlcnZlclVSTCI6Imh0dHBzOi8vc2Rscy5keW5hbXNvZnRvbmxpbmUuY29tIiwiY2hlY2tDb2RlIjotMTMxNjMxMzI3fQ==";
-
-
-        window.onload = async function () {
-            try {
-                await Dynamsoft.DBR.BarcodeScanner.loadWasm();
-                await initBarcodeScanner();
-            } catch (ex) {
-                alert(ex.message);
-                throw ex;
-            }
-        };
-        let scanner = null;
-        async function initBarcodeScanner() {
-            scanner = await Dynamsoft.DBR.BarcodeScanner.createInstance();
-            scanner.onFrameRead = results => {
-                //console.log(results);
-                for (let result of results) {
-                    document.getElementById('result').innerHTML = result.barcodeFormatString + ", " + result.barcodeText;
-
-
-var valorBody = document.getElementById('result').innerHTML = result.barcodeText;
-document.getElementById('ModalBuscarBody').value=valorBody;    
-if(valorBody=true){
-sonido.play();
-DialogCamara.close();
-//videoContainer.close();
-
-} 
-
-                    
-                }
-            };
-            scanner.onUnduplicatedRead = (txt, result) => { };
-if (DialogCamara) {
-    document.getElementById('barcodeScanner').appendChild(scanner.getUIElement()).hidden= false; 
-}else {document.getElementById('barcodeScanner').appendChild(scanner.getUIElement()).hidden= true;}
-            
-            document.getElementById('loading-status').hidden = true;
-            document.getElementsByClassName('dce-sel-camera')[0].hidden = true;
-            document.getElementsByClassName('dce-sel-resolution')[0].hidden = true;
-            document.getElementsByClassName('dce-btn-close')[0].hidden = true;
-            await scanner.show();
-        }
-
-
-
-var sonido = new Audio();
-sonido.src="sound_short.mp3";
-
-        
-    </script>
- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
-
-    <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
-
-    <script src="app.js">
-<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-<script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+	
 
 	</body>
 </html>

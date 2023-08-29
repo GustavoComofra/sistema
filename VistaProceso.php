@@ -15,7 +15,7 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" >
 	
 	<!-- Logo Icono -->
-<link href="http://interno.comofrasrl.com.ar/sistema/img/Icono.png" rel="icon" type="image/png">
+<link href="../sistema/img/Icono.png" rel="icon" type="image/png">
  <title>Vista Proceso</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -241,7 +241,7 @@ echo '<img class="imgPrincipal"  src="'.$rowprocesoproceso['imgprod'].'"/>';
    </tbody>
 </table> 
 </tr> </table>
-s
+
 </div>
 
 </div>	
@@ -265,7 +265,8 @@ echo "<a href=\"/sistema/ListProceso.php\"><img src=\"../sistema/img/BtnVolver.p
 }
 
 ?>
-
+<!-- https://programacion.net/articulo/como_embeber_un_documento_pdf_en_una_pagina_web_1931 -->
+<embed src="https://drive.google.com/file/d/19QkJLvMyDl_VoVwIoQ8gi5DqKsj_ABnm/view" type="application/pdf" width="100%" height="1000px" />
 
 </body>
 </html>

@@ -15,7 +15,7 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" >
 	
 	<!-- Logo Icono -->
-<link href="http://interno.comofrasrl.com.ar/sistema/img/Icono.png" rel="icon" type="image/png">
+<link href="../sistema/img/Icono.png" rel="icon" type="image/png">
  <title>Vista Personal</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -101,7 +101,7 @@ $row = mysqli_fetch_assoc($queryvarIdPersoanl);
 <thead>
 <tr align="center">
      
-		<td colspan="2" rowspan="2"> <img src="http://interno.comofrasrl.com.ar/sistema/img/Icono.png" alt="Logo" width="80" height="80"></td>
+		<td colspan="2" rowspan="2"> <img src="../sistema/img/Icono.png" alt="Logo" width="80" height="80"></td>
 <td colspan="2" rowspan="2">   <div align="center"><h1>Informe Personal</h1>
 
   <h4><?php echo $row['Nombres']." "; 

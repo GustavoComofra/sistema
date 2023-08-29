@@ -1,9 +1,9 @@
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" >
 <meta charset="utf-8">
-<link href="http://interno.comofrasrl.com.ar/sistema/img/Icono.png" rel="icon" type="image/png">
+<link href="../sistema/img/Icono.png" rel="icon" type="image/png">
  <title>Formulario reclamo editar</title>
-<link href="/sistema/css/estiloHome.css" rel="stylesheet" type="text/css">
+<link href="../sistema/css/estiloHome.css" rel="stylesheet" type="text/css">
 </head>
 <?php	
 include ("header.php");
@@ -50,7 +50,7 @@ $Apellidos= $_POST['txtApellidos'];
 $FechaIngreso= $_POST['txtFechaIngreso'];
 $FechaPrueba= $_POST['txtFechaPrueba'];
 $FechaSalida= $_POST['txtFechaSalida'];
-//$Imagen = 'http://interno.comofrasrl.com.ar/sistema/'.$nombre_imagen;
+//$Imagen = '../sistema/'.$nombre_imagen;
 $FechaNacimiento=$_POST['txtFechaNacimiento'];
 $Domicilio=$_POST['txtDomicilio'];
 $Localidad=$_POST['listLocalidad'];
