@@ -206,8 +206,9 @@ $TipoReclamo=$_POST['txtTipoReclamoB'];
 $Descripcion=$_POST['txtDescripcionB'];	
 
 include("Conexion/conexion.php");	
-$queryTipoReclamoB = $mysqli -> query ("SELECT * FROM `ComTipoRecla` WHERE `TipoReclamo` LIKE '%$TipoReclamo%' AND `Descripcion` LIKE '%$Descripcion%' ORDER BY `TipoReclamo` ASC");
-  
+$queryTipoReclamoB = $mysqli -> query ("SELECT * FROM `ComTipoRecla` WHERE `TipoReclamo` LIKE '%$TipoReclamo%' AND `DescripcionTP` LIKE '%$Descripcion%' ORDER BY `TipoReclamo` ASC");
+//$queryTipoReclamoB = $mysqli -> query ("SELECT * FROM `ComTipoRecla` ORDER BY `ComTipoRecla`.`TipoReclamo` ASC");
+//SELECT * FROM `ComTipoRecla` ORDER BY `ComTipoRecla`.`TipoReclamo` ASC
  while ($filaTipoReclamoB = mysqli_fetch_array($queryTipoReclamoB))
 
 {

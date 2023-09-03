@@ -107,9 +107,9 @@ $Herramienta=$_POST['txtHerramienta'];
 $nombre_img_herr=$_FILES['img_herr']['name'];
 $tipo_img_herr=$_FILES['img_herr']['type'];
 $tamagno_img_herr=$_FILES['img_herr']['size'];
-$carpetas_destino='ftp.comofrasrl.com.ar/img/' . $nombre_img_herr;
-move_uploaded_file($_FILES['img_herr']['tmp_name'],$nombre_img_herr);
-$Imagenimg_herr = 'httpS://interno.comofrasrl.com.ar/sistema/'.$nombre_img_herr;
+$carpetas_destino='ftp.comofrasrl.com.ar/img/procesos/' . $nombre_img_herr;
+move_uploaded_file($_FILES['img_herr']['tmp_name'],"img/procesos/".$nombre_img_herr);
+$Imagenimg_herr = 'https://interno.comofrasrl.com.ar/sistema/img/procesos/'.$nombre_img_herr;
 
 $Obs=$_POST['txtObs'];	
 		

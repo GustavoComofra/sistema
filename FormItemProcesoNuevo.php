@@ -157,51 +157,46 @@
                   </div>
                 </td>
                 <td><textarea name="txtItemProceso" rows="2" cols="20" id="txtItemProceso" title="ItemProceso"></textarea></td>
+        
                 <td>
-                  <div class="quantity">
+                <div class="quantity">
                     <input name="txtCantOper" id="txtCantOper" type="number" min="0" max="10" value="1">
                   </div>
                 </td>
                 <td>
-                  <div class="quantity">
+                <div class="quantity">
                     <input name="txtTiempoEstandarMi" id="txtTiempoEstandarMi" type="text" max="200" size="3" value="1">
                   </div>
                 </td>
-                <td width=""><input type="file" name="img_itemproce" id="img_itemproce">
-<select name="listtamanio" size="1" id="listtamanio">
+                <td><input type="file" name="img_itemproce" id="img_itemproce">
+              
+                <select name="listtamanio" size="1" id="listtamanio">
   <option value="" selected>Chico</option>
 <option value="Mediano">Mediano</option>
 <option value="Grande">Grande</option>
   </select> 
-</td>
               </td>
-  <td>
-                  <select name="listProductoProc"  id="listProductoProc" size="1">
-                    <option value="0" selected="selected">- - 0</option>
-                    <?php
-                    $mysqli = new mysqli($host, $usr, $clave, $db);
-                    if ($mysqli->connect_errno) {
-                      echo "Fallo al conectar a MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
-                    }
-                    $queryProductosProc = $mysqli->query("SELECT * FROM `Productos`");
-                    while ($valoresProductosProc = mysqli_fetch_array($queryProductosProc)) {
-                      echo '<option value="' . $valoresProductosProc[CodSistema] . '">' . $valoresProductosProc[CodSistema] . " - " . $valoresProductosProc[Producto] . '</option>';
-                    }
-                    ?>
-                  </select>
+              <td> 
+                 <div class="quantity">
+                    <input name="listProductoProc" id="listProductoProc" type="number" value="0">
+                  </div>  
+                  </td> 
+
+
+                   
 <!-- Inicio Trabajo -->
 
 <!-- Inicio llamado base de datos productos-->
 <script >
 $(obtener_registros());
 
-function obtener_registros(Productos)
+function obtener_registros(productoscmg)
 {
    $.ajax({
        url : 'consultaProductos.php',
        type : 'POST',
        dataType : 'html',
-       data : { Productos: Productos },
+       data : { productoscmg: productoscmg},
      })
 	    //muestra los resultados en la tabla   
    .done(function(resultado){
@@ -351,19 +346,9 @@ $(function(){
               </td>
 
                 <td>
-                  <select name="listProductoProc1" size="1" id="listProductoProc1">
-                    <option value="0" selected="selected">- - 0</option>
-                    <?php
-                    $mysqli = new mysqli($host, $usr, $clave, $db);
-                    if ($mysqli->connect_errno) {
-                      echo "Fallo al conectar a MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
-                    }
-                    $queryProductosProc = $mysqli->query("SELECT * FROM `Productos`");
-                    while ($valoresProductosProc = mysqli_fetch_array($queryProductosProc)) {
-                      echo '<option value="' . $valoresProductosProc[CodSistema] . '">' . $valoresProductosProc[CodSistema] . " - " . $valoresProductosProc[Producto] . '</option>';
-                    }
-                    ?>
-                  </select>
+                <div class="quantity">
+                    <input name="listProductoProc1" id="listProductoProc1" type="number" value="0">
+                  </div>
                           
                 </td>
 
@@ -415,19 +400,9 @@ $(function(){
               </td>
   </td>
                 <td>
-                  <select name="listProductoProc2"  id="listProductoProc2" size="1">
-                    <option value="0" selected="selected">- - 0</option>
-                    <?php
-                    $mysqli = new mysqli($host, $usr, $clave, $db);
-                    if ($mysqli->connect_errno) {
-                      echo "Fallo al conectar a MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
-                    }
-                    $queryProductosProc = $mysqli->query("SELECT * FROM `Productos`");
-                    while ($valoresProductosProc = mysqli_fetch_array($queryProductosProc)) {
-                      echo '<option value="' . $valoresProductosProc[CodSistema] . '">' . $valoresProductosProc[CodSistema] . " - " . $valoresProductosProc[Producto] . '</option>';
-                    }
-                    ?>
-                  </select>
+                <div class="quantity">
+                    <input name="listProductoProc2" id="listProductoProc2" type="number" value="0">
+                  </div>
                 </td>
 
                 <td>
@@ -477,19 +452,9 @@ $(function(){
 
               </td>
                 <td>
-                  <select name="listProductoProc3"  id="listProductoProc3" size="1">
-                    <option value="0" selected="selected">- - 0</option>
-                    <?php
-                    $mysqli = new mysqli($host, $usr, $clave, $db);
-                    if ($mysqli->connect_errno) {
-                      echo "Fallo al conectar a MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
-                    }
-                    $queryProductosProc = $mysqli->query("SELECT * FROM `Productos`");
-                    while ($valoresProductosProc = mysqli_fetch_array($queryProductosProc)) {
-                      echo '<option value="' . $valoresProductosProc[CodSistema] . '">' . $valoresProductosProc[CodSistema] . " - " . $valoresProductosProc[Producto] . '</option>';
-                    }
-                    ?>
-                  </select>
+                <div class="quantity">
+                    <input name="listProductoProc3" id="listProductoProc3" type="number" value="0">
+                  </div>
                 </td>
 
                 <td>

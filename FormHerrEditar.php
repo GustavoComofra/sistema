@@ -66,7 +66,7 @@ include ("MarcoIzquierdo.php");
 	<?php
 
 $id_herr=$_GET['id_herr'];
-echo $id_herr;	
+
 include("Conexion/conexion.php");	
 		
 $queryHerr = $mysqli -> query ("SELECT * FROM `Herramienta` WHERE `id_herr` = ".$id_herr.";");
@@ -101,8 +101,11 @@ $rowHerr = mysqli_fetch_assoc($queryHerr);
   <input type="submit" class="btn btn-success" name="btnEnviar" id="btnEnviar" value="Cargar" />
 </label>	
 <label>
-      <a href="<?php print "FormItemImgProcesoEditar.php?id_itemproceso=".$rowHerr['id_herr']; ?>">
-      <img class="imgEfc" name="img_herr" id="img_herr" src="<?php print $rowHerr['img_herr']; ?>"/></a>
+      <!-- <a href="<?php //print "FormItemImgProcesoEditar.php?id_itemproceso=".$rowHerr['id_herr']; ?>">
+      <img class="imgEfc" name="img_herr" id="img_herr" src="<?php //print $rowHerr['img_herr']; ?>"/></a> -->
+
+
+      <img class="imgEfc" name="img_herr" id="img_herr" src="<?php print $rowHerr['img_herr']; ?>"/>
       </label>		
 		</td>
     </tr>

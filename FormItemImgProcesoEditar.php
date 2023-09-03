@@ -142,9 +142,9 @@ $img_itemproce=$_POST['img_itemproce'];
 $nombre_imagen=$_FILES['imagen']['name'];
 $tipo_iamgen=$_FILES['imagen']['type'];
 $tamagno_imegen=$_FILES['imagen']['size'];
-$carpetas_destino='ftp.planidear.com.ar/img/' . $nombre_imagen;
-move_uploaded_file($_FILES['imagen']['tmp_name'],$nombre_imagen);
-$Imagen = 'https://interno.comofrasrl.com.ar/sistema/'.$nombre_imagen;		
+$carpetas_destino='ftp.planidear.com.ar/img/procesos/' . $nombre_imagen;
+move_uploaded_file($_FILES['imagen']['tmp_name'],"img/procesos/".$nombre_imagen);
+$Imagen = 'https://interno.comofrasrl.com.ar/sistema/img/procesos/'.$nombre_imagen;				
 
 echo "<td>"."<a href=\"/sistema/FormProcesoEditar.php?id_proceso=".$rowitemproproceso['Fk_Proceso']."\">
 <img src=\"../sistema/img/BtnVolver.png\" alt=\"BtnEditar\" width=\"90\" height=\"40\"></a></td>\n";

@@ -156,7 +156,7 @@ echo '<img class="imgItemPrincipalProce"  src="'.$rowid_itemprocesoProce['imgpro
   </thead>
   <tbody>
 <?php 
-  $queryItemproceso = $mysqli -> query ("SELECT * FROM `VistItemProceso1` WHERE `id_itemproceso` =".$id_itemproceso." ORDER BY `VistItemProceso1`.`Op` ASC;");
+  $queryItemproceso = $mysqli -> query ("SELECT * FROM `VistItemProceso` WHERE `id_itemproceso` =".$id_itemproceso." ORDER BY `VistItemProceso`.`Op` ASC;");
     while ($filaItemproceso = mysqli_fetch_array($queryItemproceso))
   {
    echo "<TR>\n"; 

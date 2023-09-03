@@ -92,49 +92,41 @@
                 <td width="">Op</td>
                 <td width="">Proceso</td>
                 <td width="">Prod</td>
-                <td width="">Cant Op</td>
-                <td width="">Tiempo</td>
-                <td width="">Ineficiencia</td>
+
+                <!-- <td width="">Ineficiencia</td> -->
               </tr>
 
               <tr>
               <td><input name="txtid_itemproceso" type="text" id="txtid_itemproceso" title="id_itemproceso" size="5" value="<?php print $rowitemproproceso['id_itemproceso']; ?>"/></td>
                 <td><input name="txtOp" type="text" id="txtOp" title="Op" size="5" value="<?php print $rowitemproproceso['Op']; ?>"/></td>
-                <td><textarea name="txtItemProceso" rows="2" cols="20" id="txtItemProceso" title="ItemProceso"  value="<?php print $rowitemproproceso['ItemProceso']; ?>"><?php print $rowitemproproceso['ItemProceso']; ?></textarea></td>
+                <td><textarea name="txtItemProceso" rows="3" cols="50" id="txtItemProceso" title="ItemProceso"  value="<?php print $rowitemproproceso['ItemProceso']; ?>"><?php print $rowitemproproceso['ItemProceso']; ?></textarea></td>
                 <td>
-                <select name="listFk_ProdProc" size="1" id="listFk_ProdProc" size="20">
-                    <option value="<?php print $rowitemproproceso['Fk_ProdProc']; ?>"><?php print $rowitemproproceso['Fk_ProdProc']; ?></option>
-                    <?php
-                    include("Conexion/conexion.php");
 
-                    $queryProductosProc = $mysqli->query("SELECT * FROM `Productos`");
-                    while ($valoresProductosProc = mysqli_fetch_array($queryProductosProc)) {
-                      echo '<option value="' . $valoresProductosProc[CodSistema] . '">' . $valoresProductosProc[CodSistema] ." - " . $valoresProductosProc[Producto] . '</option>';
-                    }
-                    ?>
-                  </select>
+                  <input name="listFk_ProdProc" type="number" id="listFk_ProdProc"  value="<?php print $rowitemproproceso['Fk_ProdProc']; ?>"/></td>
+                  
                 </td>
-                <td><input name="txtCantOper" type="text" id="txtCantOper" title="CantOper" size="4" value="<?php print $rowitemproproceso['CantOper']; ?>"/></td>
-                 <td><input name="txtTiempoEstandarMi" type="text" id="txtTiempoEstandarMi" title="TiempoEstandarMi" size="4" value="<?php print $rowitemproproceso['TiempoEstandarMi']; ?>"/></td>
-                <td><input name="txtTiempoInefMi" type="text" id="txtTiempoInefMi" title="TiempoInefMi" size="4" value="<?php print $rowitemproproceso['TiempoInefMi']; ?>"/></td>
+               
+                <!-- <td><input name="txtTiempoInefMi" type="text" id="txtTiempoInefMi" title="TiempoInefMi" size="4" value="<?php //print $rowitemproproceso['TiempoInefMi']; ?>"/></td> -->
                 <!-- <td><input name="txtInicio" type="date-time" id="txtInicio" size="" value="<?php echo date("Y-m-d"); ?>" /></td>-->
                 
               </tr>
 
               <tr>
-          
-                <td width="">Inicio</td>
-                <td width="">Final</td>
-                <td width="">Herramienta</td>
+              <td width="">Cant Op</td>
+                <td width="">Tiempo</td>
                 <td width="">Advertencia</td>
-                <td width="">Imagen</td>
-                <td width="">Tam</td>
-                <td width="">Proce</td>
+                <td width="">Herramienta</td>
+
    
               </tr>
            <tr>
-           <td><input type="datetime-local" name="txtInicio"  id="txtInicio"  value="<?php print $rowitemproproceso['Inicio']; ?>" /></td>
-                <td><input type="datetime-local" name="txtFinal"  id="txtFinal"  value="<?php print $rowitemproproceso['Final']; ?>"  /></td>
+           <td><input name="txtCantOper" type="text" id="txtCantOper" title="CantOper" size="4" value="<?php print $rowitemproproceso['CantOper']; ?>"/></td>
+                 <td><input name="txtTiempoEstandarMi" type="text" id="txtTiempoEstandarMi" title="TiempoEstandarMi" size="4" value="<?php print $rowitemproproceso['TiempoEstandarMi']; ?>"/></td>
+           <!-- <td><input type="datetime-local" name="txtInicio"  id="txtInicio"  value="<?php //print $rowitemproproceso['Inicio']; ?>" /></td>
+                <td><input type="datetime-local" name="txtFinal"  id="txtFinal"  value="<?php //print $rowitemproproceso['Final']; ?>"  /></td> -->
+
+                <td><textarea name="txtAdvertencia" rows="3" cols="50" id="txtAdvertencia" title="Advertencia"  value="<?php print $rowitemproproceso['Advertencia']; ?>"><?php print $rowitemproproceso['Advertencia']; ?></textarea></td>
+
                 <td>
                   <select name="listFk_Herramienta" size="1" id="listFk_Herramienta">
                   <option value="<?php print $rowitemproproceso['Fk_Herramienta']; ?>"><?php print $rowitemproproceso['Fk_Herramienta']; ?></option>
@@ -147,27 +139,42 @@
                     ?>
                   </select>
                 </td>
-               <td><input name="txtAdvertencia" type="text" id="txtAdvertencia" title="Advertencia" value="<?php print $rowitemproproceso['Advertencia']; ?>"/></td>
-                <td width="">
+               
+
+               
+
+           </tr>
+
+              <tr>
+
+                <td width="">Proce</td>
+                <td width="">Tam Img</td>
+                <td width="">Imagen</td>
+              </tr>
+
+              <tr>
+              
+
+<td><input name="txtFk_Proceso" type="text" id="txtFk_Proceso" title="Fk_Proceso" size="5" value="<?php print $rowitemproproceso['Fk_Proceso']; ?>"/>
+              
+              </td>
+
+              <td>
+
+<select name="listtamanio" size="1" id="listtamanio">
+  <option value="<?php print $rowitemproproceso['tamanio']; ?>"><?php print $rowitemproproceso['tamanio']; ?></option>
+<option value="Mediano">Mediano</option>
+<option value="Grande">Grande</option>
+<option value="">Chico</option>
+  </select>     
+</td>
+
+              <td width="">
                 <a href="<?php print "FormItemImgProcesoEditar.php?id_itemproceso=".$rowitemproproceso['id_itemproceso']; ?>"><img class="imgEfc" name="img_itemproce" id="img_itemproce" src="<?php print $rowitemproproceso['img_itemproce']; ?>"/></a>
 
                 </td>
-                <td>
+              </tr>
 
-                <select name="listtamanio" size="1" id="listtamanio">
-                  <option value="<?php print $rowitemproproceso['tamanio']; ?>"><?php print $rowitemproproceso['tamanio']; ?></option>
-      <option value="Mediano">Mediano</option>
-      <option value="Grande">Grande</option>
-      <option value="">Chico</option>
-                  </select>     
-                </td>
-                <td><input name="txtFk_Proceso" type="text" id="txtFk_Proceso" title="Fk_Proceso" size="5" value="<?php print $rowitemproproceso['Fk_Proceso']; ?>"/>
-              
-   
-              
-              
-              </td>
-           </tr>
 
           </table>
           </div>

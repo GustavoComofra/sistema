@@ -95,7 +95,6 @@ $varFechaPrueba = date("Y-m-d",strtotime($fecha_actual."+ 120 days"));
       <td>Foto :</td>
       <td><p>
         <input type="file" name="imagen" id="imagen">
-        <input type="submit" name="submit" value="enviar">
         </p></td>
     </tr>
     <tr>
@@ -648,8 +647,8 @@ $query1 = $mysqli -> query ("SELECT * FROM `ComEstudios` ORDER BY `ComEstudios`.
 	?>
       </select></td>
       <td><select name="listEstado" size="1" id="listEstado" title="Estado">
-        <option value="Activo">Completo</option>
-        <option value="Finalizado">Incompleto</option>
+      <option value="Activo">Activo</option>
+        <option value="Completo">Finalizado</option>
         <option value="EnCurso">EnCurso</option>
       </select></td>
       <td><input name="txtAnios" type="number" id="txtAnios" title="Anios" size="10" /></td>

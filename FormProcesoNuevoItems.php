@@ -64,9 +64,9 @@ $FechaFinal=$_POST['txtFechaFinal'];
 $nombre_imagenProce=$_FILES['imagen']['name'];
 $tipo_iamgen=$_FILES['imagen']['type'];
 $tamagno_imegen=$_FILES['imagen']['size'];
-$carpetas_destino='ftp.comofrasrl.com.ar/img/' . $nombre_imagenProce;
-move_uploaded_file($_FILES['imagen']['tmp_name'],$nombre_imagenProce);
-$imgProce = 'https://interno.comofrasrl.com.ar/sistema/'.$nombre_imagenProce;
+$carpetas_destino='ftp.interno.comofrasrl.com.ar/sistema/img/procesos/' . $nombre_imagenProce;
+move_uploaded_file($_FILES['imagen']['tmp_name'], "img/procesos/".$nombre_imagenProce);
+$imgProce = 'https://interno.comofrasrl.com.ar/sistema/img/procesos/'.$nombre_imagenProce;
 
 $Plano= $_POST['txtPlano'];
 $Observacion= $_POST['txtObservacion'];

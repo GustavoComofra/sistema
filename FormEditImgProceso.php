@@ -134,9 +134,9 @@ $Proceso=$_POST['txtProceso'];
 $nombre_imagen=$_FILES['imagen']['name'];
 $tipo_iamgen=$_FILES['imagen']['type'];
 $tamagno_imegen=$_FILES['imagen']['size'];
-$carpetas_destino='ftp.planidear.com.ar/img/' . $nombre_imagen;
-move_uploaded_file($_FILES['imagen']['tmp_name'],$nombre_imagen);
-$Imagen = 'https://interno.comofrasrl.com.ar/sistema/'.$nombre_imagen;		
+$carpetas_destino='ftp.planidear.com.ar/img/procesos/' . $nombre_imagen;
+move_uploaded_file($_FILES['imagen']['tmp_name'],"img/procesos/".$nombre_imagen);
+$Imagen = 'https://interno.comofrasrl.com.ar/sistema/img/procesos/'.$nombre_imagen;		
 
 if(!$id_proceso==null){
 	

@@ -71,9 +71,9 @@ $tipo_iamgen=$_FILES['imagen']['type'];
 $tamagno_imegen=$_FILES['imagen']['size'];
 
 
-$carpetas_destino='ftp.comofrasrl.com.ar/img/' . $nombre_imagen;
+$carpetas_destino='ftp.comofrasrl.com.ar//img/rrhh/' . $nombre_imagen;
 
-move_uploaded_file($_FILES['imagen']['tmp_name'],$nombre_imagen);
+move_uploaded_file($_FILES['imagen']['tmp_name'],"img/rrhh/".$nombre_imagen);
 
 $Legajo=$_POST['txtLegajo'];
 $CUIT_Empl=$_POST['txtCUIT_Empl'];
@@ -81,7 +81,7 @@ $Nombres=$_POST['txtNombres'];
 $Apellidos= $_POST['txtApellidos'];
 $FechaIngreso= $_POST['txtFechaIngreso'];
 $FechaPrueba= $_POST['txtFechaPrueba'];
-$Imagen = 'https://interno.comofrasrl.com.ar/sistema/'.$nombre_imagen;
+$Imagen = 'https://interno.comofrasrl.com.ar/sistema/img/rrhh/'.$nombre_imagen;
 $FechaNacimiento=$_POST['txtFechaNacimiento'];
 $Domicilio=$_POST['txtDomicilio'];
 $Localidad=$_POST['listLocalidad'];

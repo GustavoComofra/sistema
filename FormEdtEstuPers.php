@@ -70,7 +70,7 @@ include ("MarcoIzquierdo.php");
 
 		<?php
 $IdEstudPersonal=$_GET['IdEstudPersonal'];
-echo $IdEstudPersonal;	
+//echo $IdEstudPersonal;	
 include("Conexion/conexion.php");	
 $queryEstudIdPersonal = $mysqli -> query ("SELECT * FROM `ComEstudPersonal` WHERE `IdEstudPersonal` = ".$IdEstudPersonal.";");
 	
@@ -128,11 +128,18 @@ $query1 = $mysqli -> query ("SELECT * FROM `ComEstudios` ORDER BY `ComEstudios`.
 
 
       <td>
-      <input name="txtEstado" type="text" id="txtEstado" title="Estado" size="10" value="<?php print $rowid['Estado'];?>"/>
+      <select name="txtEstado" size="1" id="txtEstado" title="Estado">
+      <option value="<?php print $rowid['Estado'];?>"><?php print $rowid['Estado'];?></option>
+        <option value="Activo">Activo</option>
+        <option value="Completo">Finalizado</option>
+        <option value="EnCurso">EnCurso</option>
+      </select>
+
+
       </td>
       
       <td>
-      <input name="txtObs" type="text" id="txtObs" title="Obs" size="10" value="<?php print $rowid['Obs'];?>"/>
+      <input name="txtObs" type="text" id="txtObs" title="Obs" size="50" value="<?php print $rowid['Obs'];?>"/>
       </td>
     </tr>
 
@@ -155,11 +162,10 @@ $Obs=$_POST['txtObs'];
 		  if(!$IdEstudPersonal==null){
 			  
 			  include("Conexion/conexion.php");	
-	
-$insertarComEstudPersonal = "INSERT INTO `ComEstudPersonal` (`IdEstudPersonal`, `Cuit_EstuPers`, `EstudioPersonal`, `Estado`, `Anios`, `Obs`) VALUES (NULL, '$CUIT_Empl', '$EstudioPersonal', '$Estado', '$Anios', '$Obs');";
+/*	
+$insertarComEstudPersonal = "INSERT INTO `ComEstudPersonal` (`IdEstudPersonal`, `Cuit_EstuPers`, `EstudioPersonal`, `Estado`, `Anios`, `Obs`) VALUES (NULL, '$CUIT_Empl', '$EstudioPersonal', '$Estado', '$Anios', '$Obs');";*/
 
-$UbdateComEstudPersonal = "UPDATE `ComEstudPersonal` SET `Cuit_EstuPers` = '$Cuit_EstuPers', `EstudioPersonal` = '$EstudioPersonal ', `Estado` = '$Estado',
- `Obs` = '$Obs' WHERE `ComEstudPersonal`.`IdEstudPersonal` = ".$IdEstudPersonal.";";
+$UbdateComEstudPersonal = "UPDATE `ComEstudPersonal` SET `Cuit_EstuPers` = '$Cuit_EstuPers', `EstudioPersonal` = '$EstudioPersonal', `Estado` = '$Estado', `Obs` = '$Obs' WHERE `ComEstudPersonal`.`IdEstudPersonal` = ".$IdEstudPersonal.";";
 
 $ejecutar_Ubdate=mysqli_query($mysqli,$UbdateComEstudPersonal);		
 			  

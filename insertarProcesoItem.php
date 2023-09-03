@@ -77,9 +77,11 @@ $Advertencia=$_POST['txtAdvertencia'];
 $nombre_imagen=$_FILES['img_itemproce']['name'];
 $tipo_iamgen=$_FILES['img_itemproce']['type'];
 $tamagno_imegen=$_FILES['img_itemproce']['size'];
-$carpetas_destino='ftp.comofrasrl.com.ar/img/' . $nombre_imagen;
-move_uploaded_file($_FILES['img_itemproce']['tmp_name'],$nombre_imagen);
-$img_itemproce = 'https://interno.comofrasrl.com.ar/sistema/'.$nombre_imagen;
+$carpetas_destino='ftp.comofrasrl.com.ar/img/procesos/' . $nombre_imagen;
+move_uploaded_file($_FILES['img_itemproce']['tmp_name'],"img/procesos/".$nombre_imagen);
+$img_itemproce = 'https://interno.comofrasrl.com.ar/sistema/img/procesos/'.$nombre_imagen;
+
+
 
 $Op1=$_POST['txtOp1'];
 $ItemProceso1=$_POST['txtItemProceso1'];
@@ -95,9 +97,9 @@ $Advertencia1=$_POST['txtAdvertencia1'];
 $nombre_imagen1=$_FILES['img_itemproce1']['name'];
 $tipo_iamgen=$_FILES['img_itemproce1']['type'];
 $tamagno_imegen=$_FILES['img_itemproce1']['size'];
-$carpetas_destino='ftp.comofrasrl.com.ar/img/' . $nombre_imagen1;
-move_uploaded_file($_FILES['img_itemproce1']['tmp_name'],$nombre_imagen1);
-$img_itemproce1 = 'https://interno.comofrasrl.com.ar/sistema/'.$nombre_imagen1;
+$carpetas_destino='ftp.comofrasrl.com.ar/img/procesos/' . $nombre_imagen1;
+move_uploaded_file($_FILES['img_itemproce1']['tmp_name'],"img/procesos/".$nombre_imagen1);
+$img_itemproce1 = 'https://interno.comofrasrl.com.ar/sistema/img/procesos/'.$nombre_imagen1;
 
 $Op2=$_POST['txtOp2'];
 $ItemProceso2=$_POST['txtItemProceso2'];
@@ -113,9 +115,9 @@ $Advertencia2=$_POST['txtAdvertencia2'];
 $nombre_imagen2=$_FILES['img_itemproce2']['name'];
 $tipo_iamgen=$_FILES['img_itemproce2']['type'];
 $tamagno_imegen=$_FILES['img_itemproce2']['size'];
-$carpetas_destino='ftp.comofrasrl.com.ar/img/' . $nombre_imagen2;
-move_uploaded_file($_FILES['img_itemproce2']['tmp_name'],$nombre_imagen2);
-$img_itemproce2 = 'https://interno.comofrasrl.com.ar/sistema/'.$nombre_imagen2;
+$carpetas_destino='ftp.comofrasrl.com.ar/img/procesos/' . $nombre_imagen2;
+move_uploaded_file($_FILES['img_itemproce2']['tmp_name'],"img/procesos/".$nombre_imagen2);
+$img_itemproce2 = 'https://interno.comofrasrl.com.ar/sistema/img/procesos/'.$nombre_imagen2;
 
 $Op3=$_POST['txtOp3'];
 $ItemProceso3=$_POST['txtItemProceso3'];
@@ -137,40 +139,36 @@ $tamanio3=$_POST['listtamanio3'];
 $nombre_imagen3=$_FILES['img_itemproce3']['name'];
 $tipo_iamgen=$_FILES['img_itemproce3']['type'];
 $tamagno_imegen=$_FILES['img_itemproce3']['size'];
-$carpetas_destino='ftp.comofrasrl.com.ar/img/' . $nombre_imagen3;
-move_uploaded_file($_FILES['img_itemproce3']['tmp_name'],$nombre_imagen3);
-$img_itemproce3 = 'https://interno.comofrasrl.com.ar/sistema/'.$nombre_imagen3;
+$carpetas_destino='ftp.comofrasrl.com.ar/img/procesos/' . $nombre_imagen3;
+move_uploaded_file($_FILES['img_itemproce3']['tmp_name'],"img/procesos/".$nombre_imagen3);
+$img_itemproce3 = 'https://interno.comofrasrl.com.ar/sistema/img/procesos/'.$nombre_imagen3;
 
 
 if (!$ItemProceso == null) {
 	include("Conexion/conexion.php");
-	$insertarItemProceso = "INSERT INTO `item_proceso` (`id_itemproceso`, `Op`, `ItemProceso`, `Fk_ProdProc`, `CantOper`, `img_itemproce`, `tamanio`, `TiempoEstandarMi`, 	`TiempoInefMi`, `Inicio`, `Final`, `Fk_Herramienta`, `Fk_Proceso`, `Advertencia`) VALUES (NULL, '$Op', '$ItemProceso', '$tamanio', '$ProductoProc', '$CantOper', 
-	'$img_itemproce', '$TiempoEstandarMi', '$TiempoInefMi', '$Inicio', '$Final', '$Fk_Herramienta', '$Fk_Proceso', '$Advertencia');";
+	/*$insertarItemProceso = "INSERT INTO `item_proceso` (`id_itemproceso`, `Op`, `ItemProceso`, `Fk_ProdProc`, `CantOper`, `img_itemproce`, `tamanio`, `TiempoEstandarMi`
+	, `TiempoInefMi`, `Inicio`, `Final`, `Fk_Herramienta`, `Fk_Proceso`, `Advertencia`) 
+	VALUES (NULL, '$Op', '$ItemProceso', '$ProductoProc', '$CantOper', '$img_itemproce', $tamanio', '$TiempoEstandarMi', '$TiempoInefMi', '$Inicio', '$Final'
+	, '$Fk_Herramienta', '$Fk_Proceso', '$Advertencia');";*/
+
+$insertarItemProceso= "INSERT INTO `item_proceso` (`id_itemproceso`, `Op`, `ItemProceso`, `Fk_ProdProc`, `CantOper`, `img_itemproce`, `tamanio`, `TiempoEstandarMi`, `TiempoInefMi`, `Inicio`, `Final`, `Fk_Herramienta`, `Fk_CodMadreProceso`, `Fk_Proceso`, `Advertencia`) VALUES (NULL, '$Op', '$ItemProceso', '0', '$CantOper', '$img_itemproce', '$tamanio', '$TiempoEstandarMi', '$TiempoInefMi', '$Inicio', '$Final', '$Fk_Herramienta', '0', '$Fk_Proceso', '$Advertencia');";
 	
 	$ejecutar_insertarItemProceso = mysqli_query($mysqli, $insertarItemProceso);
 	
 }
 if (!$ItemProceso1 == null) {
 	include("Conexion/conexion.php");
-	$insertarItemProceso1 = "INSERT INTO `item_proceso` (`id_itemproceso`, `Op`, `ItemProceso`, `Fk_ProdProc`, `CantOper`, `img_itemproce`, `tamanio`, `TiempoEstandarMi`
-	, `TiempoInefMi`, `Inicio`, `Final`, `Fk_Herramienta`, `Fk_Proceso`, `Advertencia`) 
-	VALUES (NULL, '$Op1', '$ItemProceso1', '$ProductoProc1', '$CantOper1', '$img_itemproce1', $tamanio1', '$TiempoEstandarMi1', '$TiempoInefMi1', '$Inicio1', '$Final1'
-	, '$Fk_Herramienta1', '$Fk_Proceso', '$Advertencia1');";
+	$insertarItemProceso1= "INSERT INTO `item_proceso` (`id_itemproceso`, `Op`, `ItemProceso`, `Fk_ProdProc`, `CantOper`, `img_itemproce`, `tamanio`, `TiempoEstandarMi`, `TiempoInefMi`, `Inicio`, `Final`, `Fk_Herramienta`, `Fk_CodMadreProceso`, `Fk_Proceso`, `Advertencia`) VALUES (NULL, '$Op1', '$ItemProceso1', '0', '$CantOper1', '$img_itemproce1', '$tamanio1', '$TiempoEstandarMi1', '$TiempoInefMi1', '$Inicio1', '$Final1', '$Fk_Herramienta1', '0', '$Fk_Proceso', '$Advertencia1');";
 	$ejecutar_insertarItemProceso1 = mysqli_query($mysqli, $insertarItemProceso1);
 }
 if (!$ItemProceso2 == null) {
 	include("Conexion/conexion.php");
-	$insertarItemProceso2 = "INSERT INTO `item_proceso` (`id_itemproceso`, `Op`, `ItemProceso`, `Fk_ProdProc`, `CantOper`, `img_itemproce`, `tamanio`, `TiempoEstandarMi`
-		, `TiempoInefMi`, `Inicio`, `Final`, `Fk_Herramienta`, `Fk_Proceso`, `Advertencia`) 
-		VALUES (NULL, '$Op2', '$ItemProceso2', '$ProductoProc2', '$CantOper2', '$img_itemproce2', $tamanio2', '$TiempoEstandarMi2', '$TiempoInefMi2', '$Inicio2', '$Final2'
-		, '$Fk_Herramienta2', '$Fk_Proceso', '$Advertencia2');";
+	$insertarItemProceso2= "INSERT INTO `item_proceso` (`id_itemproceso`, `Op`, `ItemProceso`, `Fk_ProdProc`, `CantOper`, `img_itemproce`, `tamanio`, `TiempoEstandarMi`, `TiempoInefMi`, `Inicio`, `Final`, `Fk_Herramienta`, `Fk_CodMadreProceso`, `Fk_Proceso`, `Advertencia`) VALUES (NULL, '$Op2', '$ItemProceso2', '0', '$CantOper2', '$img_itemproce2', '$tamanio2', '$TiempoEstandarMi2', '$TiempoInefMi2', '$Inicio2', '$Final2', '$Fk_Herramienta2', '0', '$Fk_Proceso', '$Advertencia2');";
 	$ejecutar_insertarItemProceso2 = mysqli_query($mysqli, $insertarItemProceso2);
 }
 if (!$ItemProceso3 == null) {
 	include("Conexion/conexion.php");
-	$insertarItemProceso3 = "INSERT INTO `item_proceso` (`id_itemproceso`, `Op`, `ItemProceso`, `Fk_ProdProc`, `CantOper`, `img_itemproce`, `tamanio`, `TiempoEstandarMi`, `TiempoInefMi`, `Inicio`, `Final`, `Fk_Herramienta`, `Fk_Proceso`, `Advertencia`) 
-		VALUES (NULL, '$Op3', '$ItemProceso3', '$ProductoProc3', '$CantOper3', '$img_itemproce3', $tamanio3', '$TiempoEstandarMi3', '$TiempoInefMi3', '$Inicio3', '$Final3'
-		, '$Fk_Herramienta3', '$Fk_Proceso', '$Advertencia3');";
+	$insertarItemProceso3= "INSERT INTO `item_proceso` (`id_itemproceso`, `Op`, `ItemProceso`, `Fk_ProdProc`, `CantOper`, `img_itemproce`, `tamanio`, `TiempoEstandarMi`, `TiempoInefMi`, `Inicio`, `Final`, `Fk_Herramienta`, `Fk_CodMadreProceso`, `Fk_Proceso`, `Advertencia`) VALUES (NULL, '$Op3', '$ItemProceso3', '0', '$CantOper3', '$img_itemproce3', '$tamanio3', '$TiempoEstandarMi3', '$TiempoInefMi3', '$Inicio3', '$Final3', '$Fk_Herramienta3', '0', '$Fk_Proceso', '$Advertencia3');";
 	$ejecutar_insertarItemProceso3 = mysqli_query($mysqli, $insertarItemProceso3);
 }
 

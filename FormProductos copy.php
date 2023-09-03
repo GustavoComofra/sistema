@@ -21,15 +21,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 	<?php	
-
+/*
 include ("header.php");
-
 session_start();
 	$u = $_POST['txtUsuario'];
-
+  	*/
 ?>
 <script type="text/javascript">
-
+/*
 function volver()
 {
 	window.location.href = "/sistema/index.php";
@@ -40,13 +39,13 @@ function AlertarBorra()
 	
 	alert('Esta seguro de borrar un estudio?');
 }
-	
+*/
 </script>	
 </head>
 <body>
 	
 <?php	
-
+/*
 session_start();
 	
 $varCerrarSession = $_SESSION['usuario'];
@@ -58,7 +57,7 @@ echo "<button type=\"button\" class=\"btn btn-primary\"  onClick=\"volver()\">vo
 die();
 	
 	}
-
+  */
 ?>	
 
 
@@ -67,7 +66,7 @@ die();
 
     <div class="col col-lg-2">
 	<?php	
-include ("MarcoIzquierdo.php");
+//include ("MarcoIzquierdo.php");
 
 ?>	
 	
@@ -132,12 +131,9 @@ $Plano=$_POST['txtPlano'];
 $nombre_imagen=$_FILES['imagen']['name'];
 $tipo_imagen=$_FILES['imagen']['type'];
 $tamagno_imagen=$_FILES['imagen']['size'];
-$carpetas_destino='ftp.interno.comofrasrl.com.ar/sistema/img/procesos/' . $nombre_imagen;
-move_uploaded_file($_FILES['imagen']['tmp_name'], "img/procesos/".$nombre_imagen);
-$imagen = 'https://interno.comofrasrl.com.ar/sistema/img/procesos/'.$nombre_imagen;
-
-
-
+$carpetas_destino='ftp.comofrasrl.com.ar/img/' . $nombre_imagen;
+move_uploaded_file($_FILES['imagen']['tmp_name'],$nombre_imagen);
+$imagen = 'https://interno.comofrasrl.com.ar/sistema/'.$nombre_imagen;
 
 if(!$Producto==null){
 	
@@ -145,6 +141,8 @@ echo "<p>"."cargado"."</p>";
 include("Conexion/conexion.php");		  
 $insertarProd = "INSERT INTO `productoscmg` (`id`, `CodSistema`, `Producto`, `Origen`, `UM`, `inactivo`, `Plano`, `Detalle`, `imagen`, `Neta`, `Tipo`) VALUES (NULL, '$CodSistema', '$Producto', 'Fabricado', '$UM', 'No', '$Plano', '$Detalle', '$imagen', '', NULL);";
 
+
+// $insertarProd = "INSERT INTO `productoscmg` (`id`, `Producto`, `Origen`, `CodSistema`, `Plano`, `Detalle`, `imagen`, `Tipo`, `Origen`, `Netea`, `UM`) VALUES (NULL, '$Producto', 'Fabricado', '$CodSistema', '$Plano', 'Detalle', '$imagen', '2', '', '', '$UM');";
 
 $ejecutar_insertarProd=mysqli_query($mysqli,$insertarProd);
 }		
@@ -168,9 +166,9 @@ mysqli_close($mysqli);
     </tr>
     <tr>
     <th width="">CodSistema:</th>
-      <td width=""><input name="txtCodSistemaB" type="text" id="txtCodSistemaB" size="11" value="<?= isset($_POST['txtCodSistemaB']) ? $_POST['txtCodSistemaB'] : '' ?>"/>
+      <td width=""><input name="txtCodSistemaB" type="text" id="txtCodSistemaB" size="11"/>
       <th width="">Productos:</th>
-      <td width=""><input name="txtProductoB" type="text" id="txtProductoB" size="50" value="<?= isset($_POST['txtProductoB']) ? $_POST['txtProductoB'] : '' ?>"/>
+      <td width=""><input name="txtProductoB" type="text" id="txtProductoB" size="50"/>
 
 <label>
    <input type="submit" class="btn btn-info" name="btnEnviar" id="btnEnviar" value="Buscar" />
@@ -185,7 +183,7 @@ mysqli_close($mysqli);
 echo "
 <table class=\"table table-striped\">
   <thead>
-<th colspan=\"8\" align=\"center\" bgcolor=\"#5D81F5\"><span class=\"\">Herramientas cargadas</th>
+<th colspan=\"5\" align=\"center\" bgcolor=\"#5D81F5\"><span class=\"\">Herramientas cargadas</th>
  </thead>
 </tr>
 <TR>
@@ -193,7 +191,6 @@ echo "
 <TD><B>Cod</B></TD>
 <TD><B>Producto</B></TD>
 <TD><B>imagen</B></TD>
-<TD><B>Plano</B></TD>
 <TD><B>UM</B></TD>
 <TD><B>inactivo</B></TD>
 <TD><B>Editar</B></TD>
@@ -215,14 +212,6 @@ echo "<td>".$filaProdB['id']."</td>\n";
 echo "<td>".$filaProdB['CodSistema']."</td>\n";
 echo "<td>".$filaProdB['Producto']."</td>\n";
 echo "<td>".'<img  src="'.$filaProdB['imagen'].'" style="border-radius: 50% 50%" width="50" heigth="50"/>'."</td>\n";
-if ($filaProdB['Plano']) {
-  echo "<td>"."<a href=".$filaProdB['Plano']." target=\"_blank\"><img src=\"../sistema/img/iconoPdf.png\" alt=\"BtniconoPdf\" width=\"20\" height=\"20\"></a></td>\n";
-}else {
-  echo "<td>"."-"."</td>\n";
-}
-
-
-//"<a href=".$rowProcePlano['Plano']." >".$rowProcePlano['Plano']."</a>";
 echo "<td>".$filaProdB['UM']."</td>\n";
 echo "<td>".$filaProdB['inactivo']."</td>\n";
 echo "<td>"."<a href=\"/sistema/FormProdEditar.php?id=".$filaProdB['id']."\"><img src=\"../sistema/img/EditIcono.png\" alt=\"BtnIconoEditar\" width=\"20\" height=\"20\"></a></td>\n";

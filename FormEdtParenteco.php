@@ -25,19 +25,7 @@ include ("header.php");
 session_start();
 	$u = $_POST['txtUsuario'];
 ?>
-<script type="text/javascript">
 
-function volver()
-{
-	window.location.href = "/sistema/index.php";
-}
-
-function volverPare()
-{
-	window.location.href = "/sistema/ListParentesco.php";
-}
-
-</script>
 </head>
 <body>
 	
@@ -114,6 +102,7 @@ $rowConvive = mysqli_fetch_assoc($queryConvive);
       <td width="209">Nombre Apellido</td>
       <td width="209">Fecha Nac</td>
       <td width="209">DNI</td>
+      <td width="209">CUIL Empl</td>
       <td width="209">Parentesco</td>
     </tr>
     <tr>
@@ -121,12 +110,12 @@ $rowConvive = mysqli_fetch_assoc($queryConvive);
      <td><input name="txtNombreApellido" type="text" id="txtNombreApellido" title="NombreApellido" size="50" value="<?php print $rowConvive['NombreApellido'];?>"/></td>
      <td><input name="txtFechaNac" type="date" id="txtFechaNac" title="FechaNac" size="30" value="<?php print $rowConvive['FechaNac'];?>"/></td>
      <td><input name="txtDNI" type="number" id="txtDNI" title="DNI" size="30" value="<?php print $rowConvive['DNI'];?>"/></td>
-
+     <td><input name="txtCUIT_Empl" type="number" id="txtCUIT_Empl" title="CUIT_Empl" size="30" value="<?php print $rowConvive['Cuil_Pers'];?>"/></td>
    <td><select name="listParentesco" size="1" id="listParentesco">
    <option value="<?php print $rowConvive['FkParentesco'];?>"><?php print $rowConvive['FkParentesco'];?></option>
        <?php
 include("Conexion/conexion.php");
- 
+ //txtCUIT_Empl
 $query1 = $mysqli -> query ("SELECT * FROM `Parentesco` ORDER BY `Parentesco`.`Parentesco` ASC");
 
 
@@ -135,7 +124,7 @@ while ($valores = mysqli_fetch_array($query1))
      
      {
 
-echo '<option value="'.$valores[idParentesco].'">'.$valores[Parentesco].'</option>';
+echo '<option value="'.$valores[idParentesco].'">'.$valores[idParentesco].'. - .'.$valores[Parentesco].'</option>';
 }
  ?>
      </select></td>
@@ -161,10 +150,9 @@ $Cuil_Pers=$_POST['txtCUIT_Empl'];
 			  include("Conexion/conexion.php");	
 	
 
-$insertarConvive = "UPDATE `Convive` SET `NombreApellido` = '$NombreApellido', `FechaNac` = '$FechaNac', 
-`DNI` = '$DNI', `FkParentesco` = '$Parentesco' WHERE `Convive`.`idConvive` = ".$idConvive.";";
+$insertarConvive = "UPDATE `Convive` SET `NombreApellido` = '$NombreApellido', `FechaNac` = '$FechaNac', `DNI` = '$DNI', `FkParentesco` = '$Parentesco', `Cuil_Pers` = '$Cuil_Pers' WHERE `Convive`.`idConvive` = ".$idConvive.";";
 
-return "volverPare()";
+//return "volverPare()";
 
 $ejecutar_UPDATE=mysqli_query($mysqli,$insertarConvive);		
 
@@ -180,7 +168,19 @@ mysqli_close($mysqli);
     </div>
 	</div>
 </div>	
+<script type="text/javascript">
 
+function volver()
+{
+	window.location.href = "/sistema/index.php";
+}
+
+function volverPare()
+{
+	window.location.href = "/sistema/ListParentesco.php";
+}
+
+</script>
 	
 </body>
 </html>

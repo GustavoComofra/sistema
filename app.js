@@ -96,6 +96,3 @@ if (confirm('Estas seguro de eliminar el registro?')) {
     }
 
 });
-
-
-//https://youtu.be/GeCNShiLdpc?t=7488

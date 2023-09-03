@@ -16,7 +16,7 @@
 	
 	<!-- Logo Icono -->
 <link href="../sistema/img/Icono.png" rel="icon" type="image/png">
- <title>Vista Proceso</title>
+ <title>Vista Proceso <?php echo $id_proceso=$_GET['id_proceso'];  ?></title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 	<?php	
@@ -114,7 +114,6 @@ include ("MarcoIzquierdo.php");
  <?php
 include("Conexion/conexion.php");
 
-echo $id_proceso ;
 $id_proceso=$_GET['id_proceso'];
 $varid_proceso = $id_proceso=$_GET['id_proceso'];
 $queryvarid_proceso = $mysqli -> query ("SELECT * FROM `VisProceso` WHERE `id_proceso` = ".$id_proceso.";");
@@ -123,6 +122,8 @@ $rowprocesoproceso = mysqli_fetch_assoc($queryvarid_proceso);
 $id_procesouser=$_GET['id_proceso'];
 $queryvarid_procesUser = $mysqli -> query ("SELECT * FROM `Proceso` WHERE `id_proceso` = ".$id_proceso.";");
 $rowprocesoprocesoUser = mysqli_fetch_assoc($queryvarid_procesUser);
+
+
 
 ?>
     </div>
@@ -182,7 +183,7 @@ echo '<img class="imgPrincipal"  src="'.$rowprocesoproceso['imgprod'].'"/>';
       <th scope="col"><p>Cant</p>
       <p>op</p></th>
       <th scope="col">img</th>
-      <th scope="col"><p>Tiempo</p><p>Estandar</p></th>
+      <th scope="col">Min</th>
       <th scope="col">Total</th>
       <th scope="col">Prod</th>
       <th scope="col">Herr</th>
@@ -192,7 +193,7 @@ echo '<img class="imgPrincipal"  src="'.$rowprocesoproceso['imgprod'].'"/>';
   <tbody>
 
 <?php 
-  $queryItemproceso = $mysqli -> query ("SELECT * FROM `VistItemProceso2` WHERE `Fk_Proceso` =".$id_proceso." ORDER BY `VistItemProceso2`.`Op` ASC;");
+  $queryItemproceso = $mysqli -> query ("SELECT * FROM `VistItemProceso` WHERE `Fk_Proceso` =".$id_proceso." ORDER BY `VistItemProceso`.`Op` ASC;");
     while ($filaItemproceso = mysqli_fetch_array($queryItemproceso))
   {
    echo "<TR>\n"; 
@@ -265,8 +266,21 @@ echo "<a href=\"/sistema/ListProceso.php\"><img src=\"../sistema/img/BtnVolver.p
 }
 
 ?>
-<!-- https://programacion.net/articulo/como_embeber_un_documento_pdf_en_una_pagina_web_1931 -->
-<embed src="https://drive.google.com/file/d/19QkJLvMyDl_VoVwIoQ8gi5DqKsj_ABnm/view" type="application/pdf" width="100%" height="1000px" />
+
+<?php 
+
+$varPlano = $rowprocesoproceso['ProductoProceso']; 
+$queryvarProcePlano = $mysqli -> query ("SELECT * FROM `productoscmg` WHERE `CodSistema` = '.$varPlano.';");
+$rowProcePlano = mysqli_fetch_assoc($queryvarProcePlano);
+
+
+?>
+
+<div class="container">
+<iframe src="<?php echo $rowProcePlano['Plano']; ?>/preview" width="100%" height="1000px" ></iframe>s
+</div>
+
+
 
 </body>
 </html>

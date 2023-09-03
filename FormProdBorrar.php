@@ -127,12 +127,12 @@ $rowProd = mysqli_fetch_assoc($queryProd);
 	
 		</td>
     <th width="">Plano:</th>
-      <td width=""><input name="txtPlano" type="text" id="txtPlano" size="100" value="<?php print $rowProd['Plano'];?>"/>
+      <td width=""><input name="txtPlano" type="text" id="txtPlano" size="50" value="<?php print $rowProd['Plano'];?>"/>
     </tr>
 <tr>
   <td>
 <label>
-  <input type="submit" class="btn btn-success" name="btnEnviar" id="btnEnviar" value="Editar" />
+  <input type="submit" class="btn btn-danger" name="btnEnviar" id="btnEnviar" value="Borrar" />
 </label>
 </td>
 </tr>
@@ -143,21 +143,13 @@ $rowProd = mysqli_fetch_assoc($queryProd);
 
 <?php
 $id=$_POST['txtid_Prod'];	
-$CodSistema=$_POST['txtCodSistema'];	
-$Producto=$_POST['txtProducto'];	
-$UM=$_POST['listUM'];	
-$Detalle=$_POST['txtDetalle'];
-$Plano=$_POST['txtPlano'];
-$Inactivo=$_POST['listInactivo'];	
 
-
-	
 		
 if(!$Producto==null){
   include("Conexion/conexion.php");		 
   
   //DELETE FROM productoscmg WHERE `productoscmg`.`id` =
-  $EditarProd = "UPDATE `productoscmg` SET `CodSistema` = '$CodSistema', `Producto` = '$Producto', `UM` = '$UM', `inactivo` = '$Inactivo', `Plano` = '$Plano', `Detalle` = '$Detalle' WHERE `productoscmg`.`id` = '$id';";
+  $EditarProd = "DELETE FROM productoscmg WHERE `productoscmg`.`id` = '$id';";
   
   $ejecutar_Editar=mysqli_query($mysqli,$EditarProd);
 

@@ -102,16 +102,17 @@
                   <label for="listProducto">
                     <p>Producto</p>
                   </label>
-                  <select name="listProducto" size="1" id="listProducto">
+                  <input name="listProducto" type="number" id="listProducto"  />
+                  <!-- <select name="listProducto" size="1" id="listProducto">
                     <option value="0">Seleccione:</option>
                     <?php
-                    include("Conexion/conexion.php");
+                   /* include("Conexion/conexion.php");
                     $queryProductos = $mysqli->query("SELECT * FROM `Productos`");
                     while ($valoresProductos = mysqli_fetch_array($queryProductos)) {
                       echo '<option value="' . $valoresProductos[CodSistema] . '">' . $valoresProductos[CodSistema] . "-" . $valoresProductos[Producto] . '</option>';
-                    }
+                    }*/
                     ?>
-                  </select>
+                  </select> -->
 
 <!-- Inicio Trabajo -->
 
@@ -119,13 +120,13 @@
 <script >
 $(obtener_registros());
 
-function obtener_registros(Productos)
+function obtener_registros(productoscmg)
 {
    $.ajax({
        url : 'consultaProductos.php',
        type : 'POST',
        dataType : 'html',
-       data : { Productos: Productos },
+       data : { productoscmg: productoscmg },
      })
 	    //muestra los resultados en la tabla   
    .done(function(resultado){

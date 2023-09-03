@@ -17,9 +17,7 @@ $query="SELECT * FROM `productoscmg` ORDER BY `productoscmg`.`CodSistema` ASC LI
 if(isset($_POST['productoscmg']))
 {
 	$q=$mysqli->real_escape_string($_POST['productoscmg']);
-	$query="SELECT * FROM productoscmg WHERE 
-		CodSistema LIKE '%".$q."%' OR
-		Producto LIKE '%".$q."%'";
+	$query="SELECT * FROM productoscmg WHERE CodSistema LIKE '%".$q."%' OR Producto LIKE '%".$q."%'";
 }
 	/*<tr class="bg-primary">*/
 	

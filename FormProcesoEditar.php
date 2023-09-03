@@ -235,7 +235,7 @@ echo "<td>"."<a href=\"/sistema/FormEditImgProceso.php?id_proceso=".$rowproceso[
   <tbody>
 <?php 
 
-  $queryItemproceso = $mysqli -> query ("SELECT * FROM `VistItemProceso2` WHERE `Fk_Proceso` =".$id_proceso." ORDER BY `VistItemProceso2`.`Op` ASC;");
+  $queryItemproceso = $mysqli -> query ("SELECT * FROM `VistItemProceso` WHERE `Fk_Proceso` =".$id_proceso." ORDER BY `VistItemProceso`.`Op` ASC;");
   
   while ($filaItemproceso = mysqli_fetch_array($queryItemproceso))
  
