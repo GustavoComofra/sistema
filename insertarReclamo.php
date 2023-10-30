@@ -1,6 +1,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="es">
 <head>
+<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
 <!-- Script JS -->
 	<!-- <script src="../dir/js/bootstrap.min.js" ></script> -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -24,7 +25,7 @@ body {
 </style>
 <title>Inicio</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
 	
 <script type="text/javascript">
 
@@ -182,7 +183,7 @@ VALUES (NULL, '$varNumRecl', '$Reclamo', '$NumTipoReclamo', '$Fecha', '$FechaFin
 $ejecutar_insertar=mysqli_query($mysqli,$insertarComReclamo);
 
 $titulo="Reclamo Num ".$varNumRecl;
-$mensaje="Reclamo: ".$_POST['txtReclamo']." Chasis: ".$_POST['txtChasis']." Fecha: ".$_POST['txtFecha']."Para revisarlo: http://interno.comofrasrl.com.ar/sistema/";
+$mensaje="Reclamo: ".$_POST['txtReclamo']." Chasis: ".$_POST['txtChasis']." Fecha: ".$_POST['txtFecha']."Para revisarlo: https://interno.comofrasrl.com.ar/sistema/";
 $para="gustavog@live.com.ar,sgc@comofrasrl.com.ar,calidad2@comofrasrl.com.ar,producto@comofrasrl.com.ar,repuestos@comofrasrl.com.ar,gerenciageneral@comofrasrl.com.ar
 ,gerenciaproduccion@comofrasrl.com.ar,producto1@comofrasrl.com.ar,procesos@comofrasrl.com.ar,industrial@comofrasrl.com.ar";
 //$para="gustavog@live.com.ar";

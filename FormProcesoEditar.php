@@ -51,8 +51,8 @@
 .imgEfc:hover {
 
 	
-width: 100%;
-height: 100%;
+/*width: 100%;
+height: 100%;*/
 
 
 }
@@ -139,20 +139,134 @@ $rowprocesoproceso2 = mysqli_fetch_assoc($queryvarid_proces2);
               </tr>
 
               <tr>
-                <td>
+              <td>
                   <label for="listProducto">
                     <p>Producto</p>
                   </label>
-                  <select name="listProducto" size="1" id="listProducto">
-                    <option value="<?php print $rowproceso['ProductoProceso']; ?>"><?php print $rowproceso['Producto']; ?></option>
+                  <input name="listProducto" type="number" id="listProducto" value="<?php print $rowproceso['ProductoProceso']; ?>" />
+                  <!-- <select name="listProducto" size="1" id="listProducto">
+                    <option value="0">Seleccione:</option>
                     <?php
-                    include("Conexion/conexion.php");
+                   /* include("Conexion/conexion.php");
                     $queryProductos = $mysqli->query("SELECT * FROM `Productos`");
                     while ($valoresProductos = mysqli_fetch_array($queryProductos)) {
                       echo '<option value="' . $valoresProductos[CodSistema] . '">' . $valoresProductos[CodSistema] . "-" . $valoresProductos[Producto] . '</option>';
-                    }
+                    }*/
                     ?>
-                  </select>
+                  </select> -->
+
+<!-- Inicio Trabajo -->
+
+<!-- Inicio llamado base de datos productos-->
+<script >
+$(obtener_registros());
+
+function obtener_registros(productoscmg)
+{
+   $.ajax({
+       url : 'consultaProductos.php',
+       type : 'POST',
+       dataType : 'html',
+       data : { productoscmg: productoscmg },
+     })
+	    //muestra los resultados en la tabla   
+   .done(function(resultado){
+       $("#tabla_resultado").html(resultado);
+   })
+}
+
+$(document).on('keyup', '#busqueda', function()
+{
+   var valorBusqueda=$(this).val();
+   if (valorBusqueda!="")
+   {
+       obtener_registros(valorBusqueda);
+   }
+   else
+       {
+           obtener_registros();
+       }
+});
+
+		</script>
+<!-- Fin llamado base de datos de productos -->
+
+                  <input type="button" class="btn btn-secondary btn-sm" name="updateDetails" id="updateDetails" value="Buscar" ></button>
+ <!-- Modal -->
+ <dialog id="favDialog">
+ <header>
+			<div class="alert alert-info">
+			<h2>Buscador Productos</h2>
+			</div>
+		</header>
+
+    <section>
+			<input type="text" name="busqueda" id="busqueda" placeholder="Buscar..." formaction=""/>
+			<button id="cancel" type="reset">Cancel</button>
+      <button type="button" id="cerrar" >cerrar</button>
+		</section>
+		<div id="favDialog">
+		<section id="tabla_resultado">
+		<!-- AQUI SE DESPLEGARA NUESTRA TABLA DE CONSULTA -->
+		</section>
+		</div>
+		
+</div>
+
+
+</dialog>
+ <!-- Fin Modal -->
+<script>
+
+//Inicio Boton seleccion 
+ //https://youtu.be/MeCEJOVJyDs
+$(function(){
+    $('body').on('click','#TbProductos input[type=checkbox]', function(event){
+       var idRegistro0 = $(this).attr('data-idRegristro');
+       alert("Codigo seleccionado " +  idRegistro0);
+       document.getElementById("listProducto").value=idRegistro0;
+    });
+  var updateButton = document.getElementById('updateDetails');
+  var cancelButton = document.getElementById('cancel');
+  var cerrarButton = document.getElementById('cerrar');
+  var favDialog = document.getElementById('favDialog');
+
+  // El botón Actualizar abre un cuadro de diálogo modal
+  updateButton.addEventListener('click', function() {
+    favDialog.showModal();
+    
+  });
+
+  // El botón de cancelar formulario cierra el cuadro de diálogo
+  cancelButton.addEventListener('click', function() {
+
+   //document.Reset();
+   // document.getElementById("busqueda").value="";
+    //favDialog.close();
+  });
+
+          // El botón de cancelar formulario cierra el cuadro de diálogo
+          cerrarButton.addEventListener('click', function() {
+			favDialog.close();
+    
+  });
+});
+</script>
+<!-- Fin Funciones  -->  
+
+<!-- Inicio Tabla Ajax  -->  
+
+<script>
+     $('document').ready(function(){
+         $('#TbProductos').DataTable({
+              info: true,
+              paging: true,
+         });
+        
+     })
+    </script>
+<!-- Final Trabajo -->
+
                 </td>
 
                 <td>
@@ -178,20 +292,24 @@ $rowprocesoproceso2 = mysqli_fetch_assoc($queryvarid_proces2);
               <td >
 <figure class="figure imgEfc">
   <?php  echo '<img class="imgEfc" src="'.$rowproceso['imgprod'].'" alt=\"imgprod\" width=\"50\" height=\"50\"/>';?>
-  <figcaption class="figure-caption">Imagen principal</figcaption>
+  
+</figure>
+<input name="txtimgprod" type="text" id="txtimgprod" size="100" value="<?php print $rowproceso['imgprod']; ?>"/>
   <?php
 echo "<td>"."<a href=\"/sistema/FormEditImgProceso.php?id_proceso=".$rowproceso['id_proceso']."\" target=\"_blank\">
 <img src=\"../sistema/img/EditIcono.png\" alt=\"BtnEditar\" width=\"20\" height=\"20\"></a></td>\n";
   ?>
+  <!-- <figcaption class="figure-caption">Imagen principal</figcaption> -->
+ 
+
 </td>
               </tr>
 
-              <tr>
                 <td>
                   <label for="txtPlano">
                     <p>Plano</p>
                   </label>
-                  <input name="txtPlano" type="text" id="txtPlano" size="100" value="<?php print $rowproceso['Plano']; ?>"/>
+                  <input name="txtPlano" type="hidden" id="txtPlano" size="100" value="<?php print $rowproceso['Plano']; ?>"/>
                 </td>
               </tr>
 
@@ -248,11 +366,12 @@ echo "<td>"."<a href=\"/sistema/FormEditImgProceso.php?id_proceso=".$rowproceso[
  echo "<td>".$filaItemproceso['Fk_ProdProc']."-".$filaItemproceso['Producto']."</td>\n";
  
  if($filaItemproceso['tamanio']=="Grande"){
-  echo "<td >".'<img class=\"imgEfcProceso\" src="'.$filaItemproceso['img_itemproce'].'" style="border-radius: 10% 10%;" width="300" heigth="300"/>'."</td>\n";
+  echo "<td >".'<img class=\"imgEfcProceso\" src="'.$filaItemproceso['img_itemproce'].'" style="border-radius: 10% 10%;" width="300" heigth="300"/>'. $filaItemproceso['img_itemproce']."</td>\n";
+
  }else if($filaItemproceso['tamanio']=="Mediano"){
-  echo "<td >".'<img class=\"imgEfcProceso\" src="'.$filaItemproceso['img_itemproce'].'" style="border-radius: 10% 10%;" width="200" heigth="200"/>'."</td>\n";
+  echo "<td >".'<img class=\"imgEfcProceso\" src="'.$filaItemproceso['img_itemproce'].'" style="border-radius: 10% 10%;" width="200" heigth="200"/>'. $filaItemproceso['img_itemproce']."</td>\n";
  }else{
-  echo "<td >".'<img class=\"imgEfcProceso\" src="'.$filaItemproceso['img_itemproce'].'" style="border-radius: 10% 10%;" width="100" heigth="100"/>'."</td>\n";
+  echo "<td >".'<img class=\"imgEfcProceso\" src="'.$filaItemproceso['img_itemproce'].'" style="border-radius: 10% 10%;" width="100" heigth="100"/>'. $filaItemproceso['img_itemproce']."</td>\n";
  }
 
 

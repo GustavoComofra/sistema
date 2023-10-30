@@ -71,7 +71,7 @@ $tipo_iamgen=$_FILES['imagen']['type'];
 $tamagno_imegen=$_FILES['imagen']['size'];
 
 
-$carpetas_destino='ftp.comofrasrl.com.ar//img/rrhh/' . $nombre_imagen;
+$carpetas_destino='ftp.comofrasrl.com.ar/img/rrhh/' . $nombre_imagen;
 
 move_uploaded_file($_FILES['imagen']['tmp_name'],"img/rrhh/".$nombre_imagen);
 

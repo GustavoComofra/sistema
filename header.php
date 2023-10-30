@@ -69,138 +69,174 @@ $varCerrarSession = $_SESSION['usuario'];
   <div class="collapse navbar-collapse" id="navbarNavDropdown">
     <ul class="navbar-nav">
 
-      <li class="nav-item dropdown navbar-dark bg-dark">
+          <!-- Inicio venta -->
+      
+ <li class="nav-item dropdown navbar-dark bg-dark">
         <a class="nav-link dropdown-toggle navbar-dark bg-dark"  href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: white">
-          Formularios
+        Venta
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" style="color: white" >
 	
 <?php
 		
-			
-include("Conexion/conexion.php");
-				
+		
 $varUser=$_SESSION['usuario'];
 				
-$query1 = $mysqli -> query ("SELECT * FROM `PrUsuario` WHERE `usuario` LIKE '$varUser' ");
 
-
-  while ($fila = mysqli_fetch_array($query1))
-				
-{
-$varTipoUsuario = $fila['TipoUser'];
-
-
-}
-//mysqli_close($mysqli);	
-	
-
-if($varTipoUsuario==1){
 include("Conexion/conexion.php");
 
-$query1 = $mysqli -> query ("SELECT * FROM `ComVistaPanel` WHERE `Clase` LIKE 'Formulario' ORDER BY `ComVistaPanel`.`Nombre` ASC");
+$queryventa = $mysqli -> query ("SELECT * FROM `VistMenu` WHERE `usuario` LIKE '$varUser' AND `Clase` LIKE 'venta' ORDER BY `VistMenu`.`Nombre` ASC");
 
-  while ($fila1 = mysqli_fetch_array($query1))
+  while ($filaventa = mysqli_fetch_array($queryventa))
 
 {
-$varClase = $fila1['Clase'];  
-$varLink = 	$fila1['Link'];  
-$varNombre = $fila1['Nombre'];
+$varClase = $filaventa['Clase'];  
+$varLink = 	$filaventa['Link'];  
+$varNombre = $filaventa['Nombre'];
 echo "<a class=\"dropdown-item \" style=\"color: white; background: grey;\" href=\"$varLink \">$varNombre</a>"	;
-}
- 	
- 	
+
 
 }
-			
-			
-if($varTipoUsuario==2){
-include("Conexion/conexion.php");
+echo" 
+<a class=\"dropdown-item \" style=\"color: white; background: grey;\" href=\"/sistema/garantia/imgGarantia/qrcode-PedidoGarantia.png\" target=\"_blank\"><img src=\"../sistema/garantia/imgGarantia/qrcode-PedidoGarantia.png\" alt=\"iconoInforme\" width=\"20\" height=\"20\"> - Codigo QR</a>
+";		
+
+?>	
 
 
-$queryForm2 = $mysqli -> query ("SELECT * FROM `ComVistaPanel` WHERE `TipoUserFK` = 2 AND `Clase` LIKE 'Formulario' ORDER BY `ComVistaPanel`.`Nombre` ASC");
-
-  while ($filaForm2 = mysqli_fetch_array($queryForm2))
-
-{
-$varClase = $filaForm2['Clase'];  
-$varLinkForm2 = $filaForm2['Link'];  
-$varNombreForm2 = $filaForm2['Nombre'];
-echo "<a class=\"dropdown-item \" style=\"color: white; background: grey;\" href=\"$varLinkForm2 \"$varNombreForm2 </a>"	;
-}		
-}
-			
-if($varTipoUsuario==3){
-include("Conexion/conexion.php");
-
-
-$queryForm3 = $mysqli -> query ("SELECT * FROM `ComVistaPanel` WHERE `TipoUserFK` = 3 AND `Clase` LIKE 'Formulario' ORDER BY `ComVistaPanel`.`Nombre` ASC");
-
-  while ($filaForm3 = mysqli_fetch_array($queryForm3))
-
-{
-$varClase = $filaForm3['Clase'];  
-$varLinkForm3 = $filaForm3['Link'];  
-$varNombreForm3 = $filaForm3['Nombre'];
-echo "<a class=\"dropdown-item \" style=\"color: white; background: grey;\" href=\"$varLinkForm3\">$varNombreForm3</a>"	;
-}		
-}			
- 	
-			
-			
-?>			
-			
-
-			
       </li>
+<!-- Fin venta -->
 
-      <li class="nav-item dropdown navbar-dark bg-dark">
+ <!-- Inicio Calidad -->
+      
+ <li class="nav-item dropdown navbar-dark bg-dark">
         <a class="nav-link dropdown-toggle navbar-dark bg-dark"  href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: white">
-          Ingenieria
+        Calidad
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" style="color: white" >
 	
 <?php
-		
-			
-include("Conexion/conexion.php");
+
 				
 $varUser=$_SESSION['usuario'];
 				
-$query1 = $mysqli -> query ("SELECT * FROM `PrUsuario` WHERE `usuario` LIKE '$varUser' ");
 
-
-  while ($fila = mysqli_fetch_array($query1))
-				
-{
-$varTipoUsuario = $fila['TipoUser'];
-
-
-}
-//mysqli_close($mysqli);	
-	
-
-if($varTipoUsuario==1){
 include("Conexion/conexion.php");
 
-$query1 = $mysqli -> query ("SELECT * FROM `ComVistaPanel` WHERE `Clase` LIKE 'Ingenieria' ORDER BY `ComVistaPanel`.`Nombre` ASC");
+$queryman = $mysqli -> query ("SELECT * FROM `VistMenu` WHERE `usuario` LIKE '$varUser' AND `Clase` LIKE 'calidad'");
 
-  while ($fila1 = mysqli_fetch_array($query1))
+  while ($filaman = mysqli_fetch_array($queryman))
 
 {
-$varClase = $fila1['Clase'];  
-$varLink = 	$fila1['Link'];  
-$varNombre = $fila1['Nombre'];
+$varClase = $filaman['Clase'];  
+$varLink = 	$filaman['Link'];  
+$varNombre = $filaman['Nombre'];
 echo "<a class=\"dropdown-item \" style=\"color: white; background: grey;\" href=\"$varLink \">$varNombre</a>"	;
 }
 
+
+?>			
+
+      </li>
+<!-- Fin calidad -->
+
+
+  <!-- Inicio Ingenieria -->
+      
+  <li class="nav-item dropdown navbar-dark bg-dark">
+        <a class="nav-link dropdown-toggle navbar-dark bg-dark"  href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: white">
+        Ing
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" style="color: white" >
+	
+<?php
+
+				
+$varUser=$_SESSION['usuario'];
+				
+
+include("Conexion/conexion.php");
+
+$querying = $mysqli -> query ("SELECT * FROM `VistMenu` WHERE `usuario` LIKE '$varUser' AND `Clase` LIKE 'Ingenieria' ORDER BY `VistMenu`.`Nombre` ASC");
+
+  while ($filaing = mysqli_fetch_array($querying))
+
+{
+$varClase = $filaing['Clase'];  
+$varLink = 	$filaing['Link'];  
+$varNombre = $filaing['Nombre'];
+echo "<a class=\"dropdown-item \" style=\"color: white; background: grey;\" href=\"$varLink \">$varNombre</a>"	;
 }
 
 ?>			
-			
 
-			
       </li>
+<!-- Fin Ingenieria -->
+
+
+   <!-- Inicio RRHH -->
+      
+   <li class="nav-item dropdown navbar-dark bg-dark">
+        <a class="nav-link dropdown-toggle navbar-dark bg-dark"  href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: white">
+        RRHH
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" style="color: white" >
+	
+<?php
+
+				
+$varUser=$_SESSION['usuario'];
+
+include("Conexion/conexion.php");
+
+$queryrrhh = $mysqli -> query ("SELECT * FROM `VistMenu` WHERE `usuario` LIKE '$varUser' AND `Clase` LIKE 'rrhh' ORDER BY `VistMenu`.`Nombre` ASC");
+
+  while ($filarrhh = mysqli_fetch_array($queryrrhh))
+
+{
+$varClase = $filarrhh['Clase'];  
+$varLink = 	$filarrhh['Link'];  
+$varNombre = $filarrhh['Nombre'];
+echo "<a class=\"dropdown-item \" style=\"color: white; background: grey;\" href=\"$varLink \">$varNombre</a>"	;
+}
+
+
+?>			
+
+      </li>
+<!-- Fin RRHH -->
+
+      <!-- Inicio Mantenimiento -->
+      
+      <li class="nav-item dropdown navbar-dark bg-dark">
+        <a class="nav-link dropdown-toggle navbar-dark bg-dark"  href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: white">
+        Manten
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" style="color: white" >
+	
+<?php
+				
+$varUser=$_SESSION['usuario'];
+
+include("Conexion/conexion.php");
+
+$queryman = $mysqli -> query ("SELECT * FROM `VistMenu` WHERE `usuario` LIKE '$varUser' AND `Clase` LIKE 'mantenimiento' ORDER BY `VistMenu`.`Nombre` ASC");
+
+  while ($filaman = mysqli_fetch_array($queryman))
+
+{
+$varClase = $filaman['Clase'];  
+$varLink = 	$filaman['Link'];  
+$varNombre = $filaman['Nombre'];
+echo "<a class=\"dropdown-item \" style=\"color: white; background: grey;\" href=\"$varLink \">$varNombre</a>"	;
+}
+
+?>			
+
+      </li>
+<!-- Fin Mantenimiento -->
+
+
 
 		
       <li class="nav-item dropdown navbar-dark bg-dark">
@@ -297,9 +333,9 @@ echo "<a class=\"dropdown-item \" style=\"color: white; background: grey;\" href
 		  
 		
 
-	<li class="nav-item active">
+	<!-- <li class="nav-item active">
         <a class="nav-link" href="#" style="color: white">ayuda <span class="sr-only">(current)</span></a>
-      </li>	
+      </li>	 -->
 		
 	<li class="nav-item active">
         <a class="nav-link" href="CerrarSession.php" style="color: white"> <?php echo "Cerrar ".$_SESSION['usuario'];  ?>

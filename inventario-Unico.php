@@ -5,11 +5,11 @@ include('Conexion/conexion.php');
 $idInventario= $_POST['idInventario'];
 
 $json = array();
-$query = "SELECT * FROM `Inventario` WHERE `idInventario` = $idInventario";
+$query = "SELECT * FROM `Inventario` WHERE `idInventario` = '$idInventario'";
 $result = mysqli_query($mysqli, $query);
 
 if(!$result){
-    die('Error');
+    die('Error unico');
     }
 
     $json = array();

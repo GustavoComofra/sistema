@@ -1,6 +1,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="es">
 <head>
+<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
 <!-- Script JS -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" ></script>
@@ -17,7 +18,7 @@
 	<link href="../sistema/img/Icono.png" rel="icon" type="image/png">
  <title>Panel</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
 
 <style>
 .imgEfcPanel{
@@ -99,8 +100,18 @@ include ("MarcoIzquierdo.php");
 $Dia=date("m-d");
 
 include("Conexion/conexion.php");
+$queryFechaCumpleTitulo = $mysqli -> query ("SELECT * FROM `ComVistaEmpleado1` WHERE `FechaNacimiento` LIKE '%$Dia%' ");
+while ($filaFechaCumpleTitulo = mysqli_fetch_array($queryFechaCumpleTitulo))
+{
+	$cumpleTitulo = $filaFechaCumpleTitulo['Nombres'];
+}
 
-$queryFechaCumple = $mysqli -> query ("SELECT * FROM `ComEmpleado` WHERE `FechaNacimiento` LIKE '%$Dia%' ORDER BY `Nombres` ASC");
+
+if ($cumpleTitulo) {
+	echo "<h2> Cumples de hoy:  <img src=\"../sistema/img/imgCumple.JPG\" alt=\"iconoCumple\" width=\"50\" height=\"50\"></h2>";
+}
+
+$queryFechaCumple = $mysqli -> query ("SELECT * FROM `ComVistaEmpleado1` WHERE `FechaNacimiento` LIKE '%$Dia%' ORDER BY `Nombres` ASC");
 
 
 
@@ -112,12 +123,13 @@ $queryFechaCumple = $mysqli -> query ("SELECT * FROM `ComEmpleado` WHERE `FechaN
 <table border=1 align=\"\" class=\"table table-striped\">
   <thead>
 <TR>
-<h2> Cumples de hoy:  <img src=\"../sistema/img/imgCumple.JPG\" alt=\"iconoCumple\" width=\"50\" height=\"50\"></h2>
+
 	 </thead>
 <TD><B>Imagen</B></TD>
 <TD><B>CUIL</B></TD>
 <TD><B>Nombre</B></TD>
 <TD><B>Apellido</B></TD>
+<TD><B>Sector</B></TD>
 </TR>
 "; 	
 
@@ -126,7 +138,7 @@ echo "<td>".'<img  src="'.$filaFechaCumple['Foto'].'" style="border-radius: 50% 
 echo "<td>".$filaFechaCumple['CUIT_Empl']."</td>\n";
 echo "<td>".$filaFechaCumple['Nombres']."</td>\n";	
 echo "<td>".$filaFechaCumple['Apellidos']."</td>\n";
-
+echo "<td>".$filaFechaCumple['SectorFk']."</td>\n";
 echo "</TR>\n";
 
  }	
@@ -243,6 +255,20 @@ echo "</table>";
 <!-- Inicio Garantia -->
 <?php
 include("Conexion/conexion.php");
+$queryGarantiaTitulo = $mysqli -> query ("SELECT * FROM `Garantia` WHERE `FechaContestacion` = '0000-00-00'");
+while ($filaGarantiaTitulo = mysqli_fetch_array($queryGarantiaTitulo))
+{
+	$varTitulo = $filaGarantiaTitulo;
+}
+
+
+if ($varTitulo) {
+	echo "<h2> Garantia pendiente de responder:
+	<img src='../sistema/img/iconoPedidoGarantia.png' alt='iconoPedidoGarantia' width='50' height='50'></h2>";
+}
+
+
+
 
 $queryGarantia = $mysqli -> query ("SELECT * FROM `Garantia` WHERE `FechaContestacion` = '0000-00-00'");
 
@@ -256,11 +282,11 @@ echo "
 
   <thead>
 <TR>
-<h2> Garantia pendiente de responder:
-		 <img src='../sistema/img/iconoReclamo.png' alt='iconoReclamo' width='50' height='50'></h2>
+
 	 </thead>
 <TD><B>Id</B></TD>
 <TD><B>Serie</B></TD>
+<TD><B>Cliente</B></TD>
 <TD><B>Correo</B></TD>
 <TD><B>Telefono</B></TD>
 <TD><B>Fecha</B></TD>
@@ -271,6 +297,7 @@ echo "
 echo "<TR>\n";
 echo "<td>".$filaGarantia['Id_gar']."</td>\n";
 echo "<td>".$filaGarantia['Serie']."</td>\n";
+echo "<td>".$filaGarantia['Cliente']."</td>\n";
 echo "<td>".$filaGarantia['Correo']."</td>\n";
 echo "<td>".$filaGarantia['Telefono']."</td>\n";	 
 echo "<td>".$filaGarantia['Fecha']."</td>\n";
@@ -294,6 +321,14 @@ $varFechaCarnet = date("Y-m-d",strtotime($fecha_actual."+ 30 days"));
 
 include("Conexion/conexion.php");
 
+$queryReclamoTitulo = $mysqli -> query ("SELECT * FROM `ComVisReclamo` WHERE `FechaCierre` <= '0000-00-00' AND `Sup` LIKE 'No' ");
+
+if ($queryGarantiaTitulo) {
+	echo "<h2> Reclamos Pendiente:
+	<img src='../sistema/img/iconoReclamo.png' alt='iconoReclamo' width='50' height='50'></h2>";
+}
+
+
 $queryReclamo = $mysqli -> query ("SELECT * FROM `ComVisReclamo` WHERE `FechaCierre` <= '0000-00-00' AND `Sup` LIKE 'No' ");
 
  while ($filaReclamo = mysqli_fetch_array($queryReclamo))
@@ -305,8 +340,7 @@ echo "
 <table border=1 class=\"table table-striped\">
   <thead>
 <TR>
-<h2> Reclamos Pendiente:
-<img src='../sistema/img/iconoReclamo.png' alt='iconoReclamo' width='50' height='50'></h2>
+
 	 </thead>
 <TD><B>Num</B></TD>
 <TD><B>Reclamo</B></TD>

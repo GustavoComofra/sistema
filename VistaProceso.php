@@ -136,7 +136,7 @@ $rowprocesoprocesoUser = mysqli_fetch_assoc($queryvarid_procesUser);
         <td class="algCentral"><img src="/sistema/img/logoAmplio.jpg" alt="Logo" width="180" height="60"></td>
         <td ><h3 class="algCentral"><strong class="algCentral">  Estudio de Metodos y Tiempos</strong></h3></td>
         <td >
-        <p>Registro N 01</p>
+        <p>I.07.19 / Rev.01</p>
         <p>Fecha: <?php echo $rowprocesoproceso['FechaInicio']; ?></p>
         <p>Realizo: <?php echo $rowprocesoprocesoUser['user']; ?>/ Valida: <?php echo $rowprocesoprocesoUser['Valida']; ?></p>
       </td>
@@ -197,17 +197,26 @@ echo '<img class="imgPrincipal"  src="'.$rowprocesoproceso['imgprod'].'"/>';
     while ($filaItemproceso = mysqli_fetch_array($queryItemproceso))
   {
    echo "<TR>\n"; 
- echo "<th>".$filaItemproceso['Op']."</th>\n";
+ echo "<td>".$filaItemproceso['Op']."</td>\n";
  echo "<td>".$filaItemproceso['ItemProceso']."</td>\n";
  echo "<td>".$filaItemproceso['CantOper']."</td>\n";
- if($filaItemproceso['tamanio']=="Grande"){
-  echo "<td class=\"imgEfcProcesoGrande\">".'<img class="img-responsive img-thumbnail img-fluid"  src="'.$filaItemproceso['img_itemproce'].'" style="border-radius: 10% 10%;" width="400" heigth="300"/>'."</td>\n";
- }else if($filaItemproceso['tamanio']=="Mediano"){
-  echo "<td class=\"imgEfcProcesoMediano\">".'<img class="img-responsive img-thumbnail" src="'.$filaItemproceso['img_itemproce'].'" style="border-radius: 10% 10%;" width="200" heigth="100"/>'."</td>\n";
- }else{
-  echo "<td class=\"imgEfcProcesoChico\">".'<img class="img-responsive img-thumbnail" src="'.$filaItemproceso['img_itemproce'].'" style="border-radius: 10% 10%;" width="100" heigth="50"/>'."</td>\n";
- }
+$varExisteImagen = $filaItemproceso['img_itemproce'];
+if ($varExisteImagen=="http://interno.comofrasrl.com.ar/sistema/" OR $varExisteImagen=="http://interno.comofrasrl.com.ar/sistema/img/procesos/" OR $varExisteImagen=="https://interno.comofrasrl.com.ar/sistema/img/procesos/") {
+ 
+  echo "<td>"."-"."</td>\n";
+}else{
 
+
+  if($filaItemproceso['tamanio']=="Grande"){
+    echo "<td class=\"imgEfcProcesoGrande\">".'<img class="img-responsive img-thumbnail img-fluid"  src="'.$filaItemproceso['img_itemproce'].'" style="border-radius: 10% 10%;" width="400" heigth="300"/>'."</td>\n";
+   }else if($filaItemproceso['tamanio']=="Mediano"){
+    echo "<td class=\"imgEfcProcesoMediano\">".'<img class="img-responsive img-thumbnail" src="'.$filaItemproceso['img_itemproce'].'" style="border-radius: 10% 10%;" width="200" heigth="100"/>'."</td>\n";
+   }else{
+    echo "<td class=\"imgEfcProcesoChico\">".'<img class="img-responsive img-thumbnail" src="'.$filaItemproceso['img_itemproce'].'" style="border-radius: 10% 10%;" width="100" heigth="50"/>'."</td>\n";
+   }
+}
+
+ 
 
  /*echo "<td>"."<a href=\"/sistema/VistaItemProceso.php?id_itemproceso=".$filaItemproceso['id_itemproceso']."\" >
  <img style=\" width=\"100\" heigth=\"100\" src=".$filaItemproceso['img_itemproce']." alt=\"img\" width=\"50\" height=\"50\"></a>"."</td>\n";*/
@@ -270,14 +279,15 @@ echo "<a href=\"/sistema/ListProceso.php\"><img src=\"../sistema/img/BtnVolver.p
 <?php 
 
 $varPlano = $rowprocesoproceso['ProductoProceso']; 
-$queryvarProcePlano = $mysqli -> query ("SELECT * FROM `productoscmg` WHERE `CodSistema` = '.$varPlano.';");
-$rowProcePlano = mysqli_fetch_assoc($queryvarProcePlano);
 
+$queryvarProcePlano = $mysqli -> query ("SELECT * FROM `productoscmg` WHERE `CodSistema` = '$varPlano';");
+$rowProcePlano = mysqli_fetch_assoc($queryvarProcePlano);
 
 ?>
 
 <div class="container">
-<iframe src="<?php echo $rowProcePlano['Plano']; ?>/preview" width="100%" height="1000px" ></iframe>s
+
+<iframe src="<?php echo $rowProcePlano['Plano']; ?>/preview" width="90%" height="1000px" ></iframe>s
 </div>
 
 

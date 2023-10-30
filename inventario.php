@@ -4,7 +4,7 @@
 		<title>inventario 2023</title>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-        <link href="inventario/Icono.png" rel="icon" type="image/png">
+        <link href="img/Icono.png" rel="icon" type="image/png">
 		<!-- ESTILOS -->
 		<!-- <link href="css/estilo.css" rel="stylesheet"> -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
@@ -159,7 +159,7 @@ session_start();
 
 <div>
 <button type="button" class="btn btn-danger" id="cerrarCamara" >cerrar</button>
-Resultado del código de barras: <h1 id='result'>N/A</h1>
+Resultado del codigo de barras: <h1 id='result'>N/A</h1>
     </div>
     <div id="barcodeScanner">
         <span id='loading-status' style='font-size:x-large'>Loading Library...</span>
@@ -181,8 +181,8 @@ Resultado del código de barras: <h1 id='result'>N/A</h1>
 <input type="hidden" id="idInventario">
     <button type="button" class="btn btn-info"  name="updateDetails" id="updateDetails" ><span class="glyphicon glyphicon glyphicon-search"></span> - Buscar</button>
     <button type="button" class="btn btn-info" name="MostrarCamara" id="MostrarCamara" ><span class="glyphicon glyphicon glyphicon-barcode"></span> - Scanner</button>
-    <input type="number" id="ModalBuscarBody" placeholder="Valor Seleccionado" require>
-    <input type="number" id="txtCantidad" min="1" name="txtCantidad" placeholder="Cantidad" require>
+    <input type="number" id="ModalBuscarBody" placeholder="Valor Seleccionado" required>
+    <input type="number" id="txtCantidad" name="txtCantidad" placeholder="Cantidad" step="any" required >
     <input type="text" id="txtObsInv" min="1" name="txtObsInv" size="50" placeholder="Observacion">
     <input type="hidden" id="txtUser" min="1" name="txtUser" size="50" value="<?php echo $_SESSION['usuario'];  ?>">
    <p>
@@ -200,6 +200,7 @@ Resultado del código de barras: <h1 id='result'>N/A</h1>
                 <td>id</td>
                     <td>CodCmg</td>
                     <td>Prod</td>
+                    <td>UM</td>
                     <td>Cantidad</td>
                     <td>ObsInv</td>
                     <td></td>
@@ -219,6 +220,8 @@ Resultado del código de barras: <h1 id='result'>N/A</h1>
 <!-- Inicio Modal -->   
 
 <script>
+
+
 $(function(){
     $('body').on('click','#TbProductos input[type=checkbox]', function(event){
        var idRegistro = $(this).attr('data-idRegristro');
@@ -237,11 +240,11 @@ $(function(){
     favDialog.showModal();
     
   });
-
+  var openCamara= false;
   varMostrarCamara.addEventListener('click', function() {
     DialogCamara.showModal();
     var btnPresionado = true;
-  
+   openCamara= true;
  
 
   });
@@ -274,7 +277,7 @@ DialogCamara.close();
         //You can register for a free 30-day trial here: https://www.dynamsoft.com/customer/license/trialLicense?product=dbr&deploymenttype=browser.
         // Dynamsoft.DBR.BarcodeReader.license = "DLS2eyJoYW5kc2hha2VDb2RlIjoiMjAwMDAxLTE2NDk4Mjk3OTI2MzUiLCJvcmdhbml6YXRpb25JRCI6IjIwMDAwMSIsInNlc3Npb25QYXNzd29yZCI6IndTcGR6Vm05WDJrcEQ5YUoifQ==";
 
-        Dynamsoft.DBR.BarcodeReader.license = "DLS2eyJoYW5kc2hha2VDb2RlIjoiMTAyMTMyNDA1LVRYbFhaV0pRY205cVgyUmljZyIsIm1haW5TZXJ2ZXJVUkwiOiJodHRwczovL21kbHMuZHluYW1zb2Z0b25saW5lLmNvbSIsIm9yZ2FuaXphdGlvbklEIjoiMTAyMTMyNDA1Iiwic3RhbmRieVNlcnZlclVSTCI6Imh0dHBzOi8vc2Rscy5keW5hbXNvZnRvbmxpbmUuY29tIiwiY2hlY2tDb2RlIjotMTMxNjMxMzI3fQ==";
+        Dynamsoft.DBR.BarcodeReader.license = "DLS2eyJoYW5kc2hha2VDb2RlIjoiMTAyMjE3NDAzLVRYbFhaV0pRY205cVgyUmljZyIsIm1haW5TZXJ2ZXJVUkwiOiJodHRwczovL21kbHMuZHluYW1zb2Z0b25saW5lLmNvbSIsIm9yZ2FuaXphdGlvbklEIjoiMTAyMjE3NDAzIiwic3RhbmRieVNlcnZlclVSTCI6Imh0dHBzOi8vc2Rscy5keW5hbXNvZnRvbmxpbmUuY29tIiwiY2hlY2tDb2RlIjoxNzk1NTI3NTIxfQ==";
 
 
         window.onload = async function () {
@@ -286,6 +289,8 @@ DialogCamara.close();
                 throw ex;
             }
         };
+
+        
         let scanner = null;
         async function initBarcodeScanner() {
             scanner = await Dynamsoft.DBR.BarcodeScanner.createInstance();
@@ -308,15 +313,19 @@ DialogCamara.close();
                 }
             };
             scanner.onUnduplicatedRead = (txt, result) => { };
+            let openCamara;
 if (DialogCamara) {
     document.getElementById('barcodeScanner').appendChild(scanner.getUIElement()).hidden= false; 
+
+    
 }else {document.getElementById('barcodeScanner').appendChild(scanner.getUIElement()).hidden= true;}
             
             document.getElementById('loading-status').hidden = true;
             document.getElementsByClassName('dce-sel-camera')[0].hidden = true;
             document.getElementsByClassName('dce-sel-resolution')[0].hidden = true;
             document.getElementsByClassName('dce-btn-close')[0].hidden = true;
-            await scanner.show();
+            await scanner.show()
+            
         }
 
 

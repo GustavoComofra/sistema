@@ -55,12 +55,12 @@ die();
 <div class="container-fluid">
   <div class="row">
 
-    <div class="col col-lg-2">
+    <!-- <div class="col col-lg-2">
 	<?php	
 //include ("MarcoIzquierdo.php");
 
 ?>	
-    </div>
+    </div> -->
     <div class="col-md-auto">
 	<?php	
 include ("ListarInventarioFondend.php");

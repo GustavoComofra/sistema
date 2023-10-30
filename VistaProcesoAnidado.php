@@ -181,14 +181,21 @@ echo '<img class="imgPrincipal"  src="'.$rowprocesoAnidada['imgprod'].'"/>';
  echo "<td>"."<a href=\"/sistema/VistaItemProceso.php?id_itemproceso=".$filaItemproceso['id_itemproceso']."\" >".$filaItemproceso['ItemProceso']."</a></td>\n";
  echo "<td>".$filaItemproceso['CantOper']."</td>\n";
  
- if($filaItemproceso['tamanio']=="Grande"){
-  echo "<td >".'<img class=\"imgEfcProceso\" src="'.$filaItemproceso['img_itemproce'].'" style="border-radius: 10% 10%;" width="300" heigth="300"/>'."</td>\n";
- }else if($filaItemproceso['tamanio']=="Mediano"){
-  echo "<td >".'<img class=\"imgEfcProceso\" src="'.$filaItemproceso['img_itemproce'].'" style="border-radius: 10% 10%;" width="200" heigth="200"/>'."</td>\n";
+ $varExisteImagen = $filaItemproceso['img_itemproce'];
+ if ($varExisteImagen=="http://interno.comofrasrl.com.ar/sistema/" OR $varExisteImagen=="http://interno.comofrasrl.com.ar/sistema/img/procesos/") {
+  
+   echo "<td>"."-"."</td>\n";
  }else{
-  echo "<td >".'<img class=\"imgEfcProceso\" src="'.$filaItemproceso['img_itemproce'].'" style="border-radius: 10% 10%;" width="100" heigth="100"/>'."</td>\n";
+ 
+ 
+   if($filaItemproceso['tamanio']=="Grande"){
+     echo "<td class=\"imgEfcProcesoGrande\">".'<img class="img-responsive img-thumbnail img-fluid"  src="'.$filaItemproceso['img_itemproce'].'" style="border-radius: 10% 10%;" width="400" heigth="300"/>'."</td>\n";
+    }else if($filaItemproceso['tamanio']=="Mediano"){
+     echo "<td class=\"imgEfcProcesoMediano\">".'<img class="img-responsive img-thumbnail" src="'.$filaItemproceso['img_itemproce'].'" style="border-radius: 10% 10%;" width="200" heigth="100"/>'."</td>\n";
+    }else{
+     echo "<td class=\"imgEfcProcesoChico\">".'<img class="img-responsive img-thumbnail" src="'.$filaItemproceso['img_itemproce'].'" style="border-radius: 10% 10%;" width="100" heigth="50"/>'."</td>\n";
+    }
  }
-
  echo "<td>".$filaItemproceso['TiempoEstandarMi']."</td>\n";
  $varTotal=($filaItemproceso['TiempoEstandarMi']*$filaItemproceso['CantOper']);
  

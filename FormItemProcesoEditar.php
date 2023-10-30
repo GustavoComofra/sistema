@@ -171,7 +171,7 @@
 
               <td width="">
                 <a href="<?php print "FormItemImgProcesoEditar.php?id_itemproceso=".$rowitemproproceso['id_itemproceso']; ?>"><img class="imgEfc" name="img_itemproce" id="img_itemproce" src="<?php print $rowitemproproceso['img_itemproce']; ?>"/></a>
-
+                <input name="txtimg_itemproce" type="text" id="txtimg_itemproce" title="img_itemproce" size="80" value="<?php print $rowitemproproceso['img_itemproce']; ?>"/>
                 </td>
               </tr>
 
@@ -202,20 +202,23 @@ $Final=$_POST['txtFinal'];
 $Fk_Herramienta=$_POST['listFk_Herramienta'];
 $Fk_Proceso=$_POST['txtFk_Proceso'];
 $Advertencia=$_POST['txtAdvertencia'];
-$img_itemproce=$_POST['img_itemproce'];
 $tamanio=$_POST['listtamanio'];
+$img_itemproce=$_POST['txtimg_itemproce'];
 
-echo "<td>"."<a href=\"/sistema/FormProcesoEditar.php?id_proceso=".$rowitemproproceso['Fk_Proceso']."\">
-<img src=\"../sistema/img/BtnVolver.png\" alt=\"BtnEditar\" width=\"90\" height=\"40\"></a></td>\n";
+if(!$id_itemproceso==null){
+  echo "<td>"."<a href=\"/sistema/FormProcesoEditar.php?id_proceso=".$rowitemproproceso['Fk_Proceso']."\">
+  <img src=\"../sistema/img/BtnVolver.png\" alt=\"BtnEditar\" width=\"90\" height=\"40\"></a></td>\n";
+  
+  $EditarItemProceso = "UPDATE `item_proceso` SET `Op` = '$Op', `ItemProceso` = '$ItemProceso', `Fk_ProdProc` = '$Fk_ProdProc' , `CantOper` = '$CantOper', `img_itemproce` = '$img_itemproce' , `tamanio` = '$tamanio', `TiempoEstandarMi` = '$TiempoEstandarMi', `TiempoInefMi` = '$TiempoInefMi', `Inicio` = '$Inicio', `Final` = '$Final', `Fk_Herramienta` = '$Fk_Herramienta'
+  , `Advertencia` = '$Advertencia', `Fk_Proceso` = '$Fk_Proceso' WHERE `item_proceso`.`id_itemproceso` = '$id_itemproceso';";
+  
+  
+  
+  $ejecutar_EditarItemProceso=mysqli_query($mysqli,$EditarItemProceso);
+  
+  mysqli_close($mysqli);
+}
 
-$EditarItemProceso = "UPDATE `item_proceso` SET `Op` = '$Op', `ItemProceso` = '$ItemProceso', `Fk_ProdProc` = '$Fk_ProdProc' , `CantOper` = '$CantOper' , `tamanio` = '$tamanio', `TiempoEstandarMi` = '$TiempoEstandarMi', `TiempoInefMi` = '$TiempoInefMi', `Inicio` = '$Inicio', `Final` = '$Final', `Fk_Herramienta` = '$Fk_Herramienta'
-, `Advertencia` = '$Advertencia', `Fk_Proceso` = '$Fk_Proceso' WHERE `item_proceso`.`id_itemproceso` = '$id_itemproceso';";
-
-
-
-$ejecutar_EditarItemProceso=mysqli_query($mysqli,$EditarItemProceso);
-
-mysqli_close($mysqli);
 
 ?>
 

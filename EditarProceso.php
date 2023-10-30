@@ -45,11 +45,11 @@ $Plano=$_POST['txtPlano'];
 $Observacion=$_POST['txtObservacion'];
 $Baja=$_POST['txtBaja'];
 
-
+$imgprod=$_POST['txtimgprod'];
 echo "<td>"."<a href=\"/sistema/ListProceso.php\"><img src=\"../sistema/img/BtnVolver.png\" alt=\"BtnVolver\" width=\"60\" height=\"40\"></a></td>\n";
 
 
-$EditarProceso = "UPDATE `Proceso` SET `Proceso` = '$Proceso',`ProductoProceso` = '$Producto',`Implemento` = '$Implemento', `FechaInicio` = '$FechaInicio', `FechaFinal` = '$FechaFinal',
+$EditarProceso = "UPDATE `Proceso` SET `Proceso` = '$Proceso',`ProductoProceso` = '$Producto',`Implemento` = '$Implemento', `FechaInicio` = '$FechaInicio', `FechaFinal` = '$FechaFinal', `imgprod` = '$imgprod',
 `Plano` = '$Plano',  `Baja` = '$Baja' WHERE `Proceso`.`id_proceso` = '$id_proceso';";
 
 

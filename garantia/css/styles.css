@@ -1,0 +1,24 @@
+/* You can add global styles to this file, and also import other style files */
+.CssImage{
+  position: fixed;
+  width: 70px;
+  height: 70px;
+
+ border-radius: 50% 50%;
+}
+body{
+  background-image: url(../imgGarantia/FondoComofra.PNG);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-attachment:fixed;
+
+  }
+
+
+
+span {
+  color: red;
+
+}
+
+

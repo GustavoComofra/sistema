@@ -2,7 +2,9 @@
 
 	include ("Conexion/conexion.php");
 
-	$query = "SELECT * FROM `vistaInventarioProduct` ORDER BY `idInventario` DESC;";
+	$query = "SELECT * FROM `vistaInventarioProduct` WHERE `ActCMG` LIKE 'No'  ORDER BY `idInventario` DESC;";
+
+    
 	$resultadoInventario = mysqli_query($mysqli, $query);
 
 if (!$resultadoInventario) {

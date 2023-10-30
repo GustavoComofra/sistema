@@ -276,7 +276,7 @@ $Localidad=$_POST['txtLocalidadB'];
 $Provincia=$_POST['txtProvinciaB'];	
 	
 include("Conexion/conexion.php");	
-$queryClienteB = $mysqli -> query ("SELECT * FROM `ComVisCliente` WHERE `Cliente` LIKE '%$Cliente%' AND `Direccion` LIKE '%$Direccion%' AND `Localidad` LIKE '%$Localidad%' AND `Provincia` LIKE '%$Provincia%' ORDER BY `Cliente` ASC");
+$queryClienteB = $mysqli -> query ("SELECT * FROM `ComVisCliente` WHERE `Cliente` LIKE '%$Cliente%' AND `Direccion` LIKE '%$Direccion%' AND `Localidad` LIKE '%$Localidad%' AND `Provincia` LIKE '%$Provincia%' ORDER BY `Cliente` ASC LIMIT 20");
   
  while ($filaClienteB = mysqli_fetch_array($queryClienteB))
 

@@ -1,34 +1,51 @@
 let edit = false;
 
+
 $(document).ready(function(e){
 
     obtenerListado();
 
     //AGREGAR
 
-    $('#app-form').submit(function(e){
-        // console.log("Enviando");
-        const postData = {
-        CodCmg: $('#ModalBuscarBody').val(),
-        Cantidad: $('#txtCantidad').val(),
-        ObsInv: $('#txtObsInv').val(),
-        idInventario: $('#idInventario').val(),
-        UsuarioInventario: $('#txtUser').val(),
-        }
-        
-let url = edit === false  ? 'inventario-agregar.php' : 'inventario-Editar.php';
-        // console.log(url);
-        $.post(url, postData, function(response){
-       console.log(response);
-        obtenerListado();
-        //para resetear el formulario
-         $('#app-form').trigger('reset');
-        });
-         //para evitar que se refresque la pagina
-         e.preventDefault();
-     
-     
-     });
+
+        $('#app-form').submit(function(e){
+             //console.log("Enviando");
+            const postData = {
+            CodCmg: $('#ModalBuscarBody').val(),
+            Cantidad: $('#txtCantidad').val(),
+            ObsInv: $('#txtObsInv').val(),
+            idInventario: $('#idInventario').val(),
+            UsuarioInventario: $('#txtUser').val(),
+            }
+            
+  
+    let url = edit === false  ? 'inventario-agregar.php' : 'inventario-Editar.php';
+            // console.log(url);
+
+            
+var sonido = new Audio();
+sonido.src="perder-incorrecto-no-valido.mp3";
+            $.post(url, postData, function(response){
+           console.log(response);
+           if (response === " Error " ) {
+            sonido.play();
+            alert("Error al cargar");
+   
+           }
+           //console.log(response);
+           
+            obtenerListado();
+            //para resetear el formulario
+             $('#app-form').trigger('reset');
+            });
+             //para evitar que se refresque la pagina
+             e.preventDefault();
+         
+         
+         });
+    
+
+
 
 //ELIMINAR
     $(document).on('click', ".list-inve", function(e){
@@ -72,7 +89,8 @@ if (confirm('Estas seguro de eliminar el registro?')) {
             url: 'inventario-listar.php',
             type: 'GET',
             success: function(response){
-                //JSON.parse(response); respuestas del servidor
+  
+               // JSON.parse(response); //respuestas del servidor
                 let inventlist = JSON.parse(response);
                 let template ='';
                 inventlist.forEach(inventario => {
@@ -80,6 +98,7 @@ if (confirm('Estas seguro de eliminar el registro?')) {
                     <td>${inventario.idInventario }</td>
                     <td>${inventario.CodCmg}</td>
                     <td>${inventario.Producto}</td>
+                    <td>${inventario.UM}</td>
                     <td>${inventario.Cantidad}</td>
                     <td>${inventario.ObsInv}</td>
                     <td><button class="list-inve btn btn-danger">Borrar</button></td>

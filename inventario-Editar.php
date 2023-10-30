@@ -1,5 +1,5 @@
 <?php
-include('ConexionComofra/conexion.php');
+include('Conexion/conexion.php');
 //$search = $_POST['app-form'];
 //echo $search=$_POST['nombre'];
 $idInventario  = $_POST['idInventario'];
@@ -11,7 +11,7 @@ $query = "UPDATE `Inventario` SET `CodCmg` = '$CodCmg', `Cantidad` = '$Cantidad'
 $result = mysqli_query($mysqli, $query);
 
 if(!$result){
-    die('Error');
+    die('Error edicion');
     }
 
 echo "Registro actualizado";

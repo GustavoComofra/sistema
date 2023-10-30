@@ -32,12 +32,13 @@
 						<tr>								
 						<th>Id</th>
 							<th>CodCmg</th>
-							<th>Prodcuto</th>
+							<th>Producto</th>
+							<th>UM</th>
 							<th>Cantidad</th>
 							<th>Usuario</th>		
 							<th>Fecha</th>
-							<th>ActCMG</th>
-							<th>Opcion</th>
+							<th>ObsInv</th>
+							<th></th>
 					</tr>
 					</thead>					
 				</table>
@@ -111,18 +112,20 @@ var listar = function(){
     {"data": "idInventario"},
 	{"data": "CodCmg"},
 	{"data": "Producto"},
+	{"data": "UM"},
     {"data": "Cantidad"},
 	{"data": "UsuarioInventario"},
 	{"data": "FechaInventario"},
-	{"data": "ActCMG"},
+	{"data": "ObsInv"},
 
 
-	// {
-	// "render": function (data, type, JsonResultRow, meta) {
-	// 	 return "<a  class='list-alumnos' href='http://interno.comofrasrl.com.ar/sistema/FormEditarItemCosto.php?idInventario="+JsonResultRow.idInventario+"' target='_blank'><img src='http://interno.comofrasrl.com.ar/sistema/img/EditIcono.png' alt='EditIcono' width='20' height='20'></a>"
 
-	// 	 +" &emsp;"+"<a href='#"+JsonResultRow.idInventario+"' ><img src='http://interno.comofrasrl.com.ar/sistema/img/BorrIcono.png' alt='BorrIcono' width='20' height='20' ></a>" ; 
-	// }},
+	 {
+	 "render": function (data, type, JsonResultRow, meta) {
+	 	 return "<a  class='list-alumnos' href='/sistema/InventarioEditarLIst.php?idInventario="+JsonResultRow.idInventario+"' ><img src='http://interno.comofrasrl.com.ar/sistema/img/EditIcono.png' alt='EditIcono' width='20' height='20'></a>"
+
+	 	 +" &emsp;"+"<a href='/sistema/InventarioBorrarLIst.php?idInventario="+JsonResultRow.idInventario+"' ><img src='http://interno.comofrasrl.com.ar/sistema/img/BorrIcono.png' alt='BorrIcono' width='20' height='20' ></a>" ; 
+	 }},
 ],
 dom: 'Bfrtip',
                 buttons: [

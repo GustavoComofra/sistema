@@ -3,7 +3,8 @@ include('Conexion/conexion.php');
 //$search = $_POST['app-form'];
 //echo $search=$_POST['nombre'];
 //$UsuarioInventario=$_SESSION['usuario'];
-if(isset($_POST['Cantidad'])){
+$ValorCantidad= $_POST['Cantidad'];
+if($ValorCantidad > 0){
 $Cantidad= $_POST['Cantidad'];
 $UsuarioInventario=$_POST['UsuarioInventario'];
 $CodCmg = $_POST['CodCmg'];
@@ -13,9 +14,11 @@ $query = "INSERT INTO `Inventario` (`idInventario`, `CodCmg`, `Cantidad`, `Secto
 
 $result = mysqli_query($mysqli, $query);
 if(!$result){
-die('Error');
-}
-echo "agregado sastifactoriamente " . $UsuarioInventario;
-}
+echo "Error";
 
-?>
+//die("Error");
+
+}
+//echo "agregado sastifactoriamente " . $UsuarioInventario;
+} 
+?> 

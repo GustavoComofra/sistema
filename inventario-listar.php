@@ -16,6 +16,7 @@ $result = mysqli_query($mysqli, $query);
             'idInventario' => $row['idInventario'],
             'CodCmg'=> $row['CodCmg'],
             'Producto'=> $row['Producto'],
+            'UM'=> $row['UM'],
             'Cantidad'=> $row['Cantidad'],
             'ObsInv'=> $row['ObsInv'],
             'FechaInventario'=> $row['FechaInventario']

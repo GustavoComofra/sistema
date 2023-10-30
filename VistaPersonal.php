@@ -317,7 +317,29 @@ mysqli_close($mysqli);
 		</td>
 
   </table>
+  <?php
+/*
+	require '/sistema/phpqrcode/qrlib.php';
 	
+	$dir = './sistema/temp';
+	echo 	"Direccion " . $dir;
+	if(!file_exists($dir))
+		mkdir($dir);
+	
+	$filename = $dir.'test.png';
+	
+	$tamanio = 15;
+	$level = 'H';
+	$frameSize = 1;
+	$contenido = 'https://interno.comofrasrl.com.ar/sistema/';
+
+	QRcode::png($contenido, $filename, $level, $tamanio, $frameSize);
+	
+	echo '<img src="'.$filename.'" />';
+*/
+?>
+
+</div>
 
 </div>
     </div>
