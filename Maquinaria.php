@@ -1,5 +1,5 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html lang="en">
+<html lang="es">
 <head>
 <!-- Script JS -->
 	<!-- <script src="../dir/js/bootstrap.min.js" ></script> -->
@@ -52,35 +52,50 @@ die();
 ?>	
 
 
-<div class="container-fluid">
-  <div class="row">
 
-    <div class="col col-lg-2">
 	<?php	
 include ("MarcoIzquierdo.php");
 
 ?>	
-    </div>
-    <div class="col-md-auto">
+
 	<div class="container">
-  <div class="row">
-    <div class="col-4">
-	<form action=""  id="formMaquinaria" enctype="multipart/form-data">
+
+
+	<form action="#" method="post" name="formMaquinaria" enctype="multipart/form-data">
 		<div id="respuesta"></div>
 	<div class="form-group">
+
+<div class="row">
+<div class="col-2">
 <input type="hidden" name="txtidMaq" id="idMaq">
-<label for="txtMaquina">Maquinaria</label>
+		<label for="txtNumMaq">NumMaq</label>
+    <input class="form-control" type="number" name="txtNumMaq" id="txtNumMaq" placeholder="Numero de Maquina" >
+
+	<label for="txtDiasManteni">Dias de mantenimiento</label>	
+	<input class="form-control" type="number" name="txtDiasManteni" id="txtDiasManteni"   min="0"  value="0" >
+	
+	<label for="txtValorMaq">Valor</label>	
+	<input class="form-control" type="number" name="txtValorMaq" id="txtValorMaq" placeholder="Dolar" min="0"  value="0">
+</div>
+<div class="col">
+
+
+<label for="txtMaquina">Maquina</label>
     <input class="form-control" type="text" name="txtMaquina" id="txtMaquina" placeholder="Maquinaria" require>
+
 	<label for="txtModelo">Modelo</label>	
 	<input class="form-control" type="text" id="txtModelo" name="txtModelo" placeholder="Modelo" >
-	<label for="txtLink">Link</label>	
-	<input class="form-control" type="text" id="txtLink" name="txtLink" placeholder="Link Maquinaria" >
-	<label for="imagen">Imagen</label>	
-	<input type="file" class="form-control-file" name="imagen" id="imagen" >
-	<label for="txtImagen">txtImagen</label>	
-	<input class="form-control" type="text" id="txtImagen" name="txtLink" >
-	<label for="ProvedMaq">Proveedor</label>	
-	<select class="form-control"  name="listProvedMaq" size="1" id="listProvedMaq" required>
+
+
+	<label for="txtContactoMaq">Contacto</label>	
+	<input class="form-control" type="text" name="txtContactoMaq" id="txtContactoMaq"  placeholder="Contacto"  >
+
+		</div>
+
+<div class="col">
+
+<label for="listProvedMaq">Proveedor</label>	
+<select class="form-control"  name="listProvedMaq" size="1" id="listProvedMaq" required>
         <option value=1>Seleccione Proveedor</option>
         <?php
 include("Conexion/conexion.php");
@@ -92,9 +107,27 @@ echo '<option value="'.$valoresProv[IdProv].'">'.$valoresProv[IdProv].' - '.$val
 	?>
       </select>
 
+<label for="listSector">Sector</label>	
+<select class="form-control" name="listSector" size="1" id="listSector">
+        <option value="1">Sector</option>
+        <?php
+include("Conexion/conexion.php");
+  
+$querySector = $mysqli -> query ("SELECT * FROM `ComSector` ORDER BY `ComSector`.`SectorFk` ASC");
 
-	  <label for="Clasificacion">Clasificacion</label>	
-	<select class="form-control"  name="listClasificacion" size="1" id="listClasificacion" required>
+
+ while ($valoresSector = mysqli_fetch_array($querySector))
+
+		  
+		  {
+
+ echo '<option value="'.$valoresSector[IdSector].'">'.$valoresSector[SectorFk].'</option>';
+}
+	?>
+      </select>
+
+<label for="listClasificacion">Clasificacion</label>	
+<select class="form-control"  name="listClasificacion" size="1" id="listClasificacion" required>
         <option value=2>Seleccione Clasificacion</option>
         <?php
 include("Conexion/conexion.php");
@@ -104,97 +137,262 @@ $queryClasi = $mysqli -> query ("SELECT * FROM `Clasificacion` ORDER BY `Clasifi
 echo '<option value="'.$valoresClasi[idClasi].'">'.$valoresClasi[idClasi ].' - '.$valoresClasi[Clasificacion].'</option>';
 }
 	?>
-      </select>
+      </select>	  
+	  
+	  
+</div>
+</div>
 
-	  <label for="txtContMaq">Contacto</label>	
-	<input class="form-control" type="text" name="txtContMaq" id="txtContMaq"  placeholder="Contacto"  >
-	<label for="txtDiasManteni">Dias de mantenimiento</label>	
-	<input class="form-control" type="number" name="txtDiasManteni" id="txtDiasManteni"   min="0"  value="0" >
-	<label for="txtValorMaq">Valor</label>	
-	<input class="form-control" type="number" name="txtValorMaq" id="txtValorMaq" placeholder="Dolar" min="0"  value="0">
-	<label for="txtObsMaq">Observacion</label>	
-	<textarea name="txtObsMaq" rows="2" cols="50" id="txtObsMaq" title="Observacion" ></textarea>
-    <input class="form-control" type="hidden" id="txtuserMAq" min="1" name="txtuserMAq" value="<?php echo $_SESSION['usuario'];  ?>">
-   <p>
+<div class="row">
+
+<div class="col">
+
+
+
+</div>
+
+<div class="col">
+
+
+</div>
+
+</div>
+
+<div class="row">
+
+<div class="col">
+<label for="imagen" class="form-label">Imagen</label>
+  <input class="form-control" type="file" id="imagen" name="imagen">
+
+</div>
+
+<div class="col">
+
+
+
+</div>
+
+</div>
+
+<div class="row">
+	<div class="form-floating">
+  <textarea class="form-control" placeholder="Observacion" name="txtObsMaq" id="txtObsMaq"></textarea>
+  <label for="txtObsMaq">Observacion</label>
+  </div>
+  <div class="form-floating">
+  <textarea class="form-control" placeholder="Link de manual" name="txtLink" id="txtLink"></textarea>
+  <label for="txtLink">Link</label>
+
+</div>
+
+</div>
+
+<input class="form-control" type="hidden" id="txtuserMAq" min="1" name="txtuserMAq" value="<?php echo $_SESSION['usuario'];  ?>">
+	
+	
       <button type="submit" class="btn btn-success" name="btnEnviar" id="btnEnviar" ><span class="glyphicon glyphicon glyphicon-floppy-open"></span> - Guardar</button>
-      </p>
+  
+
+	  <!-- INSERT INTO `Maquinaria` (`idMaq`, `NumMaq`, `Maquina`, `Modelo`, `Link`, `imgMaq`, `ProvedMaq`, `Fk_Clasi`, `ContactoMaq`, `DiasManteni`, `ValorMaq`, `ObsMaq`, `userMAq`, `SectorMaq`, `Activo`) VALUES (NULL, '1', 'Maquina', 'Modelo', 'Link', 'imgMaq', '1', '3', 'ContactoMaq', '4', '5.5', 'ObsMaq', 'userMAq', '6', 'Si'); -->
+
+	  <?php
+$NumMaq=$_POST['txtNumMaq'];	
+$Maquina=$_POST['txtMaquina'];	
+$DiasManteni=$_POST['txtDiasManteni'];	
+$ValorMaq=$_POST['txtValorMaq'];
+$Modelo=$_POST['txtModelo'];	
+$ContactoMaq=$_POST['txtContactoMaq'];	
+$ProvedMaq=$_POST['listProvedMaq'];	
+$SectorMaq=$_POST['listSector'];
+
+$Fk_Clasi=$_POST['listClasificacion'];	
+$imgMaq=$_POST['imagen'];	
+$ObsMaq=$_POST['txtObsMaq'];	
+$Link=$_POST['txtLink'];
+
+$nombre_imagen=$_FILES['imagen']['name'];
+$tipo_iamgen=$_FILES['imagen']['type'];
+$tamagno_imegen=$_FILES['imagen']['size'];
+$carpetas_destino='ftp.comofrasrl.com.ar/img/manten/' . $nombre_imagen;
+move_uploaded_file($_FILES['imagen']['tmp_name'],"img/manten/".$nombre_imagen);
+
+$ImagenNombre = 'https://interno.comofrasrl.com.ar/sistema/img/manten/'.$nombre_imagen;
+
+if ($ImagenNombre == 'https://interno.comofrasrl.com.ar/sistema/img/manten/') {
+    $imgMaq = 'iconoMant.png';
+}else {
+    $imgMaq = $ImagenNombre;
+}
+
+// echo "NumMaq ".$NumMaq."<br>";	
+// echo "Maquina ".$Maquina."<br>";	
+// echo "DiasManteni ".$DiasManteni."<br>";	
+// echo "ValorMaq ".$ValorMaq."<br>";
+// echo "Modelo ".$Modelo."<br>";
+// echo "ContactoMaq ".$ContactoMaq."<br>";	
+// echo "ProvedMaq ".$ProvedMaq."<br>";		
+// echo "SectorMaq ".$SectorMaq."<br>";
+// echo "Fk_Clasi ".$Fk_Clasi."<br>";
+// echo "imgMaq ".$imgMaq."<br>";
+// echo "ObsMaq ".$ObsMaq."<br>";
+// echo "Link ".$Link."<br>";	
+
+if(!$Maquina==null){
+	
+echo "<p>"."cargado"."</p>";
+include("Conexion/conexion.php");
+$insertarMaquina = "INSERT INTO `Maquinaria` (`idMaq`, `NumMaq`, `Maquina`, `Modelo`, `Link`, `imgMaq`, `ProvedMaq`, `Fk_Clasi`, `ContactoMaq`, `DiasManteni`, `ValorMaq`, `ObsMaq`, `userMAq`, `SectorMaq`, `Activo`) VALUES (NULL, '$NumMaq', '$Maquina', '$Modelo', '$Link', '$imgMaq', '$ProvedMaq', '$Fk_Clasi', '$ContactoMaq', '$DiasManteni', '$ValorMaq', '$ObsMaq', 'userMAq', '$SectorMaq', 'Si');";
+
+$ejecutar_insertar=mysqli_query($mysqli,$insertarMaquina);
+ }		
+		
+mysqli_close($mysqli);	
 
 	
-      </form>
-    </div>
-
-
-  </div>
-  <div class="col-8">
-  <form class="d-flex" role="search">
-    <input class="form-control me-2" id="search" type="search" placeholder="Buscar" aria-label="Search">
-    <button class="btn btn-success" type="submit">Buscar</button>
-  </form>
-  <div class="col-md-7" id="containerListado">
-<h3>Listado Maquinarias </h3>
-
-<table class="table table-bordered table-sm ">
-	<thead>
-		<tr>
-			<td>idMaq</td>
-			<td>Maquina</td>
-			<td>Modelo</td>
-			<td>DiasManteni</td>
-			<td>Link</td>
-            <td>ProvedMaq</td>
-            <td>Clasi</td>
-            <td>Contacto</td>
-            <td>Valor</td>
-            <td>Obs</td>
-			 <td>imgMaq</td>
-			 <td colspan="2" >Opciones</td>
-			 
-		</tr>
-	</thead>
-	<tbody id="tb_maquinaria">
-
-	</tbody>
-</table>
-</div>
-
-<div class="col-md-7" id="containerBuscar">
-        <h3>Resultado de busqueda</h3>
-        <table class="table table-bordered table-sm ">
-            <thead>
-                <tr>
-				<td>idMaq</td>
-			<td>Maquina</td>
-			<td>Modelo</td>
-			<td>DiasManteni</td>
-			<td>Link</td>
-            <td>ProvedMaq</td>
-            <td>Clasi</td>
-            <td>Contacto</td>
-            <td>Valor</td>
-            <td>Obs</td>
-			 <td>imgMaq</td>
-			 <td colspan="2" >Opciones</td>
-                     
-                </tr>
-            </thead>
-            <tbody id="container">
-
-            </tbody>
-        </table>
-    </div>
-
-	<?php
-
-//include ("ListarMaqFond.php");
-
-
 ?>
-     
-    </div>
+      </form>
+
+	  <?php
+
+	  ?>
+	
+  
 </div>
-    </div>
-  </div>
-</div>	
+
+<div class="container">
+<form action=""  id="formMaquinaria" enctype="multipart/form-data">
+		<div id="respuesta"></div>
+	<div class="form-group">
+
+<div class="row">
+<h3>Buscar</h3>
+
+		<label for="txtNumMaqB">NumMaq</label>
+    <input class="form-control" type="number" name="txtNumMaqB" id="txtNumMaqB" placeholder="Numero de Maquina" >
+
+<label for="txtMaquinaB">Maquina</label>
+    <input class="form-control" type="text" name="txtMaquinaB" id="txtMaquinaB" placeholder="" require>
+
+	<label for="txtModeloB">Modelo </label>	
+	<input class="form-control" type="text" id="txtModeloB" name="txtModeloB" placeholder="" >
+
+	<label for="listClasificacionB">Clasificacion</label>	
+<select class="form-control"  name="listClasificacionB" size="1" id="listClasificacionB" required>
+        <option value=2>Seleccione Clasificacion a buscar</option>
+        <?php
+include("Conexion/conexion.php");
+$queryClasi = $mysqli -> query ("SELECT * FROM `Clasificacion` ORDER BY `Clasificacion`.`Clasificacion` ASC");
+ while ($valoresClasi = mysqli_fetch_array($queryClasi))
+{
+echo '<option value="'.$valoresClasi[idClasi].'">'.$valoresClasi[idClasi ].' - '.$valoresClasi[Clasificacion].'</option>';
+}
+	?>
+      </select>	  
+
+	  <label for="listSectorB">Sector</label>	
+<select class="form-control" name="listSectorB" size="1" id="listSectorB">
+        <option value="1">Sector a buscar</option>
+        <?php
+include("Conexion/conexion.php");
+  
+$querySector = $mysqli -> query ("SELECT * FROM `ComSector` ORDER BY `ComSector`.`SectorFk` ASC");
+
+
+ while ($valoresSector = mysqli_fetch_array($querySector))
+
+		  
+		  {
+
+ echo '<option value="'.$valoresSector[IdSector].'">'.$valoresSector[SectorFk].'</option>';
+}
+	?>
+      </select>
+
+	  <label for="listProvedMaqB">Proveedor</label>	
+<select class="form-control"  name="listProvedMaqB" size="1" id="listProvedMaqB" required>
+        <option value=1>Seleccione Proveedora buscar</option>
+        <?php
+include("Conexion/conexion.php");
+$queryProv = $mysqli -> query ("SELECT * FROM `Proveedor` ORDER BY `Proveedor`.`Proveedor` ASC");
+ while ($valoresProv = mysqli_fetch_array($queryProv))
+{
+echo '<option value="'.$valoresProv[IdProv].'">'.$valoresProv[IdProv].' - '.$valoresProv[Proveedor].'</option>';
+}
+	?>
+      </select>
+
+
+
+</div>
+
+    <button type="submit"  type="button" class="btn btn-info"  name="btnBuscar" id="btnBuscar" ><span class="glyphicon glyphicon glyphicon-search"></span> - Buscar</button>
+
+	</div>
+	</form>
+
+</div>
+
+<div class="container">
+<?php
+
+echo "
+<table border=1 align=\"\" class=\"table table-striped\">
+  <thead>
+<th colspan=\"10\" align=\"center\" bgcolor=\"#5D81F5\"><span class=\"\">Listado Clientes</th>
+ </thead>
+</tr>
+<TR>
+<TD><B>Id</B></TD>
+<TD><B>NumMaq</B></TD>
+<TD><B>Maquina</B></TD>
+<TD><B>Modelo</B></TD>
+<TD><B>Clasi</B></TD>
+<TD><B>Contacto</B></TD>
+<TD><B>Sector</B></TD>
+<TD><B>Editar</B></TD>
+<TD><B>Borrar</B></TD>
+</TR>
+";		
+
+$idMaqB=$_POST['txtidMaqB'];
+$NumMaqB=$_POST['txtNumMaqB'];	
+$MaquinaB=$_POST['txtMaquinaB'];	
+$ModeloB=$_POST['txtModeloB'];	
+$ProvedMaqB=$_POST['listProvedMaqB'];	
+$SectorMaqB=$_POST['listSectorB'];
+$Fk_ClasiB=$_POST['listClasificacionB'];	
+
+
+		
+include("Conexion/conexion.php");	
+$queryMaquinaB = $mysqli -> query ("SELECT * FROM `VistMaquinaria` WHERE `NumMaq` LIKE '%$NumMaqB%' AND `Maquina` LIKE '%$MaquinaB%' AND `Modelo` LIKE '%$ModeloB%' AND `Clasificacion` LIKE '%$Fk_ClasiB%' AND `SectorFk` LIKE '%$SectorMaqB%'");
+  
+ while ($filaMaquinaB = mysqli_fetch_array($queryMaquinaB))
+
+{
+echo "<TR>\n";
+echo "<td>".$filaMaquinaB['idMaq']."</td>\n";
+echo "<td>".$filaMaquinaB['NumMaq']."</td>\n";
+echo "<td>".$filaMaquinaB['Maquina']."</td>\n";
+echo "<td>".$filaMaquinaB['Modelo']."</td>\n";
+echo "<td>".$filaMaquinaB['Clasificacion']."</td>\n";	 
+echo "<td>".$filaMaquinaB['ContactoMaq	']."</td>\n";
+echo "<td>".$filaMaquinaB['SectorFk']."</td>\n";
+
+echo "<td>"."<a href=\"/sistema/FormMaqEditar.php?idMaq=".$filaMaquinaB['idMaq']."\"><img src=\"../sistema/img/EditIcono.png\" alt=\"BtnIconoEditar\" width=\"20\" height=\"20\"></a></td>\n";
+	 
+
+echo "<td>"."<a onClick=\"AlertarBorra()\" href=\"/sistema/FormClienBorrar.php?idMaq=".$filaMaquinaB['idMaq']."\"><img src=\"../sistema/img/BorrIcono.png\" alt=\"BtnIconoEditar\" width=\"20\" height=\"20\"></a></td>\n";
+	 
+	 
+echo "</TR>\n";
+}
+	 
+echo "</table>"	 ;
+mysqli_close($mysqli);
+		
+?>
+</div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
 
