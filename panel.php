@@ -100,7 +100,7 @@ include ("MarcoIzquierdo.php");
 $Dia=date("m-d");
 
 include("Conexion/conexion.php");
-$queryFechaCumpleTitulo = $mysqli -> query ("SELECT * FROM `ComVistaEmpleado1` WHERE `FechaNacimiento` LIKE '%$Dia%' ");
+$queryFechaCumpleTitulo = $mysqli -> query ("SELECT * FROM `ComVistaEmpleado1` WHERE `FechaNacimiento` LIKE '%$Dia%' AND `Baja` LIKE 'No' ");
 while ($filaFechaCumpleTitulo = mysqli_fetch_array($queryFechaCumpleTitulo))
 {
 	$cumpleTitulo = $filaFechaCumpleTitulo['Nombres'];
@@ -111,7 +111,7 @@ if ($cumpleTitulo) {
 	echo "<h2> Cumples de hoy:  <img src=\"../sistema/img/imgCumple.JPG\" alt=\"iconoCumple\" width=\"50\" height=\"50\"></h2>";
 }
 
-$queryFechaCumple = $mysqli -> query ("SELECT * FROM `ComVistaEmpleado1` WHERE `FechaNacimiento` LIKE '%$Dia%' ORDER BY `Nombres` ASC");
+$queryFechaCumple = $mysqli -> query ("SELECT * FROM `ComVistaEmpleado1` WHERE `FechaNacimiento` LIKE '%$Dia%' AND `Baja` LIKE 'No' ORDER BY `Nombres` ASC");
 
 
 
