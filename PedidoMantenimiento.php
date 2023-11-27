@@ -27,7 +27,7 @@ $varCerrarSession = $_SESSION['usuario'];
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" >
 	
 <link href="../sistema/img/Icono.png" rel="icon" type="image/png">
- <title>Maquinaria</title>
+ <title>Mantenimiento</title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 </head>
 <style>
@@ -85,48 +85,123 @@ include ("MarcoIzquierdo.php");
 
 <div class="row">
 <div class="col-2">
-<input type="hidden" name="txtidMaq" id="idMaq">
-		<label for="txtNumMaq">NumMaq</label>
-    <input class="form-control" type="number" name="txtNumMaq" id="txtNumMaq" placeholder="Numero de Maquina" >
+<input type="hidden" name="txtIdPM" id="IdPM">
+		<label for="txtFechaSolicitada">Fecha Solicitada</label>
+    <input class="form-control" type="date" name="txFechaSolicitada" id="txtFechaSolicitada">
 
-	<label for="txtDiasManteni">Dias de mantenimiento</label>	
-	<input class="form-control" type="number" name="txtDiasManteni" id="txtDiasManteni"   min="0"  value="0" >
-	
-	<label for="txtValorMaq">Valor</label>	
-	<input class="form-control" type="number" name="txtValorMaq" id="txtValorMaq" placeholder="Dolar" min="0"  value="0">
-</div>
+	<label for="txtFechaFinalizado">Fecha Finalizado</label>	
+	<input class="form-control" type="date" name="txtFechaFinalizado" id="txtFechaFinalizado"  >
+	</div>
 <div class="col">
 
 
-<label for="txtMaquina">Maquina</label>
-    <input class="form-control" type="text" name="txtMaquina" id="txtMaquina" placeholder="Maquinaria" require>
-
-	<label for="txtModelo">Modelo</label>	
-	<input class="form-control" type="text" id="txtModelo" name="txtModelo" placeholder="Modelo" >
-
-
-	<label for="txtContactoMaq">Contacto</label>	
-	<input class="form-control" type="text" name="txtContactoMaq" id="txtContactoMaq"  placeholder="Contacto"  >
-
-		</div>
-
-<div class="col">
-
-<label for="listProvedMaq">Proveedor</label>	
+<label for="txtFk_Maquinaria">Maquinaria</label>
 <select class="form-control"  name="listProvedMaq" size="1" id="listProvedMaq" required>
-        <option value=1>Seleccione Proveedor</option>
+        <option value=1>Seleccione herramienta</option>
         <?php
 include("Conexion/conexion.php");
-$queryProv = $mysqli -> query ("SELECT * FROM `Proveedor` ORDER BY `Proveedor`.`Proveedor` ASC");
- while ($valoresProv = mysqli_fetch_array($queryProv))
+$queryProv = $mysqli -> query ("SELECT * FROM `VistMaquinaria` ORDER BY `Maquina` ASC");
+ while ($valoresMaq = mysqli_fetch_array($queryProv))
 {
-echo '<option value="'.$valoresProv[IdProv].'">'.$valoresProv[IdProv].' - '.$valoresProv[Proveedor].'</option>';
+echo '<option value="'.$valoresMaq[idMaq].'">'.$valoresMaq[Maquina].' - '.$valoresMaq[NumMaq].'</option>';
 }
 	?>
       </select>
 
-<label for="listSector">Sector</label>	
-<select class="form-control" name="listSector" size="1" id="listSector">
+	  <label for="listFk_Tipo">Tipo</label>	
+<select class="form-control"  name="listFk_Tipo" size="1" id="listFk_Tipo" required>
+        <option value=1>Seleccione Tipo</option>
+        <?php
+include("Conexion/conexion.php");
+$queryTipoPM = $mysqli -> query ("SELECT * FROM `TipoPM` WHERE `Activo` LIKE 'Si' ORDER BY `Tipo` ASC");
+ while ($valoresTipoPM = mysqli_fetch_array($queryTipoPM))
+{
+echo '<option value="'.$valoresTipoPM[idTipoPM].'">'.$valoresTipoPM[Tipo].' - '.$valoresTipoPM[idTipoPM].'</option>';
+}
+	?>
+      </select>
+
+
+
+		</div>
+
+</div>
+
+<div class="row">
+
+<div class="col">
+
+
+
+</div>
+
+<div class="col">
+
+
+</div>
+
+</div>
+
+<div class="row">
+
+<div class="col">
+<label for="ImagenInicial" class="form-label">Imagen Inicial</label>
+  <input class="form-control" type="file" id="ImagenInicial" name="ImagenInicial">
+
+</div>
+
+<div class="col">
+<label for="ImagenFinal" class="form-label">Imagen Final</label>
+  <input class="form-control" type="file" id="ImagenFinal" name="ImagenFinal">
+
+</div>
+
+<div class="col">
+
+
+
+</div>
+
+</div>
+
+<div class="row">
+	<div class="form-floating">
+  <textarea class="form-control" placeholder="Observacion" name="txtObsPM" id="txtObsPM"></textarea>
+  <label for="txtObsPM">Observacion</label>
+  </div>
+  </div>
+  <div class="row">
+  <div class="col">
+  <label for="txtUsuarioRequerido">UsuarioRequerido</label>	
+  <select class="form-control"  name="listUsuarioRequerido" size="1" id="listUsuarioRequerido" required>
+        <option value=2>Seleccione Usuario</option>
+        <?php
+include("Conexion/conexion.php");
+$queryusuarioReq = $mysqli -> query ("SELECT * FROM `PrUsuario` ORDER BY `PrUsuario`.`usuario` ASC");
+ while ($valoresusuarioReq = mysqli_fetch_array($queryusuarioReq))
+{
+echo '<option value="'.$valoresusuarioReq[usuario].'">'.$valoresusuarioReq[usuario].' </option>';
+}
+	?>
+      </select>	 
+	</div>
+	<div class="col">
+	<label for="txtUsuarioFinalizado">Usuario Finalizado</label>	
+	<select class="form-control"  name="listUsuarioFinalizado" size="1" id="listUsuarioFinalizado" required>
+        <option value=2>Seleccione Usuario</option>
+        <?php
+include("Conexion/conexion.php");
+$queryusuario = $mysqli -> query ("SELECT * FROM `PrUsuario` ORDER BY `PrUsuario`.`usuario` ASC");
+ while ($valoresusuario = mysqli_fetch_array($queryusuario))
+{
+echo '<option value="'.$valoresusuario[usuario].'">'.$valoresusuario[usuario].' </option>';
+}
+	?>
+      </select>	  
+	</div>
+	<div class="col">
+	<label for="listFk_Sector">Sector</label>	
+<select class="form-control" name="listFk_Sector" size="1" id="listFk_Sector">
         <option value="1">Sector</option>
         <?php
 include("Conexion/conexion.php");
@@ -143,64 +218,7 @@ $querySector = $mysqli -> query ("SELECT * FROM `ComSector` ORDER BY `ComSector`
 }
 	?>
       </select>
-
-<label for="listClasificacion">Clasificacion</label>	
-<select class="form-control"  name="listClasificacion" size="1" id="listClasificacion" required>
-        <option value=2>Seleccione Clasificacion</option>
-        <?php
-include("Conexion/conexion.php");
-$queryClasi = $mysqli -> query ("SELECT * FROM `Clasificacion` ORDER BY `Clasificacion`.`Clasificacion` ASC");
- while ($valoresClasi = mysqli_fetch_array($queryClasi))
-{
-echo '<option value="'.$valoresClasi[idClasi].'">'.$valoresClasi[idClasi ].' - '.$valoresClasi[Clasificacion].'</option>';
-}
-	?>
-      </select>	  
-	  
-	  
-</div>
-</div>
-
-<div class="row">
-
-<div class="col">
-
-
-
-</div>
-
-<div class="col">
-
-
-</div>
-
-</div>
-
-<div class="row">
-
-<div class="col">
-<label for="imagen" class="form-label">Imagen</label>
-  <input class="form-control" type="file" id="imagen" name="imagen">
-
-</div>
-
-<div class="col">
-
-
-
-</div>
-
-</div>
-
-<div class="row">
-	<div class="form-floating">
-  <textarea class="form-control" placeholder="Observacion" name="txtObsMaq" id="txtObsMaq"></textarea>
-  <label for="txtObsMaq">Observacion</label>
-  </div>
-  <div class="form-floating">
-  <textarea class="form-control" placeholder="Link de manual" name="txtLink" id="txtLink"></textarea>
-  <label for="txtLink">Link</label>
-
+	  </div>
 </div>
 
 </div>

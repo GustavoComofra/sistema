@@ -75,6 +75,13 @@ die();
 include ("MarcoIzquierdo.php");
 
 ?>	
+				<?php
+	$idMaq=$_GET['idMaq'];
+
+$queryItemEditar = $mysqli -> query ("SELECT * FROM `Maquinaria` WHERE `idMaq` = ".$idMaq.";");
+
+$rowItemEditar = mysqli_fetch_assoc($queryItemEditar);
+		?>
 
 	<div class="container">
 
@@ -85,28 +92,28 @@ include ("MarcoIzquierdo.php");
 
 <div class="row">
 <div class="col-2">
-<input type="hidden" name="txtidMaq" id="idMaq">
+<input type="text" name="txtidMaq" id="idMaq" value="<?php print $rowItemEditar['idMaq'];?>">
 		<label for="txtNumMaq">NumMaq</label>
-    <input class="form-control" type="number" name="txtNumMaq" id="txtNumMaq" placeholder="Numero de Maquina" >
+    <input class="form-control" type="number" name="txtNumMaq" id="txtNumMaq" value="<?php print $rowItemEditar['NumMaq'];?>" >
 
 	<label for="txtDiasManteni">Dias de mantenimiento</label>	
-	<input class="form-control" type="number" name="txtDiasManteni" id="txtDiasManteni"   min="0"  value="0" >
+	<input class="form-control" type="number" name="txtDiasManteni" id="txtDiasManteni"   min="0"  value="<?php print $rowItemEditar['DiasManteni'];?>" >
 	
 	<label for="txtValorMaq">Valor</label>	
-	<input class="form-control" type="number" name="txtValorMaq" id="txtValorMaq" placeholder="Dolar" min="0"  value="0">
+	<input class="form-control" type="number" name="txtValorMaq" id="txtValorMaq" value="<?php print $rowItemEditar['ValorMaq'];?>">
 </div>
 <div class="col">
 
 
 <label for="txtMaquina">Maquina</label>
-    <input class="form-control" type="text" name="txtMaquina" id="txtMaquina" placeholder="Maquinaria" require>
+    <input class="form-control" type="text" name="txtMaquina" id="txtMaquina" value="<?php print $rowItemEditar['Maquina'];?>">
 
 	<label for="txtModelo">Modelo</label>	
-	<input class="form-control" type="text" id="txtModelo" name="txtModelo" placeholder="Modelo" >
+	<input class="form-control" type="text" id="txtModelo" name="txtModelo" value="<?php print $rowItemEditar['Modelo'];?>" >
 
 
 	<label for="txtContactoMaq">Contacto</label>	
-	<input class="form-control" type="text" name="txtContactoMaq" id="txtContactoMaq"  placeholder="Contacto"  >
+	<input class="form-control" type="text" name="txtContactoMaq" id="txtContactoMaq"  value="<?php print $rowItemEditar['ContactoMaq'];?>"  >
 
 		</div>
 
@@ -114,7 +121,7 @@ include ("MarcoIzquierdo.php");
 
 <label for="listProvedMaq">Proveedor</label>	
 <select class="form-control"  name="listProvedMaq" size="1" id="listProvedMaq" required>
-        <option value=1>Seleccione Proveedor</option>
+        <option value="<?php print $rowItemEditar['ProvedMaq'];?>" ><?php print $rowItemEditar['ProvedMaq'];?></option>
         <?php
 include("Conexion/conexion.php");
 $queryProv = $mysqli -> query ("SELECT * FROM `Proveedor` ORDER BY `Proveedor`.`Proveedor` ASC");
@@ -127,7 +134,7 @@ echo '<option value="'.$valoresProv[IdProv].'">'.$valoresProv[IdProv].' - '.$val
 
 <label for="listSector">Sector</label>	
 <select class="form-control" name="listSector" size="1" id="listSector">
-        <option value="1">Sector</option>
+        <option value="<?php print $rowItemEditar['SectorMaq'];?>"><?php print $rowItemEditar['SectorMaq'];?></option>
         <?php
 include("Conexion/conexion.php");
   
@@ -145,8 +152,8 @@ $querySector = $mysqli -> query ("SELECT * FROM `ComSector` ORDER BY `ComSector`
       </select>
 
 <label for="listClasificacion">Clasificacion</label>	
-<select class="form-control"  name="listClasificacion" size="1" id="listClasificacion" required>
-        <option value=2>Seleccione Clasificacion</option>
+<select class="form-control"  name="listClasificacion" size="1" id="listClasificacion" >
+        <option value="<?php print $rowItemEditar['Fk_Clasi'];?>"><?php print $rowItemEditar['Fk_Clasi'];?></option>
         <?php
 include("Conexion/conexion.php");
 $queryClasi = $mysqli -> query ("SELECT * FROM `Clasificacion` ORDER BY `Clasificacion`.`Clasificacion` ASC");
@@ -180,7 +187,7 @@ echo '<option value="'.$valoresClasi[idClasi].'">'.$valoresClasi[idClasi ].' - '
 
 <div class="col">
 <label for="imagen" class="form-label">Imagen</label>
-  <input class="form-control" type="file" id="imagen" name="imagen">
+<img src='<?php print $rowItemEditar['imgMaq'];?>' alt='BtnIconoVer' width='20' height='20'>
 
 </div>
 
@@ -194,11 +201,11 @@ echo '<option value="'.$valoresClasi[idClasi].'">'.$valoresClasi[idClasi ].' - '
 
 <div class="row">
 	<div class="form-floating">
-  <textarea class="form-control" placeholder="Observacion" name="txtObsMaq" id="txtObsMaq"></textarea>
+  <textarea class="form-control" placeholder="Observacion" name="txtObsMaq" id="txtObsMaq"> <?php print $rowItemEditar['ObsMaq'];?></textarea>
   <label for="txtObsMaq">Observacion</label>
   </div>
   <div class="form-floating">
-  <textarea class="form-control" placeholder="Link de manual" name="txtLink" id="txtLink"></textarea>
+  <textarea class="form-control" placeholder="Link de manual" name="txtLink" id="txtLink"><?php print $rowItemEditar['Link'];?></textarea>
   <label for="txtLink">Link</label>
 
 </div>
@@ -208,12 +215,13 @@ echo '<option value="'.$valoresClasi[idClasi].'">'.$valoresClasi[idClasi ].' - '
 <input class="form-control" type="hidden" id="txtuserMAq" min="1" name="txtuserMAq" value="<?php echo $_SESSION['usuario'];  ?>">
 	
 	
-      <button type="submit" class="btn btn-success" name="btnEnviar" id="btnEnviar" ><span class="glyphicon glyphicon glyphicon-floppy-open"></span> - Guardar</button>
+      <button type="submit" class="btn btn-success" name="btnEnviar" id="btnEnviar" ><span class="glyphicon glyphicon glyphicon-floppy-open"></span> - Editar</button>
   
 
 	  <!-- INSERT INTO `Maquinaria` (`idMaq`, `NumMaq`, `Maquina`, `Modelo`, `Link`, `imgMaq`, `ProvedMaq`, `Fk_Clasi`, `ContactoMaq`, `DiasManteni`, `ValorMaq`, `ObsMaq`, `userMAq`, `SectorMaq`, `Activo`) VALUES (NULL, '1', 'Maquina', 'Modelo', 'Link', 'imgMaq', '1', '3', 'ContactoMaq', '4', '5.5', 'ObsMaq', 'userMAq', '6', 'Si'); -->
 
 	  <?php
+	  $idMaq=$_POST['txtidMaq'];
 $NumMaq=$_POST['txtNumMaq'];	
 $Maquina=$_POST['txtMaquina'];	
 $DiasManteni=$_POST['txtDiasManteni'];	
@@ -242,26 +250,14 @@ if ($ImagenNombre == 'https://interno.comofrasrl.com.ar/sistema/img/manten/') {
     $imgMaq = $ImagenNombre;
 }
 
-// echo "NumMaq ".$NumMaq."<br>";	
-// echo "Maquina ".$Maquina."<br>";	
-// echo "DiasManteni ".$DiasManteni."<br>";	
-// echo "ValorMaq ".$ValorMaq."<br>";
-// echo "Modelo ".$Modelo."<br>";
-// echo "ContactoMaq ".$ContactoMaq."<br>";	
-// echo "ProvedMaq ".$ProvedMaq."<br>";		
-// echo "SectorMaq ".$SectorMaq."<br>";
-// echo "Fk_Clasi ".$Fk_Clasi."<br>";
-// echo "imgMaq ".$imgMaq."<br>";
-// echo "ObsMaq ".$ObsMaq."<br>";
-// echo "Link ".$Link."<br>";	
 
 if(!$Maquina==null){
 	
-echo "<p>"."cargado"."</p>";
+	echo "<h2>"."<a href=\"/sistema/Maquinaria.php\">Editado Volver?</a>"."</h2>";
 include("Conexion/conexion.php");
-$insertarMaquina = "INSERT INTO `Maquinaria` (`idMaq`, `NumMaq`, `Maquina`, `Modelo`, `Link`, `imgMaq`, `ProvedMaq`, `Fk_Clasi`, `ContactoMaq`, `DiasManteni`, `ValorMaq`, `ObsMaq`, `userMAq`, `SectorMaq`, `Activo`) VALUES (NULL, '$NumMaq', '$Maquina', '$Modelo', '$Link', '$imgMaq', '$ProvedMaq', '$Fk_Clasi', '$ContactoMaq', '$DiasManteni', '$ValorMaq', '$ObsMaq', 'userMAq', '$SectorMaq', 'Si');";
+$EditarMaquina = "UPDATE `Maquinaria` SET `NumMaq` = '$NumMaq', `Maquina` = '$Maquina', `Modelo` = '$Modelo', `Link` = '$Link', `ProvedMaq` = '$ProvedMaq', `Fk_Clasi` = '$Fk_Clasi', `DiasManteni` = '$DiasManteni', `ValorMaq` = '$ValorMa', `ObsMaq` = '$ObsMaq', `SectorMaq` = '$SectorMaq' WHERE `Maquinaria`.`idMaq` = '$idMaq';";
 
-$ejecutar_insertar=mysqli_query($mysqli,$insertarMaquina);
+$ejecutar_insertar=mysqli_query($mysqli,$EditarMaquina);
  }		
 		
 mysqli_close($mysqli);	
@@ -276,20 +272,6 @@ mysqli_close($mysqli);
 	
   
 </div>
-<div class="col-md-auto">
-<?php
-include ("ListarMaquinariaFondend.php");
 
-?>
-</div>
-
-
-<!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
-
-<script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
-
-<script src="appMaq.js"></script>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-<script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script> -->
 </body>
 </html>
