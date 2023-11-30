@@ -10,7 +10,7 @@ if (!$resultadoReclamo) {
     die("Error");
 }else{
     while($dataReclamo= mysqli_fetch_assoc($resultadoReclamo)){
-$arreglo["data"][]=array_map("utf8_encode", $dataReclamo);
+$arreglo[]=array_map("utf8_encode", $dataReclamo);
     }
    echo json_encode($arreglo);
 }

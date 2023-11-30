@@ -66,6 +66,8 @@ include ("MarcoIzquierdo.php");
 ?>	
     </div>
     <div class="col-md-auto">
+ 
+
 
     <?php
 include ("ListarReclamoFondend.php");
