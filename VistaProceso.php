@@ -133,7 +133,7 @@ $rowprocesoprocesoUser = mysqli_fetch_assoc($queryvarid_procesUser);
 
      <table class="table table-bordered">
       <tr>
-        <td class="algCentral"><img src="/sistema/img/logoAmplio.jpg" alt="Logo" width="180" height="60"></td>
+        <td class="algCentral"><img src="/sistema/img/Logotipo2023.JPG" alt="Logo" width="180" height="60"></td>
         <td ><h3 class="algCentral"><strong class="algCentral">  Estudio de Metodos y Tiempos</strong></h3></td>
         <td >
         <p>I.07.19 / Rev.01</p>

@@ -88,16 +88,20 @@ $row = mysqli_fetch_assoc($queryvarNumReclamo);
 ?>
 
 
-<div align="">
+<div class="container-fluid">
   <table width="" border="" class="table-responsive-xl table table-bordered table-hover">
 <thead>
-    <tr>
-      <td colspan="6" align="center"> <img src="http://interno.comofrasrl.com.ar/sistema/img/ComofraLogoHome.png" width="200" height="50" alt="ImgComofra"/>
-		<br><label><h3><b>Reclamo n <?php echo $row['NumReclamo'];
-	$varNumReclamo = $row['NumReclamo']; ?> </b></h3></label>
-		</td>
-	
-    </tr>
+<tr>
+        <td class="algCentral"><img src="/sistema/img/Logotipo2023.JPG" alt="Logo" width="180" height="60"></td>
+        <td colspan="4" ><h3 style="text-align: center;" ><strong class="algCentral"> <b>Informe de reclamo</b> </strong></h3></td>
+        <td >
+        <p>R.03.00.04</p>
+        <p>Fecha reclamo: <?php echo $row['Fecha']; ?></p>
+        <p>Numero:<?php echo $row['NumReclamo']; ?> </p>
+      </td>
+</tr>
+
+
   </thead>
     <tr>
 	  <th scope="row">Reclamo: </th>
@@ -371,10 +375,21 @@ $varDir1 = $filaImagen['Imagen1'];
 $varDir2 = $filaImagen['Imagen2'];
 $varDir3 = $filaImagen['Imagen3'];
 
-echo "<td>"."<a href=\"$varDir\" target=\"_blank\"><img  class=\"img-fluid\" src=\"$varDir\" alt=\"Imagen\" width=\"100\" height=\"100\"></a></td>\n";
-echo "<td>"."<a href=\"$varDir1\" target=\"_blank\"><img class=\"img-fluid\" src=\"$varDir1\" alt=\"Imagen1\" width=\"100\" height=\"100\"></a></td>\n";
-echo "<td>"."<a href=\"$varDir2\" target=\"_blank\"><img class=\"img-fluid\" src=\"$varDir2\" alt=\"Imagen2\" width=\"100\" height=\"100\"></a></td>\n";
-echo "<td>"."<a href=\"$varDir3\" target=\"_blank\"><img class=\"img-fluid\" src=\"$varDir3\" alt=\"Imagen3\" width=\"100\" height=\"100\"></a></td>\n";
+if ($varDir!="https://interno.comofrasrl.com.ar/sistema/img/venta/") {
+  echo "<td>"."<a href=\"$varDir\" target=\"_blank\"><img class=\"img-fluid\" src=\"$varDir\" alt=\"ImagenSol2\" width=\"100\" height=\"100\"></a></td>\n";
+}
+
+if ($varDir1!="https://interno.comofrasrl.com.ar/sistema/img/venta/") {
+  echo "<td>"."<a href=\"$varDir1\" target=\"_blank\"><img class=\"img-fluid\" src=\"$varDir1\" alt=\"ImagenSol2\" width=\"100\" height=\"100\"></a></td>\n";
+}
+
+if ($varDir2!="https://interno.comofrasrl.com.ar/sistema/img/venta/") {
+  echo "<td>"."<a href=\"$varDir2\" target=\"_blank\"><img class=\"img-fluid\" src=\"$varDir2\" alt=\"ImagenSol2\" width=\"100\" height=\"100\"></a></td>\n";
+}
+
+if ($varDir3!="https://interno.comofrasrl.com.ar/sistema/img/venta/") {
+  echo "<td>"."<a href=\"$varDir3\" target=\"_blank\"><img class=\"img-fluid\" src=\"$varDir3\" alt=\"ImagenSol2\" width=\"100\" height=\"100\"></a></td>\n";
+}
 	 
 echo "</TR>\n";
 echo "</table>"; 		 
@@ -428,10 +443,23 @@ $varDirSolu2 = $filaImagenSolu['ImagenSolu2'];
 $varDirSolu3 = $filaImagenSolu['ImagenSolu3'];
 	 
 	
-echo "<td>"."<a href=\"$varDirSolu\" target=\"_blank\"><img class=\"img-fluid\" src=\"$varDirSolu\" alt=\"ImagenSol1\" width=\"100\" height=\"100\"></a></td>\n";
-echo "<td>"."<a href=\"$varDirSolu1\" target=\"_blank\"><img class=\"img-fluid\" src=\"$varDirSolu1\" alt=\"ImagenSol2\" width=\"100\" height=\"100\"></a></td>\n";
-echo "<td>"."<a href=\"$varDirSolu2\" target=\"_blank\"><img class=\"img-fluid\" src=\"$varDirSolu2\" alt=\"ImagenSol3\" width=\"100\" height=\"100\"></a></td>\n";
-echo "<td>"."<a href=\"$varDirSolu3\" target=\"_blank\"><img class=\"img-fluid\" src=\"$varDirSolu3\" alt=\"ImagenSol4\"   width=\"100\" height=\"100\"></a></td>\n";	 
+
+if ($varDirSolu!="https://interno.comofrasrl.com.ar/sistema/img/venta/") {
+  echo "<td>"."<a href=\"$varDirSolu\" target=\"_blank\"><img class=\"img-fluid\" src=\"$varDirSolu\" alt=\"ImagenSol2\" width=\"100\" height=\"100\"></a></td>\n";
+}
+
+if ($varDirSolu1!="https://interno.comofrasrl.com.ar/sistema/img/venta/") {
+  echo "<td>"."<a href=\"$varDirSolu1\" target=\"_blank\"><img class=\"img-fluid\" src=\"$varDirSolu1\" alt=\"ImagenSol2\" width=\"100\" height=\"100\"></a></td>\n";
+}
+
+if ($varDirSolu2!="https://interno.comofrasrl.com.ar/sistema/img/venta/") {
+  echo "<td>"."<a href=\"$varDirSolu2\" target=\"_blank\"><img class=\"img-fluid\" src=\"$varDirSolu2\" alt=\"ImagenSol2\" width=\"100\" height=\"100\"></a></td>\n";
+}
+
+if ($varDirSolu3!="https://interno.comofrasrl.com.ar/sistema/img/venta/") {
+  echo "<td>"."<a href=\"$varDirSolu3\" target=\"_blank\"><img class=\"img-fluid\" src=\"$varDirSolu3\" alt=\"ImagenSol2\" width=\"100\" height=\"100\"></a></td>\n";
+}
+ 
 	 
 echo "</TR>\n";
 echo "</table>"; 		 

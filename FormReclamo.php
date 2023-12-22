@@ -38,7 +38,7 @@ session_start();
 <body>
 
 	
-<div class="container-fluid">
+<div class=""><!-- Fin de vista 2 -->
   <div class="row">
 
     <div class="col col-lg-2">
@@ -47,314 +47,277 @@ include ("MarcoIzquierdo.php");
 
 ?>	
     </div>
-    <div class="col-md-auto">
-		
+<div class="container">
 <form action="/sistema/insertarReclamo.php" method="post" name="formReclamo" enctype="multipart/form-data">
-
-
-	
 <div class="form-group" align="">
-  <table class="table" width=""  border="0">
-    <tr>
-      <td colspan="2" align="left">
-		 <label for="txtReclamo"><h1 style="text-align: center;">  Formulario Reclamo</h1></label>
-		</td>
-    </tr>
-	  
-<tr>
-      <td>
-		  <label for="txtTipoReclamo"><p>Tipo Reclamo <strong style="color:red;">*</strong></p></label>	
-<select name="listTipoReclamo" size="1" id="listTipoReclamo" required>
-        <option value=1 >Seleccione reclamo</option>
+<div class="row border border-1">
+    <div class="col">
+	<h1 style="text-align: center;">  Formulario Reclamo - 
+	N° <?php
+include("Conexion/conexion.php");
+$queryNumRecl = $mysqli -> query ("SELECT * FROM `ComReclamo` ORDER BY `ComReclamo`.`NumReclamo` DESC LIMIT 1");
+ while ($valoresNumRecl = mysqli_fetch_array($queryNumRecl))
+{
+$varNumRecl = $valoresNumRecl['NumReclamo']+1;
+ echo $varNumRecl;
+}		  
+	?>
+	</h1>
+    </div>
+  </div>
+  <div class="row border border-1">
+    <div class="col-4">
+	<label for="SelectCarga">Pre carga:</label>	
+	<select class="form-select"  id="SelectCarga" onclick="obtenerSeleccion()" >
+  <option value=1 >Pre Carga Reclamo</option>
+  <option value=2>Carga completa del Reclamo</option>
+  <option value=3>Carga respuesta de Calidad</option>
+  </select>
+	</div>
+	<div class="col-2">
+	<label for="listRequiereAsistencia">Requiere Asistencia:</label>	
+	<select class="form-select" name="listRequiereAsistencia" size="1" id="listRequiereAsistencia">
+	 <option>Si</option>
+	 <option selected="selected">No</option>
+	 </select>
+</div>
+<div class="col-2">
+<label for="SelectPrioridad" >Prioridad:</label>	
+	<select class="form-select" id="SelectPrioridad" name="SelectPrioridad">
+  <option value="Alta" selected>Alta</option>
+  <option value="Media">Media</option>
+  <option value="Baja">Baja</option>
+  </select>
+</div>
+<div class="col-2">
+	<label for="txtFecha">Fecha <strong style="color:red;">*</strong></label>	
+  <input class="form-control" name="txtFecha" type="date" id="txtFecha" size="50"value="<?php 
+$fecha_actual = date("Y-m-d");
+$varFechaInicial = date("Y-m-d",strtotime($fecha_actual));
+echo $varFechaInicial;
+  ?>"/>
+    </div>
+
+    <div class="col-2">
+    <label for="txtFechaFinal">Fecha finalizado</label>	  
+<input class="form-control" name="txtFechaFinal" type="date" id="txtFechaFinal" size="50" value="<?php 
+$fecha_actual = date("Y-m-d");
+$varFechaFinal = date("Y-m-d",strtotime($fecha_actual."+ 30 days"));
+echo $varFechaFinal;
+  ?>"/>
+    </div>
+
+  </div>
+
+  <div class="row border border-1">
+    <div class="col-4">
+<label for="listTipoReclamo"><p>Tipo Reclamo <strong style="color:red;">*</strong></p></label>	
+<select class="form-select" name="listTipoReclamo" size="1" id="listTipoReclamo" required>
+<option value=1 >Seleccione reclamo</option>
         <?php
 include("Conexion/conexion.php");
-  
 $queryTipoReclamo = $mysqli -> query ("SELECT * FROM `ComTipoRecla` ORDER BY `ComTipoRecla`.`TipoReclamo` ASC");
-
-
  while ($valoresTipoReclamo = mysqli_fetch_array($queryTipoReclamo))
-
-		  
-		  {
-
+{
  echo '<option value="'.$valoresTipoReclamo['Id_TipoRecla'].'">'.$valoresTipoReclamo['TipoReclamo'].'</option>';
 }
 	?>
       </select>
-	
-	
-	N° <?php
-		  
-include("Conexion/conexion.php");
-  
-$queryNumRecl = $mysqli -> query ("SELECT * FROM `ComReclamo` ORDER BY `ComReclamo`.`NumReclamo` DESC LIMIT 1");
+    </div>
+    <div class="col-8">
+	<div class="form-floating">
+<textarea class="form-control" placeholder="Respuesta Evalucion" name="txtReclamo" id="txtReclamo" style="height: 100%"></textarea>
+<label for="txtReclamo">Nombre de reclamo</label>
+	</div>
+  </div>
+  </div>
 
 
- while ($valoresNumRecl = mysqli_fetch_array($queryNumRecl))
-
-		  
-		  {
-$varNumRecl = $valoresNumRecl['NumReclamo']+1;
- echo $varNumRecl;
-}		  
-		  
-		  ?>
-	</td>
-    </tr>		  
-	  
-
-    <tr>
-      <td>
-		  
-		  <label for="txtReclamo"><p>Reclamo <strong style="color:red;">*</strong></p></label>	
-		  <input name="txtReclamo" type="text" id="txtReclamo" size="100" required />
-     </td>
-    </tr>
-
-    <tr>
-      <td>
-		  <label for="txtFecha"><p>Fecha <strong style="color:red;">*</strong></p></label>		  
-		  <input name="txtFecha" type="date" id="txtFecha" size="50" value="<?php echo date("Y-m-d");?>" required />
-	  </td>
-    </tr>
-    <tr>
-      <td>
-	<label for="txtFechaFinal"><p>Fecha finalizado</p></label>	  
-		  <input name="txtFechaFinal" type="date" id="txtFechaFinal" size="50" value="<?php 
-		  $fecha_actual = date("Y-m-d");
-
-$varFechaFinal = date("Y-m-d",strtotime($fecha_actual."+ 30 days"));
-		  echo $varFechaFinal;
-		  
-		  ?>"  />
-		</td>
-    </tr>
-	  
-<tr>
-      <td>
-		  <label for="txtIdConce"><p>Consecionaria:<strong style="color:red;">*</strong></p></label>	
-<select name="listIdConce" size="1" id="listIdConce">
-        <option value=3>Seleccione Consecionaria:</option>
+  <div class="row border border-1">
+    <div class="col-4">
+<label for="listIdConce">Consecionaria:<strong style="color:red;">*</strong></label>	
+<select class="form-select" name="listIdConce" id="listIdConce">
+<option value=3>Seleccione Consecionaria:</option>
         <?php
 include("Conexion/conexion.php");
-  
 $queryIdConce = $mysqli -> query ("SELECT * FROM `ComConcesionario` ORDER BY `ComConcesionario`.`Concesionario` ASC");
-
-
- while ($valoresIdConce = mysqli_fetch_array($queryIdConce))
-
-		  
-		  {
-
- echo '<option value="'.$valoresIdConce['id_Conce'].'">'.$valoresIdConce['Concesionario'].'</option>';
+while ($valoresIdConce = mysqli_fetch_array($queryIdConce))
+{
+echo '<option value="'.$valoresIdConce['id_Conce'].'">'.$valoresIdConce['Concesionario'].'</option>';
 }
-	?>
-      </select>
-</td>
-    </tr>	
-	  
-<tr>
-      <td>	
-	<label for="txtIdCliente"><p>Cliente:<strong style="color:red;">*</strong></p></label>	
-      <select name="listIdCliente" size="1" id="listIdCliente" required>
+		?>
+</select>	
+    </div>
+    <div class="col-4">
+	<label for="listIdCliente">Cliente:<strong style="color:red;">*</strong></label>	
+      <select class="form-select" name="listIdCliente" id="listIdCliente" required>
         <option value=6>Seleccione Cliente:</option>
         <?php
 include("Conexion/conexion.php");
-  
-$queryIdConce = $mysqli -> query ("SELECT * FROM `ComCliente` ORDER BY `ComCliente`.`Cliente` ASC");
-
-
- while ($valoresIdConce = mysqli_fetch_array($queryIdConce))
-
-		  
-		  {
-
- echo '<option value="'.$valoresIdConce[Id_Cliente].'">'.$valoresIdConce[Cliente].'</option>';
+  $queryIdCliente = $mysqli -> query ("SELECT * FROM `ComCliente` ORDER BY `ComCliente`.`Cliente` ASC");
+ while ($valoresIdCliente = mysqli_fetch_array($queryIdCliente))
+{
+ echo '<option value="'.$valoresIdCliente[Id_Cliente].'">'.$valoresIdCliente[Cliente].'</option>';
 }
-	?>
-      </select></td>
-    </tr>	
-	  
-	  
-    </tr>	
-	  
-<tr>
-      <td>	
-	<label for="txtIdRepacion"><p>Reparacion:<strong style="color:red;">*</strong></p></label>	
-	<select name="listIdRepacion" size="1" id="listIdRepacion" required>
-        <option value=1>Seleccione Repacion</option>
+	    ?>
+      </select>
+    </div>
+    <div class="col-4">
+<label for="listIdRepacion">Reparacion:<strong style="color:red;">*</strong></label>	
+	<select class="form-select" name="listIdRepacion" id="listIdRepacion" required>
+<option value=1>Seleccione Repacion</option>
         <?php
 include("Conexion/conexion.php");
-  
-$queryIdConce = $mysqli -> query ("SELECT * FROM `ComReparacion` ORDER BY `ComReparacion`.`Reparacion` ASC");
-
-
- while ($valoresIdConce = mysqli_fetch_array($queryIdConce))
-
-		  
-		  {
-
- echo '<option value="'.$valoresIdConce[Id_Reparacion].'">'.$valoresIdConce[Reparacion].'</option>';
+$queryIdRepacion = $mysqli -> query ("SELECT * FROM `ComReparacion` ORDER BY `ComReparacion`.`Reparacion` ASC");
+while ($valoresIdRepacion = mysqli_fetch_array($queryIdRepacion))
+{
+echo '<option value="'.$valoresIdRepacion[Id_Reparacion].'">'.$valoresIdRepacion[Reparacion].'</option>';
 }
-	?>
-      </select></td>
-    </tr>			  
-	
-	
-	<tr>
-	<td>	
-	<label for="txtDescripcion"><p>Descripcion:</p></label>		 
-		<textarea name="txtDescripcion" rows="2" cols="100" id="txtDescripcion" title="Descripcion" ></textarea></td>
-	</tr>
-	
-	    <tr>
-	<td>	
-	<label for="txtChasis"><p>Chasis:<strong style="color:red;">*</strong></p></label>	      
-			<input name="txtChasis" type="number" id="txtChasis" title="Chasis" required /></td>
-    </tr>
-	
-	    <tr>
-	<td>	
-	<label for="txtSerie"><p>Serie:</p></label>	      
-		
-			<input name="txtSerie" type="number" id="txtSerie" title="Serie"/></td>
-    </tr>	
-	
-	
-	
-      <td>	
-	<label for="txtTipoImplemento"><p>Implemento:<strong style="color:red;">*</strong></p></label>	
-	<select name="listImplemento" size="1" id="listImplemento" required>
-        <option value=16>Seleccione </option>
+	    ?>
+    </select>
+    </div>
+  </div>
+
+  <div class="row border border-1">
+    <div class="col-12">
+	<div class="form-floating">
+<textarea class="form-control" placeholder="Descripcion:" name="txtDescripcion" id="txtDescripcion" style="height: 100%"></textarea>
+<label for="txtDescripcion">Descripcion:</label>
+	</div>
+	</div>
+  </div>
+
+  <div class="row border border-1">
+    <div class="col-4">
+<label for="listImplemento"><p>Implemento:<strong style="color:red;">*</strong></p></label>	
+<select class="form-select" name="listImplemento" size="1" id="listImplemento" required>
+<option value=16>Seleccione </option>
         <?php
 include("Conexion/conexion.php");
-  
 $queryIdConce = $mysqli -> query ("SELECT * FROM `ComImplemento` ORDER BY `ComImplemento`.`Implemento` ASC");
-
-
- while ($valoresIdConce = mysqli_fetch_array($queryIdConce))
-
-		  
-		  {
-
- echo '<option value="'.$valoresIdConce[Id_Implemento].'">'.$valoresIdConce[Implemento].'</option>';
+while ($valoresIdConce = mysqli_fetch_array($queryIdConce))
+{
+echo '<option value="'.$valoresIdConce[Id_Implemento].'">'.$valoresIdConce[Implemento].'</option>';
 }
-	?>
-      </select></td>
-    </tr>	
+		?>
+</select>
+    </div>
+    <div class="col-4">
+<label for="txtChasis"><p>Chasis:</p></label>	      
+<input class="form-control" name="txtChasis" type="number" id="txtChasis" title="Chasis" style="width: 100%" />
+    </div>
+    <div class="col-4">
+<label for="txtSerie"><p>Serie:</p></label>	      
+<input class="form-control" name="txtSerie" type="number" id="txtSerie" title="Serie" style="width: 100%"/>
+    </div>
+  </div>
   
-
-
-	<tr>
-		<td>
-		
-	<?php	
+  <div style="display: none;" id="VistaOculta2"><!-- Inicio VistaOculta2 -->
+  <div class="row border border-1">
+    <div class="col-12">
+<?php	
 include ("FormFallaRecla.php");		
-
 ?>		
-	<?php	
-//include ("FormCostoRecla.php");		
+  </div>
+  </div>
 
-?>	
-		</td>
-	</tr>
-	
-	
-    <tr>
-      <td>
-		  
-		  <label for="fileImagen"><p>imagen:</p></label>	 <p>
-        <input type="file" name="imagen" id="imagen">
-		  <input type="file" name="imagen1" id="imagen1">
-		   <input type="file" name="imagen2" id="imagen2">
-		  <input type="file" name="imagen3" id="imagen3">
+  <div class="row border border-1">
+  <label for="fileImagen"><p>imagenes de problema:</p></label>	
+    <div class="col-6">
+ 
+	<p>
+      <input class="form-group" type="file" name="imagen" id="imagen">
+	  <input class="form-group" type="file" name="imagen1" id="imagen1">
+	  </p>
+	  </div>
+	  <div class="col-6">
+	  <p> 
+	  <input class="form-group" type="file" name="imagen2" id="imagen2">
+	  <input class="form-group" type="file" name="imagen3" id="imagen3">
+    </p>
+    </div>
+  </div>
+  </div><!-- Final VistaOculta2 -->
 
-        </p>
-		
-		
-		</td>
-    </tr>
 
-	    <tr>
-	<td>	
-	<label for="txtAnalisisCausa"><p>Analisis Causa:</p></label>	      
-			
-			<textarea name="txtAnalisisCausa" rows="3" cols="100" id="txtAnalisisCausa" title="Analisis Causa" ></textarea></td>
-    </tr>	
-	
- <td>	
-	<label for="txtRequiereAsistencia"><p>Requiere Asistencia	:</p></label>	
-	<select name="listRequiereAsistencia" size="1" id="listRequiereAsistencia">
-	 <option>Si</option>
-	 <option selected="selected">No</option>
-	 </select>
-	</td>
-    </tr>	
-		
- <tr>
-	<td>	
-	<label for="txtRespAccion"><p>Accion correctiva:</p></label>		 
-		<textarea name="txtRespAccion" rows="3" cols="100" id="txtRespAccion" title="RespAccion" ></textarea></td>
-	</tr>
-	
-      <td>
-		  
-		  <label for="txtImagenSolu"><p>imagen solucion:</p></label>	 <p>
-        <input type="file" name="imagenSolu" id="imagen">
-		  <input type="file" name="imagenSolu1" id="imagenSolu1">
-		   <input type="file" name="imagenSolu2" id="imagenSolu2">
-		  <input type="file" name="imagenSolu3" id="iImagenSolu3">
+  <div style="display: none;" id="VistaOculta3"><!-- Inicio VistaOculta3 -->
 
-        </p>
-		
-		
-		</td>
-    </tr
-		
 
-	  
-	    <tr>
-	<td>	
-	<label for="txtEvalEfica"><p>Evaluacion Eficaz:</p></label>	      
-<textarea name="txtEvalEfica" rows="3" cols="100" id="txtEvalEfica" title="EvalEfica" ></textarea></td>
-    </tr>
-	
-	    <tr>
-	<td>	
-	<label for="txtRespEvaluc"><p>Respuesta Evalucion:</p></label>	      
-<textarea name="txtRespEvaluc" rows="3" cols="100" id="txtRespEvaluc" title="Resp Evaluc" ></textarea></td>
-    </tr>
-		  
+  <div class="row border border-1">
+    <div class="col">
+	<div class="form-floating">
+  <textarea class="form-control" name="txtAnalisisCausa" placeholder="Analisis Causa" id="txtAnalisisCausa"></textarea>
+  <label for="txtAnalisisCausa">Analisis Causa</label>
+	</div>	
+    </div>
+  </div>
 
-<!-- 
-    <tr>
-      <td colspan="2">&nbsp;
-		  
-		  
-		  
-		  </td>
-    </tr>
-    <tr>
-      <td colspan="2">&nbsp;</td>
-      </tr>
--->
-	  
-    <tr>
-      <td>
-		  <label for="txtFechaCierre"><p>Fecha Cierre</label>		  
-		  <input name="txtFechaCierre" type="date" id="txtFechaCierre" size="50" value="" />
-	  </td>
-    </tr>
-	  
-	  
-    <tr>
-      <td>
-		  <label>
-          <input type="submit" class="btn btn-success btn-lg btn-block" name="btnEnviar" id="btnEnviar" value="Cargar" />
-      </label></td>
-    </tr>
-  </table>
+  <div class="row border border-1">
+    <div class="col">
+	<div class="form-floating">
+  <textarea class="form-control" name="txtRespAccion" placeholder="Analisis Causa" id="txtRespAccion"></textarea>
+  <label for="txtRespAccion">Respuesta de Accion</label>
+	</div>	
+    </div>
+  </div>
 
+  <div class="row border border-1">
+  <label for="txtImagenSolu"><p>imagen solucion:</p></label>	 
+    <div class="col">
+
+<p>
+<input class="form-group" type="file" name="imagenSolu" id="imagen">
+<input class="form-group" type="file" name="imagenSolu1" id="imagenSolu1">
+</p>
+    </div>
+<div class="col">
+<p>
+<input class="form-group" type="file" name="imagenSolu2" id="imagenSolu2">
+<input class="form-group" type="file" name="imagenSolu3" id="iImagenSolu3">
+</p>
+    </div>
+  </div>
+
+  <div class="row border border-1">
+    <div class="col">
+		<div class="form-floating">
+<textarea class="form-control" placeholder="Evaluacion Eficaz" id="txtEvalEfica"></textarea>
+<label for="txtEvalEfica">Evaluacion Eficaz</label>
+	 	</div>
+    </div>
+  </div>
+
+  <div class="row border border-1">
+    <div class="col">
+		<div class="form-floating">
+<textarea class="form-control" placeholder="Respuesta Evalucion" id="txtRespEvaluc"></textarea>
+<label for="txtRespEvaluc">Respuesta Evalucion</label>
+		</div>
+    </div>
+  </div>
+
+  <div class="row border border-1">
+    <div class="col">
+<label for="txtFechaCierre"><p>Fecha Cierre</label>		  
+<input name="txtFechaCierre" type="date" id="txtFechaCierre" size="50" value="" />
+    </div>
+    <div class="col">
+
+    </div>
+    <div class="col">
+      
+    </div>
+  </div>
+
+  </div><!-- Final VistaOculta3 -->
+
+<div class="row border border-1">
+    <div class="col">
+	<div class="d-grid gap-2">
+<button type="submit" class="btn btn-primary" tname="btnEnviar" id="btnEnviar" >Cargar</button>
+	</div>
+    </div>
+  </div>
 </div>
 	  </form>
 		
@@ -363,7 +326,7 @@ include ("FormFallaRecla.php");
   </div>
 </div>		
 	
-
+<script type="text/javascript" src="./Reclamo/jsReclamo.js"></script>
 	
 </body>
 </html>

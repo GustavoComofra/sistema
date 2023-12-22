@@ -19,8 +19,8 @@
 
 		
 		
-
-	
+<!-- Fin de conteiner-->
+<div class="container">
 <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post" name="formFallaReclamo" enctype="multipart/form-data">
 
 <div class="form-group" align="">
@@ -99,13 +99,7 @@ $query1 = $mysqli -> query ("SELECT * FROM `ComItemFalla` WHERE `FkTipoFalla` = 
 
       <td><input name="txtDetalle2mec" type="text" id="txtDetalle2mec" title="Detalle2mec" size="50" /></td>
     </tr>
-	  
-	    
-	  
-	  
-
-	  
-	  
+	  	  
   </table>
 	
 	 <table class="table" width="423"  border="0">
@@ -126,8 +120,6 @@ $query1 = $mysqli -> query ("SELECT * FROM `ComItemFalla` WHERE `FkTipoFalla` = 
 
 
  while ($valores = mysqli_fetch_array($query1))
-
-		  
 		  {
 
  echo '<option value="'.$valores[Id_ItemFalla].'">'.$valores[ItemFalla].'</option>';
@@ -148,10 +140,7 @@ $query1 = $mysqli -> query ("SELECT * FROM `ComItemFalla` WHERE `FkTipoFalla` = 
 
 
  while ($valores = mysqli_fetch_array($query1))
-
-		  
 		  {
-
  echo '<option value="'.$valores[Id_ItemFalla].'">'.$valores[ItemFalla].'</option>';
 }
 	?>
@@ -167,13 +156,8 @@ $query1 = $mysqli -> query ("SELECT * FROM `ComItemFalla` WHERE `FkTipoFalla` = 
         <option value="0">Seleccione:</option>
         <?php
 include("Conexion/conexion.php");
-  
-$query1 = $mysqli -> query ("SELECT * FROM `ComItemFalla` WHERE `FkTipoFalla` = 1 AND `Susp` LIKE 'No' ORDER BY `ItemFalla` ASC");
-
-
+  $query1 = $mysqli -> query ("SELECT * FROM `ComItemFalla` WHERE `FkTipoFalla` = 1 AND `Susp` LIKE 'No' ORDER BY `ItemFalla` ASC");
  while ($valores = mysqli_fetch_array($query1))
-
-		  
 		  {
 
  echo '<option value="'.$valores[Id_ItemFalla].'">'.$valores[ItemFalla].'</option>';
@@ -183,13 +167,7 @@ $query1 = $mysqli -> query ("SELECT * FROM `ComItemFalla` WHERE `FkTipoFalla` = 
 
       <td><input name="txtDetalle2Ter" type="text" id="txtDetalle2Ter" title="Detalle2Ter" size="50" /></td>
     </tr>
-	  
-	    
-	  
-	  
-
-	  
-	  
+	 
 	</table>
 	
 	<table class="table" width="423"  border="0">
@@ -244,7 +222,6 @@ $query1 = $mysqli -> query ("SELECT * FROM `ComItemFalla` WHERE `FkTipoFalla` = 
       <td><input name="txtDetalle1Hid" type="text" id="txtDetalle1Hid" title="Detalle1Hid" size="50" /></td>
     </tr>	
 	  
-	  
 	 <tr> 
 	  
   <td><select name="listFalla2Hid" size="1" id="listFalla2Hid">
@@ -270,8 +247,7 @@ $query1 = $mysqli -> query ("SELECT * FROM `ComItemFalla` WHERE `FkTipoFalla` = 
 	  
 	</table>
 	
-	
-<table class="table" width="423"  border="0">
+	<table class="table" width="423"  border="0">
     <tr>
       <td colspan="2" align="center"><label for="txtFalla">Fallas Sistema Electrico</label></td>
     </tr>
@@ -353,9 +329,9 @@ $query1 = $mysqli -> query ("SELECT * FROM `ComItemFalla` WHERE `FkTipoFalla` = 
 </div>
 
 <div class="form-group" align="">
-  <table class="table-primary" width="423"  border="0">
+  <table class="table"  border="0">
     <tr>
-      <td colspan="5" align="center"><label for="txtFalla"><strong> <h2 style="color: blue;">Costo</h2></strong></label></td>
+      <td colspan="5" align="center"><label for="txtFalla"><strong> <h2>Costo</h2></strong></label></td>
     </tr>
     <tr>
       <td width="156">Cantidad</td>
@@ -414,6 +390,8 @@ $query1 = $mysqli -> query ("SELECT * FROM `ComItemFalla` WHERE `FkTipoFalla` = 
 </div>
 
 </form>
+<!-- Fin de conteiner-->
+    </div>
 
     </div>
   </div>
