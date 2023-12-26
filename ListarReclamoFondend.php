@@ -43,12 +43,13 @@
 				<h3 class="text-center"> <small class="mensaje"></small></h3>
 			</div>
 			<div class="table-responsive col-sm-12">		
-				<table id="dt_reclamo" class="table table-striped" width="100%">
+			<table id="dt_reclamo" class="table table-striped" width="100%">
 					<thead>
 						<tr>								
 							<th>Num</th>
 							<th>Reclamo</th>
-							<th>Tipo</th>		
+							<th>Tipo</th>	
+							<th>Prio</th>	
                             <th>Implemento</th>
 							<th>Fecha</th>
 							<th>Final</th>
@@ -130,6 +131,7 @@ var listar = function(){
     {"data": "NumReclamo"},
     {"data": "Reclamo"},
     {"data": "TipoReclamo"},
+	{"data": "Prioridad"},
     {"data": "Implemento"},
 	{"data": "Fecha"},
     {"data": "FechaFinal"},

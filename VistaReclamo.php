@@ -94,11 +94,11 @@ $row = mysqli_fetch_assoc($queryvarNumReclamo);
 <tr>
         <td class="algCentral"><img src="/sistema/img/Logotipo2023.JPG" alt="Logo" width="180" height="60"></td>
         <td colspan="4" ><h3 style="text-align: center;" ><strong class="algCentral"> <b>Informe de reclamo</b> </strong></h3></td>
-        <td >
-        <p>R.03.00.04</p>
-        <p>Fecha reclamo: <?php echo $row['Fecha']; ?></p>
-        <p>Numero:<?php echo $row['NumReclamo']; ?> </p>
-      </td>
+        <td ><p>R.03.00.04</p>
+        <p>Fecha: <?php echo $row['Fecha']; ?> - N°:<?php echo $row['NumReclamo']; ?></p>
+        <p>Usuario: <?php echo $row['Usuario']; ?></p> 
+        </td >
+
 </tr>
 
 
@@ -375,19 +375,19 @@ $varDir1 = $filaImagen['Imagen1'];
 $varDir2 = $filaImagen['Imagen2'];
 $varDir3 = $filaImagen['Imagen3'];
 
-if ($varDir!="https://interno.comofrasrl.com.ar/sistema/img/venta/") {
+if ($varDir!="https://interno.comofrasrl.com.ar/sistema/img/venta/" && $varDir!="") {
   echo "<td>"."<a href=\"$varDir\" target=\"_blank\"><img class=\"img-fluid\" src=\"$varDir\" alt=\"ImagenSol2\" width=\"100\" height=\"100\"></a></td>\n";
 }
 
-if ($varDir1!="https://interno.comofrasrl.com.ar/sistema/img/venta/") {
+if ($varDir1!="https://interno.comofrasrl.com.ar/sistema/img/venta/" && $varDir1!="") {
   echo "<td>"."<a href=\"$varDir1\" target=\"_blank\"><img class=\"img-fluid\" src=\"$varDir1\" alt=\"ImagenSol2\" width=\"100\" height=\"100\"></a></td>\n";
 }
 
-if ($varDir2!="https://interno.comofrasrl.com.ar/sistema/img/venta/") {
+if ($varDir2!="https://interno.comofrasrl.com.ar/sistema/img/venta/" && $varDir2!="") {
   echo "<td>"."<a href=\"$varDir2\" target=\"_blank\"><img class=\"img-fluid\" src=\"$varDir2\" alt=\"ImagenSol2\" width=\"100\" height=\"100\"></a></td>\n";
 }
 
-if ($varDir3!="https://interno.comofrasrl.com.ar/sistema/img/venta/") {
+if ($varDir3!="https://interno.comofrasrl.com.ar/sistema/img/venta/" && $varDir3!="") {
   echo "<td>"."<a href=\"$varDir3\" target=\"_blank\"><img class=\"img-fluid\" src=\"$varDir3\" alt=\"ImagenSol2\" width=\"100\" height=\"100\"></a></td>\n";
 }
 	 
@@ -444,19 +444,19 @@ $varDirSolu3 = $filaImagenSolu['ImagenSolu3'];
 	 
 	
 
-if ($varDirSolu!="https://interno.comofrasrl.com.ar/sistema/img/venta/") {
+if ($varDirSolu!="https://interno.comofrasrl.com.ar/sistema/img/venta/" && $varDirSolu!="") {
   echo "<td>"."<a href=\"$varDirSolu\" target=\"_blank\"><img class=\"img-fluid\" src=\"$varDirSolu\" alt=\"ImagenSol2\" width=\"100\" height=\"100\"></a></td>\n";
 }
 
-if ($varDirSolu1!="https://interno.comofrasrl.com.ar/sistema/img/venta/") {
+if ($varDirSolu1!="https://interno.comofrasrl.com.ar/sistema/img/venta/" && $varDirSolu1!="") {
   echo "<td>"."<a href=\"$varDirSolu1\" target=\"_blank\"><img class=\"img-fluid\" src=\"$varDirSolu1\" alt=\"ImagenSol2\" width=\"100\" height=\"100\"></a></td>\n";
 }
 
-if ($varDirSolu2!="https://interno.comofrasrl.com.ar/sistema/img/venta/") {
+if ($varDirSolu2!="https://interno.comofrasrl.com.ar/sistema/img/venta/" && $varDirSolu2!="") {
   echo "<td>"."<a href=\"$varDirSolu2\" target=\"_blank\"><img class=\"img-fluid\" src=\"$varDirSolu2\" alt=\"ImagenSol2\" width=\"100\" height=\"100\"></a></td>\n";
 }
 
-if ($varDirSolu3!="https://interno.comofrasrl.com.ar/sistema/img/venta/") {
+if ($varDirSolu3!="https://interno.comofrasrl.com.ar/sistema/img/venta/" && $varDirSolu3!="") {
   echo "<td>"."<a href=\"$varDirSolu3\" target=\"_blank\"><img class=\"img-fluid\" src=\"$varDirSolu3\" alt=\"ImagenSol2\" width=\"100\" height=\"100\"></a></td>\n";
 }
  

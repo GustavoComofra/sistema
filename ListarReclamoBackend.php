@@ -1,21 +1,20 @@
-
 <?php
 
 	include ("Conexion/conexion.php");
 
-	$query = "SELECT * FROM `ComVisReclamo` WHERE `Sup` LIKE 'No' ORDER BY `ComVisReclamo`.`IdReclamo` DESC;";
-	$resultadoReclamo = mysqli_query($mysqli, $query);
+	$query = "SELECT * FROM `ComVerReclamo` ORDER BY `NumReclamo` DESC ;";
+	$resultado = mysqli_query($mysqli, $query);
 
-if (!$resultadoReclamo) {
+if (!$resultado) {
     die("Error");
 }else{
-    while($dataReclamo= mysqli_fetch_assoc($resultadoReclamo)){
-$arreglo[]=array_map("utf8_encode", $dataReclamo);
+    while($dataProceso= mysqli_fetch_assoc($resultado)){
+$arreglo["data"][]=array_map("utf8_encode", $dataProceso);
     }
    echo json_encode($arreglo);
 }
 //liberar memoria
-mysqli_free_result($resultadoReclamo);
+mysqli_free_result($resultado);
 //cerrar conexion
 mysqli_close($mysqli);
     ?>

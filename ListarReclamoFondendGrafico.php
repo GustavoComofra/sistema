@@ -75,36 +75,18 @@
       <img src="../sistema/img/IconoPesos.png" alt="IconoPesos" width="40" height="40"></a>
 
 		</h3>
+        <figure class="highcharts-figure">
+    <div id="dt_reclamo"></div>
+    <p class="highcharts-description">
+        Chart showing data loaded dynamically. The individual data points can
+        be clicked to display more information.
+    </p>
+</figure>
 		</div>
 	</div>
 	
 
-	<div class="row">
-		<div id="cuadro1" class="col-sm-12 col-md-12 col-lg-12">
-			<div class="col-sm-offset-2 col-sm-8">
-				<h3 class="text-center"> <small class="mensaje"></small></h3>
-			</div>
-			<div class="table-responsive col-sm-12">		
-				<table id="dt_reclamo" class="table table-striped" width="100%">
-					<thead>
-						<tr>								
-							<th>Num</th>
-							<th>Reclamo</th>
-							<th>Tipo</th>		
-                            <th>Implemento</th>
-							<th>Fecha</th>
-							<th>Final</th>
-							<th>Cierre</th>		
-                            <th>Chasis</th>
-							<th>Cliente</th>		
-                            <th>Consec</th>
-							<th>Opcion</th>
-						</tr>
-					</thead>					
-				</table>
-			</div>			
-		</div>		
-	</div>
+
 
 	
 	<script src="https://code.jquery.com/jquery-1.12.3.js"></script>
@@ -218,13 +200,7 @@ console.log(data.imgprod);
 <script src="https://code.highcharts.com/modules/export-data.js"></script>
 <script src="https://code.highcharts.com/modules/accessibility.js"></script>
 
-<figure class="highcharts-figure">
-    <div id="container"></div>
-    <p class="highcharts-description">
-        Chart showing data loaded dynamically. The individual data points can
-        be clicked to display more information.
-    </p>
-</figure>
+
    <script>
 // Un evento de clic en un punto que utiliza el renderizador para dibujar una etiqueta al lado del punto
 // En clics posteriores, mueva la etiqueta existente en lugar de crear una nueva.

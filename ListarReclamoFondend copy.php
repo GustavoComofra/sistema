@@ -2,7 +2,8 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-	<meta charset="UTF-8">
+<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+
 	<title></title>
 		<!-- ESTILOS -->
 		<!-- <link href="css/estilo.css" rel="stylesheet"> -->
@@ -23,19 +24,14 @@
 <body>
 	<div class="row fondo">
 		<div class="col-sm-12 col-md-12 col-lg-12">
-			<h3 class="text-center "> <strong> Personal</strong>
-			<a href="/sistema/FormPersonal.php"><img src="../sistema/img/NuevoIcono.png" alt="Nuevo Personal" width="40" height="40"></a>
+			<h3 class="text-center "> <strong> Reclamos</strong>
+			<a href="/sistema/FormReclamo.php">
+      <img src="../sistema/img/NuevoIcono.png" alt="Nuevo" width="40" height="40"></a>
+      <a href="/sistema/GraficoReclamo.php">
+      <img src="../sistema/img/iconoGrafico.png" alt="iconoGrafico" width="40" height="40"></a>
+      <a href="/sistema/ListCostoReclamo.php">
+      <img src="../sistema/img/IconoPesos.png" alt="IconoPesos" width="40" height="40"></a>
 
-			<a href="/sistema/GraficoPersonal.php" target="_blank">
-      <img src="../sistema/img/iconoGrafico.png" alt="iconoGrafico"  width="40" height="40"></a>
-
-      <a href="/sistema/VistaInformePersonal.php" target="_blank">
-      <img src="../sistema/img/iconoInforme.png" alt="iconoInforme" width="40" height="40"></a>
-
-      <a href="/sistema/VistaOrganigrama.php" target="_blank">
-      <img src="../sistema/img/IconoOrganigrama.png" alt="IconoOrganigrama" width="40" height="40"></a>
-      <a href="/sistema/InforCumple.php" target="_blank">
-      <img class="imgEfcListPersonal" src="../sistema/img/imgCumple.JPG" alt="imgCumple"  width="40" height="40" ></a>
 		</h3>
 		</div>
 	</div>
@@ -47,18 +43,20 @@
 				<h3 class="text-center"> <small class="mensaje"></small></h3>
 			</div>
 			<div class="table-responsive col-sm-12">		
-				<table id="dt_personal" class="table table-striped" width="100%">
+			<table id="dt_reclamo" class="table table-striped" width="100%">
 					<thead>
 						<tr>								
-							<th>Legajo</th>
-							<th>CUIL</th>
-							<th>Nombres</th>		
-                            <th>Apellidos</th>
-							<th>Nac</th>
-							<th>Sector</th>
-							<th>Relacion</th>		
-                            <th>Baja</th>
-							<th>Img</th>
+							<th>Num</th>
+							<th>Reclamo</th>
+							<th>Tipo</th>		
+                            <th>Implemento</th>
+							<th>Fecha</th>
+							<th>Final</th>
+							<th>Cierre</th>		
+                            <th>Chasis</th>
+							<th>Cliente</th>		
+                            <th>Consec</th>
+							<th>Opcion</th>
 						</tr>
 					</thead>					
 				</table>
@@ -121,27 +119,28 @@ src="https://cdn.datatables.net/buttons/1.3.1/js/buttons.html5.min.js"></script>
 			listar();
 		});
 var listar = function(){
-    var table = $("#dt_personal").DataTable({
-		"order": [[ 3, 'asc' ], ],
+    var table = $("#dt_reclamo").DataTable({
+		"order": [[ 0, 'desc' ], ],
 "ajax": {
     "method": "POST",
     "url": "ListarReclamoBackend.php",
 },
 "columns":[
     //para accedera los valores
-    {"data": "Legajo"},
-    {"data": "CUIT_Empl"},
-    {"data": "Nombres"},
-    {"data": "Apellidos"},
-	{"data": "FechaNacimiento"},
-    {"data": "SectorFk"},
-    {"data": "Relacion"},
-    {"data": "Baja"},
+    {"data": "NumReclamo"},
+    {"data": "Reclamo"},
+    {"data": "TipoReclamo"},
+    {"data": "Implemento"},
+	{"data": "Fecha"},
+    {"data": "FechaFinal"},
+    {"data": "FechaCierre"},
+    {"data": "Chasis"},
+	{"data": "Cliente"},
+    {"data": "Concesionario"},
 	{
 	"render": function (data, type, JsonResultRow, meta) {
-		 return "<img class='imgEfcPanel' width='50' height='50' src='"+JsonResultRow.Foto+"'>"+"&emsp;"
-		 +"<a href='/sistema/VistaPersonal.php?IdPersonal="+JsonResultRow.IdPersonal+"' target='_blank'><img src='/sistema/img/VerIcono.png' alt='BtnIconoVer' width='20' height='20'></a>"
-		 +" &emsp;"+"<a href='/sistema/FormPersonalEditar.php?IdPersonal="+JsonResultRow.IdPersonal+"' target='_blank'><img src='/sistema/img/EditIcono.png' alt='EditIcono.png' width='20' height='20' ></a>"; 
+		 return "<a href='/sistema/VistaReclamo.php?NumReclamo="+JsonResultRow.NumReclamo+"' target='_blank'><img src='/sistema/img/VerIcono.png' alt='BtnIconoVer' width='20' height='20'></a>"
+		 +" &emsp;"+"<a href='/sistema/FormReclamoEditar.php?NumReclamo="+JsonResultRow.NumReclamo+"' target='_blank'><img src='/sistema/img/EditIcono.png' alt='EditIcono.png' width='20' height='20' ></a>"; 
 	}},
 ],
 dom: 'Bfrtip',
@@ -159,7 +158,7 @@ dom: 'Bfrtip',
                 ],
 
     });
-obtener_data("#dt_personal", table);
+obtener_data("#dt_reclamo", table);
 }
 var obtener_data= function(tbody, table){
 $(tbody).on("click", "button.ver", function(){
@@ -169,5 +168,6 @@ console.log(data.imgprod);
 });
 }
 	</script>
+   <!-- Fin Grafico -->
 </body>
 </html>

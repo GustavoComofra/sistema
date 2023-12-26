@@ -59,11 +59,11 @@ session_start();
 <div class="container-fluid">
   <div class="row">
 
-    <div class="col col-lg-2">
+    <!-- <div class="col col-lg-2">
 	<?php	
-include ("MarcoIzquierdo.php");
+//include ("MarcoIzquierdo.php");
 
-?>	
+?>	 -->
     </div>
     <div class="col-md-auto">
  

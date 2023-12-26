@@ -329,7 +329,7 @@ if ($queryGarantiaTitulo) {
 }
 
 
-$queryReclamo = $mysqli -> query ("SELECT * FROM `ComVisReclamo` WHERE `FechaCierre` <= '0000-00-00' AND `Sup` LIKE 'No' ");
+$queryReclamo = $mysqli -> query ("SELECT * FROM `ComVisReclamo-1` WHERE `FechaCierre` <= '0000-00-00' AND `Sup` LIKE 'No' ");
 
  while ($filaReclamo = mysqli_fetch_array($queryReclamo))
 
@@ -344,6 +344,7 @@ echo "
 	 </thead>
 <TD><B>Num</B></TD>
 <TD><B>Reclamo</B></TD>
+<TD><B>Prioridad</B></TD>
 <TD><B>Implemento</B></TD>
 <TD><B>Fecha</B></TD>
 <TD><B>Estado</B></TD>
@@ -357,6 +358,16 @@ echo "
 echo "<TR>\n";
 echo "<td>".$filaReclamo['NumReclamo']."</td>\n";
 echo "<td>".$filaReclamo['Reclamo']."</td>\n";
+
+$varPrioridad = $filaReclamo['Prioridad'];
+if($varPrioridad == "Alta"){
+	echo "<td>"."<strong style=\"color: red\">".$varPrioridad."</strong>"."</td>\n";
+	}else if($varPrioridad == "Media") {
+	echo "<td>"."<p style=\"color: blue\">".$varPrioridad."</p>"."</td>\n";
+	}else {
+		echo "<td>"."<p style=\"color: green\">".$varPrioridad."</p>"."</td>\n";
+	}
+
 echo "<td>".$filaReclamo['Implemento']."</td>\n";
 echo "<td>".$filaReclamo['Fecha']."</td>\n";	 
 //echo "<td>".$filaReclamo['FechaFinal']."</td>\n";
