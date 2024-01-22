@@ -240,5 +240,3 @@ var data = google.visualization.arrayToDataTable([
 
        ['Platinum', 21.45, 'color: #e5e4e2' ], // CSS-style declaration
       ]);
-
-

@@ -6,19 +6,19 @@
 	<!-- Estilo Alertas -->
 
 	<!-- CSS -->
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 	
 	<!-- Script JS -->
 	<!-- <script src="../dir/js/bootstrap.min.js" ></script> -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" ></script>
-	<script type="text/javascript" src="./js/Archivo.js"></script>	
+	<script type="text/javascript" src="js/Archivo.js"></script>	
 	<!-- Estilo Alertas -->
 	<script type="text/javascript" src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 	
 	<!-- CSS -->
 	<!-- <link rel="stylesheet" href="../dir/css/bootstrap.min.css"> -->
-	<link rel="stylesheet" href="./css/estiloHome.css">
+	<link rel="stylesheet" href="css/estiloHome.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" >
 	
@@ -29,6 +29,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 
 </head>
+
 	
 	<script type="text/javascript">
 
@@ -52,12 +53,17 @@ $varCerrarSession = $_SESSION['usuario'];
 	}
 
 ?>	
+	
+	
+<header class="" >
+ 
+	  
 
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 		 <a href="index.php">
         <!--  <img class="CssImage" href="index.html" src="img/LogoIdearSin_Fondo.png" width="50" height="50" alt="Imagen logo"/>-->
-			 <img class="" href="index.html" src="../sistema/img/logo1.jpg" width="50" height="50" style="border-radius: 50% 50%;"  alt="Imagen logo"/>        </a>
-  <a class="navbar-brand" href="panel.php">Inicio</a>
+			 <img class="" href="index.html" src="/sistema/img/logo1.jpg" width="50" height="50" style="border-radius: 50% 50%;"  alt="Imagen logo"/>        </a>
+  <a class="navbar-brand" href="../../panel.php">Inicio</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -78,7 +84,7 @@ $varCerrarSession = $_SESSION['usuario'];
 $varUser=$_SESSION['usuario'];
 				
 
-include("Conexion/conexion.php");
+include("../Conexion/conexion.php");
 
 $queryventa = $mysqli -> query ("SELECT * FROM `VistMenu` WHERE `usuario` LIKE '$varUser' AND `Clase` LIKE 'venta' ORDER BY `VistMenu`.`Nombre` ASC");
 
@@ -93,7 +99,7 @@ echo "<a class=\"dropdown-item \" style=\"color: white; background: grey;\" href
 
 }
 echo" 
-<a class=\"dropdown-item \" style=\"color: white; background: grey;\" href=\"/sistema/garantia/imgGarantia/qrcode-PedidoGarantia.png\" target=\"_blank\"><img src=\"../sistema/garantia/imgGarantia/qrcode-PedidoGarantia.png\" alt=\"iconoInforme\" width=\"20\" height=\"20\"> - Codigo QR</a>
+<a class=\"dropdown-item \" style=\"color: white; background: grey;\" href=\"/sistema/garantia/imgGarantia/qrcode-PedidoGarantia.png\" target=\"_blank\"><img src=\"../garantia/imgGarantia/qrcode-PedidoGarantia.png\" alt=\"iconoInforme\" width=\"20\" height=\"20\"> - Codigo QR</a>
 ";		
 
 ?>	
@@ -116,7 +122,7 @@ echo"
 $varUser=$_SESSION['usuario'];
 				
 
-include("Conexion/conexion.php");
+
 
 $queryman = $mysqli -> query ("SELECT * FROM `VistMenu` WHERE `usuario` LIKE '$varUser' AND `Clase` LIKE 'calidad'");
 
@@ -150,7 +156,7 @@ echo "<a class=\"dropdown-item \" style=\"color: white; background: grey;\" href
 $varUser=$_SESSION['usuario'];
 				
 
-include("Conexion/conexion.php");
+
 
 $querying = $mysqli -> query ("SELECT * FROM `VistMenu` WHERE `usuario` LIKE '$varUser' AND `Clase` LIKE 'Ingenieria' ORDER BY `VistMenu`.`Nombre` ASC");
 
@@ -182,7 +188,7 @@ echo "<a class=\"dropdown-item \" style=\"color: white; background: grey;\" href
 				
 $varUser=$_SESSION['usuario'];
 
-include("Conexion/conexion.php");
+
 
 $queryrrhh = $mysqli -> query ("SELECT * FROM `VistMenu` WHERE `usuario` LIKE '$varUser' AND `Clase` LIKE 'rrhh' ORDER BY `VistMenu`.`Nombre` ASC");
 
@@ -213,7 +219,7 @@ echo "<a class=\"dropdown-item \" style=\"color: white; background: grey;\" href
 				
 $varUser=$_SESSION['usuario'];
 
-include("Conexion/conexion.php");
+
 
 $queryman = $mysqli -> query ("SELECT * FROM `VistMenu` WHERE `usuario` LIKE '$varUser' AND `Clase` LIKE 'mantenimiento' ORDER BY `VistMenu`.`Nombre` ASC");
 
@@ -242,11 +248,6 @@ echo "<a class=\"dropdown-item \" style=\"color: white; background: grey;\" href
 			
 	<?php
 		
-			
-include("Conexion/conexion.php");
-
-
-
 				
 $varUser=$_SESSION['usuario'];
 				
@@ -264,8 +265,6 @@ $varTipoUsuario = $fila['TipoUser'];
 	
 
 if($varTipoUsuario==1){
-include("Conexion/conexion.php");
-
 
 $query1 = $mysqli -> query ("SELECT * FROM `ComVistaPanel` WHERE `Clase` LIKE 'Listado' ORDER BY `ComVistaPanel`.`Nombre` ASC");
 
@@ -284,8 +283,6 @@ echo "<a class=\"dropdown-item \" style=\"color: white; background: grey;\" href
 			
 			
 if($varTipoUsuario==2){
-include("Conexion/conexion.php");
-
 
 $queryForm2 = $mysqli -> query ("SELECT * FROM `ComVistaPanel` WHERE `TipoUserFK` = 2 AND `Clase` LIKE 'Listado' ORDER BY `ComVistaPanel`.`Nombre` ASC");
 
@@ -300,8 +297,6 @@ echo "<a class=\"dropdown-item \" style=\"color: white; background: grey;\" href
 }
 			
 if($varTipoUsuario==3){
-include("Conexion/conexion.php");
-
 
 $queryForm3 = $mysqli -> query ("SELECT * FROM `ComVistaPanel` WHERE `TipoUserFK` = 3 AND `Clase` LIKE 'Listado' ORDER BY `ComVistaPanel`.`Nombre` ASC");
 
@@ -333,7 +328,7 @@ echo "<a class=\"dropdown-item \" style=\"color: white; background: grey;\" href
       </li>	 -->
 		
 	<li class="nav-item active">
-        <a class="nav-link" href="CerrarSession.php" style="color: white"> <?php echo "Cerrar ".$_SESSION['usuario'];  ?>
+        <a class="nav-link" href="../../CerrarSession.php" style="color: white"> <?php echo "Cerrar ".$_SESSION['usuario'];  ?>
 			<span class="sr-only">(current)</span></a>
       </li>	
 				
@@ -350,4 +345,6 @@ echo "<a class=\"dropdown-item \" style=\"color: white; background: grey;\" href
 
 	
 </body>
+
+
 </html>

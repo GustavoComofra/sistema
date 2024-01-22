@@ -1,4 +1,3 @@
-<!-- https://youtu.be/RInf8KPptO0 -->
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -21,24 +20,7 @@
 }
 </style>
 <body>
-	<div class="row fondo">
-		<div class="col-sm-12 col-md-12 col-lg-12">
-			<h3 class="text-center "> <strong> Personal</strong>
-			<a href="/sistema/FormPersonal.php"><img src="../sistema/img/NuevoIcono.png" alt="Nuevo Personal" width="40" height="40"></a>
 
-			<a href="/sistema/GraficoPersonal.php" target="_blank">
-      <img src="../sistema/img/iconoGrafico.png" alt="iconoGrafico"  width="40" height="40"></a>
-
-      <a href="/sistema/VistaInformePersonal.php" target="_blank">
-      <img src="../sistema/img/iconoInforme.png" alt="iconoInforme" width="40" height="40"></a>
-
-      <a href="/sistema/VistaOrganigrama.php" target="_blank">
-      <img src="../sistema/img/IconoOrganigrama.png" alt="IconoOrganigrama" width="40" height="40"></a>
-      <a href="/sistema/InforCumple.php" target="_blank">
-      <img class="imgEfcListPersonal" src="../sistema/img/imgCumple.JPG" alt="imgCumple"  width="40" height="40" ></a>
-		</h3>
-		</div>
-	</div>
 	
 
 	<div class="row">
@@ -50,15 +32,14 @@
 				<table id="dt_personal" class="table table-striped" width="100%">
 					<thead>
 						<tr>								
-							<th>Legajo</th>
-							<th>CUIL</th>
-							<th>Nombres</th>		
-                            <th>Apellidos</th>
-							<th>Nac</th>
-							<th>Sector</th>
-							<th>Relacion</th>		
-                            <th>Baja</th>
-							<th>Img</th>
+							<th>idMaq</th>
+							<th>NumMaq</th>
+							<th>Maquina</th>		
+                            <th>Modelo</th>
+							<th>ProvedMaq</th>
+							<th>Clasificacion</th>
+							<th>SectorFk</th>		
+							<th>imgMaq</th>
 						</tr>
 					</thead>					
 				</table>
@@ -125,23 +106,22 @@ var listar = function(){
 		"order": [[ 3, 'asc' ], ],
 "ajax": {
     "method": "POST",
-    "url": "ListarPersonalBackend.php",
+    "url": "../Mantenimiento/BackEnd/ListarMaquinaBackend.php",
 },
 "columns":[
     //para accedera los valores
-    {"data": "Legajo"},
-    {"data": "CUIT_Empl"},
-    {"data": "Nombres"},
-    {"data": "Apellidos"},
-	{"data": "FechaNacimiento"},
+    {"data": "idMaq"},
+    {"data": "NumMaq"},
+    {"data": "Maquina"},
+    {"data": "Modelo"},
+	{"data": "ProvedMaq"},
+    {"data": "Clasificacion"},
     {"data": "SectorFk"},
-    {"data": "Relacion"},
-    {"data": "Baja"},
 	{
 	"render": function (data, type, JsonResultRow, meta) {
-		 return "<img class='imgEfcPanel' width='50' height='50' src='"+JsonResultRow.Foto+"'>"+"&emsp;"
-		 +"<a href='/sistema/VistaPersonal.php?IdPersonal="+JsonResultRow.IdPersonal+"' target='_blank'><img src='/sistema/img/VerIcono.png' alt='BtnIconoVer' width='20' height='20'></a>"
-		 +" &emsp;"+"<a href='/sistema/FormPersonalEditar.php?IdPersonal="+JsonResultRow.IdPersonal+"' target='_blank'><img src='/sistema/img/EditIcono.png' alt='EditIcono.png' width='20' height='20' ></a>"; 
+		 return "<img class='imgEfcPanel' width='50' height='50' src='"+JsonResultRow.imgMaq+"'>"+"&emsp;"
+		 +" &emsp;"+"<a href='/sistema/Mantenimiento/MaquinariaEditar.php?idMaq="+JsonResultRow.idMaq+"' target='_blank'><img src='/sistema/img/EditIcono.png' alt='EditIcono.png' width='20' height='20' ></a>"
+		 +" &emsp;"+"<a class='list-borrar' href='../Mantenimiento/FormMaquiBorrar.php?idMaq="+JsonResultRow.idMaq+"' target='_blank'><img src='/sistema/img/BorrIcono.png' alt='BorrIcono.png' width='20' height='20' ></a>"; 
 	}},
 ],
 dom: 'Bfrtip',
@@ -169,5 +149,7 @@ console.log(data.imgprod);
 });
 }
 	</script>
+
+
 </body>
 </html>

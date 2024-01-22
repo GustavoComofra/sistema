@@ -1,11 +1,9 @@
 <?php
-include('Conexion/conexion.php');
-//$search = $_POST['app-form'];
-//echo $search=$_POST['nombre'];
-$idInventario= $_POST['idInventario'];
+include("Conexion/conexion.php");
+$idMaq= $_POST['idMaq'];
 
 $json = array();
-$query = "SELECT * FROM `Inventario` WHERE `idInventario` = $idInventario";
+$query = "SELECT * FROM `Maquinaria` WHERE `idMaq` = $idMaq";
 $result = mysqli_query($mysqli, $query);
 
 if(!$result){
@@ -15,18 +13,24 @@ if(!$result){
     $json = array();
     while ($row = mysqli_fetch_array($result)){
         $json[] = array(
-            'idInventario' => $row['idInventario'],
-            'CodCmg'=> $row['CodCmg'],
-            'Cantidad'=> $row['Cantidad'],
-            'ObsInv'=> $row['ObsInv'],
-           
+            'idMaq' => $row['idMaq'],
+            'Maquina'=> $row['Maquina'],
+            'Modelo'=> $row['Modelo'],
+            'DiasManteni'=> $row['DiasManteni'],
+            'Link'=> $row['Link'],
+
+
+            'ProvedMaq' => $row['ProvedMaq'],
+            'Fk_Clasi'=> $row['Fk_Clasi'],
+            'ContMaq'=> $row['ContMaq'],
+            'ValorMaq'=> $row['ValorMaq'],
+            'ObsMaq'=> $row['ObsMaq'],
+
+            'imgMaq'=> $row['imgMaq'],
         );
     }
    $jsonstring = json_encode($json[0]);
 echo  $jsonstring;
-
-
-
 
 
 ?>

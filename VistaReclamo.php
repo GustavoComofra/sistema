@@ -95,7 +95,7 @@ $row = mysqli_fetch_assoc($queryvarNumReclamo);
         <td class="algCentral"><img src="/sistema/img/Logotipo2023.JPG" alt="Logo" width="180" height="60"></td>
         <td colspan="4" ><h3 style="text-align: center;" ><strong class="algCentral"> <b>Informe de reclamo</b> </strong></h3></td>
         <td ><p>R.03.00.04</p>
-        <p>Fecha: <?php echo $row['Fecha']; ?> - N°:<?php echo $row['NumReclamo']; ?></p>
+        <p>Fecha: <?php echo date('d-m-y', strtotime($row['Fecha'])); ?> - N°:<?php echo $row['NumReclamo']; ?></p>
         <p>Usuario: <?php echo $row['Usuario']; ?></p> 
         </td >
 
