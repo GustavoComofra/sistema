@@ -185,7 +185,7 @@ echo '<img class="imgPrincipal"  src="'.$rowprocesoproceso['imgprod'].'"/>';
       <th scope="col">img</th>
       <th scope="col">Min</th>
       <th scope="col">Total</th>
-      <th scope="col">Prod</th>
+      <!-- <th scope="col">Prod</th> -->
       <th scope="col">Herr</th>
       <th scope="col">Adver</th>
     </tr>
@@ -225,7 +225,7 @@ if ($varExisteImagen=="http://interno.comofrasrl.com.ar/sistema/" OR $varExisteI
  $varTotal=($filaItemproceso['TiempoEstandarMi']*$filaItemproceso['CantOper']);
  
  echo "<td>".$varTotal." Min"."</td>\n";
- echo "<td>".$filaItemproceso['Fk_ProdProc']."-".$filaItemproceso['Producto']."</td>\n";
+ //echo "<td>".$filaItemproceso['Fk_ProdProc']."-".$filaItemproceso['Producto']."</td>\n";
  echo "<td>".$filaItemproceso['Herramienta']."</td>\n";
  echo "<td class=\"Advertencia\">"."<strong class=\"Advertencia\">".$filaItemproceso['Advertencia']."</strong>"."</td>\n";	 
 

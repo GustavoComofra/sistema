@@ -1,4 +1,4 @@
-<?php
+<?php	
 /*
 session_start();
 	
@@ -9,51 +9,47 @@ $varCerrarSession = $_SESSION['usuario'];
 		
 	}
 	*/
-?>
+?>	
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-
 <head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+	
 	<!-- Script JS -->
-	<!-- <script src="../dir/js/bootstrap.min.js" ></script> -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="../layaut/script/js/Archivo.js"></script>
+	<script type="text/javascript" src="../layaut/script/js/Archivo.js"></script>	
 	<!-- Estilo Alertas -->
 	<script type="text/javascript" src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-
-	<!-- CSS -->
-	<!-- <link rel="stylesheet" href="../dir/css/bootstrap.min.css"> -->
-	<link rel="stylesheet" href="../layaut/estilos/css/estiloHome.css">
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-
+	<link rel="stylesheet" href="../layaut/estilos/css/estiloHome.css"> 
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+	
 	<link href="../img/Icono.png" rel="icon" type="image/png">
-	<title>Maquinaria</title>
-	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+ <title>Requerimiento Mantenimiento</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 </head>
 <style>
-	.imgEfcListPersonal {
-		position: relative;
-		width: 50px;
-		height: 50px;
-		border-radius: 50% 50%;
+.imgEfcListPersonal{
+  position: relative;
+  width: 50px;
+  height: 50px;
+  border-radius: 50% 50%;
 
-	}
+}
+.Advertencia{
+  color: red;
+}
 
-	.Advertencia {
-		color: red;
-	}
+
 </style>
-<?php
-//include("../layaut/header/header.php");
-include("../layaut/header/header-Top.php");
+<?php	
+
+include ("../layaut/header/header-Top.php");
 session_start();
-$u = $_POST['txtUsuario'];
+	$u = $_POST['txtUsuario'];
+  
 
 ?>
-
 <body>
 
 	<?php
@@ -74,15 +70,23 @@ die();
 
 
 
-<div class="container">
+<div class="">
   <div class="row">
-    <div class="col-auto">
-<!-- Menu ezquiero pagina -->
+<!-- Menu Lateral -->
+  <div class="collapse col-2" id="navbarToggleExternalContent" data-bs-theme="dark">
+  <div class="bg-dark ">
+  <?php	
 
-<!-- Menu ezquiero pagina -->
-    </div>
+include ("../layaut/header/header-Center.php");
+ 
+
+?>
+  </div>
+</div>
+
+	<!-- Centro Pagina -->
     <div class="col-10">
-<!-- Centro Pagina -->
+
 <form action="#" method="post" name="formMaquinaria" enctype="multipart/form-data">
 			<div id="respuesta"></div>
 			<div class="form-group">
@@ -282,15 +286,7 @@ die();
 		?>
 	</div>
 
-
-	<!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
-
-<script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
-
-<script src="appMaq.js"></script>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-<script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script> -->
-<!-- Centro Pagina-->
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
     </div>
     
   </div>
