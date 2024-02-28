@@ -22,9 +22,11 @@
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 
 	<?php	
+	
 include ("header.php");
 session_start();
-	$u = $_POST['txtUsuario'];
+	$u = $_POST['gustavog'];
+	
 ?>
 <script type="text/javascript">
 
@@ -71,6 +73,7 @@ echo "<button type=\"button\" class=\"btn btn-primary\"  onClick=\"volver()\">vo
 die();
 	
 	}
+	
 ?>	
 
 
@@ -91,9 +94,10 @@ include ("MarcoIzquierdo.php");
     <div class="col">
 	<h1><strong>Organigrama</strong></h1>
     </div>
-    <div class="col">
-      
-    </div>
+    <!-- <div class="col">
+	<a href="/sistema/VistaOrganigramaImpresion.php" target="_blank">
+      <img src="../sistema/img/iconoImpresion.png" alt="iconoImpresion" width="20" height="20"></a>
+    </div> -->
   </div>
 </div>
 
@@ -119,9 +123,10 @@ include ("MarcoIzquierdo.php");
 	 while ($filaOrganigramaGG = mysqli_fetch_array($queryOrganigramaGG))
 	
 	{
-	echo "<img style=\"border-radius: 50% 50%\" src=".$filaOrganigramaGG['Foto']." alt=\"BtnIconoVer\" width=\"50\" height=\"50\">";
-	/*echo "<a href=\"/sistema/VistaPersonal.php?IdPersonal=".$filaOrganigramaGG['IdPersonal']."\" target=\"_blank\">
-	<img style=\"border-radius: 50% 50%\" src=".$filaOrganigramaGG['Foto']." alt=\"BtnIconoVer\" width=\"50\" height=\"50\"></a>";*/
+	// echo "<a href=\"/sistema/VistaPersonal.php?IdPersonal=".$filaOrganigramaGG['IdPersonal']."\" target=\"_blank\">
+	// <img style=\"border-radius: 50% 50%\" src=".$filaOrganigramaGG['Foto']." alt=\"BtnIconoVer\" width=\"50\" height=\"50\"></a>";
+	echo "<td>"."<img style=\"border-radius: 50% 50%\" src=".$filaOrganigramaGG['Foto']." width=\"50px\" height=\"50px\">"."</td>\n";
+
 	echo " - ";
 	echo $filaOrganigramaGG['Nombres'];
 	echo "  ";
@@ -155,7 +160,7 @@ include ("MarcoIzquierdo.php");
 	
 	include("Conexion/conexion.php");
 	
-	$queryOrganigramaGV = $mysqli -> query ("SELECT * FROM `ComEmpleado` WHERE `Legajo` = 3317 AND `Sector` = 20 AND `Baja` LIKE 'No' ORDER BY `Apellidos` ASC");
+	$queryOrganigramaGV = $mysqli -> query ("SELECT * FROM `ComEmpleado` WHERE `Encargado` = 18 AND `Gerente` = 19 AND `Baja` LIKE 'No'");
 	
 	
 	
@@ -163,9 +168,9 @@ include ("MarcoIzquierdo.php");
 	
 	{
 		echo "<TR>\n";
-		echo "<img style=\"border-radius: 50% 50%\" src=".$filaOrganigramaGV['Foto']." alt=\"BtnIconoVer\" width=\"50\" height=\"50\">";
-		/*echo "<a href=\"/sistema/VistaPersonal.php?IdPersonal=".$filaOrganigramaGV['IdPersonal']."\" target=\"_blank\">
-		<img style=\"border-radius: 50% 50%\" src=".$filaOrganigramaGV['Foto']." alt=\"BtnIconoVer\" width=\"50\" height=\"50\"></a>";*/
+		echo "<td>"."<img style=\"border-radius: 50% 50%\" src=".$filaOrganigramaGV['Foto']." width=\"50px\" height=\"50px\">"."</td>\n";
+		// echo "<a href=\"/sistema/VistaPersonal.php?IdPersonal=".$filaOrganigramaGV['IdPersonal']."\" target=\"_blank\">
+		// <img style=\"border-radius: 50% 50%\" src=".$filaOrganigramaGV['Foto']." alt=\"BtnIconoVer\" width=\"50\" height=\"50\"></a>";
 		echo " - ";
 		echo $filaOrganigramaGV['Nombres'];
 		echo "  ";
@@ -187,9 +192,9 @@ include ("MarcoIzquierdo.php");
 	
 	{
 	echo "<TR>\n";
-    echo "<td>"."<img style=\"border-radius: 50% 50%\" src=".$filaOrganigramaGVC['Foto']." alt=\"BtnIconoVer\" width=\"50\" height=\"50\">"."</td>\n";
-	/*echo "<td>"."<a href=\"/sistema/VistaPersonal.php?IdPersonal=".$filaOrganigramaGVC['IdPersonal']."\" target=\"_blank\">
-	<img style=\"border-radius: 50% 50%\" src=".$filaOrganigramaGVC['Foto']." alt=\"BtnIconoVer\" width=\"50\" height=\"50\"></a>"."</td>\n";*/
+	echo "<td>"."<img style=\"border-radius: 50% 50%\" src=".$filaOrganigramaGVC['Foto']." width=\"50px\" height=\"50px\">"."</td>\n";
+	// echo "<td>"."<a href=\"/sistema/VistaPersonal.php?IdPersonal=".$filaOrganigramaGVC['IdPersonal']."\" target=\"_blank\">
+	// <img style=\"border-radius: 50% 50%\" src=".$filaOrganigramaGVC['Foto']." alt=\"BtnIconoVer\" width=\"50\" height=\"50\"></a>"."</td>\n";
 	echo "<td>"." - "."</td>\n";
 	echo "<td>".$filaOrganigramaGVC['Nombres']."</td>\n";
 	echo "<td>"."  "."</td>\n";
@@ -212,17 +217,17 @@ include ("MarcoIzquierdo.php");
 	
 	include("Conexion/conexion.php");
 	
-	$queryOrganigramaGP = $mysqli -> query ("SELECT * FROM `ComEmpleado` WHERE `Legajo` = 3438 AND `Sector` = 20 AND `Baja` LIKE 'No' ORDER BY `Apellidos` ASC");
+	$queryOrganigramaGP = $mysqli -> query ("SELECT * FROM `ComEmpleado` WHERE `Encargado` = 16 AND `Gerente` = 19 AND `Baja` LIKE 'No'");
 	
 	
 	
 	 while ($filaOrganigramaGP = mysqli_fetch_array($queryOrganigramaGP))
 	
 	{
-	echo "<img style=\"border-radius: 50% 50%\" src=".$filaOrganigramaGP['Foto']." alt=\"BtnIconoVer\" width=\"50\" height=\"50\">";
-	/*echo "<a href=\"/sistema/VistaPersonal.php?IdPersonal=".$filaOrganigramaGP['IdPersonal']."\" target=\"_blank\">
-	<img style=\"border-radius: 50% 50%\" src=".$filaOrganigramaGP['Foto']." alt=\"BtnIconoVer\" width=\"50\" height=\"50\"></a>";*/
-    echo " - ";
+	// echo "<a href=\"/sistema/VistaPersonal.php?IdPersonal=".$filaOrganigramaGP['IdPersonal']."\" target=\"_blank\">
+	// <img style=\"border-radius: 50% 50%\" src=".$filaOrganigramaGP['Foto']." alt=\"BtnIconoVer\" width=\"50\" height=\"50\"></a>";	
+	echo "<td>"."<img style=\"border-radius: 50% 50%\" src=".$filaOrganigramaGP['Foto']." width=\"50px\" height=\"50px\">"."</td>\n";
+	echo " - ";
 	echo $filaOrganigramaGP['Nombres'];
 	echo "  ";
 	echo $filaOrganigramaGP['Apellidos'];
@@ -237,9 +242,9 @@ include ("MarcoIzquierdo.php");
 
     </div>
 
-<!-- Gerente Damian 3438 -->
+<!-- Fin Gerente Damian 3438 -->
 
-
+<!-- Gerente Administracion< -->
     <div class="col">
 	<h3><strong>Administracion</strong></h3>
 	<!-- Gerente Leandro 3075 -->
@@ -248,7 +253,7 @@ include ("MarcoIzquierdo.php");
 	
 	include("Conexion/conexion.php");
 	
-	$queryOrganigramaGA = $mysqli -> query ("SELECT * FROM `ComEmpleado` WHERE `Legajo` = 3075 AND `Sector` = 20 AND `Baja` LIKE 'No' ORDER BY `Apellidos` ASC");
+	$queryOrganigramaGA = $mysqli -> query ("SELECT * FROM `ComEmpleado` WHERE `Encargado` = 17 AND `Gerente` = 19 AND `Baja` LIKE 'No'");
 	
 	
 	
@@ -256,9 +261,9 @@ include ("MarcoIzquierdo.php");
 	
 	{
 	echo "<TR>\n";
-    echo "<img style=\"border-radius: 50% 50%\" src=".$filaOrganigramaGA['Foto']." alt=\"BtnIconoVer\" width=\"50\" height=\"50\">";
-	/*echo "<a href=\"/sistema/VistaPersonal.php?IdPersonal=".$filaOrganigramaGA['IdPersonal']."\" target=\"_blank\">
-		<img style=\"border-radius: 50% 50%\" src=".$filaOrganigramaGA['Foto']." alt=\"BtnIconoVer\" width=\"50\" height=\"50\"></a>";*/
+	echo "<td>"."<img style=\"border-radius: 50% 50%\" src=".$filaOrganigramaGA['Foto']." width=\"50px\" height=\"50px\">"."</td>\n";
+	// echo "<a href=\"/sistema/VistaPersonal.php?IdPersonal=".$filaOrganigramaGA['IdPersonal']."\" target=\"_blank\">
+	// 	<img style=\"border-radius: 50% 50%\" src=".$filaOrganigramaGA['Foto']." alt=\"BtnIconoVer\" width=\"50\" height=\"50\"></a>";
 	echo " - ";
 	echo $filaOrganigramaGA['Nombres'];
 	echo "  ";
@@ -281,9 +286,9 @@ include ("MarcoIzquierdo.php");
 	
 	{
 	echo "<TR>\n";
-    echo "<td>"."<img style=\"border-radius: 50% 50%\" src=".$filaOrganigramaGAC['Foto']." alt=\"BtnIconoVer\" width=\"50\" height=\"50\">"."</td>\n";
-	/*echo "<td>"."<a href=\"/sistema/VistaPersonal.php?IdPersonal=".$filaOrganigramaGAC['IdPersonal']."\" target=\"_blank\">
-	<img style=\"border-radius: 50% 50%\" src=".$filaOrganigramaGAC['Foto']." alt=\"BtnIconoVer\" width=\"50\" height=\"50\"></a>"."</td>\n";*/
+	echo "<td>"."<img style=\"border-radius: 50% 50%\" src=".$filaOrganigramaGAC['Foto']." width=\"50px\" height=\"50px\">"."</td>\n";
+	// echo "<td>"."<a href=\"/sistema/VistaPersonal.php?IdPersonal=".$filaOrganigramaGAC['IdPersonal']."\" target=\"_blank\">
+	// <img style=\"border-radius: 50% 50%\" src=".$filaOrganigramaGAC['Foto']." alt=\"BtnIconoVer\" width=\"50\" height=\"50\"></a>"."</td>\n";
 	echo "<td>"." - "."</td>\n";
 	echo "<td>".$filaOrganigramaGAC['Nombres']."</td>\n";
 	echo "<td>"."  "."</td>\n";
@@ -296,8 +301,67 @@ include ("MarcoIzquierdo.php");
 
 	</table>
     </div>
+	  <!--Fin  Gerente Asministrativo -->
+
+	  <!-- Gerente Ingenieria -->
+	  <div class="col">
+	<h3><strong>Ingenieria</strong></h3>
+	<table class="table table-striped">
+	<?php
+	
+	include("Conexion/conexion.php");
+	
+	$queryOrganigramaGA = $mysqli -> query ("SELECT * FROM `ComEmpleado` WHERE `Encargado` = 22 AND `Gerente` = 19 AND `Baja` LIKE 'No'");
+	
+	
+	
+	 while ($filaOrganigramaGA = mysqli_fetch_array($queryOrganigramaGA))
+	
+	{
+	echo "<TR>\n";
+	echo "<td>"."<img style=\"border-radius: 50% 50%\" src=".$filaOrganigramaGA['Foto']." width=\"50px\" height=\"50px\">"."</td>\n";
+	// echo "<a href=\"/sistema/VistaPersonal.php?IdPersonal=".$filaOrganigramaGA['IdPersonal']."\" target=\"_blank\">
+	// 	<img style=\"border-radius: 50% 50%\" src=".$filaOrganigramaGA['Foto']." alt=\"BtnIconoVer\" width=\"50\" height=\"50\"></a>";
+	echo " - ";
+	echo $filaOrganigramaGA['Nombres'];
+	echo "  ";
+	echo $filaOrganigramaGA['Apellidos'];
+    echo "</TR>\n";
+	
+	 }
+	
+	?>
+
+<?php
+	
+	include("Conexion/conexion.php");
+	
+	$queryOrganigramaSerIng = $mysqli -> query ("SELECT * FROM `ComEmpleado` WHERE `Encargado` = 6 AND `Gerente` = 19 AND `Baja` LIKE 'No' ORDER BY `Apellidos` ASC");
+	
+	
+	
+	 while ($filaOrganigramaSerIng = mysqli_fetch_array($queryOrganigramaSerIng))
+	
+	{
+	echo "<TR>\n";
+	echo "<td>"."<img style=\"border-radius: 50% 50%\" src=".$filaOrganigramaSerIng['Foto']." width=\"50px\" height=\"50px\">"."</td>\n";
+	// echo "<td>"."<a href=\"/sistema/VistaPersonal.php?IdPersonal=".$filaOrganigramaSerIng['IdPersonal']."\" target=\"_blank\">
+	// <img style=\"border-radius: 50% 50%\" src=".$filaOrganigramaSerIng['Foto']." alt=\"BtnIconoVer\" width=\"50\" height=\"50\"></a>"."</td>\n";
+	echo "<td>"." - "."</td>\n";
+	echo "<td>".$filaOrganigramaSerIng['Nombres']."</td>\n";
+	echo "<td>"."  "."</td>\n";
+	echo "<td>".$filaOrganigramaSerIng['Apellidos']."</td>\n";
+	echo "</TR>\n";
+	
+	 }
+	
+	?>
+
+	</table>
+    </div>
+	  <!--Fin  Gerente Ingenieria -->
   </div>
-  <!--Fin  Gerente Leandro 3075 -->
+
 </div>
 
     </div>
@@ -312,18 +376,18 @@ include ("MarcoIzquierdo.php");
 
 	<table class="table table-striped"> 
 	<?php
-	//Ariel
+	//Ariel Linea
 	include("Conexion/conexion.php");
 	
-	$queryOrganigramaEnLi = $mysqli -> query ("SELECT * FROM `ComEmpleado` WHERE `Encargado` = 7 AND `Gerente` = 16 AND `Baja` LIKE 'No' ORDER BY `Apellidos` ASC");
+	$queryOrganigramaEnLi = $mysqli -> query ("SELECT * FROM `ComEmpleado` WHERE `Encargado` = 25 AND `Gerente` = 16 AND `Baja` LIKE 'No'");
 	
 	 while ($filaOrganigramaEnLi = mysqli_fetch_array($queryOrganigramaEnLi))
 	
 	{
 		echo "<TR>\n";
-		echo "<img style=\"border-radius: 50% 50%\" src=".$filaOrganigramaEnLi['Foto']." alt=\"BtnIconoVer\" width=\"50\" height=\"50\">";
-		/*echo "<a href=\"/sistema/VistaPersonal.php?IdPersonal=".$filaOrganigramaEnLi['IdPersonal']."\" target=\"_blank\">
-		<img style=\"border-radius: 50% 50%\" src=".$filaOrganigramaEnLi['Foto']." alt=\"BtnIconoVer\" width=\"50\" height=\"50\"></a>";*/
+		echo "<td>"."<img style=\"border-radius: 50% 50%\" src=".$filaOrganigramaEnLi['Foto']." width=\"50px\" height=\"50px\">"."</td>\n";
+		// echo "<a href=\"/sistema/VistaPersonal.php?IdPersonal=".$filaOrganigramaEnLi['IdPersonal']."\" target=\"_blank\">
+		// <img style=\"border-radius: 50% 50%\" src=".$filaOrganigramaEnLi['Foto']." alt=\"BtnIconoVer\" width=\"50\" height=\"50\"></a>";
 		echo " - ";
 		echo $filaOrganigramaEnLi['Nombres'];
 		echo "  ";
@@ -331,7 +395,8 @@ include ("MarcoIzquierdo.php");
 		echo "</TR>\n";
 	
 	 }
-	 $queryOrganigramaEnLiCo = $mysqli -> query ("SELECT * FROM `ComEmpleado` WHERE `Encargado` = 7 AND `Gerente` = 7 AND `Baja` LIKE 'No' ORDER BY `Apellidos` ASC");
+	 echo "- Linea ";
+	 $queryOrganigramaEnLiCo = $mysqli -> query ("SELECT * FROM `ComEmpleado` WHERE `Encargado` = 7 AND `Gerente` = 25 AND `Baja` LIKE 'No'");
 	
 	
 	
@@ -339,9 +404,9 @@ include ("MarcoIzquierdo.php");
 	
 	{
 	echo "<TR>\n";
-    echo "<td>"."<img style=\"border-radius: 50% 50%\" src=".$filaOrganigramaEnLiCo['Foto']." alt=\"BtnIconoVer\" width=\"50\" height=\"50\">"."</td>\n";
-	/*echo "<td>"."<a href=\"/sistema/VistaPersonal.php?IdPersonal=".$filaOrganigramaEnLiCo['IdPersonal']."\" target=\"_blank\">
-	<img style=\"border-radius: 50% 50%\" src=".$filaOrganigramaEnLiCo['Foto']." alt=\"BtnIconoVer\" width=\"50\" height=\"50\"></a>"."</td>\n";*/
+	echo "<td>"."<img style=\"border-radius: 50% 50%\" src=".$filaOrganigramaEnLiCo['Foto']." width=\"50px\" height=\"50px\">"."</td>\n";
+	// echo "<td>"."<a href=\"/sistema/VistaPersonal.php?IdPersonal=".$filaOrganigramaEnLiCo['IdPersonal']."\" target=\"_blank\">
+	// <img style=\"border-radius: 50% 50%\" src=".$filaOrganigramaEnLiCo['Foto']." alt=\"BtnIconoVer\" width=\"50\" height=\"50\"></a>"."</td>\n";
 	echo "<td>"." - "."</td>\n";
 	echo "<td>".$filaOrganigramaEnLiCo['Nombres']."</td>\n";
 	echo "<td>"."  "."</td>\n";
@@ -349,10 +414,61 @@ include ("MarcoIzquierdo.php");
 	echo "</TR>\n";
 	
 	 }
+
 	?>
 
 	  </table>
     </div>
+
+	<div class="col">
+
+<table class="table table-striped"> 
+<?php
+//Agropartes
+include("Conexion/conexion.php");
+
+$queryOrganigramaEnLi = $mysqli -> query ("SELECT * FROM `ComEmpleado` WHERE `Encargado` = 25 AND `Gerente` = 16 AND `Baja` LIKE 'No'");
+
+ while ($filaOrganigramaEnLi = mysqli_fetch_array($queryOrganigramaEnLi))
+
+{
+	echo "<TR>\n";
+	echo "<td>"."<img style=\"border-radius: 50% 50%\" src=".$filaOrganigramaEnLi['Foto']." width=\"50px\" height=\"50px\">"."</td>\n";
+	// echo "<a href=\"/sistema/VistaPersonal.php?IdPersonal=".$filaOrganigramaEnLi['IdPersonal']."\" target=\"_blank\">
+	// <img style=\"border-radius: 50% 50%\" src=".$filaOrganigramaEnLi['Foto']." alt=\"BtnIconoVer\" width=\"50\" height=\"50\"></a>";
+	echo " - ";
+	echo $filaOrganigramaEnLi['Nombres'];
+	echo "  ";
+	echo $filaOrganigramaEnLi['Apellidos'];
+	echo "</TR>\n";
+
+ }
+ echo "- Agropartes ";
+ $queryOrganigramaEnLiCo = $mysqli -> query ("SELECT * FROM `ComEmpleado` WHERE `Encargado` = 1 AND `Gerente` = 25 AND `Baja` LIKE 'No'");
+
+
+
+ while ($filaOrganigramaEnLiCo = mysqli_fetch_array($queryOrganigramaEnLiCo))
+
+{
+echo "<TR>\n";
+echo "<td>"."<img style=\"border-radius: 50% 50%\" src=".$filaOrganigramaEnLiCo['Foto']." width=\"50px\" height=\"50px\">"."</td>\n";
+// echo "<td>"."<a href=\"/sistema/VistaPersonal.php?IdPersonal=".$filaOrganigramaEnLiCo['IdPersonal']."\" target=\"_blank\">
+// <img style=\"border-radius: 50% 50%\" src=".$filaOrganigramaEnLiCo['Foto']." alt=\"BtnIconoVer\" width=\"50\" height=\"50\"></a>"."</td>\n";
+echo "<td>"." - "."</td>\n";
+echo "<td>".$filaOrganigramaEnLiCo['Nombres']."</td>\n";
+echo "<td>"."  "."</td>\n";
+echo "<td>".$filaOrganigramaEnLiCo['Apellidos']."</td>\n";
+echo "</TR>\n";
+
+ }
+?>
+
+  </table>
+</div>
+
+
+
 	
     <div class="col">
 	<table class="table table-striped"> 
@@ -360,15 +476,15 @@ include ("MarcoIzquierdo.php");
 	//Fernando
 	include("Conexion/conexion.php");
 	
-	$queryOrganigramaEnMe = $mysqli -> query ("SELECT * FROM `ComEmpleado` WHERE `Encargado` = 3 AND `Gerente` = 16 AND `Baja` LIKE 'No' ORDER BY `Apellidos` ASC");
+	$queryOrganigramaEnMe = $mysqli -> query ("SELECT * FROM `ComEmpleado` WHERE `Encargado` = 26 AND `Gerente` = 16 AND `Baja` LIKE 'No' ORDER BY `Apellidos` ASC");
 	
 	 while ($filaOrganigramaEnMe = mysqli_fetch_array($queryOrganigramaEnMe))
 	
 	{
 		echo "<TR>\n";
-		echo "<img style=\"border-radius: 50% 50%\" src=".$filaOrganigramaEnMe['Foto']." alt=\"BtnIconoVer\" width=\"50\" height=\"50\">";
-		/*echo "<a href=\"/sistema/VistaPersonal.php?IdPersonal=".$filaOrganigramaEnMe['IdPersonal']."\" target=\"_blank\">
-		<img style=\"border-radius: 50% 50%\" src=".$filaOrganigramaEnMe['Foto']." alt=\"BtnIconoVer\" width=\"50\" height=\"50\"></a>";*/
+		echo "<td>"."<img style=\"border-radius: 50% 50%\" src=".$filaOrganigramaEnMe['Foto']." width=\"50px\" height=\"50px\">"."</td>\n";
+		// echo "<a href=\"/sistema/VistaPersonal.php?IdPersonal=".$filaOrganigramaEnMe['IdPersonal']."\" target=\"_blank\">
+		// <img style=\"border-radius: 50% 50%\" src=".$filaOrganigramaEnMe['Foto']." alt=\"BtnIconoVer\" width=\"50\" height=\"50\"></a>";
 		echo " - ";
 		echo $filaOrganigramaEnMe['Nombres'];
 		echo "  ";
@@ -376,7 +492,8 @@ include ("MarcoIzquierdo.php");
 		echo "</TR>\n";
 	
 	 }
-	 $queryOrganigramaEnMeCol = $mysqli -> query ("SELECT * FROM `ComEmpleado` WHERE `Encargado` = 3 AND `Gerente` = 3 AND `Baja` LIKE 'No' ORDER BY `Apellidos` ASC");
+	 echo "- Mecanizado, Corte y Plegado ";
+	 $queryOrganigramaEnMeCol = $mysqli -> query ("SELECT * FROM `ComEmpleado` WHERE `Encargado` = 9 AND `Gerente` = 26 AND `Baja` LIKE 'No' ORDER BY `Apellidos` ASC");
 	
 	
 	
@@ -384,9 +501,9 @@ include ("MarcoIzquierdo.php");
 	
 	{
 	echo "<TR>\n";
-    echo "<td>"."<img style=\"border-radius: 50% 50%\" src=".$filaOrganigramaEnMeCol['Foto']." alt=\"BtnIconoVer\" width=\"50\" height=\"50\">"."</td>\n";
-	/*echo "<td>"."<a href=\"/sistema/VistaPersonal.php?IdPersonal=".$filaOrganigramaEnMeCol['IdPersonal']."\" target=\"_blank\">
-	<img style=\"border-radius: 50% 50%\" src=".$filaOrganigramaEnMeCol['Foto']." alt=\"BtnIconoVer\" width=\"50\" height=\"50\"></a>"."</td>\n";*/
+	echo "<td>"."<img style=\"border-radius: 50% 50%\" src=".$filaOrganigramaEnMeCol['Foto']." width=\"50px\" height=\"50px\">"."</td>\n";
+	// echo "<td>"."<a href=\"/sistema/VistaPersonal.php?IdPersonal=".$filaOrganigramaEnMeCol['IdPersonal']."\" target=\"_blank\">
+	// <img style=\"border-radius: 50% 50%\" src=".$filaOrganigramaEnMeCol['Foto']." alt=\"BtnIconoVer\" width=\"50\" height=\"50\"></a>"."</td>\n";
 	echo "<td>"." - "."</td>\n";
 	echo "<td>".$filaOrganigramaEnMeCol['Nombres']."</td>\n";
 	echo "<td>"."  "."</td>\n";
@@ -403,18 +520,18 @@ include ("MarcoIzquierdo.php");
 
 	<table class="table table-striped"> 
 	<?php
-	//Caballero
+	//Pintura
 	include("Conexion/conexion.php");
 	
-	$queryOrganigramaEnPin = $mysqli -> query ("SELECT * FROM `ComEmpleado` WHERE `Encargado` = 10 AND `Gerente` = 16 AND `Baja` LIKE 'No' ORDER BY `Apellidos` ASC");
+	$queryOrganigramaEnPin = $mysqli -> query ("SELECT * FROM `ComEmpleado` WHERE `Encargado` = 27 AND `Gerente` = 16 AND `Baja` LIKE 'No' ORDER BY `Apellidos` ASC");
 	
 	 while ($filaOrganigramaEnPin = mysqli_fetch_array($queryOrganigramaEnPin))
 	
 	{
 		echo "<TR>\n";
-		echo "<img style=\"border-radius: 50% 50%\" src=".$filaOrganigramaEnPin['Foto']." alt=\"BtnIconoVer\" width=\"50\" height=\"50\">";
-		/*echo "<a href=\"/sistema/VistaPersonal.php?IdPersonal=".$filaOrganigramaEnPin['IdPersonal']."\" target=\"_blank\">
-		<img style=\"border-radius: 50% 50%\" src=".$filaOrganigramaEnPin['Foto']." alt=\"BtnIconoVer\" width=\"50\" height=\"50\"></a>";*/
+		echo "<td>"."<img style=\"border-radius: 50% 50%\" src=".$filaOrganigramaEnPin['Foto']." width=\"50px\" height=\"50px\">"."</td>\n";
+		// echo "<a href=\"/sistema/VistaPersonal.php?IdPersonal=".$filaOrganigramaEnPin['IdPersonal']."\" target=\"_blank\">
+		// <img style=\"border-radius: 50% 50%\" src=".$filaOrganigramaEnPin['Foto']." alt=\"BtnIconoVer\" width=\"50\" height=\"50\"></a>";
 		echo " - ";
 		echo $filaOrganigramaEnPin['Nombres'];
 		echo "  ";
@@ -422,7 +539,8 @@ include ("MarcoIzquierdo.php");
 		echo "</TR>\n";
 	
 	 }
-	 $queryOrganigramaEnPinCol = $mysqli -> query ("SELECT * FROM `ComEmpleado` WHERE `Encargado` = 10 AND `Gerente` = 10 AND `Baja` LIKE 'No' ORDER BY `Apellidos` ASC");
+	 echo "- Pre Pintura - Pintura";
+	 $queryOrganigramaEnPinCol = $mysqli -> query ("SELECT * FROM `ComEmpleado` WHERE `Encargado` = 10 AND `Gerente` = 27 AND `Baja` LIKE 'No' ORDER BY `Apellidos` ASC");
 	
 	
 	
@@ -430,9 +548,9 @@ include ("MarcoIzquierdo.php");
 	
 	{
 	echo "<TR>\n";
-    echo "<td>"."<img style=\"border-radius: 50% 50%\" src=".$filaOrganigramaEnPinCol['Foto']." alt=\"BtnIconoVer\" width=\"50\" height=\"50\">"."</td>\n";
-	/*echo "<td>"."<a href=\"/sistema/VistaPersonal.php?IdPersonal=".$filaOrganigramaEnPinCol['IdPersonal']."\" target=\"_blank\">
-	<img style=\"border-radius: 50% 50%\" src=".$filaOrganigramaEnPinCol['Foto']." alt=\"BtnIconoVer\" width=\"50\" height=\"50\"></a>"."</td>\n";*/
+	echo "<td>"."<img style=\"border-radius: 50% 50%\" src=".$filaOrganigramaEnPinCol['Foto']." width=\"50px\" height=\"50px\">"."</td>\n";
+	// echo "<td>"."<a href=\"/sistema/VistaPersonal.php?IdPersonal=".$filaOrganigramaEnPinCol['IdPersonal']."\" target=\"_blank\">
+	// <img style=\"border-radius: 50% 50%\" src=".$filaOrganigramaEnPinCol['Foto']." alt=\"BtnIconoVer\" width=\"50\" height=\"50\"></a>"."</td>\n";
 	echo "<td>"." - "."</td>\n";
 	echo "<td>".$filaOrganigramaEnPinCol['Nombres']."</td>\n";
 	echo "<td>"."  "."</td>\n";
@@ -447,21 +565,21 @@ include ("MarcoIzquierdo.php");
 
     </div>
 
-    <div class="col">
+     <div class="col">
 	<table class="table table-striped"> 
 	<?php
 	//Teyo
 	include("Conexion/conexion.php");
 	
-	$queryOrganigramaEnFi = $mysqli -> query ("SELECT * FROM `ComEmpleado` WHERE `Encargado` = 5 AND `Gerente` = 16 AND `Baja` LIKE 'No' ORDER BY `Apellidos` ASC");
+	$queryOrganigramaEnFi = $mysqli -> query ("SELECT * FROM `ComEmpleado` WHERE `Encargado` = 28 AND `Gerente` = 16 AND `Baja` LIKE 'No' ORDER BY `Apellidos` ASC");
 	
 	 while ($filaOrganigramaEnFi = mysqli_fetch_array($queryOrganigramaEnFi))
 	
 	{
 		echo "<TR>\n";
-		echo "<img style=\"border-radius: 50% 50%\" src=".$filaOrganigramaEnFi['Foto']." alt=\"BtnIconoVer\" width=\"50\" height=\"50\">";
-		/*echo "<a href=\"/sistema/VistaPersonal.php?IdPersonal=".$filaOrganigramaEnFi['IdPersonal']."\" target=\"_blank\">
-		<img style=\"border-radius: 50% 50%\" src=".$filaOrganigramaEnFi['Foto']." alt=\"BtnIconoVer\" width=\"50\" height=\"50\"></a>";*/
+		echo "<td>"."<img style=\"border-radius: 50% 50%\" src=".$filaOrganigramaEnFi['Foto']." width=\"50px\" height=\"50px\">"."</td>\n";
+		// echo "<a href=\"/sistema/VistaPersonal.php?IdPersonal=".$filaOrganigramaEnFi['IdPersonal']."\" target=\"_blank\">
+		// <img style=\"border-radius: 50% 50%\" src=".$filaOrganigramaEnFi['Foto']." alt=\"BtnIconoVer\" width=\"50\" height=\"50\"></a>";
 		echo " - ";
 		echo $filaOrganigramaEnFi['Nombres'];
 		echo "  ";
@@ -469,7 +587,9 @@ include ("MarcoIzquierdo.php");
 		echo "</TR>\n";
 	
 	 }
-	 $queryOrganigramaEnFiCol = $mysqli -> query ("SELECT * FROM `ComEmpleado` WHERE `Encargado` = 5 AND `Gerente` = 5 AND `Baja` LIKE 'No' ORDER BY `Apellidos` ASC");
+
+	 echo "- Final y Despacho";
+	 $queryOrganigramaEnFiCol = $mysqli -> query ("SELECT * FROM `ComEmpleado` WHERE `Encargado` = 5 AND `Gerente` = 28 AND `Baja` LIKE 'No' ORDER BY `Apellidos` ASC");
 	
 	
 	
@@ -477,9 +597,10 @@ include ("MarcoIzquierdo.php");
 	
 	{
 	echo "<TR>\n";
-    echo "<td>"."<img style=\"border-radius: 50% 50%\" src=".$filaOrganigramaEnFiCol['Foto']." alt=\"BtnIconoVer\" width=\"50\" height=\"50\">"."</td>\n";
-	/*echo "<td>"."<a href=\"/sistema/VistaPersonal.php?IdPersonal=".$filaOrganigramaEnFiCol['IdPersonal']."\" target=\"_blank\">
-	<img style=\"border-radius: 50% 50%\" src=".$filaOrganigramaEnFiCol['Foto']." alt=\"BtnIconoVer\" width=\"50\" height=\"50\"></a>"."</td>\n";*/
+	echo "<td>"."<img style=\"border-radius: 50% 50%\" src=\"" . $filaOrganigramaEnFiCol['Foto'] . "\" alt=\"BtnIconoVer\" width=\"50px\" height=\"50px\">"."</td>\n";
+	// echo "<td><a href=\"/sistema/VistaPersonal.php?IdPersonal=" . $filaOrganigramaEnFiCol['IdPersonal'] . "\" target=\"_blank\">
+	// <img style=\"border-radius: 50% 50%\" src=\"" . $filaOrganigramaEnFiCol['Foto'] . "\" alt=\"BtnIconoVer\" width=\"50\" height=\"50\"></a></td>\n";
+
 	echo "<td>"." - "."</td>\n";
 	echo "<td>".$filaOrganigramaEnFiCol['Nombres']."</td>\n";
 	echo "<td>"."  "."</td>\n";
@@ -491,7 +612,7 @@ include ("MarcoIzquierdo.php");
 	?>
 	
 	  </table>	
-    </div>
+    </div> 
 
     <div class="col">
 	<table class="table table-striped"> 
@@ -499,15 +620,15 @@ include ("MarcoIzquierdo.php");
 	//Rivero
 	include("Conexion/conexion.php");
 	
-	$queryOrganigramaEnMae = $mysqli -> query ("SELECT * FROM `ComEmpleado` WHERE `Encargado` = 4 AND `Gerente` = 16 AND `Baja` LIKE 'No' ORDER BY `Apellidos` ASC");
+	$queryOrganigramaEnMae = $mysqli -> query ("SELECT * FROM `ComEmpleado` WHERE `Encargado` = 29 AND `Gerente` = 16 AND `Baja` LIKE 'No' ORDER BY `Apellidos` ASC");
 	
 	 while ($filaOrganigramaEnMae = mysqli_fetch_array($queryOrganigramaEnMae))
 	
 	{
 		echo "<TR>\n";
-		echo "<img style=\"border-radius: 50% 50%\" src=".$filaOrganigramaEnMae['Foto']." alt=\"BtnIconoVer\" width=\"50\" height=\"50\">";
-		/*echo "<a href=\"/sistema/VistaPersonal.php?IdPersonal=".$filaOrganigramaEnMae['IdPersonal']."\" target=\"_blank\">
-		<img style=\"border-radius: 50% 50%\" src=".$filaOrganigramaEnMae['Foto']." alt=\"BtnIconoVer\" width=\"50\" height=\"50\"></a>";*/
+		echo "<td>"."<img style=\"border-radius: 50% 50%\" src=".$filaOrganigramaEnMae['Foto']." alt=\"BtnIconoVer\" width=\"50px\" height=\"50px\">"."</td>\n";
+		// echo "<a href=\"/sistema/VistaPersonal.php?IdPersonal=".$filaOrganigramaEnMae['IdPersonal']."\" target=\"_blank\">
+		// <img style=\"border-radius: 50% 50%\" src=".$filaOrganigramaEnMae['Foto']." alt=\"BtnIconoVer\" width=\"50\" height=\"50\"></a>";
 		echo " - ";
 		echo $filaOrganigramaEnMae['Nombres'];
 		echo "  ";
@@ -515,7 +636,8 @@ include ("MarcoIzquierdo.php");
 		echo "</TR>\n";
 	
 	 }
-	 $queryOrganigramaEnMaeCol = $mysqli -> query ("SELECT * FROM `ComEmpleado` WHERE `Encargado` = 4 AND `Gerente` = 4 AND `Baja` LIKE 'No' ORDER BY `Apellidos` ASC");
+	 echo "Maestranza";
+	 $queryOrganigramaEnMaeCol = $mysqli -> query ("SELECT * FROM `ComEmpleado` WHERE `Encargado` = 4 AND `Gerente` = 29 AND `Baja` LIKE 'No' ORDER BY `Apellidos` ASC");
 	
 	
 	
@@ -523,9 +645,9 @@ include ("MarcoIzquierdo.php");
 	
 	{
 	echo "<TR>\n";
-    echo "<td>"."<img style=\"border-radius: 50% 50%\" src=".$filaOrganigramaEnMaeCol['Foto']." alt=\"BtnIconoVer\" width=\"50\" height=\"50\">"."</td>\n";
-	/*echo "<td>"."<a href=\"/sistema/VistaPersonal.php?IdPersonal=".$filaOrganigramaEnMaeCol['IdPersonal']."\" target=\"_blank\">
-	<img style=\"border-radius: 50% 50%\" src=".$filaOrganigramaEnMaeCol['Foto']." alt=\"BtnIconoVer\" width=\"50\" height=\"50\"></a>"."</td>\n";*/
+	echo "<td>"."<img style=\"border-radius: 50% 50%\" src=".$filaOrganigramaEnMaeCol['Foto']." width=\"50px\" height=\"50px\">"."</td>\n";
+	// echo "<td>"."<a href=\"/sistema/VistaPersonal.php?IdPersonal=".$filaOrganigramaEnMaeCol['IdPersonal']."\" target=\"_blank\">
+	// <img style=\"border-radius: 50% 50%\" src=".$filaOrganigramaEnMaeCol['Foto']." alt=\"BtnIconoVer\" width=\"50\" height=\"50\"></a>"."</td>\n";
 	echo "<td>"." - "."</td>\n";
 	echo "<td>".$filaOrganigramaEnMaeCol['Nombres']."</td>\n";
 	echo "<td>"."  "."</td>\n";
@@ -544,70 +666,65 @@ include ("MarcoIzquierdo.php");
 	<div class="container text-center">
   <div class="row">
   <p><h2><strong>Servicios</strong></h2></p>
-    <div class="col">
-	<h3><strong>Ingenieria</strong></h3>
-	<!-- Servicios produccion -->
-	<table class="table table-striped">
+ <!-- Gerente Calidad -->
+ <div class="col">
+    <h3><strong>Calidad</strong></h3>
+    <table class="table table-striped">
+    <?php
+    
+    include("Conexion/conexion.php");
+    
+    $queryOrganigramaEncCal = $mysqli -> query ("SELECT * FROM `ComEmpleado` WHERE `Encargado` = 23 AND `Gerente` = 19 AND `Baja` LIKE 'No'");
+    
+    
+    
+     while ($filaOrganigramaEncCal = mysqli_fetch_array($queryOrganigramaEncCal))
+    
+    {
+    echo "<TR>\n";
+	echo "<td>"."<img style=\"border-radius: 50% 50%\" src=".$filaOrganigramaEncCal['Foto']." width=\"50px\" height=\"50px\">"."</td>\n";
+    // echo "<a href=\"/sistema/VistaPersonal.php?IdPersonal=".$filaOrganigramaEncCal['IdPersonal']."\" target=\"_blank\">
+    //     <img style=\"border-radius: 50% 50%\" src=".$filaOrganigramaEncCal['Foto']." alt=\"BtnIconoVer\" width=\"50\" height=\"50\"></a>";
+    echo " - ";
+    echo $filaOrganigramaEncCal['Nombres'];
+    echo "  ";
+    echo $filaOrganigramaEncCal['Apellidos'];
+    echo "</TR>\n";
+    
+     }
+    
+    ?>
+
 <?php
-	
-	include("Conexion/conexion.php");
-	
-	$queryOrganigramaSerIng = $mysqli -> query ("SELECT * FROM `ComEmpleado` WHERE `Encargado` = 6 AND `Gerente` = 19 AND `Baja` LIKE 'No' ORDER BY `Apellidos` ASC");
-	
-	
-	
-	 while ($filaOrganigramaSerIng = mysqli_fetch_array($queryOrganigramaSerIng))
-	
-	{
-	echo "<TR>\n";
-    echo "<td>"."<img style=\"border-radius: 50% 50%\" src=".$filaOrganigramaSerIng['Foto']." alt=\"BtnIconoVer\" width=\"50\" height=\"50\">"."</td>\n";
-	/*echo "<td>"."<a href=\"/sistema/VistaPersonal.php?IdPersonal=".$filaOrganigramaSerIng['IdPersonal']."\" target=\"_blank\">
-	<img style=\"border-radius: 50% 50%\" src=".$filaOrganigramaSerIng['Foto']." alt=\"BtnIconoVer\" width=\"50\" height=\"50\"></a>"."</td>\n";*/
-	echo "<td>"." - "."</td>\n";
-	echo "<td>".$filaOrganigramaSerIng['Nombres']."</td>\n";
-	echo "<td>"."  "."</td>\n";
-	echo "<td>".$filaOrganigramaSerIng['Apellidos']."</td>\n";
-	echo "</TR>\n";
-	
-	 }
-	
-	?>
+    
+    include("Conexion/conexion.php");
+    
+    $queryOrganigramaSerCal = $mysqli -> query ("SELECT * FROM `ComEmpleado` WHERE `Encargado` = 2 AND `Gerente` = 19 AND `Baja` LIKE 'No' ORDER BY `Apellidos` ASC");
+    
+    
+    
+     while ($filaOrganigramaSerCal = mysqli_fetch_array($queryOrganigramaSerCal))
+    
+    {
+    echo "<TR>\n";
+	echo "<td>"."<img style=\"border-radius: 50% 50%\" src=".$filaOrganigramaSerCal['Foto']." width=\"50px\" height=\"50px\">"."</td>\n";
+    // echo "<td>"."<a href=\"/sistema/VistaPersonal.php?IdPersonal=".$filaOrganigramaSerCal['IdPersonal']."\" target=\"_blank\">
+    // <img style=\"border-radius: 50% 50%\" src=".$filaOrganigramaSerCal['Foto']." alt=\"BtnIconoVer\" width=\"50\" height=\"50\"></a>"."</td>\n";
+    echo "<td>"." - "."</td>\n";
+    echo "<td>".$filaOrganigramaSerCal['Nombres']."</td>\n";
+    echo "<td>"."  "."</td>\n";
+    echo "<td>".$filaOrganigramaSerCal['Apellidos']."</td>\n";
+    echo "</TR>\n";
+    
+     }
+    
+    ?>
 
-	</table>
-   </div>
+    </table>
+    </div>
+      <!--Fin  Gerente Calidad -->
 
-   <div class="col">
-	<h3><strong>Calidad</strong></h3>
-
-	<table class="table table-striped">
-<?php
-	
-	include("Conexion/conexion.php");
-	
-	$queryOrganigramaSerCal = $mysqli -> query ("SELECT * FROM `ComEmpleado` WHERE `Encargado` = 2 AND `Gerente` = 19 AND `Baja` LIKE 'No' ORDER BY `Apellidos` ASC");
-	
-	
-	
-	 while ($filaOrganigramaSerCal = mysqli_fetch_array($queryOrganigramaSerCal))
-	
-	{
-	echo "<TR>\n";
-    echo "<td>"."<img style=\"border-radius: 50% 50%\" src=".$filaOrganigramaSerCal['Foto']." alt=\"BtnIconoVer\" width=\"50\" height=\"50\">"."</td>\n";
-	/*echo "<td>"."<a href=\"/sistema/VistaPersonal.php?IdPersonal=".$filaOrganigramaSerCal['IdPersonal']."\" target=\"_blank\">
-	<img style=\"border-radius: 50% 50%\" src=".$filaOrganigramaSerCal['Foto']." alt=\"BtnIconoVer\" width=\"50\" height=\"50\"></a>"."</td>\n";*/
-	echo "<td>"." - "."</td>\n";
-	echo "<td>".$filaOrganigramaSerCal['Nombres']."</td>\n";
-	echo "<td>"."  "."</td>\n";
-	echo "<td>".$filaOrganigramaSerCal['Apellidos']."</td>\n";
-	echo "</TR>\n";
-	
-	 }
-	
-	?>
-
-	</table>
-   </div>
-
+	<!-- Compras-Tercero-Planificacion -->
    <div class="col">
 	<h3><strong>(Compras-Tercero-Planificacion)</strong></h3>
 
@@ -624,9 +741,9 @@ include ("MarcoIzquierdo.php");
 	
 	{
 	echo "<TR>\n";
-    echo "<td>"."<img style=\"border-radius: 50% 50%\" src=".$filaOrganigramaSerGen['Foto']." alt=\"BtnIconoVer\" width=\"50\" height=\"50\">"."</td>\n";
-	/*echo "<td>"."<a href=\"/sistema/VistaPersonal.php?IdPersonal=".$filaOrganigramaSerGen['IdPersonal']."\" target=\"_blank\">
-	<img style=\"border-radius: 50% 50%\" src=".$filaOrganigramaSerGen['Foto']." alt=\"BtnIconoVer\" width=\"50\" height=\"50\"></a>"."</td>\n";*/
+	echo "<td>"."<img style=\"border-radius: 50% 50%\" src=".$filaOrganigramaSerGen['Foto']." width=\"50px\" height=\"50px\">"."</td>\n";
+	// echo "<td>"."<a href=\"/sistema/VistaPersonal.php?IdPersonal=".$filaOrganigramaSerGen['IdPersonal']."\" target=\"_blank\">
+	// <img style=\"border-radius: 50% 50%\" src=".$filaOrganigramaSerGen['Foto']." alt=\"BtnIconoVer\" width=\"50\" height=\"50\"></a>"."</td>\n";
 	echo "<td>"." - "."</td>\n";
 	echo "<td>".$filaOrganigramaSerGen['Nombres']."</td>\n";
 	echo "<td>"."  "."</td>\n";
@@ -639,41 +756,73 @@ include ("MarcoIzquierdo.php");
 
 	</table>
    </div>
-   <div class="col">
-	<h3><strong>RRHH</strong></h3>
-	<!-- Gerente Leandro 3075 -->
-	<table class="table table-striped">
-<?php
-	
-	include("Conexion/conexion.php");
-	
-	$queryOrganigramaRRHH = $mysqli -> query ("SELECT * FROM `ComEmpleado` WHERE `Encargado` = 21 AND `Gerente` = 19 AND `Baja` LIKE 'No' ORDER BY `Apellidos` ASC");
-	
-	
-	
-	 while ($filaOrganigramaRRHH = mysqli_fetch_array($queryOrganigramaRRHH))
-	
-	{
-	echo "<TR>\n";
-    echo "<td>"."<img style=\"border-radius: 50% 50%\" src=".$filaOrganigramaRRHH['Foto']." alt=\"BtnIconoVer\" width=\"50\" height=\"50\">"."</td>\n";
-	/*echo "<td>"."<a href=\"/sistema/VistaPersonal.php?IdPersonal=".$filaOrganigramaRRHH['IdPersonal']."\" target=\"_blank\">
-	<img style=\"border-radius: 50% 50%\" src=".$filaOrganigramaRRHH['Foto']." alt=\"BtnIconoVer\" width=\"50\" height=\"50\"></a>"."</td>\n"; */
-	echo "<td>"." - "."</td>\n";
-	echo "<td>".$filaOrganigramaRRHH['Nombres']."</td>\n";
-	echo "<td>"."  "."</td>\n";
-	echo "<td>".$filaOrganigramaRRHH['Apellidos']."</td>\n";
-	echo "</TR>\n";
-	
-	 }
-	
-	?>
 
-	</table>
+ <!-- Gerente RRHH -->
+ <div class="col">
+    <h3><strong>RRHH</strong></h3>
+   <table class="table table-striped">
+    <?php
+    
+    include("Conexion/conexion.php");
+    
+    $queryOrganigramaEncRRHH = $mysqli -> query ("SELECT * FROM `ComEmpleado` WHERE `Encargado` = 24 AND `Gerente` = 19 AND `Baja` LIKE 'No'");
+    
+    
+    
+     while ($filaOrganigramaEncRRHH = mysqli_fetch_array($queryOrganigramaEncRRHH))
+    
+    {
+    echo "<TR>\n";
+	echo "<td>"."<img style=\"border-radius: 50% 50%\" src=".$filaOrganigramaEncRRHH['Foto']." width=\"50px\" height=\"50px\">"."</td>\n";
+    // echo "<a href=\"/sistema/VistaPersonal.php?IdPersonal=".$filaOrganigramaEncRRHH ['IdPersonal']."\" target=\"_blank\">
+    //     <img style=\"border-radius: 50% 50%\" src=".$filaOrganigramaEncRRHH ['Foto']." alt=\"BtnIconoVer\" width=\"50\" height=\"50\"></a>";
+    echo " - ";
+    echo $filaOrganigramaEncRRHH['Nombres'];
+    echo "  ";
+    echo $filaOrganigramaEncRRHH['Apellidos'];
+    echo "</TR>\n";
+    
+     }
+    
+    ?>
+
+<?php
+    
+    include("Conexion/conexion.php");
+    
+    $queryOrganigramaSerRRHH = $mysqli -> query ("SELECT * FROM `ComEmpleado` WHERE `Encargado` = 21 AND `Gerente` = 19 AND `Baja` LIKE 'No' ORDER BY `Apellidos` ASC
+");
+    
+    
+    
+     while ($filaOrganigramaSerRRHH = mysqli_fetch_array($queryOrganigramaSerRRHH))
+    
+    {
+    echo "<TR>\n";
+    echo "<td>"."<img style=\"border-radius: 50% 50%\" src=".$filaOrganigramaSerRRHH['Foto']." width=\"50px\" height=\"50px\">"."</td>\n";
+    // echo "<td>"."<a href=\"/sistema/VistaPersonal.php?IdPersonal=".$filaOrganigramaSerRRHH['IdPersonal']."\" target=\"_blank\">
+    // <img style=\"border-radius: 50% 50%\" src=".$filaOrganigramaSerRRHH['Foto']." alt=\"BtnIconoVer\" width=\"50\" height=\"50\"></a>"."</td>\n";
+    echo "<td>"." - "."</td>\n";
+    echo "<td>".$filaOrganigramaSerRRHH['Nombres']."</td>\n";
+    echo "<td>"."  "."</td>\n";
+    echo "<td>".$filaOrganigramaSerRRHH['Apellidos']."</td>\n";
+    echo "</TR>\n";
+    
+     }
+    
+    ?>
+
+    </table>
+    </div>
+      <!--Fin  Gerente RRHH -->
+
+
    </div>
-   </div>
-<!-- Servicios -->
+<!-- Fin Ingenieria -->
 
   </div>
+
+  
 	
 </body>
 </html>

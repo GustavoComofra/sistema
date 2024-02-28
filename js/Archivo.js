@@ -130,3 +130,20 @@ function FormHorarioTeorico()
 {
 	window.location.href = "../sistema/FormHoraTeorico.php";
 }
+
+function obtenerSeleccion() {
+    // Obtener el elemento select por su ID
+    var select = document.getElementById("BtnCollapse");
+    // Obtener el valor seleccionado
+    var valorSeleccionado = select.value;
+
+    if (valorSeleccionado = true) {
+console.log("valor seleccionado 2");
+var varVistaBarraCentral = document.getElementById("VistaBarraCentral");
+varVistaBarraCentral.style.display = "block";
+    } else {
+		console.log("Otro valor");
+        var varVistaBarraCentral = document.getElementById("VistaBarraCentral");
+        varVistaBarraCentral.style.display = "none";
+    }
+}

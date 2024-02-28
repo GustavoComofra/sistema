@@ -97,7 +97,7 @@ include ("MarcoIzquierdo.php");
     <div class="col">
 	<a href="/sistema/VistaOrganigramaImpresion.php" target="_blank">
       <img src="../sistema/img/iconoImpresion.png" alt="iconoImpresion" width="20" height="20"></a>
-    </div>
+    </div> 
   </div>
 </div>
 
@@ -304,7 +304,6 @@ include ("MarcoIzquierdo.php");
 	  <!-- Gerente Ingenieria -->
 	  <div class="col">
 	<h3><strong>Ingenieria</strong></h3>
-	<!-- Gerente Leandro 3075 -->
 	<table class="table table-striped">
 	<?php
 	
@@ -423,7 +422,7 @@ include ("MarcoIzquierdo.php");
 
 <table class="table table-striped"> 
 <?php
-//Ariel Agropartes
+//Agropartes
 include("Conexion/conexion.php");
 
 $queryOrganigramaEnLi = $mysqli -> query ("SELECT * FROM `ComEmpleado` WHERE `Encargado` = 25 AND `Gerente` = 16 AND `Baja` LIKE 'No'");
@@ -538,7 +537,7 @@ echo "</TR>\n";
 		echo "</TR>\n";
 	
 	 }
-	 echo "- Pre pintura y Pintura";
+	 echo "- Pre Pintura - Pintura";
 	 $queryOrganigramaEnPinCol = $mysqli -> query ("SELECT * FROM `ComEmpleado` WHERE `Encargado` = 10 AND `Gerente` = 27 AND `Baja` LIKE 'No' ORDER BY `Apellidos` ASC");
 	
 	
@@ -564,7 +563,7 @@ echo "</TR>\n";
 
     </div>
 
-    <div class="col">
+     <div class="col">
 	<table class="table table-striped"> 
 	<?php
 	//Teyo
@@ -597,8 +596,10 @@ echo "</TR>\n";
 	{
 	echo "<TR>\n";
     //echo "<td>"."<img style=\"border-radius: 50% 50%\" src=".$filaOrganigramaEnFiCol['Foto']." alt=\"BtnIconoVer\" width=\"50\" height=\"50\">"."</td>\n";
-	echo "<td>"."<a href=\"/sistema/VistaPersonal.php?IdPersonal=".$filaOrganigramaEnFiCol['IdPersonal']."\" target=\"_blank\">
-	<img style=\"border-radius: 50% 50%\" src=".$filaOrganigramaEnFiCol['Foto']." alt=\"BtnIconoVer\" width=\"50\" height=\"50\"></a>"."</td>\n";
+	echo "<td><a href=\"/sistema/VistaPersonal.php?IdPersonal=" . $filaOrganigramaEnFiCol['IdPersonal'] . "\" target=\"_blank\">
+
+	<img style=\"border-radius: 50% 50%\" src=\"" . $filaOrganigramaEnFiCol['Foto'] . "\" alt=\"BtnIconoVer\" width=\"50\" height=\"50\"></a></td>\n";
+
 	echo "<td>"." - "."</td>\n";
 	echo "<td>".$filaOrganigramaEnFiCol['Nombres']."</td>\n";
 	echo "<td>"."  "."</td>\n";
@@ -610,7 +611,7 @@ echo "</TR>\n";
 	?>
 	
 	  </table>	
-    </div>
+    </div> 
 
     <div class="col">
 	<table class="table table-striped"> 

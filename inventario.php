@@ -277,7 +277,7 @@ DialogCamara.close();
         //You can register for a free 30-day trial here: https://www.dynamsoft.com/customer/license/trialLicense?product=dbr&deploymenttype=browser.
         // Dynamsoft.DBR.BarcodeReader.license = "DLS2eyJoYW5kc2hha2VDb2RlIjoiMjAwMDAxLTE2NDk4Mjk3OTI2MzUiLCJvcmdhbml6YXRpb25JRCI6IjIwMDAwMSIsInNlc3Npb25QYXNzd29yZCI6IndTcGR6Vm05WDJrcEQ5YUoifQ==";
 
-        Dynamsoft.DBR.BarcodeReader.license = "DLS2eyJoYW5kc2hha2VDb2RlIjoiMTAyMjE3NDAzLVRYbFhaV0pRY205cVgyUmljZyIsIm1haW5TZXJ2ZXJVUkwiOiJodHRwczovL21kbHMuZHluYW1zb2Z0b25saW5lLmNvbSIsIm9yZ2FuaXphdGlvbklEIjoiMTAyMjE3NDAzIiwic3RhbmRieVNlcnZlclVSTCI6Imh0dHBzOi8vc2Rscy5keW5hbXNvZnRvbmxpbmUuY29tIiwiY2hlY2tDb2RlIjoxNzk1NTI3NTIxfQ==";
+        Dynamsoft.DBR.BarcodeReader.license = "t0068lQAAAKr5TRY0pYCChDjdezIQJvBMadl2T7B7Yd8OVoDitNsBAoL0xz2rtZPgZ1Y+4fHV3AMpt8+EImnEtCeWZNdFM7M=;t0068lQAAAIvyVDlbCJGGl6rZ/D8PAFe9ah5yN0WyvUHSDm0WAF7uwa/rn1iAZb5OwDYD135oGqkZFJ1fH0I7Uqlgz55mMU8=";
 
 
         window.onload = async function () {

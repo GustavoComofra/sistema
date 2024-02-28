@@ -1,0 +1,41 @@
+   /* Estilo opcional para ocultar el div inicialmente */
+    #divLateral {
+      display: none;
+    }
+
+    /*Inicio Menu Horizontal */
+    .clFont{
+      font-size: medium;
+      color: aliceblue;
+    
+      align-items: initial;
+      align-content: initial;
+      text-decoration: none;
+      color: white;
+    margin-top: auto;
+    
+    /*  display: block;*/
+    }
+    
+    
+ /*https://www.flaticon.es/resultados?word=menu&k=1680376597241&log-in=google*/
+    .clLogo{
+      width: 25px;
+      height: 25px;
+      border-radius: 50% 50%;
+    }
+    
+    .clLogoIc{
+      width: 20px;
+      height: 20px;
+      border-radius: 50% 50%;
+      margin-right: 5px;
+    }
+
+    /*Fin Menu Horizontal */
+
+    .BtnMenu{
+      color: white;
+      text-align: start;
+    }
+    
