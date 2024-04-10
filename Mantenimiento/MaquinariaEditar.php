@@ -67,7 +67,7 @@ die();
 ?>	
 
 				<?php
-include("Conexion/conexion.php");
+include("../Conexion/conexion.php");
 
 	$idMaq=$_GET['idMaq'];
 

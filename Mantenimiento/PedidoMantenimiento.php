@@ -17,7 +17,7 @@ $varCerrarSession = $_SESSION['usuario'];
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<link rel="stylesheet" href="https://interno.comofrasrl.com.ar/sistema/estiloHome.css">  
+	<link rel="stylesheet" href="https://interno.comofrasrl.com.ar/sistema/css/estiloHome.css">  
 	<link rel="stylesheet" href="https://interno.comofrasrl.com.ar/sistema/css/general.css"> 
 	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
@@ -44,9 +44,9 @@ $varCerrarSession = $_SESSION['usuario'];
 		display: none;
 	}
 </style>
-	<title>Pedido Mantenimiento</title>
-<body>
-	<div class="">
+	<title>Mantenimiento</title>
+	<body>
+	<div class="m-0">
 		<?php
 
 		include("../layout/header/header-Top.php");
@@ -55,9 +55,8 @@ $u = $_POST['txtUsuario']; */
 
 		?>
 	</div>
-	
-<?php	
-
+	<?php
+	/*
 session_start();
 	
 $varCerrarSession = $_SESSION['usuario'];
@@ -69,16 +68,32 @@ echo "<button type=\"button\" class=\"btn btn-primary\"  onClick=\"volver()\">vo
 die();
 	
 	}
-?>	
+	*/
+	?>
 
 
 
-	<?php	
-//include ("MarcoIzquierdo.php");
+<div class="container-fluid m-0">
+		<div class="row">
 
-?>	
+			<!-- Menu Lateral -->
+			<div id="divLateral" class="col-2 bg-dark min-vh-100 mt-0" style="height: 100%;  margin: 0;">
+				<nav class="navbar flex navbar-dark bg-dark ">
+					<div class="container-fluid btn-group ">
 
-	<div class="container">
+						<?php
+
+						include("../layout/header/header-Center.php");
+
+						?>
+
+					</div>
+				</nav>
+			</div>
+			<!-- Fin Menu Lateral -->
+
+			<!-- Centro Pagina -->
+			<div class="col-9 mt-0" style="margin-left: 20px">
 
 
 	<form action="#" method="post" name="formMaquinaria" enctype="multipart/form-data">
@@ -227,9 +242,7 @@ $querySector = $mysqli -> query ("SELECT * FROM `ComSector` ORDER BY `ComSector`
 	
 	
       <button type="submit" class="btn btn-success" name="btnEnviar" id="btnEnviar" ><span class="glyphicon glyphicon glyphicon-floppy-open"></span> - Guardar</button>
-  
 
-	  <!-- INSERT INTO `Maquinaria` (`idMaq`, `NumMaq`, `Maquina`, `Modelo`, `Link`, `imgMaq`, `ProvedMaq`, `Fk_Clasi`, `ContactoMaq`, `DiasManteni`, `ValorMaq`, `ObsMaq`, `userMAq`, `SectorMaq`, `Activo`) VALUES (NULL, '1', 'Maquina', 'Modelo', 'Link', 'imgMaq', '1', '3', 'ContactoMaq', '4', '5.5', 'ObsMaq', 'userMAq', '6', 'Si'); -->
 
 	  <?php
 $NumMaq=$_POST['txtNumMaq'];	
@@ -260,18 +273,6 @@ if ($ImagenNombre == 'https://interno.comofrasrl.com.ar/sistema/img/manten/') {
     $imgMaq = $ImagenNombre;
 }
 
-// echo "NumMaq ".$NumMaq."<br>";	
-// echo "Maquina ".$Maquina."<br>";	
-// echo "DiasManteni ".$DiasManteni."<br>";	
-// echo "ValorMaq ".$ValorMaq."<br>";
-// echo "Modelo ".$Modelo."<br>";
-// echo "ContactoMaq ".$ContactoMaq."<br>";	
-// echo "ProvedMaq ".$ProvedMaq."<br>";		
-// echo "SectorMaq ".$SectorMaq."<br>";
-// echo "Fk_Clasi ".$Fk_Clasi."<br>";
-// echo "imgMaq ".$imgMaq."<br>";
-// echo "ObsMaq ".$ObsMaq."<br>";
-// echo "Link ".$Link."<br>";	
 
 if(!$Maquina==null){
 	
@@ -290,23 +291,71 @@ mysqli_close($mysqli);
 	  <?php
 
 	  ?>
-	
-  
-</div>
-<div class="col-md-auto">
+
+	  
+	<div class="col-md-auto">
 <?php
 include ("../Mantenimiento/ListarMaquinariaFondend.php");
 
 ?>
 </div>
+  
+</div>
 
 
-<!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+<!-- Script JS -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script type="text/javascript" src="https://interno.comofrasrl.com.ar/sistema/js/Archivo.js"></script>
+	<script type="text/javascript" src="https://interno.comofrasrl.com.ar/sistema/js/general.js"></script>
+	<!-- Estilo Alertas -->
+	<script type="text/javascript" src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+	<!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script> -->
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
-<script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
 
-<script src="appMaq.js"></script>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-<script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script> -->
+	<script src="https://code.jquery.com/jquery-1.12.3.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+	<!-- <script src="js/jquery.dataTables.min.js"></script> -->
+	<script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+	<!-- <script src="js/dataTables.bootstrap.js"></script> -->
+	<script src="https://cdn.datatables.net/1.11.3/js/dataTables.bootstrap.js"></script>
+	<!--botones DataTables-->
+	<!-- <script src="js/dataTables.buttons.min.js"></script> -->
+	<!-- <script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.bootstrap.js"></script> -->
+	<!-- <script src="js/buttons.bootstrap.min.js"></script> -->
+	<!-- <script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.bootstrap.min.js"></script> -->
+	<!--Libreria para exportar Excel-->
+	<!-- <script src="js/jszip.min.js"></script> -->
+	<script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"></script>
+	<!--Librerias para exportar PDF-->
+	<!-- <script src="js/pdfmake.min.js"></script> -->
+	<!-- <script src="js/vfs_fonts.js"></script> -->
+	<!--Librerias para botones de exportación-->
+	<!-- <script src="js/buttons.html5.min.js"></script> -->
+	<!-- <script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.html5.min.js"></script> -->
+
+
+
+	<!-- datatables-->
+	<script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+
+	<!-- datatables extension SELECT -->
+	<script src="https://cdn.datatables.net/select/1.3.1/js/dataTables.select.min.js"></script>
+
+	<!-- extension BOTONES -->
+	<script src="https://cdn.datatables.net/buttons/1.6.2/js/dataTables.buttons.min.js"></script>
+
+	<!-- para botenes de exportar -->
+	<script type="text/javascript" src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap4.min.js"></script>
+	<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.3.1/js/dataTables.buttons.min.js"></script>
+	<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.3.1/js/buttons.bootstrap4.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+	<script type="text/javascript" src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.27/build/pdfmake.min.js"></script>
+	<script type="text/javascript" src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.27/build/vfs_fonts.js"></script>
+	<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.3.1/js/buttons.html5.min.js"></script>
+
+
+
 </body>
+
 </html>

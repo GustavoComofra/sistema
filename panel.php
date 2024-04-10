@@ -96,11 +96,11 @@ include ("MarcoIzquierdo.php");
 <?php
 	
 
-	
-$Dia=date("m-d");
+$Dia="????-".date("m-d");
+//echo $Dia;
 
 include("Conexion/conexion.php");
-$queryFechaCumpleTitulo = $mysqli -> query ("SELECT * FROM `ComVistaEmpleado1` WHERE `FechaNacimiento` LIKE '%$Dia%' AND `Baja` LIKE 'No' ");
+$queryFechaCumpleTitulo = $mysqli -> query ("SELECT * FROM `ComVistaEmpleado1` WHERE `FechaNacimiento` LIKE '$Dia' AND `Baja` LIKE 'No' ");
 while ($filaFechaCumpleTitulo = mysqli_fetch_array($queryFechaCumpleTitulo))
 {
 	$cumpleTitulo = $filaFechaCumpleTitulo['Nombres'];
@@ -129,6 +129,7 @@ $queryFechaCumple = $mysqli -> query ("SELECT * FROM `ComVistaEmpleado1` WHERE `
 <TD><B>CUIL</B></TD>
 <TD><B>Nombre</B></TD>
 <TD><B>Apellido</B></TD>
+<TD><B>Nacimiento</B></TD>
 <TD><B>Sector</B></TD>
 </TR>
 "; 	
@@ -138,6 +139,7 @@ echo "<td>".'<img  src="'.$filaFechaCumple['Foto'].'" style="border-radius: 50% 
 echo "<td>".$filaFechaCumple['CUIT_Empl']."</td>\n";
 echo "<td>".$filaFechaCumple['Nombres']."</td>\n";	
 echo "<td>".$filaFechaCumple['Apellidos']."</td>\n";
+echo "<td>".$filaFechaCumple['FechaNacimiento']."</td>\n";
 echo "<td>".$filaFechaCumple['SectorFk']."</td>\n";
 echo "</TR>\n";
 

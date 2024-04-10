@@ -9,53 +9,52 @@ $varCerrarSession = $_SESSION['usuario'];
 ?>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-	<!-- Script JS -->
-	<!-- <script src="../dir/js/bootstrap.min.js" ></script> -->
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="../layout/script/js/Archivo.js"></script>
-	<!-- Estilo Alertas -->
-	<script type="text/javascript" src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<html style="padding: -100; margin: 0;">
 
-	<!-- CSS -->
-	<!-- <link rel="stylesheet" href="../dir/css/bootstrap.min.css"> -->
-	<link rel="stylesheet" href="../layout/estilos/css/estiloHome.css">
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link rel="stylesheet" href="https://interno.comofrasrl.com.ar/sistema/css/estiloHome.css">
+	<link rel="stylesheet" href="https://interno.comofrasrl.com.ar/sistema/css/general.css">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
 	<link href="../img/Icono.png" rel="icon" type="image/png">
-	<?php
-include("../layout/header/header.php");
-session_start();
-$u = $_POST['txtUsuario'];
-	?>
- <title>Borrar Maquinaria</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 
-
-<script type="text/javascript">
-
-function volver()
-{
-	window.location.href = "/sistema/index.php";
-}
-
-function AlertarBorra()
-{
-	
-	alert('Esta seguro de borrar un estudio?');
-	window.location.href = "/sistema/panel.php";
-}
-	
-</script>	
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 </head>
-<body>
-	
-<?php	
+<style>
+	.imgEfcListPersonal {
+		position: relative;
+		width: 50px;
+		height: 50px;
+		border-radius: 50% 50%;
 
+	}
+
+	.Advertencia {
+		color: red;
+	}
+
+	/* Estilo opcional para ocultar el div inicialmente */
+	#divLateral {
+		display: none;
+	}
+</style>
+<title>Mantenimiento</title>
+
+<body>
+	<div class="m-0">
+		<?php
+
+		include("../layout/header/header-Top.php");
+		/*session_start();
+$u = $_POST['txtUsuario']; */
+
+		?>
+	</div>
+	<?php
+	/*
 session_start();
 	
 $varCerrarSession = $_SESSION['usuario'];
@@ -67,16 +66,18 @@ echo "<button type=\"button\" class=\"btn btn-primary\"  onClick=\"volver()\">vo
 die();
 	
 	}
-?>	
+	*/
+	?>
 
 
-<div class="container-fluid">
+
+	<div class="container-fluid m-0">
   <div class="row">
 
     <div class="col col-lg-2">
 
 				<?php
-include("Conexion/conexion.php");
+include("../Conexion/conexion.php");
 
 	$idMaq=$_GET['idMaq'];
 
@@ -92,8 +93,8 @@ $rowItemBorrar = mysqli_fetch_assoc($queryItemBorrar);
 
 <form action="#" method="post" name="formItemsBorrar" enctype="multipart/form-data">
 
-<div align="">
-  <table width="100%"  border="">
+<div >
+  <table width="100%"  >
     <tr>
       <td colspan="2" align="center"><label>Maquina a borrar</label></td>
     </tr>
@@ -134,14 +135,14 @@ $rowItemBorrar = mysqli_fetch_assoc($queryItemBorrar);
 
 <?php
 
-include("Conexion/conexion.php");
+include("../Conexion/conexion.php");
 $idMaq=$_POST['txtidMaq'];	
 		
 if(!$idMaq==null){
 	
 
 echo "<h2>"."<a href=\"/sistema/Mantenimiento/Maquinaria.php\">Borrado Volver?</a>".$idMaq."</h2>";
-include("Conexion/conexion.php");
+include("../Conexion/conexion.php");
 
 	
 $BorraMAquinaria = "DELETE FROM Maquinaria WHERE `Maquinaria`.`idMaq` = ".$idMaq.";";	

@@ -12,7 +12,7 @@ $(document).ready(function(e){
         let search = $('#search').val()+'';
         // console.log(search);
          $.ajax({
-             url: '../Mantenimiento/BackEnd/Maq-Buscar.php',
+             url: './Maq-Buscar.php',
              type: 'POST',
              data: {search},
              success: function(response){
@@ -134,7 +134,7 @@ $(document).on('click', ".list-borrar", function(e){
 //Listar
 function obtenerListado(){
     $.ajax({
-        url: 'Maq-listar.php',
+        url: './Maq-listar.php',
         type: 'GET',
         success: function(response){
             //JSON.parse(response); respuestas del servidor

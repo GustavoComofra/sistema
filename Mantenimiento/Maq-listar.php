@@ -1,13 +1,10 @@
 <?php
 include("../Conexion/conexion.php");
-$idMaq= $_POST['idMaq'];
-
-$json = array();
-$query = "SELECT * FROM `Maquinaria` WHERE `idMaq` = $idMaq";
+$query = "SELECT * FROM Maquinaria LIMIT 20";
 $result = mysqli_query($mysqli, $query);
 
-if(!$result){
-    die('Error');
+    if(!$result){
+        die('Error' . mysqli_error($mysqli));
     }
 
     $json = array();
@@ -27,9 +24,10 @@ if(!$result){
             'ObsMaq'=> $row['ObsMaq'],
 
             'imgMaq'=> $row['imgMaq'],
+
         );
     }
-   $jsonstring = json_encode($json[0]);
+   $jsonstring = json_encode($json);
 echo  $jsonstring;
 
 
