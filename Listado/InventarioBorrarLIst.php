@@ -74,8 +74,8 @@ $u = $_POST['txtUsuario'];
       </div>
       <div class="col-md-auto">
 
-        <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post" name="formEditInventario">
-        <div class="form-group" align="">
+        <form action="#" method="post" name="formEditInventario">
+        <div class="form-group"  >
             <table class="table" width="" border="0">
               <tr>
                 <td colspan="2" align="left">

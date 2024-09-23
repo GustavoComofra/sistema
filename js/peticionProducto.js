@@ -1,9 +1,12 @@
+//console.log("Estoy en peticion de productos");
+
 $(obtener_registros());
 
 function obtener_registros(alumnos)
 {
    $.ajax({
-       url : 'consultaProducto.php',
+    //https://interno.comofrasrl.com.ar/sistema/Compartidos/Producto/consultaProductos1.php
+       url : 'https://interno.comofrasrl.com.ar/sistema/Compartidos/Producto/consultaProductos.php',
        type : 'POST',
        dataType : 'html',
        data : { alumnos: alumnos },

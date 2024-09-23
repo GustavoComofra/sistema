@@ -76,12 +76,12 @@ include ("MarcoIzquierdo.php");
                     ?>		
 
 	
-<form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post" name="formProcesoImagen" enctype="multipart/form-data">
+<form action="#" method="post" name="formProcesoImagen" enctype="multipart/form-data">
 
-<div class="form-group" align="">
+<div class="form-group"  >
   <table class="table" width="423"  border="0">
     <tr>
-      <td colspan="3" align="center"><label for="txtimgprod">Imagen</label></td>
+      <td colspan="3"  ><label for="txtimgprod">Imagen</label></td>
     </tr>
     <tr>
 		<td width="156">id</td>

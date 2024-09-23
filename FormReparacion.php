@@ -18,12 +18,12 @@
     </div>
 
 	
-<form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post" name="formEstudios" enctype="multipart/form-data">
-<p align="center">&nbsp;</p>
+<form action="#" method="post" name="formEstudios" enctype="multipart/form-data">
+<p  >&nbsp;</p>
 <div align="left">
   <table width="583" border="1">
     <tr>
-      <td colspan="4" align="center"><label>Reparaciones</label>
+      <td colspan="4"  ><label>Reparaciones</label>
 		
 		</td>
     </tr>

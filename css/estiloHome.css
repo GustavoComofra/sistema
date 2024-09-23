@@ -233,12 +233,11 @@ align-content: initial;
 }
 
 var data = google.visualization.arrayToDataTable([
-         ['Element', 'Density', { role: 'style' }],
-         ['Copper', 8.94, '#b87333'],            // RGB value
-         ['Silver', 10.49, 'silver'],            // English color name
-         ['Gold', 19.30, 'gold'],
-
-       ['Platinum', 21.45, 'color: #e5e4e2' ], // CSS-style declaration
-      ]);
+    ['Element', 'Density', { role: 'style' }],
+    ['Copper', 8.94, '#b87333'],        // RGB value
+    ['Silver', 10.49, 'silver'],        // English color name
+    ['Gold', 19.30, 'gold'],            // English color name
+    ['Platinum', 21.45, '#e5e4e2'],     // Hex color code
+]);
 
 

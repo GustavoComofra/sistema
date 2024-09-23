@@ -85,7 +85,7 @@
             
           <table class="table">
               <tr>
-                <td colspan="6" align="center"><label><h2>Borrar Item de proceso Procesos?</h2></label></td>
+                <td colspan="6"  ><label><h2>Borrar Item de proceso Procesos?</h2></label></td>
               </tr>
               <tr>
               <td width="">Id</td>

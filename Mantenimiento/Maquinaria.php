@@ -78,7 +78,7 @@ die();
 		<div class="row">
 
 			<!-- Menu Lateral -->
-			<div id="divLateral" class="col-2 bg-dark min-vh-100 mt-0" style="height: 100%;  margin: 0;">
+			<div id="divLateral" class="col-md-2 bg-dark min-vh-100 mt-0" style="height: 100%;  margin: 0; display: block;">
 				<nav class="navbar flex navbar-dark bg-dark ">
 					<div class="container-fluid btn-group ">
 
@@ -136,7 +136,7 @@ die();
 									include("Conexion/conexion.php");
 									$queryProv = $mysqli->query("SELECT * FROM `Proveedor` ORDER BY `Proveedor`.`Proveedor` ASC");
 									while ($valoresProv = mysqli_fetch_array($queryProv)) {
-										echo '<option value="' . $valoresProv[IdProv] . '">' . $valoresProv[IdProv] . ' - ' . $valoresProv[Proveedor] . '</option>';
+										echo '<option value="' . $valoresProv['IdProv'] . '">' . $valoresProv['IdProv'] . ' - ' . $valoresProv['Proveedor'] . '</option>';
 									}
 									?>
 								</select>
@@ -152,7 +152,7 @@ die();
 
 									while ($valoresSector = mysqli_fetch_array($querySector)) {
 
-										echo '<option value="' . $valoresSector[IdSector] . '">' . $valoresSector[SectorFk] . '</option>';
+										echo '<option value="' . $valoresSector['IdSector'] . '">' . $valoresSector['SectorFk'] . '</option>';
 									}
 									?>
 								</select>
@@ -164,7 +164,7 @@ die();
 
 									$queryClasi = $mysqli->query("SELECT * FROM `Clasificacion` ORDER BY `Clasificacion`.`Clasificacion` ASC");
 									while ($valoresClasi = mysqli_fetch_array($queryClasi)) {
-										echo '<option value="' . $valoresClasi[idClasi] . '">' . $valoresClasi[idClasi] . ' - ' . $valoresClasi[Clasificacion] . '</option>';
+										echo '<option value="' . $valoresClasi['idClasi'] . '">' . $valoresClasi['idClasi'] . ' - ' . $valoresClasi['Clasificacion'] . '</option>';
 									}
 									?>
 								</select>

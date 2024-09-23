@@ -313,8 +313,8 @@ echo "<a class=\"dropdown-item \" style=\"color: white; background: grey;\" href
 			
 			
 ?>			
-<a class="dropdown-item" style="color: white; background: grey;" href="../sistema/inventarioCom.php">Carga_Inventario</a>
-<a class="dropdown-item" style="color: white; background: grey;" href="../sistema/ListadoInventario.php">Listado_Inventario</a>
+<a class="dropdown-item" style="color: white; background: grey;" href="../sistema/Listado/inventarioCom.php">Carga_Inventario1</a>
+<a class="dropdown-item" style="color: white; background: grey;" href="../sistema/Listado/ListadoInventario.php">Listado_Inventario</a>
 		  <a class="dropdown-item" style="color: white; background: grey;" href="../sistema/VistaOrganigrama.php">Organigrama</a>
       <a class="dropdown-item" style="color: white; background: grey;" href="../sistema/GraficoPersonal.php">GraficoPersonal</a>  
 			<a class="dropdown-item" style="color: white; background: grey;" href="javascript:window.print()">Imprimir</a>

@@ -120,7 +120,7 @@ include("Conexion/conexion.php");
 $queryProv = $mysqli -> query ("SELECT * FROM `Proveedor` ORDER BY `Proveedor`.`Proveedor` ASC");
  while ($valoresProv = mysqli_fetch_array($queryProv))
 {
-echo '<option value="'.$valoresProv[IdProv].'">'.$valoresProv[IdProv].' - '.$valoresProv[Proveedor].'</option>';
+echo '<option value="'.$valoresProv['IdProv'].'">'.$valoresProv['IdProv'].' - '.$valoresProv['Proveedor'].'</option>';
 }
 	?>
       </select>
@@ -139,7 +139,7 @@ $querySector = $mysqli -> query ("SELECT * FROM `ComSector` ORDER BY `ComSector`
 		  
 		  {
 
- echo '<option value="'.$valoresSector[IdSector].'">'.$valoresSector[SectorFk].'</option>';
+ echo '<option value="'.$valoresSector['IdSector'].'">'.$valoresSector['SectorFk'].'</option>';
 }
 	?>
       </select>
@@ -152,7 +152,7 @@ include("Conexion/conexion.php");
 $queryClasi = $mysqli -> query ("SELECT * FROM `Clasificacion` ORDER BY `Clasificacion`.`Clasificacion` ASC");
  while ($valoresClasi = mysqli_fetch_array($queryClasi))
 {
-echo '<option value="'.$valoresClasi[idClasi].'">'.$valoresClasi[idClasi ].' - '.$valoresClasi[Clasificacion].'</option>';
+echo '<option value="'.$valoresClasi['idClasi'].'">'.$valoresClasi['idClasi'].' - '.$valoresClasi['Clasificacion'].'</option>';
 }
 	?>
       </select>	  

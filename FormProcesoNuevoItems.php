@@ -126,7 +126,7 @@ $rowprocesoprocesoNuevo = mysqli_fetch_assoc($queryvarid_procesNuevo);
 
             <table class="table">
               <tr>
-                <td colspan="11" align="center"><label>Procesos</label></td>
+                <td colspan="11"  ><label>Procesos</label></td>
               </tr>
               <tr>
                 <td width="">Op</td>

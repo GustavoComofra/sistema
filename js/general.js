@@ -1,6 +1,6 @@
 function mostrarOcultarBarra() {
     var divLaretal = document.getElementById('divLateral');
-
+    //divLaretal.style.display = 'block';
     // Verifica si el div está actualmente visible
     if (divLaretal.style.display === 'none') {
       // Si está oculto, lo muestra

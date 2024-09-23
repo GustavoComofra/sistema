@@ -1,6 +1,7 @@
 <?php
 include('../Conexion/conexion.php');
 
+
 $ValorCantidad= $_POST['Cantidad'];
 if($ValorCantidad > 0){
 $Cantidad= $_POST['Cantidad'];
@@ -12,10 +13,9 @@ $query = "INSERT INTO `Inventario` (`idInventario`, `CodCmg`, `Cantidad`, `Secto
 
 $result = mysqli_query($mysqli, $query);
 if(!$result){
-echo "Error";
-
-
+    echo "<script>alert('El código no existe');</script>";
 }
 //echo "agregado sastifactoriamente " . $UsuarioInventario;
+
 } 
 ?> 

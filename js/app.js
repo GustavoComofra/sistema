@@ -1,5 +1,5 @@
+//console.log("Estamos en app.js-1");
 let edit = false;
-
 
 $(document).ready(function(e){
 
@@ -24,7 +24,7 @@ $(document).ready(function(e){
 
             
 var sonido = new Audio();
-sonido.src="perder-incorrecto-no-valido.mp3";
+sonido.src="https://interno.comofrasrl.com.ar/sistema/Compartidos/perder-incorrecto-no-valido.mp3";
             $.post(url, postData, function(response){
            console.log(response);
            if (response === " Error " ) {
@@ -100,6 +100,12 @@ if (confirm('Estas seguro de eliminar el registro?')) {
                     <td>${inventario.Producto}</td>
                     <td>${inventario.UM}</td>
                     <td>${inventario.Cantidad}</td>
+
+                    <td>${inventario.CantidadStock}</td>
+                    <td>${inventario.Acumulado}</td>
+                    <td>${inventario.Importe}</td>
+                    <td>${inventario.Almacen}</td>
+
                     <td>${inventario.ObsInv}</td>
                     <td><button class="list-inve btn btn-danger">Borrar</button></td>
                     <td>

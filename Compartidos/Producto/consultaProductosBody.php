@@ -1,7 +1,7 @@
 <?php
 //https://www.youtube.com/watch?v=IHVQX52W-LQ
 // CONEXIÓN A LA BASE DE DATOS 
-require 'Conexion/conexion.php';
+require '../Conexion/conexion.php';
 
 if ($mysqli-> connect_errno)
 {

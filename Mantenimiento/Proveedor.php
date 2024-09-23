@@ -65,7 +65,7 @@ die();
 		<div class="row">
 
 			<!-- Menu Lateral -->
-			<div id="divLateral" class="col-2 bg-dark min-vh-100 mt-0" style="height: 100%;  margin: 0;">
+			<div id="divLateral" class="col-md-2 bg-dark min-vh-100 mt-0" style="height: 100%;  margin: 0; display: block;">
 				<nav class="navbar flex navbar-dark bg-dark ">
 					<div class="container-fluid btn-group ">
 

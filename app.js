@@ -100,6 +100,12 @@ if (confirm('Estas seguro de eliminar el registro?')) {
                     <td>${inventario.Producto}</td>
                     <td>${inventario.UM}</td>
                     <td>${inventario.Cantidad}</td>
+
+                    <td>${inventario.CantidadStock}</td>
+                    <td>${inventario.Acumulado}</td>
+                    <td>${inventario.Importe}</td>
+                     <td>${inventario.Almacen}</td>
+
                     <td>${inventario.ObsInv}</td>
                     <td><button class="list-inve btn btn-danger">Borrar</button></td>
                     <td>

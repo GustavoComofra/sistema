@@ -1,7 +1,8 @@
 <?php
+//https://www.youtube.com/watch?v=IHVQX52W-LQ
+// CONEXIÓN A LA BASE DE DATOS 
 
-require 'https://interno.comofrasrl.com.ar/sistema/Conexion/conexion.php';
-
+require '../../Conexion/conexion.php';
 
 if ($mysqli-> connect_errno)
 {
@@ -11,17 +12,13 @@ if ($mysqli-> connect_errno)
 
 
 $tabla="";
-$query="SELECT * FROM `Productos` ORDER BY `Productos`.`Producto` ASC ";
+$query="SELECT * FROM `productoscmg` ORDER BY `productoscmg`.`CodSistema` ASC LIMIT 20";
 
 
-if(isset($_POST['Productos']))
+if(isset($_POST['productoscmg']))
 {
-	$q=$mysqli->real_escape_string($_POST['Productos']);
-	$query="SELECT * FROM Productos WHERE 
-		CodSistema LIKE '%".$q."%' OR
-		Producto LIKE '%".$q."%' OR
-		UM LIKE '%".$q."%' OR
-		inactivo LIKE '%".$q."%'";
+	$q=$mysqli->real_escape_string($_POST['productoscmg']);
+	$query="SELECT * FROM productoscmg WHERE CodSistema LIKE '%".$q."%' OR Producto LIKE '%".$q."%'";
 }
 	/*<tr class="bg-primary">*/
 	
@@ -36,7 +33,6 @@ if ($buscarProductos->num_rows > 0)
 			<th>CodSistema</th>
 			<th>Producto</th>
 			<th>UM</th>
-			<th>in</th>
   		</tr>
 		</thead>';
 
@@ -55,18 +51,6 @@ if ($buscarProductos->num_rows > 0)
 
 	}
 	
-	$tabla.=
-		'<tfoot>
-		<tr>
-			<th>Select</th>
-			<th>CodSistema</th>
-			<th>Producto</th>
-			<th>UM</th>
-			<th>in</th>
-  		</tr>
-		</tfoot';
-
-
 	$tabla.='</table>';
 
 } else
@@ -81,3 +65,4 @@ mysqli_close($mysqli);
 echo $tabla;
 
 ?>
+

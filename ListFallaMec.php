@@ -58,7 +58,7 @@ die();
 ?>	
     </div>
     <div class="col-md-auto">
-<table border=1 align="" class="table table-striped">
+<table border=1   class="table table-striped">
   <thead>
 <tr>
 	 </thead>

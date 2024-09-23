@@ -25,17 +25,7 @@
 
 <body>
 
-<?php	
-//include ("header.php");
-/*session_start();
-	$u = $_POST['txtUsuario'];*/
-?>
 
-<!--<div class="row g-1">
-<div id="Lateral" class="col-2 col-md-2 IdBarraLateral">
-
-
-</div>-->
 
 
 <!-- Section: Design Block -->
@@ -94,26 +84,7 @@ background-size: cover;
 <!-- Section: Design Block -->
 	<div class="container">
 	
-<!--   <div class="claseIndex" style=" align-items: center; ">
-	  <form method="post" action="../validar.php" name="form1">
-       
-              <div class="row">
-                <div class="col-sm-6">
-			         <input class="" type="text" name="txtUsuario" id="txtUsuario" placeholder="Usuario" >
-                  <input class="" type="password" name="txtClave"  id="txtClave" placeholder="password" >
-					<button class="btn btn-primary" type="submit" name="">Ingresar</button>
-                </div>
-              </div>
-              
-              
- 
-				
-    </form>
-	<img class="align-content-center" src="https://planidear.com.ar/RRHH/img/FondoPanel1.jpeg" width="100%" height="100%" alt="" id="IdImagenEntrada" />    
-   </div>
-</div>
-	
-	</div>-->
+
 
 <!-- Code injected by live-server -->
 <script type="text/javascript">

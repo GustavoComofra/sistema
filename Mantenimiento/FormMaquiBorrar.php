@@ -96,7 +96,7 @@ $rowItemBorrar = mysqli_fetch_assoc($queryItemBorrar);
 <div >
   <table width="100%"  >
     <tr>
-      <td colspan="2" align="center"><label>Maquina a borrar</label></td>
+      <td colspan="2"  ><label>Maquina a borrar</label></td>
     </tr>
 	  
     <tr>

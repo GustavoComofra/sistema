@@ -95,7 +95,7 @@
             
           <table class="table">
               <tr>
-                <td colspan="12" align="center"><label>Item de proceso Procesos</label></td>
+                <td colspan="12"  ><label>Item de proceso Procesos</label></td>
               </tr>
               <tr>
               <td width="">Id</td>
