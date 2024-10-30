@@ -12,7 +12,7 @@
 	<link href="../img/Icono.png" rel="icon" type="image/png">
 
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-</head>
+
 <style>
 	.imgEfcListPersonal {
 		position: relative;
@@ -31,6 +31,7 @@
 		display: none;
 	}
 </style>
+	<title>Organigrama Comofra SRL</title>
 
 <script type="text/javascript">
 
@@ -39,32 +40,14 @@ function volver()
 	window.location.href = "/sistema/index.php";
 }
 
-function AlertarBorra()
-{
-	
-	alert('Esta seguro de borrar un estudio?');
-}
-	
 </script>	
-
-	<title>Organigrama</title>
-<body>
-<div class="m-0">
-		<?php
-
-		include("../layout/header/header-Top.php");
-
-		?>
-
-	</div>
-	
-  <div class="container-fluid m-0">
+<div class="container-fluid">
   <div class="row">
 
 			<!-- Menu Lateral -->
 			<div id="divLateral" class="col-md-2 bg-dark min-vh-100 mt-0" style="height: 100%;  margin: 0; display: block;">
 				<nav class="navbar flex navbar-dark bg-dark ">
-					<div class="container btn-group ">
+					<div class="container-fluid btn-group ">
 
 						<?php
 
@@ -76,17 +59,12 @@ function AlertarBorra()
 				</nav>
 			</div>
 			<!-- Fin Menu Lateral -->
-			<div class="col-9 mt-0" style="margin-left: 20px">
+    <div class="col-md-auto">
 
 
-<div class="container">
-  <div class="row">
+
 
     <div class="col col-lg-2">
-	<?php	
-//include ("MarcoIzquierdo.php");
-
-?>	
 
 <div class="container text-center">
   <div class="row">
@@ -205,7 +183,7 @@ function AlertarBorra()
 	
 	?>
 	</table>
-	  <!-- Final Gerente Perez 3317 -->
+	  <!-- Final Gerente Venta -->
     </div>
 
 
@@ -235,14 +213,10 @@ function AlertarBorra()
 	 }
 	
 	?>
-  
-	
-  
-
 
     </div>
 
-<!-- Fin Gerente Damian 3438 -->
+<!-- Fin Gerente Damian -->
 
 <!-- Gerente Administracion< -->
     <div class="col">
@@ -369,6 +343,7 @@ function AlertarBorra()
   </div>
 </div>	
 
+<!-- Inicio Produccion -->
 <div class="text-center">
 <div class="row">
 <h3>Produccion</h3>
@@ -421,6 +396,7 @@ function AlertarBorra()
 	  </table>
     </div>
 
+<!-- Inicio Agro partes -->
 	<div class="col">
 
 <table class="table table-striped"> 
@@ -428,7 +404,7 @@ function AlertarBorra()
 //Ariel Agropartes
 include("Conexion/conexion.php");
 
-$queryOrganigramaEnLi = $mysqli -> query ("SELECT * FROM `ComEmpleado` WHERE `Encargado` = 25 AND `Gerente` = 16 AND `Baja` LIKE 'No'");
+$queryOrganigramaEnLi = $mysqli -> query ("SELECT * FROM `ComEmpleado` WHERE `Encargado` = 25 AND `Gerente`  `Sector` = 25 AND Sector = 16 AND `Baja` LIKE 'No'");
 
  while ($filaOrganigramaEnLi = mysqli_fetch_array($queryOrganigramaEnLi))
 
@@ -467,10 +443,10 @@ echo "</TR>\n";
 
   </table>
 </div>
+<!-- Fin Agro partes -->
 
 
-
-	
+	<!-- Fin Chapa -->
     <div class="col">
 	<table class="table table-striped"> 
 	<?php
@@ -517,6 +493,10 @@ echo "</TR>\n";
 	
 	  </table>
     </div>
+
+<!-- Fin Chapa -->
+
+<!-- Inicio Pintura -->
     <div class="col">
 
 	<table class="table table-striped"> 
@@ -565,6 +545,10 @@ echo "</TR>\n";
 	  </table>	
 
     </div>
+
+	<!-- Fin Pintura -->
+
+		<!-- Inicio Pintura -->
 
     <div class="col">
 	<table class="table table-striped"> 
@@ -662,8 +646,9 @@ echo "</TR>\n";
     </div>
 	</div>
 
-
+	<!-- Inicio Servicio -->
 	<div class="container text-center">
+	
   <div class="row">
   <p><h2><strong>Servicios</strong></h2></p>
  <!-- Gerente Calidad -->
@@ -756,7 +741,7 @@ echo "</TR>\n";
 
 	</table>
    </div>
-
+<!--Fin Compras-Tercero-Planificacion -->
  <!-- Gerente RRHH -->
  <div class="col">
     <h3><strong>RRHH</strong></h3>
@@ -818,9 +803,11 @@ echo "</TR>\n";
 
 
    </div>
-<!-- Fin Ingenieria -->
+  <!-- Fila Servicio -->
 
   </div>
+
+  <!-- Fin Servicio -->
 
   </div>
 	

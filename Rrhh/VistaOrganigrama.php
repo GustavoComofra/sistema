@@ -76,32 +76,14 @@ function AlertarBorra()
 				</nav>
 			</div>
 			<!-- Fin Menu Lateral -->
+
+			  <!-- Inicio de container inicial -->
 			<div class="col-9 mt-0" style="margin-left: 20px">
-  <div class="row">
-    <div class="col">
-	<img src="../img/Icono.png" alt="Logo" width="80" height="80">
-    </div>
-	<div class="col">
 
+		    <div class="col">
+			<div class="container text-center">
+			<p><h2><strong>Organigrama</strong></h2></p>
     </div>
-	<div class="col">
-      
-	  </div>
-	  <div class="col">
-		
-		</div>
-    <div class="col">
-	<h1><strong>Organigrama</strong></h1>
-    </div>
-    <div class="col">
-	<a href="../Rrhh/VistaOrganigramaImpresion.php" target="_blank">
-      <img src="../img/iconoImpresion.png" alt="iconoImpresion" width="20" height="20"></a>
-    </div> 
-	<div class="col">
-
-</div>
-  </div>
-
 
 <div class="container text-center">
   <div class="row">
@@ -115,9 +97,11 @@ function AlertarBorra()
       
     </div>
   </div>
-</div>
+
 
     </div>
+
+	<!-- Inicio Gerencia -->
 
 <div class="container text-center">
 <p><h2><strong>Gerencias</strong></h2></p>
@@ -136,6 +120,8 @@ function AlertarBorra()
 		 }
 	
 	?>
+
+	<!-- Inicio Fila Gerencial -->
   <div class="row">
 
 
@@ -191,10 +177,10 @@ function AlertarBorra()
 	
 	?>
 	</table>
-	  <!-- Final Gerente Perez 3317 -->
+	  <!-- Final Gerente Ventas -->
     </div>
 
-		<!-- Gerente Damian 3438 -->
+		<!-- Gerente Produccion -->
 		<div class="col">
 	<h3><strong>Produccion</strong></h3>
 	<!-- Gerente Damian -->
@@ -203,7 +189,7 @@ function AlertarBorra()
 	
 //	include("Conexion/conexion.php");
 	
-$queryOrganigramaGP = $mysqli -> query ("SELECT * FROM ComEmpleado WHERE Encargado = 16 AND Gerente = 19 AND Baja LIKE 'No'");
+$queryOrganigramaGP = $mysqli -> query ("SELECT * FROM ComEmpleado WHERE Encargado = 16 AND Gerente = 19 AND Sector = 20 AND Baja LIKE 'No'");
 	
 while ($filaOrganigramaGP = mysqli_fetch_array($queryOrganigramaGP))
 	
@@ -248,9 +234,9 @@ while ($filaOrganigramaGP = mysqli_fetch_array($queryOrganigramaGP))
 	</table>
     </div>
 
-<!-- Fin Gerente Damian 3438 -->
+<!-- Fin Gerente Produccion -->
 
-<!-- Gerente Administracion< -->
+<!--Inicio Gerente Administracion< -->
     <div class="col">
 	<h3><strong>Administracion</strong></h3>
 	<!-- Gerente Yesica 3075 -->
@@ -303,7 +289,7 @@ while ($filaOrganigramaGP = mysqli_fetch_array($queryOrganigramaGP))
 
 	</table>
     </div>
-	  <!--Fin  Gerente Asministrativo -->
+	  <!--Fin  Gerente Administrativo -->
 
 	  <!-- Gerente Ingenieria -->
 	  <div class="col">
@@ -416,12 +402,17 @@ while ($filaOrganigramaGP = mysqli_fetch_array($queryOrganigramaGP))
 
 
   </div>
+  <!-- Inicio Fila Gerencial -->
 </div>	
+
+<!-- Fin Gerencia -->
 
 <div class="text-center">
 <div class="row">
 <h3>Produccion</h3>
 <p><h3><strong>Encargados</strong></h3></p>
+
+
     <div class="col">
 
 	<table class="table table-striped"> 
@@ -476,7 +467,7 @@ while ($filaOrganigramaGP = mysqli_fetch_array($queryOrganigramaGP))
 //Agropartes
 //include("Conexion/conexion.php");
 
-$queryOrganigramaEnLi = $mysqli -> query ("SELECT * FROM `ComEmpleado` WHERE `Encargado` = 31 AND `Gerente` = 16 AND `Baja` LIKE 'No'");
+$queryOrganigramaEnLi = $mysqli -> query ("SELECT * FROM `ComEmpleado` WHERE `Encargado` = 25 AND `Gerente` = 16 AND `Baja` LIKE 'No'");
 
  while ($filaOrganigramaEnLi = mysqli_fetch_array($queryOrganigramaEnLi))
 
@@ -558,6 +549,8 @@ echo "</TR>\n";
 	
 	  </table>
     </div>
+
+<!-- Inicio Pintura -->
     <div class="col">
 
 	<table class="table table-striped"> 
@@ -565,7 +558,7 @@ echo "</TR>\n";
 	//Pintura
 	//include("Conexion/conexion.php");
 	
-	$queryOrganigramaEnPin = $mysqli -> query ("SELECT * FROM `ComEmpleado` WHERE `Encargado` = 27 AND `Gerente` = 16 AND `Baja` LIKE 'No' ORDER BY `Apellidos` ASC");
+	$queryOrganigramaEnPin = $mysqli -> query ("SELECT * FROM `ComEmpleado` WHERE `Encargado` = 16 AND `Gerente` = 19 AND `Baja` LIKE 'No' AND `Sector` = 10 ");
 	
 	 while ($filaOrganigramaEnPin = mysqli_fetch_array($queryOrganigramaEnPin))
 	
@@ -582,7 +575,7 @@ echo "</TR>\n";
 	
 	 }
 	 echo "- Pintura - Final";
-	 $queryOrganigramaEnPinCol = $mysqli -> query ("SELECT * FROM `ComEmpleado` WHERE `Encargado` = 10 AND `Gerente` = 27 AND `Baja` LIKE 'No' ORDER BY `Apellidos` ASC");
+	 $queryOrganigramaEnPinCol = $mysqli -> query ("SELECT * FROM `ComEmpleado` WHERE `Encargado` = 27 AND `Gerente` = 16 AND `Baja` LIKE 'No' ORDER BY `Apellidos` ASC");
 	
 	 while ($filaOrganigramaEnPinCol = mysqli_fetch_array($queryOrganigramaEnPinCol))
 	
@@ -605,7 +598,55 @@ echo "</TR>\n";
 
     </div>
 
-    
+    <!-- Fin Final -->
+	<div class="col">
+
+<table class="table table-striped"> 
+<?php
+//include("Conexion/conexion.php");
+
+$queryOrganigramaEnPin = $mysqli -> query ("SELECT * FROM `ComEmpleado` WHERE `Encargado` = 31 AND `Gerente` = 16 AND `Baja` LIKE 'No' ORDER BY `Apellidos` ASC");
+
+ while ($filaOrganigramaEnPin = mysqli_fetch_array($queryOrganigramaEnPin))
+
+{
+	echo "<TR>\n";
+	//echo "<img style=\"border-radius: 50% 50%\" src=".$filaOrganigramaEnPin['Foto']." alt=\"BtnIconoVer\" width=\"50\" height=\"50\">";
+	echo "<a href=../Rrhh/VistaPersonal.php?IdPersonal=".$filaOrganigramaEnPin['IdPersonal']." target=\"_blank\">
+	<img style=\"border-radius: 50% 50%\" src=".$filaOrganigramaEnPin['Foto']." alt=\"BtnIconoVer\" width=\"50\" height=\"50\"></a>";
+	echo " - ";
+	echo $filaOrganigramaEnPin['Nombres'];
+	echo "  ";
+	echo $filaOrganigramaEnPin['Apellidos'];
+	echo "</TR>\n";
+
+ }
+ echo "- Pintura - Final";
+ $queryOrganigramaEnPinCol = $mysqli -> query ("SELECT * FROM `ComEmpleado` WHERE `Encargado` = 28 AND `Gerente` = 28 AND `Baja` LIKE 'No' ORDER BY `Apellidos` ASC");
+
+ while ($filaOrganigramaEnPinCol = mysqli_fetch_array($queryOrganigramaEnPinCol))
+
+{
+echo "<TR>\n";
+//echo "<td>"."<img style=\"border-radius: 50% 50%\" src=".$filaOrganigramaEnPinCol['Foto']." alt=\"BtnIconoVer\" width=\"50\" height=\"50\">"."</td>\n";
+echo "<td>"."<a href=../Rrhh/VistaPersonal.php?IdPersonal=".$filaOrganigramaEnPinCol['IdPersonal']." target=\"_blank\">
+<img style=\"border-radius: 50% 50%\" src=".$filaOrganigramaEnPinCol['Foto']." alt=\"BtnIconoVer\" width=\"50\" height=\"50\"></a>"."</td>\n";
+echo "<td>"." - "."</td>\n";
+echo "<td>".$filaOrganigramaEnPinCol['Nombres']."</td>\n";
+echo "<td>"."  "."</td>\n";
+echo "<td>".$filaOrganigramaEnPinCol['Apellidos']."</td>\n";
+echo "</TR>\n";
+
+ }
+
+?>
+
+  </table>	
+
+</div>
+
+<!-- Fin Final -->
+
 
     <div class="col">
 	<table class="table table-striped"> 
@@ -771,6 +812,10 @@ echo "</TR>\n";
 	
 
   </div>
+
+  </div>
+
+  <!-- Fin de container inicial -->
 
   <!-- Script JS -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>

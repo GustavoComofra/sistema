@@ -58,13 +58,12 @@ function AlertarBorra()
 
 	</div>
 	
-  <div class="container-fluid m-0">
-  <div class="row">
-
+	<div class="container-fluid">
+	<div class="row">
 			<!-- Menu Lateral -->
 			<div id="divLateral" class="col-md-2 bg-dark min-vh-100 mt-0" style="height: 100%;  margin: 0; display: block;">
 				<nav class="navbar flex navbar-dark bg-dark ">
-					<div class="container btn-group ">
+					<div class="container-fluid btn-group ">
 
 						<?php
 
@@ -76,7 +75,7 @@ function AlertarBorra()
 				</nav>
 			</div>
 			<!-- Fin Menu Lateral -->
-			<div class="col-9 mt-0" style="margin-left: 20px">
+			<div class="col-md-auto">
   <div class="row">
     <div class="col">
 	<img src="../img/Icono.png" alt="Logo" width="80" height="80">
