@@ -9,7 +9,7 @@
 	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
-	<link href="../sistema/img/Icono.png" rel="icon" type="image/png">
+	<link href="../sistema/img/favicon.png" rel="icon" type="image/png">
 <title>Industria Comofra SRL</title>
 
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
@@ -60,7 +60,7 @@
 
 	<nav class="navbar-dark bg-dark">
 
-			<img class="" src="https://interno.comofrasrl.com.ar/sistema/img/logoTuerca.jpg" width="50" height="50" style="border-radius: 50% 50%;" alt="Imagen logo" />
+			<img class="" src="https://interno.comofrasrl.com.ar/sistema/img/favicon.png" width="50" height="50" style="border-radius: 50% 50%;" alt="Imagen logo" />
 
 		<a class="BtnMenu" style="margin-left: 1%; margin-right:1%;" href="https://interno.comofrasrl.com.ar/sistema/panel.php">Inicio</a>
 
@@ -77,7 +77,7 @@
 	<!-- Script JS -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-	<script type="text/javascript" src="/js/Archivo.js"></script>
+	<script type="text/javascript" src="../js/Archivo.js"></script>
 	<script type="text/javascript" src="https://interno.comofrasrl.com.ar/sistema/js/general.js"></script>
 	<!-- <script type="text/javascript" src="https://interno.comofrasrl.com.ar/sistema/js/app.js"></script> -->
 	<!-- <script type="text/javascript" src="https://interno.comofrasrl.com.ar/sistema/js/peticionProducto.js"></script> -->

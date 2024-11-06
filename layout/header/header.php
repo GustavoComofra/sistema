@@ -23,7 +23,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" >
 	
 	
-<link href="../sistema/img/Icono.png" rel="icon" type="image/png">
+<link href="../sistema/img/favicon.png" rel="icon" type="image/png">
  <title>Industria Comofra SRL</title>
 
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">

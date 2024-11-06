@@ -1,5 +1,7 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html style="padding: -100; margin: 0;">
+<!-- <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"> -->
+<!DOCTYPE html>
+<!-- <html style="padding: -100; margin: 0;" lang="es"> -->
+<html style="margin: 0;" lang="es">
 
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -9,9 +11,9 @@
 	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
-	<link href="../img/Icono.png" rel="icon" type="image/png">
+	<link href="../img/favicon.png" rel="icon" type="image/png">
 
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
 </head>
 <style>
 	.imgEfcListPersonal {
@@ -31,24 +33,10 @@
 		display: none;
 	}
 </style>
+	<title>Editar Personal</title>
 
-<script type="text/javascript">
-
-function volver()
-{
-	window.location.href = "/sistema/index.php";
-}
-
-function AlertarBorra()
-{
-	
-	alert('Esta seguro de borrar un estudio?');
-}
-	
-</script>	
-
-	<title>Nuevo Personal</title>
 <body>
+
 <div class="m-0">
 		<?php
 
@@ -58,7 +46,7 @@ function AlertarBorra()
 
 	</div>
 	
-  <div class="container-fluid m-0">
+<div class="container-fluid m-0">
   <div class="row">
 
 			<!-- Menu Lateral -->
@@ -76,17 +64,29 @@ function AlertarBorra()
 				</nav>
 			</div>
 			<!-- Fin Menu Lateral -->
+
+
 			<div class="col-9 mt-0" style="margin-left: 20px">
 		
 
 
 	<?php
+
+
+/*
+
 include("../Conexion/conexion.php");
+
 $CUIT_Empl=$_GET['CUIT_Empl'];
 $varCUIT_Empl = $CUIT_Empl=$_GET['CUIT_Empl'];
 $queryvarCUIT_Empl = $mysqli -> query ("SELECT * FROM `ComVistaEstuEmp` WHERE `CUIT_Empl` = ".$varCUIT_Empl.";");
 
-$row = mysqli_fetch_assoc($queryvarCUIT_Empl);
+if ($queryvarCUIT_Empl) {
+    $row = mysqli_fetch_assoc($queryvarCUIT_Empl);
+} else {
+    echo "Error en la consulta: " . mysqli_error($mysqli);
+}
+*/
 
 ?>	
 		
@@ -139,7 +139,7 @@ $insertarEstudio = "INSERT INTO `ComEstudios` (`IdEstudio`, `Estudio`, `Instituc
 $ejecutar_insertar=mysqli_query($mysqli,$insertarEstudio);
 }		
 		
-mysqli_close($mysqli);	
+//mysqli_close($mysqli);	
 		
 ?>
 
@@ -165,7 +165,7 @@ mysqli_close($mysqli);
       <td ><input name="txtInstitucionB" type="text" id="txtInstitucionB" size="11"/>
 		
 <label>
-        <input type="submit" class="btn btn-info" name="btnEnviar" id="btnEnviar" value="Buscar" />
+        <input type="submit" class="btn btn-info" name="btnBuscar" id="btnBuscar" value="Buscar" />
       </label>	
 			
 		</td>
@@ -225,6 +225,7 @@ mysqli_close($mysqli);
   </div>
 </div>	
 
+
 <!-- Script JS -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script type="text/javascript" src="https://interno.comofrasrl.com.ar/sistema/js/Archivo.js"></script>
@@ -261,7 +262,6 @@ mysqli_close($mysqli);
 	<script type="text/javascript" src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.27/build/pdfmake.min.js"></script>
 	<script type="text/javascript" src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.27/build/vfs_fonts.js"></script>
 	<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.3.1/js/buttons.html5.min.js"></script>
-
 	
 </body>
 </html>

@@ -4,12 +4,12 @@
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<link rel="stylesheet" href="https://interno.comofrasrl.com.ar/sistema/css/estiloHome.css">  
+	<link rel="stylesheet" href="https://interno.comofrasrl.com.ar/sistema/css/estiloHome.css">   
 	<link rel="stylesheet" href="https://interno.comofrasrl.com.ar/sistema/css/general.css"> 
 	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
-	<link href="../img/Icono.png" rel="icon" type="image/png">
+	<link href="../img/favicon.png" rel="icon" type="image/png">
 
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 </head>
@@ -58,7 +58,7 @@ function AlertarBorra()
 
 		?>
 	</div>
-
+	
 	<div class="container-fluid m-0">
 		<div class="row"><!-- Inicio Fila -->
 
@@ -85,7 +85,7 @@ function AlertarBorra()
         $rowReclamo = mysqli_fetch_assoc($queryReclamo);
 
         ?>
-      </div>
+    
       <div class="col-md-auto">
 
         <form action="/sistema/Venta/EditarReclamo.php" method="post" name="formEditarReclamo" enctype="multipart/form-data">
